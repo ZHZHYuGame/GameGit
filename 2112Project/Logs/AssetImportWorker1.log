@@ -1,16 +1,25 @@
 Using pre-set license
 Built from '2022.3/china_unity/release' branch; Version is '2022.3.42f1c1 (d3f79ae33604) revision 13891482'; Using compiler version '192829333'; Build Type 'Release'
+<<<<<<< HEAD
 OS: 'Windows 11  (10.0.22631) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16250 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
 D:\unity\2022.3.42f1c1\Editor\Unity.exe
+=======
+OS: 'Windows 10  (10.0.19045) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16158 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\learn\2022.3.42f1c1\Editor\Unity.exe
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker1
 -projectPath
+<<<<<<< HEAD
 E:/Clitast/2112Project
 -logFile
 Logs/AssetImportWorker1.log
@@ -18,6 +27,15 @@ Logs/AssetImportWorker1.log
 17767
 Successfully changed project path to: E:/Clitast/2112Project
 E:/Clitast/2112Project
+=======
+D:/GitHub/2112Project
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+8286
+Successfully changed project path to: D:/GitHub/2112Project
+D:/GitHub/2112Project
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -49,6 +67,7 @@ E:/Clitast/2112Project
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< HEAD
 Player connection [26984]  Target information:
 
 Player connection [26984]  * "[IP] 169.254.247.187 [Port] 0 [Flags] 2 [Guid] 3362889696 [EditorId] 3362889696 [Version] 1048832 [Id] WindowsEditor(7,Yu) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
@@ -82,16 +101,57 @@ Registering precompiled unity dll's ...
 Register platform support module: D:/unity/2022.3.42f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Registered in 0.012744 seconds.
 - Loaded All Assemblies, in  0.674 seconds
+=======
+Player connection [41864]  Target information:
+
+Player connection [41864]  * "[IP] 10.161.16.41 [Port] 0 [Flags] 2 [Guid] 501495601 [EditorId] 501495601 [Version] 1048832 [Id] WindowsEditor(7,dzg) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [41864] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [41864] Host joined alternative multi-casting on [225.0.0.222:34997]...
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+Refreshing native plugins compatible for Editor in 3.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.42f1c1 (d3f79ae33604)
+[Subsystems] Discovering subsystems at path D:/learn/2022.3.42f1c1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GitHub/2112Project/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3050 Laptop GPU (ID=0x25a2)
+    Vendor:   NVIDIA
+    VRAM:     3964 MB
+    Driver:   32.0.15.5612
+Initialize mono
+Mono path[0] = 'D:/learn/2022.3.42f1c1/Editor/Data/Managed'
+Mono path[1] = 'D:/learn/2022.3.42f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/learn/2022.3.42f1c1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56236
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/learn/2022.3.42f1c1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: D:/learn/2022.3.42f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.032031 seconds.
+- Loaded All Assemblies, in  0.623 seconds
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 692 ms
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
 - Finished resetting the current domain, in  0.428 seconds
 Domain Reload Profiling: 1089ms
 	BeginReloadAssembly (238ms)
+=======
+- Finished resetting the current domain, in  1.149 seconds
+Domain Reload Profiling: 1759ms
+	BeginReloadAssembly (212ms)
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
+<<<<<<< HEAD
 	RebuildCommonClasses (60ms)
 	RebuildNativeTypeToScriptingClass (18ms)
 	initialDomainReloadingComplete (125ms)
@@ -114,6 +174,30 @@ Domain Reload Profiling: 1089ms
 			BeforeProcessingInitializeOnLoad (3ms)
 			ProcessInitializeOnLoadAttributes (223ms)
 			ProcessInitializeOnLoadMethodAttributes (92ms)
+=======
+	RebuildCommonClasses (44ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (132ms)
+	LoadAllAssembliesAndSetupDomain (209ms)
+		LoadAssemblies (199ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (204ms)
+			TypeCache.Refresh (203ms)
+				TypeCache.ScanAssembly (183ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (1150ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1090ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (863ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (154ms)
+			ProcessInitializeOnLoadMethodAttributes (66ms)
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -122,16 +206,28 @@ Domain Reload Profiling: 1089ms
 Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
+<<<<<<< HEAD
 - Loaded All Assemblies, in  0.715 seconds
+=======
+- Loaded All Assemblies, in  0.855 seconds
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 Native extension for WindowsStandalone target not found
+Native extension for Android target not found
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
 - Finished resetting the current domain, in  0.579 seconds
 Domain Reload Profiling: 1276ms
 	BeginReloadAssembly (258ms)
+=======
+- Finished resetting the current domain, in  0.674 seconds
+Domain Reload Profiling: 1515ms
+	BeginReloadAssembly (339ms)
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
+		DisableScriptedObjects (6ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
+<<<<<<< HEAD
 		CreateAndSetChildDomain (31ms)
 	RebuildCommonClasses (48ms)
 	RebuildNativeTypeToScriptingClass (14ms)
@@ -166,6 +262,42 @@ Unloading 563 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 8 unused Assets / (49.4 KB). Loaded Objects now: 1040.
 Memory consumption went from 61.4 MB to 61.4 MB.
 Total: 2.582100 ms (FindLiveObjects: 0.073700 ms CreateObjectMapping: 0.018100 ms MarkObjects: 2.376500 ms  DeleteObjects: 0.112900 ms)
+=======
+		CreateAndSetChildDomain (39ms)
+	RebuildCommonClasses (63ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (94ms)
+	LoadAllAssembliesAndSetupDomain (327ms)
+		LoadAssemblies (487ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (78ms)
+			TypeCache.Refresh (68ms)
+				TypeCache.ScanAssembly (40ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (676ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (459ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (51ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (85ms)
+			ProcessInitializeOnLoadAttributes (241ms)
+			ProcessInitializeOnLoadMethodAttributes (33ms)
+			AfterProcessingInitializeOnLoad (45ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 1.84 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 562 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 8 unused Assets / (49.5 KB). Loaded Objects now: 1042.
+Memory consumption went from 70.6 MB to 70.6 MB.
+Total: 2.315800 ms (FindLiveObjects: 0.111200 ms CreateObjectMapping: 0.022200 ms MarkObjects: 2.100100 ms  DeleteObjects: 0.080900 ms)
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
@@ -184,16 +316,28 @@ AssetImportParameters requested are different than current active one (requested
 Received Prepare
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
+<<<<<<< HEAD
 - Loaded All Assemblies, in  0.551 seconds
+=======
+- Loaded All Assemblies, in  0.611 seconds
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 Native extension for WindowsStandalone target not found
+Native extension for Android target not found
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
 - Finished resetting the current domain, in  0.669 seconds
 Domain Reload Profiling: 1208ms
 	BeginReloadAssembly (251ms)
+=======
+- Finished resetting the current domain, in  0.728 seconds
+Domain Reload Profiling: 1324ms
+	BeginReloadAssembly (243ms)
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (7ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
+<<<<<<< HEAD
 		CreateAndSetChildDomain (30ms)
 	RebuildCommonClasses (50ms)
 	RebuildNativeTypeToScriptingClass (14ms)
@@ -227,6 +371,41 @@ Unloading 558 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 4 unused Assets / (23.3 KB). Loaded Objects now: 1043.
 Memory consumption went from 60.9 MB to 60.9 MB.
 Total: 2.582900 ms (FindLiveObjects: 0.075400 ms CreateObjectMapping: 0.016400 ms MarkObjects: 2.425500 ms  DeleteObjects: 0.064700 ms)
+=======
+		CreateAndSetChildDomain (29ms)
+	RebuildCommonClasses (44ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (59ms)
+	LoadAllAssembliesAndSetupDomain (236ms)
+		LoadAssemblies (380ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (11ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (729ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (344ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (51ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (74ms)
+			ProcessInitializeOnLoadAttributes (155ms)
+			ProcessInitializeOnLoadMethodAttributes (25ms)
+			AfterProcessingInitializeOnLoad (36ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (12ms)
+Refreshing native plugins compatible for Editor in 3.42 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 557 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4 unused Assets / (23.3 KB). Loaded Objects now: 1046.
+Memory consumption went from 69.4 MB to 69.4 MB.
+Total: 2.713300 ms (FindLiveObjects: 0.132500 ms CreateObjectMapping: 0.029200 ms MarkObjects: 2.527300 ms  DeleteObjects: 0.023600 ms)
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -241,6 +420,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
   custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+<<<<<<< HEAD
   custom:scripting/monoscript/fileName/UIManager.cs: 2595dc2cbd41cc2d023a3ebb28d87e9e -> 05818d699214a3978e5b7a94f7bc3faf
   custom:scripting/precompiled-assembly-types:Assembly-CSharp: 1d165cfc95cc60689262ed2ed93491aa -> fde59bfb4616aaeaa52186494dd12693
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
@@ -2005,3 +2185,114 @@ AssetImportParameters requested are different than current active one (requested
   custom:scripting/precompiled-assembly-types:Assembly-CSharp: db5d939108db40ce781dbf6fb17488f0 -> fde59bfb4616aaeaa52186494dd12693
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+=======
+  custom:scripting/monoscript/fileName/MessageManager.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: c51e6664a0e1f174fb7d980f2a7410b3 -> e2921522263ee2d6b59ea6b716fcc34b
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 46899.436424 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'c833864349818aaa843fcfbe144d7e28') in 0.093120 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.143593 seconds.
+  path: Assets/Script/Game.cs
+  artifactKey: Guid(4fd20d80045740c458dacc59c9b2dfec) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Game.cs using Guid(4fd20d80045740c458dacc59c9b2dfec) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '1d526f79fe761cf44ffec6e833578c89') in 0.047213 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Script/Audio/AudioInfo.cs
+  artifactKey: Guid(964f1e58a76204c4da516b124147fdac) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Audio/AudioInfo.cs using Guid(964f1e58a76204c4da516b124147fdac) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '51739b7bd54a944c8444a848a619c02e') in 0.006934 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Script/Audio/AudioLoader.cs
+  artifactKey: Guid(bd7d6b5e9d87de34db61c5ebd06baed6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Audio/AudioLoader.cs using Guid(bd7d6b5e9d87de34db61c5ebd06baed6) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6ff99828d37dfaf078b63571e3753944') in 0.006887 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Resources/Test/CSGO.png
+  artifactKey: Guid(9ea6b3ce109ef494691095954c277ee7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Resources/Test/CSGO.png using Guid(9ea6b3ce109ef494691095954c277ee7) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'a1c3e409ed5d72d7830a21bd06c50f2d') in 0.092863 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.372298 seconds.
+  path: Assets/Script/Net/NetManager.cs
+  artifactKey: Guid(f2881e15075a87a428f037ef603a534e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Net/NetManager.cs using Guid(f2881e15075a87a428f037ef603a534e) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '329508edc9e1c14864b0447c40fae891') in 0.006726 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Script/Procedure/ProcedureManager.cs
+  artifactKey: Guid(bc10cff9158d02b4fab03258c161d889) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Procedure/ProcedureManager.cs using Guid(bc10cff9158d02b4fab03258c161d889) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'c17f95e682721c185592c93ef10e24bb') in 0.009298 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Script/Scene/SceneManager.cs
+  artifactKey: Guid(f38c8914861ab82429362eba92637554) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Scene/SceneManager.cs using Guid(f38c8914861ab82429362eba92637554) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '0c50bc2422b1a79772a651a42c091267') in 0.006216 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Script/Procedure/Singleton.cs
+  artifactKey: Guid(63d11931ac699ab4ab74749eedba5d8a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Procedure/Singleton.cs using Guid(63d11931ac699ab4ab74749eedba5d8a) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6e14c4c4c591bc33479309320b9d256a') in 0.007795 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Script/Procedure/LoadMainMenuProcedure.cs
+  artifactKey: Guid(f5de571eb35785f45a7dd7b86b73e3a0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Procedure/LoadMainMenuProcedure.cs using Guid(f5de571eb35785f45a7dd7b86b73e3a0) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '67ec8e1ad8ce9425d0ee1c85824b040a') in 0.007933 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Script/Procedure/GameStarter.cs
+  artifactKey: Guid(d5fb0bfac89c3424facd124a4d73a6d3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23)
+Start importing Assets/Script/Procedure/GameStarter.cs using Guid(d5fb0bfac89c3424facd124a4d73a6d3) Importer(2089858483,0ecaa5967403d082aa24f35e1b516d23) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '39f2cc49d674bccdd86e7ecbbd572d5d') in 0.012248 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: 由于线程退出或应用程序请求，已中止 I/O 操作。
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
+>>>>>>> 4359192370dc819b1edd3b180a5c7b97ae9b5fc5
