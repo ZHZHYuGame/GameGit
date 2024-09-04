@@ -10,7 +10,7 @@ public class SplashProcedure : ProcedureBase
     protected override void OnEnter()
     {
         //有UI面板后，补充代码优化
-        videoClip=GameObject.FindFirstObjectByType<VideoPlayer>();
+        videoClip=GameObject.Find("video").GetComponent<VideoPlayer>();
         // 显示启动画面
         Debug.Log(">>>>进入启动画面程序");
         videoClip.Play();
