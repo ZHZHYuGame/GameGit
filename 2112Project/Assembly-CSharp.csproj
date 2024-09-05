@@ -63,18 +63,25 @@
     <Compile Include="Assets\Scripts\ConfigGoods\Tables.cs" />
     <Compile Include="Assets\Script\Procedure\InitGameCoreProcedure.cs" />
     <Compile Include="Assets\Script\Procedure\Singleton.cs" />
-    <Compile Include="Assets\Script\Procedure\ResourceDownloader.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\GoodsType.cs" />
+    <Compile Include="Assets\Script\Procedure\ResourceDownloader.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\TbGoods.cs" />
     <Compile Include="Assets\Script\Combat\PlayerControl.cs" />
+    <Compile Include="Assets\Script\EventMgr\MessageEventMgr.cs" />
     <Compile Include="Assets\Script\Audio\AudioInfo.cs" />
-    <Compile Include="Assets\Script\Scene\SceneControlManager.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\Goods.cs" />
+    <Compile Include="Assets\Script\Scene\SceneControlManager.cs" />
+    <Compile Include="Assets\Script\AI\ChaseState.cs" />
     <Compile Include="Assets\Script\Texture\TextureMgr.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean2.cs" />
+    <Compile Include="Assets\Script\EventMgr\Login.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector2.cs" />
+    <Compile Include="Assets\Script\EventMgr\GameManager.cs" />
     <Compile Include="Assets\Script\Procedure\ProcedureBase.cs" />
+    <Compile Include="Assets\Script\EventMgr\Test.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector3.cs" />
+    <Compile Include="Assets\Script\AI\FSMSystem.cs" />
+    <Compile Include="Assets\Script\AI\EnemyAI.cs" />
     <Compile Include="Assets\Script\Audio\AudioLoader.cs" />
     <Compile Include="Assets\Script\Combat\ETCMove.cs" />
     <Compile Include="Assets\Script\Procedure\SplashProcedure.cs" />
@@ -84,6 +91,7 @@
     <Compile Include="Assets\Scripts\ConfigGoods\vector4.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\EQuality.cs" />
     <Compile Include="Assets\Script\Net\MsgData.cs" />
+    <Compile Include="Assets\Script\AI\PatrolState.cs" />
     <Compile Include="Assets\Script\Net\Client.cs" />
     <Compile Include="Assets\Script\Procedure\ProcedureManager.cs" />
     <Compile Include="Assets\Script\Combat\CameraControl.cs" />
@@ -92,9 +100,11 @@
     <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean1.cs" />
     <Compile Include="Assets\Script\Procedure\CheckHotfixProcedure.cs" />
     <Compile Include="Assets\Script\Procedure\LoadMainMenuProcedure.cs" />
+    <Compile Include="Assets\Script\AI\FSMState.cs" />
     <Compile Include="Assets\Script\Net\NetManager.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\AccessFlag.cs" />
     <Compile Include="Assets\Script\Procedure\InitConfigProcedure.cs" />
+    <Compile Include="Assets\Script\EventMgr\Message.cs" />
     <Compile Include="Assets\Script\Procedure\MessageManager.cs" />
   </ItemGroup>
   <ItemGroup>
