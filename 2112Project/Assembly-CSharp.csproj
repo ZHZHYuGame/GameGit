@@ -61,17 +61,54 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ConfigGoods\Tables.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\vector2.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\item\ItemExchange.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\test\AccessFlag.cs" />
+    <Compile Include="Assets\Script\Procedure\InitGameCoreProcedure.cs" />
+    <Compile Include="Assets\Script\Procedure\Singleton.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\GoodsType.cs" />
+    <Compile Include="Assets\Script\Procedure\ResourceDownloader.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\TbGoods.cs" />
+    <Compile Include="Assets\Script\Combat\PlayerControl.cs" />
+    <Compile Include="Assets\Script\EventMgr\MessageEventMgr.cs" />
+    <Compile Include="Assets\Script\Audio\AudioInfo.cs" />
+    <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\Goods.cs" />
+    <Compile Include="Assets\Script\Scene\SceneControlManager.cs" />
+    <Compile Include="Assets\Script\AI\ChaseState.cs" />
+    <Compile Include="Assets\Script\Texture\TextureMgr.cs" />
+    <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean2.cs" />
+    <Compile Include="Assets\Script\EventMgr\Login.cs" />
+    <Compile Include="Assets\Scripts\ConfigGoods\vector2.cs" />
+    <Compile Include="Assets\Script\EventMgr\GameManager.cs" />
+    <Compile Include="Assets\Script\Procedure\ProcedureBase.cs" />
+    <Compile Include="Assets\Script\EventMgr\Test.cs" />
+    <Compile Include="Assets\Scripts\ConfigGoods\vector3.cs" />
+    <Compile Include="Assets\Script\AI\FSMSystem.cs" />
+    <Compile Include="Assets\Script\AI\EnemyAI.cs" />
+    <Compile Include="Assets\Script\Audio\AudioLoader.cs" />
+    <Compile Include="Assets\Script\Combat\ETCMove.cs" />
+    <Compile Include="Assets\Script\Procedure\SplashProcedure.cs" />
+    <Compile Include="Assets\Script\Procedure\GameStarter.cs" />
+    <Compile Include="Assets\Scripts\ConfigGoods\item\ItemExchange.cs" />
+    <Compile Include="Assets\Script\Atlas\AtlasMgr.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector4.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\EQuality.cs" />
+    <Compile Include="Assets\Script\Net\MsgData.cs" />
+    <Compile Include="Assets\Script\AI\PatrolState.cs" />
+    <Compile Include="Assets\Script\Net\Client.cs" />
+    <Compile Include="Assets\Script\Procedure\ProcedureManager.cs" />
+    <Compile Include="Assets\Script\Combat\CameraControl.cs" />
+    <Compile Include="Assets\Script\Audio\AudioManager.cs" />
+    <Compile Include="Assets\Script\Game.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean1.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\Goods.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean2.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\vector3.cs" />
+    <Compile Include="Assets\Script\Procedure\CheckHotfixProcedure.cs" />
+    <Compile Include="Assets\Script\Procedure\LoadMainMenuProcedure.cs" />
+    <Compile Include="Assets\Script\AI\FSMState.cs" />
+    <Compile Include="Assets\Script\Net\NetManager.cs" />
+    <Compile Include="Assets\Scripts\ConfigGoods\test\AccessFlag.cs" />
+    <Compile Include="Assets\Script\Procedure\InitConfigProcedure.cs" />
+    <Compile Include="Assets\Script\EventMgr\Message.cs" />
+    <Compile Include="Assets\Script\Procedure\MessageManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Config\战斗系统说明.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -404,22 +441,6 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\Study\Unity\2022.3.42f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Tracker.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\Unity.Analytics.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.8.1\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -922,44 +943,8 @@
       <HintPath>D:\Study\Unity\2022.3.42f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Services.Analytics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Analytics.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing.Stores">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing.SecurityStub">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Luban.Runtime">
       <HintPath>Library\ScriptAssemblies\Luban.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Services.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
@@ -970,108 +955,12 @@
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Purchasing.Common">
-      <HintPath>Library\ScriptAssemblies\Purchasing.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Analytics">
-      <HintPath>Library\ScriptAssemblies\Analytics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Services.Core.Environments">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Services.Analytics">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing.SecurityCore">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing.Codeless">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Services.Core.Analytics">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Luban.Editor">
       <HintPath>Library\ScriptAssemblies\Luban.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
