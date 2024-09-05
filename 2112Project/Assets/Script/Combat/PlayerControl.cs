@@ -30,49 +30,28 @@ public class PlayerControl : MonoBehaviour
     /// <summary>
     /// 是否正在攻击
     /// </summary>
-    public bool isAtk;
-    /// <summary>
-    ///旋转武器
-    /// </summary>
-    public GameObject rotateWeapon;
-    /// <summary>
-    /// 旋转速度
-    /// </summary>
-    private float m_rotateSpeed = 300f;
-    /// <summary>
-    /// 旋转半径
-    /// </summary>
-    private float m_distance = 3;
-    private Vector3 m_dir;
-
-    private HandWeapon m_handWeapon;
-
+    private bool m_isAtk;
     void Start()
     {
-        rotateWeapon.SetActive(true);
         m_EtcMove = GameObject.Find("Canvas/ETCParent/ETC").GetComponent<ETCMove>();
         m_Animator = GetComponent<Animator>();
-        m_handWeapon=GetComponentInChildren<HandWeapon>();
-        m_dir = rotateWeapon.transform.position - transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         Move();
         Attack();
-        //rotateWeapon.transform.eulerAngles = new Vector3(0,180,0);
-        rotateWeapon.transform.LookAt(transform.position);
-        rotateWeapon.transform.position = transform.position + m_dir.normalized * m_distance;
-        rotateWeapon.transform.RotateAround(transform.position, Vector3.up, m_rotateSpeed * Time.deltaTime);
-        m_dir=rotateWeapon.transform.position-transform.position;
+        
+
     }
+
     private void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.A)&&!isAtk)
+        if(Input.GetKeyDown(KeyCode.A)&&!m_isAtk)
         {
-            isAtk = true;
-            m_handWeapon.isAtk = true;
+            m_isAtk = true;
             m_atkCount++;
             if (m_atkCount > 2)
             {
@@ -100,13 +79,13 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     public void AttackOver()
     {
-        m_handWeapon.isAtk = false;
-        isAtk = false;
+        print(111);
+        m_isAtk = false;
     }
 
     private void Move()
     {
-        if(!isAtk)
+        if(!m_isAtk)
         {
             float H = m_EtcMove.GetMovePos("H");
             float V = m_EtcMove.GetMovePos("V");
