@@ -34,6 +34,13 @@ public class AudioLoader : MonoBehaviour
 
     IEnumerator LoadAudioClip(string clipName, System.Action<AudioClip> callback)
     {
+#if UNITY_EDITOR
+        //Resourcesº”‘ÿ
+        AudioClip clip=Resources.Load<AudioClip>(clipName);
+        callback(clip);
+        yield return null;
+#else
+        //AB∞¸º”‘ÿ
         string path = assetBundlesUrl + "Audio/" + clipName + ".ab";
         UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(path);
         yield return www.SendWebRequest();
@@ -49,5 +56,7 @@ public class AudioLoader : MonoBehaviour
         {
             Debug.LogError("Error loading asset: " + www.error);
         }
+#endif
     }
+
 }
