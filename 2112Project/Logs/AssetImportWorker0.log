@@ -1,16 +1,33 @@
 Using pre-set license
 Built from '2022.3/china_unity/release' branch; Version is '2022.3.42f1c1 (d3f79ae33604) revision 13891482'; Using compiler version '192829333'; Build Type 'Release'
+<<<<<<< HEAD
+OS: 'Windows 10  (10.0.19045) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16021 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+E:\Unity\Installation location\2022.3.42f1c1\Editor\Unity.exe
+=======
 OS: 'Windows 11  (10.0.22631) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16176 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
 S:\Unity3D\2022.3.42f1c1\Editor\Unity.exe
+>>>>>>> 6afbb0a60b6b890771fb7df2342d911bf7731e39
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
+<<<<<<< HEAD
+D:/GitHouseStore/2112Project
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50695
+Successfully changed project path to: D:/GitHouseStore/2112Project
+D:/GitHouseStore/2112Project
+=======
 C:/Users/Lenovo/Desktop/GitWorks/2112Project
 -logFile
 Logs/AssetImportWorker0.log
@@ -18,6 +35,7 @@ Logs/AssetImportWorker0.log
 2815
 Successfully changed project path to: C:/Users/Lenovo/Desktop/GitWorks/2112Project
 C:/Users/Lenovo/Desktop/GitWorks/2112Project
+>>>>>>> 6afbb0a60b6b890771fb7df2342d911bf7731e39
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -49,6 +67,42 @@ C:/Users/Lenovo/Desktop/GitWorks/2112Project
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< HEAD
+Player connection [34612]  Target information:
+
+Player connection [34612]  * "[IP] 10.161.16.83 [Port] 0 [Flags] 2 [Guid] 3896241556 [EditorId] 3896241556 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-IP0QQDES) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34612] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [34612] Host joined alternative multi-casting on [225.0.0.222:34997]...
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+Refreshing native plugins compatible for Editor in 2.23 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.42f1c1 (d3f79ae33604)
+[Subsystems] Discovering subsystems at path E:/Unity/Installation location/2022.3.42f1c1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GitHouseStore/2112Project/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2520)
+    Vendor:   NVIDIA
+    VRAM:     5996 MB
+    Driver:   32.0.15.6081
+Initialize mono
+Mono path[0] = 'E:/Unity/Installation location/2022.3.42f1c1/Editor/Data/Managed'
+Mono path[1] = 'E:/Unity/Installation location/2022.3.42f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'E:/Unity/Installation location/2022.3.42f1c1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56760
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity/Installation location/2022.3.42f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006629 seconds.
+- Loaded All Assemblies, in  0.377 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.301 seconds
+Domain Reload Profiling: 675ms
+	BeginReloadAssembly (105ms)
+=======
 Player connection [50800]  Target information:
 
 Player connection [50800]  * "[IP] 10.161.16.49 [Port] 0 [Flags] 2 [Guid] 2247086788 [EditorId] 2247086788 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-UU8HM43V) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
@@ -83,11 +137,36 @@ Mono: successfully reloaded assembly
 - Finished resetting the current domain, in  0.254 seconds
 Domain Reload Profiling: 655ms
 	BeginReloadAssembly (161ms)
+>>>>>>> 6afbb0a60b6b890771fb7df2342d911bf7731e39
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
+<<<<<<< HEAD
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (59ms)
+	LoadAllAssembliesAndSetupDomain (159ms)
+		LoadAssemblies (104ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (157ms)
+			TypeCache.Refresh (152ms)
+				TypeCache.ScanAssembly (137ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (301ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (248ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (10ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (172ms)
+			ProcessInitializeOnLoadMethodAttributes (53ms)
+=======
 	RebuildCommonClasses (30ms)
 	RebuildNativeTypeToScriptingClass (8ms)
 	initialDomainReloadingComplete (83ms)
@@ -110,6 +189,7 @@ Domain Reload Profiling: 655ms
 			BeforeProcessingInitializeOnLoad (2ms)
 			ProcessInitializeOnLoadAttributes (130ms)
 			ProcessInitializeOnLoadMethodAttributes (66ms)
+>>>>>>> 6afbb0a60b6b890771fb7df2342d911bf7731e39
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -118,6 +198,52 @@ Domain Reload Profiling: 655ms
 Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
+<<<<<<< HEAD
+- Loaded All Assemblies, in  0.387 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.386 seconds
+Domain Reload Profiling: 770ms
+	BeginReloadAssembly (157ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (43ms)
+	LoadAllAssembliesAndSetupDomain (147ms)
+		LoadAssemblies (202ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (29ms)
+			TypeCache.Refresh (20ms)
+				TypeCache.ScanAssembly (13ms)
+			ScanForSourceGeneratedMonoScriptInfo (6ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (386ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (251ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (48ms)
+			ProcessInitializeOnLoadAttributes (158ms)
+			ProcessInitializeOnLoadMethodAttributes (28ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.03 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 743 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 8 unused Assets / (49.6 KB). Loaded Objects now: 1239.
+Memory consumption went from 75.0 MB to 74.9 MB.
+Total: 3.364700 ms (FindLiveObjects: 0.124100 ms CreateObjectMapping: 0.042600 ms MarkObjects: 3.058200 ms  DeleteObjects: 0.138300 ms)
+=======
 - Loaded All Assemblies, in  0.419 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
@@ -162,6 +288,7 @@ Unloading 743 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 8 unused Assets / (50.0 KB). Loaded Objects now: 1239.
 Memory consumption went from 75.2 MB to 75.1 MB.
 Total: 1.981500 ms (FindLiveObjects: 0.061800 ms CreateObjectMapping: 0.013600 ms MarkObjects: 1.828500 ms  DeleteObjects: 0.076400 ms)
+>>>>>>> 6afbb0a60b6b890771fb7df2342d911bf7731e39
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
@@ -178,6 +305,16 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
 ========================================================================
+<<<<<<< HEAD
+Received Import Request.
+  Time since last request: 26027.830987 seconds.
+  path: Assets/QuarkAsset
+  artifactKey: Guid(0379fa92e273d0f4f84ae08513802b74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuarkAsset using Guid(0379fa92e273d0f4f84ae08513802b74) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '356ed0924b0497a91104f0f4b1526149') in 0.003649 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+=======
 Received Import Request.
   Time since last request: 43585.267527 seconds.
   path: Assets/main.unity
@@ -471,3 +608,4 @@ TcpMessagingSession - receive error: operation aborted. errorcode: 995, details:
 AssetImportWorker is now disconnected from the server
 Process exiting
 Exiting without the bug reporter. Application will terminate with return code 0
+>>>>>>> 6afbb0a60b6b890771fb7df2342d911bf7731e39
