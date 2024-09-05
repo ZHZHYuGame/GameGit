@@ -26,7 +26,7 @@ public class TextureInfo
 public class TextureMgr
 {
     //Œ∆¿Ì»›¡ø(ø…¿©»›)
-    private int _count = 100;
+    //private int _count = 100;
 
     //ø’∞◊Œ∆¿Ì
     Texture nullTexture = null;
@@ -55,7 +55,7 @@ public class TextureMgr
 
     public void Init()
     {
-        _textureDics = new Dictionary<string, TextureInfo>(_count);
+        _textureDics = new Dictionary<string, TextureInfo>();
         _textureLists = new List<TextureInfo>();
 
 
