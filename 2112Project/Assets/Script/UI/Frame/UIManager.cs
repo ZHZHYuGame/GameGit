@@ -39,10 +39,10 @@ public class UIManager : Singleton<UIManager>
 {
 
     //Canvas名字
-    public string _canvasName = "Canvas";
+    string _canvasName = "UICanvas/Canvas";
 
     //ui父类名字
-    public string _uiName = "UIPanel";
+    string _uiName = "UIPanel";
 
     //UI的父类 
     public Transform UIPanel;
@@ -137,6 +137,7 @@ public class UIManager : Singleton<UIManager>
     void Awake()
     {
         Registration();//注册所有面板
+        Debug.Log(11);
     }
 
     /// <summary>
