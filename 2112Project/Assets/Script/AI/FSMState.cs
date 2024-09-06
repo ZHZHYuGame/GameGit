@@ -1,59 +1,54 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// ×´Ì¬IDÃ¶¾Ù
 public enum StateID
 {
-
-    NullStateID = 0,//¿Õ
-    Patrol,         //Ñ²Âß
-    Chase           //×·Öð
+    NullState = 0,
+    Patrol,
+    Chase,
+    Sleep,
+    Attack,
 }
-
-// ×ª»»Ã¶¾Ù
 public enum Transition
 {
     NullTransition = 0,
     SeePlayer,
-    LostPlayer
+    LostPlayer,
+    AtkPlayer
 }
-
 public abstract class FSMState
 {
     protected StateID stateID;
-    public StateID ID
-    {
-        get { return stateID; }
-    }
-    protected Animator anim;
-
-    protected Dictionary<Transition, StateID> dic = new Dictionary<Transition, StateID>();
-
+    public StateID ID{ get { return stateID; } }
     protected FSMSystem fsmSystem;
-
-    public FSMState(FSMSystem fsmSystem)
+    protected Transform playerTransform;
+    protected Animator anim;
+    public FSMState(FSMSystem fsmSystem, Transform playerTransform, Animator anim)
     {
         this.fsmSystem = fsmSystem;
+        this.playerTransform = playerTransform;
+        this.anim = anim;
     }
-    public void AddTransition(Transition trans, StateID id)
+
+    Dictionary<Transition, StateID> dic = new Dictionary<Transition, StateID>();
+    public void AddTransition(Transition trans,StateID id)
     {
         dic.Add(trans, id);
     }
-    public void DeleteTransition(Transition trans)
+    public void RemoveTransition(Transition trans) 
     {
         dic.Remove(trans);
     }
-
     public StateID GetOutputState(Transition trans)
     {
         if (dic.ContainsKey(trans))
         {
             return dic[trans];
         }
-        return StateID.NullStateID;
+        return StateID.NullState;
     }
-
-    public virtual void OnEnter() { }
-    public virtual void OnExit() { }
+    public virtual void DOBeforeEntering() { }
+    public virtual void DOAfterEntering() { }
     public abstract void Act(GameObject npc);
     public abstract void Reason(GameObject npc);
 }
