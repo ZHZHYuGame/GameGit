@@ -137,7 +137,7 @@ public class UIManager : Singleton<UIManager>
     void Awake()
     {
         Registration();//×¢²áËùÓÐÃæ°å
-        Debug.Log(11);
+        DontDestroyOnLoad(gameObject.transform.parent.parent.gameObject);
     }
 
     /// <summary>
