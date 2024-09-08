@@ -179,7 +179,7 @@ public class AtlasMgr
 
 
 #if UNITY_EDITOR
-        SA = AssetDatabase.LoadAssetAtPath<SpriteAtlas>("Assets/" + saName + ".spriteatlas");
+        SA = AssetDatabase.LoadAssetAtPath<SpriteAtlas>("Assets/Picture/" + saName + ".spriteatlas");
 #else
         //AB°ü
 #endif
