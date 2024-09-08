@@ -85,11 +85,14 @@ public class AtlasMgr
         SpriteAtlasInfo info;
         if (!_spritesDics.TryGetValue(saName, out info))
         {
-            info = LoadSpriteAtlas(saName);
-            if (info == null)
+            if (!_spritesDics.ContainsKey(saName))
             {
-                Debug.Log("没有该图集");
-                return;
+                info = LoadSpriteAtlas(saName);
+                if (info == null)
+                {
+                    Debug.Log("没有该图集");
+                    return;
+                }
             }
         }
 
@@ -208,6 +211,8 @@ public class AtlasMgr
 
             _nowSpriteDic.Add(spriteInfo._name, spriteInfo);
         }
+
+        _spritesDics.Add(saName, info);
 
         return info;
     }
