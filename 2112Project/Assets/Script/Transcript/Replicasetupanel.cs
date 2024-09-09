@@ -7,10 +7,9 @@ using UnityEngine.Video;
 
 public class Replicasetupanel : UIBase
 {
-    public Button transcriptbutt,close,confirm;
+    public Button close,confirm;
     public Dropdown mapdro;
-    public GameObject transcriptSetPanel;
-    public GameObject video1,video2,video3,video4;
+    GameObject video1,video2,video3,video4;
     public Image enemyimage;
     public Button enemybutt;
     int enemynum;
@@ -19,49 +18,68 @@ public class Replicasetupanel : UIBase
     
     private void Awake()
     {
-        
+        video1 = GameObject.Find("Video/ÃÎ»ÃÍí»á");
+        video1.gameObject.SetActive(false);  
+        video2 = GameObject.Find("Video/Çï¼¾ÄºÉ«");
+        video2.gameObject.SetActive(false);
+        video3 = GameObject.Find("Video/ÓîÖæÖ®Â·");
+        video3.gameObject.SetActive(false);
+        video4 = GameObject.Find("Video/ÍíÏ¼ÂäÄ»");
+        video4.gameObject.SetActive(false);
+        mepanel = GameObject.Find("Video");
     }
     // Start is called before the first frame update
     void Start()
     {
-        //transcriptbutt.onClick.AddListener(() =>
-        //{
-        //    transcriptSetPanel.transform.gameObject.SetActive(true);
-        //    transcriptbutt.gameObject.SetActive(false);
-        //});
         close.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("CombatScene");
+            print("ÇëÓÃÁ¦µã»÷£¬Ã»¼ì²âµ½Ç×");
+            //SceneManager.LoadScene("CombatScene");
         });
-        //mapdro.onValueChanged.AddListener((maptypeindex) =>
-        //{
-        //    if (maptypeindex == 0)
-        //    {
-        //        video1.gameObject.SetActive(true);
-        //    }
-        //    if (maptypeindex == 1)
-        //    {
-        //        video2.gameObject.SetActive(true);
-        //    }
-        //    if (maptypeindex == 2)
-        //    {
-        //        video3.gameObject.SetActive(true);
-        //    }
-        //    if (maptypeindex == 3)
-        //    {
-        //        video4.gameObject.SetActive(true);
-        //    }
-        //});
+        mapdro.onValueChanged.AddListener((maptypeindex) =>
+        {
+            if(video1!=null && video2!=null && video3!=null && video4 != null)
+            {
+                if (maptypeindex == 0)
+                {
+                    video1.gameObject.SetActive(true);
+                    video2.gameObject.SetActive(false);
+                    video3.gameObject.SetActive(false);
+                    video4.gameObject.SetActive(false);
+                }
+                if (maptypeindex == 1)
+                {
+                    video1.gameObject.SetActive(false);
+                    video2.gameObject.SetActive(true);
+                    video3.gameObject.SetActive(false);
+                    video4.gameObject.SetActive(false);
+                }
+                if (maptypeindex == 2)
+                {
+                    video1.gameObject.SetActive(false);
+                    video2.gameObject.SetActive(false);
+                    video3.gameObject.SetActive(true);
+                    video4.gameObject.SetActive(false);
+                }
+                if (maptypeindex == 3)
+                {
+                    video1.gameObject.SetActive(false);
+                    video2.gameObject.SetActive(false);
+                    video3.gameObject.SetActive(false);
+                    video4.gameObject.SetActive(true);
+                }
+            }
+        });
         confirm.onClick.AddListener(() =>
         {
             UIManager.Instance.CloseUI(UIPanelType.Map);
-            //mepanel.transform.GetComponent<MapGenerator>().enabled = true;
+            mepanel.transform.GetComponent<MapGenerator>().enabled = true;
         });
-        //enemybutt.onClick.AddListener(() =>
-        //{
-        //    enemynum = Random.Range(0, 16);
-        //    RanLoadEnemyImage(enemynum);
-        //});
+        enemybutt.onClick.AddListener(() =>
+        {
+            enemynum = Random.Range(0, 16);
+            RanLoadEnemyImage(enemynum);
+        });
     }
     private void RanLoadEnemyImage(int enemynum)
     {
