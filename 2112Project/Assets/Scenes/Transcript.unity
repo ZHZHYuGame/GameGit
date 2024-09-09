@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &247113368
 Transform:
   m_ObjectHideFlags: 0
@@ -272,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &478569577
 Transform:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &528296561
 Transform:
   m_ObjectHideFlags: 0
@@ -547,25 +547,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5976c2c9ff2e546af85f334497f306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: {fileID: 0}
-  barrierrowSize: 0
-  barriercolSize: 0
-  barrierrowSize1: 0
-  barriercolSize1: 0
-  barrierrowSize2: 0
-  barriercolSize2: 0
-  barrierrowSize3: 0
-  barriercolSize3: 0
-  playerbeginrowSize: 0
-  playerbegincolSize: 0
-  enemybeginrowSize: 0
-  enemybegincolSize: 0
+  count: {fileID: 661940969}
+  barrierrowSize: 9
+  barriercolSize: 1
+  barrierrowSize1: 9
+  barriercolSize1: 9
+  barrierrowSize2: 1
+  barriercolSize2: 1
+  barrierrowSize3: 1
+  barriercolSize3: 9
+  playerbeginrowSize: 10
+  playerbegincolSize: 5
+  enemybeginrowSize: 5
+  enemybegincolSize: 5
   awardcollectionrowSize: 0
-  awardcollectioncolSize: 0
-  leftdownindex: 0
-  rightdownindex: 0
-  leftupindex: 0
-  rightupindex: 0
+  awardcollectioncolSize: 5
+  leftdownindex: 1
+  rightdownindex: 1
+  leftupindex: 1
+  rightupindex: 1
 --- !u!4 &1431675860
 Transform:
   m_ObjectHideFlags: 0
@@ -714,7 +714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1733185145
 Transform:
   m_ObjectHideFlags: 0
@@ -849,13 +849,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947141432}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.18301274, y: -0.6830127, z: 0.18301274, w: 0.6830127}
+  m_LocalPosition: {x: 14, y: 5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: -90, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
