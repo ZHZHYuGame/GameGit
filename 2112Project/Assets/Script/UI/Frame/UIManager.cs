@@ -23,7 +23,8 @@ public enum UIPanelType
     Task,           //任务
     Chat,           //聊天
     Map,            //地图
-    Wing            //翅膀
+    Wing,           //翅膀
+    First           //首充
 }
 
 
@@ -52,6 +53,8 @@ public class UIManager : Singleton<UIManager>
 
     //提示框
     public TipsPanel tip;
+
+    public GameObject _allUI;
 
     //储存所有的面板信息
     Dictionary<UIPanelType, PanelPrefabConfig> _allPanel = new Dictionary<UIPanelType, PanelPrefabConfig>();
@@ -87,7 +90,7 @@ public class UIManager : Singleton<UIManager>
     {
         //资源加载加载面板
         #region 模拟
-        var panel = Instantiate(Resources.Load<GameObject>(name), UIPanel);
+        var panel = Instantiate(Resources.Load<GameObject>($"UI/{name}"), UIPanel);
         UIBase uiBase = panel.GetComponent<UIBase>();
         _openPanel.Add(type, uiBase);
         #endregion
@@ -335,6 +338,22 @@ public class UIManager : Singleton<UIManager>
                 uiBase.OpenUI();
             }
         }
+    }
+
+    /// <summary>
+    /// 进入战斗场景
+    /// </summary>
+    public void EnterBattleScene()
+    {
+        _allUI.SetActive(false);
+    }
+
+    /// <summary>
+    /// 离开战斗场景
+    /// </summary>
+    public void ExitBattleScene()
+    {
+        _allUI.SetActive(true);
     }
 
 }
