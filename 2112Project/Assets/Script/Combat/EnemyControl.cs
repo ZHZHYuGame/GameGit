@@ -8,7 +8,7 @@ public class EnemyControl : MonoBehaviour
 
     private Animator m_Animator;
     private bool isUsed = false;
-
+    private float _atkSpeed = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,14 +33,23 @@ public class EnemyControl : MonoBehaviour
     }
     public void EnemyHurt(float atk)
     {
-        m_Animator.SetTrigger("Hurt");
-        m_Animator.SetTrigger("Die");
-    }
-
-    public void EnemyDie()
-    {
         isUsed = false;
         this.transform.localScale = Vector3.zero;
         this.transform.position = new Vector3(999, 999, 999);
+    }
+    public void Attack()
+    {
+        _atkSpeed -= Time.deltaTime;
+        if (_atkSpeed<=0)
+        {
+            _atkSpeed = 0.5f;
+            m_Animator.SetTrigger("Atk");
+            m_Animator.SetInteger("AtkCount",1);
+        }
+    }
+
+    public void AttackOver()
+    {
+        print("µÐÈË¹¥»÷½áÊø");
     }
 }

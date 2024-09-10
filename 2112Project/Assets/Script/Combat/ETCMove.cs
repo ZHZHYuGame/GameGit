@@ -27,9 +27,9 @@ public class ETCMove : MonoBehaviour,IDragHandler,IEndDragHandler
     {
         switch (name)
         {
-            case "H":
+            case "Horizontal":
                 return m_them.anchoredPosition.x / r;
-            case "V":
+            case "Vertical":
                 return m_them.anchoredPosition.y / r;
             default:
                 return 0;

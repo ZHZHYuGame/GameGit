@@ -11,7 +11,17 @@ public class ChaseState: FSMState
         stateID = StateID.Chase;
         this.speed = speed;
     }
+    public override void DOBeforeEntering()
+    {
+        base.DOBeforeEntering();
+        anim.SetBool("isMove", true);
+    }
 
+    public override void DOAfterEntering()
+    {
+        base.DOAfterEntering();
+        anim.SetBool("isMove", false);
+    }
     public override void Act(GameObject npc)
     {
         npc.transform.LookAt(playerTransform.position);
