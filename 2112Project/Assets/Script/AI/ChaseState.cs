@@ -20,11 +20,11 @@ public class ChaseState: FSMState
 
     public override void Reason(GameObject npc)
     {
-        if(Vector3.Distance(playerTransform.position,npc.transform.position)>6)
-        {
-            fsmSystem.PerformTransition(Transition.LostPlayer);
-        }
-        if(Vector3.Distance(playerTransform.position,npc.transform.position)<1)
+        //if(Vector3.Distance(playerTransform.position,npc.transform.position)>6)
+        //{
+        //    fsmSystem.PerformTransition(Transition.LostPlayer);
+        //}
+        if(Vector3.Distance(playerTransform.position,npc.transform.position)<1.5f)
         {
             fsmSystem.PerformTransition(Transition.AtkPlayer);
         }
