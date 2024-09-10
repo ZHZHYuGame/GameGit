@@ -23,7 +23,8 @@ public enum UIPanelType
     Task,           //任务
     Chat,           //聊天
     Map,            //地图
-    Wing            //翅膀
+    Wing,           //翅膀
+    First           //首充
 }
 
 
@@ -87,7 +88,7 @@ public class UIManager : Singleton<UIManager>
     {
         //资源加载加载面板
         #region 模拟
-        var panel = Instantiate(Resources.Load<GameObject>(name), UIPanel);
+        var panel = Instantiate(Resources.Load<GameObject>($"UI/{name}"), UIPanel);
         UIBase uiBase = panel.GetComponent<UIBase>();
         _openPanel.Add(type, uiBase);
         #endregion
