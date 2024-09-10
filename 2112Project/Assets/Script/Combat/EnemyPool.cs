@@ -9,12 +9,13 @@ public class EnemyPool : MonoBehaviour
     private int Max_Count = 60;
     private List<GameObject>EnemyList=new List<GameObject>();
     int count;
+    public Transform EnemyParent;
     void Start()
     {
         InvokeRepeating("GrowEnemy", 2, 5);
         for(int i=0;i<Max_Count; i++)
         {
-            EnemyList.Add(Instantiate(Resources.Load<GameObject>("CombatPrefab/Enemy")));
+            EnemyList.Add(Instantiate(Resources.Load<GameObject>("CombatPrefab/Enemy"), EnemyParent));
             EnemyList[i].AddComponent<EnemyAI>();
         }
     }
@@ -41,7 +42,6 @@ public class EnemyPool : MonoBehaviour
                 }
                 
             }
-            
         }
         for(int i = 0; i < 30 - count; i++)
         {
@@ -52,7 +52,7 @@ public class EnemyPool : MonoBehaviour
 
     private void AddEnemy()
     {
-        EnemyList.Add(Instantiate(Resources.Load<GameObject>("CombatPrefab/Enemy")));
+        EnemyList.Add(Instantiate(Resources.Load<GameObject>("CombatPrefab/Enemy"), EnemyParent));
         ++Max_Count;
     }
 }

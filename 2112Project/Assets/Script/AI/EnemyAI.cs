@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     private void InitFSM()
     {
         anim = GetComponent<Animator>();
+        anim.SetBool("isMove", true);
         fsmSystem = new FSMSystem();
         Transform playerTransform = GameObject.Find("Player").transform;
         ChaseState chaseState = new ChaseState(fsmSystem, playerTransform,anim, 1.5f);
