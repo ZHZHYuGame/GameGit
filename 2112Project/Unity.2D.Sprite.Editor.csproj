@@ -10,10 +10,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CDB4F004-68D7-5644-009D-A1F13B7145B7}</ProjectGuid>
+    <ProjectGuid>{5A751BB1-8641-CE40-52D2-7CFCCE455D17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>QuarkEditor</AssemblyName>
+    <AssemblyName>Unity.2D.Sprite.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -27,7 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -60,73 +60,47 @@
     <Analyzer Include="D:\unity\2022.3.42f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\BuildPipe\QuarkIncrementalBuildPipeline.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\CompareTab\QuarkManifestCompareLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\IQuarkBuildHandler.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\BuildPipe\QuarkBuildParams.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\Label\QuarkAssetBundleTabNoProfileLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\QuarkAssetBundleTab.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\CompareTab\TreeViewItem\QuarkCompareInfoTreeViewItem.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\ParseTab\TreeView\QuarkParseBundleTreeView.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\MergeTab\QuarkManifestMergeTab.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\QuarkBundleDetailLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\ParseTab\TreeViewItem\QuarkParseDependentTreeViewItem.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\CompareTab\ChangeTypePopup.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkCoroutines\EditorWindowCoroutineExtension.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\TreeViewItem\QuarkObjectTreeViewItem.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkBuildPipeline.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\MergeTab\TreeViewItem\QuarkManifestMergeTreeViewItem.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\MergeTab\TreeView\QuarkManifestMergeTreeView.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\QuarkVersionWindow.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\QuarkBundleSearchLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\QuarkAssetDatabaseTabData.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\ParseTab\QuarkManifestParseLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\Label\QuarkAssetBundleTabProfileLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkCoroutines\EditorWaitForSeconds.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\QuarkEditorConstant.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\AssetBundleBuildProfileData.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\MergeTab\QuarkManifestMergeTabData.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\BuildPipe\QuarkBuildType.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\ParseTab\QuarkManifestParseTab.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\MergeTab\QuarkManifestMergeLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\TreeView\QuarkObjectTreeView.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\MergeTab\QuarkManifestMergeLabelDataProxy.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\QuarkObjectSearchLabel.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\AssetBundleCompressType.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\Cache\QuarkIncrementalBuildInfo.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkCoroutines\EditorCoroutineUtility.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\QuarkAssetBundleTabData.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\TreeView\QuarkBundleDetailTreeView.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\CompareTab\QuarkManifestCompareTab.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\ParseTab\TreeViewItem\QuarkParseBundleTreeViewItem.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\QuarkBundleDetailType.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\CompareTab\QuarkManifestCompareTabDataProxy.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\QuarkEditorDataProxy.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\CompareTab\QuarkManifestCompareTabData.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\TreeView\QuarkBundleTreeView.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatasetTab\QuarkAssetDatasetTab.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\AssetBundleNameType.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\MergeTab\MergeTypePopup.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetBundleTab\QuarkBuildProfile.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\ParseTab\TreeView\QuarkParseDependentTreeView.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\QuarkAssetDatabaseTab.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkCoroutines\EditorCoroutine.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\BuildPipe\QuarkBuildController.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkAssetWindow.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\Cache\AssetCache.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\CompareTab\TreeView\QuarkManifestCompareTreeView.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\TreeViewItem\QuarkBundleTreeViewItem.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkCommand.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkWindowTab\QuarkAssetDatabaseTab\TreeViewItem\QuarkBundleDetailTreeViewItem.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkConfigEditor\QuarkLauncherEditor.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\QuarkVersionWindowData.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\Cache\QuarkBuildCache.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\QuarkEditorUtility.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\AssetEditor\QuarkAssetWindowData.cs" />
-    <Compile Include="Assets\QuarkAsset\Editor\VersionEditor\ParseTab\QuarkManifestParseTabData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteRect.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteOutlineModule.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IGL.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModule.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorWindowSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorMenu.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\ITexture.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IUndoSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ShapeEditor\ShapeEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\ISpriteEditorDataProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorHandles.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IHandles.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ShapeEditor\ShapeEditorRectSelection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteUtilityWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModuleBase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IGUIUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModuleBaseView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteSecondaryTexturesModule.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpritePhysicsShapeModule.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\ISpriteEditorModule.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModuleView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IAssetDatabase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\TextureImporterDataProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ObjectMenuCreation\ItemCreationUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpritePolygonModeModuleView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\DefaultSpriteNameFileIdDataProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteEditorData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ObjectMenuCreation\MenuItems.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpritePolygonModeModule.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\TextureImporterDataProviderImplementation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteNameFileIdPair.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\QuarkAsset\Editor\QuarkEditor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\UI\SpriteEditor\SpriteFrameModuleInspector.uxml" />
+    <None Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Unity.2D.Sprite.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\UI\SpriteEditor\PolygonChangeShapeWindow.uxml" />
+    <None Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\UI\SpriteEditor\SpriteEditor.uss" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -999,10 +973,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="QuarkRuntime.csproj">
-      <Project>{2A26F41E-09F1-806B-5D3D-F5009F60BC36}</Project>
-      <Name>QuarkRuntime</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{FAC4C91F-C4E2-8189-5D57-4BB3EC5BFA7F}</Project>
       <Name>UnityEditor.UI</Name>
