@@ -5,15 +5,17 @@ using UnityEngine;
 public class AudioInfo : MonoBehaviour
 {
     public AudioSource Source;
-    public float OriginalVolume;
-    public float LastPercentageVolume;
-    public float LastRandomVolume;
+    public float AudioVolume;//音量大小
+    public float LastVolume;//上次音量大小
+    public MusicType musicType;//音乐类型
+    public SourceEffectType sourceEffectType;//音效类型
 
-    public AudioInfo(AudioSource source, float originalVolume, float lastPercentageVolume, float lastRandomVolume)
+    public AudioInfo(AudioSource source, float audioVolume, float lastVolume, MusicType musicType, SourceEffectType sourceEffectType)
     {
         Source = source;
-        OriginalVolume = originalVolume;
-        LastPercentageVolume = lastPercentageVolume;
-        LastRandomVolume = lastRandomVolume;
+        AudioVolume = audioVolume;
+        LastVolume = lastVolume;
+        this.musicType = musicType;
+        this.sourceEffectType = sourceEffectType;
     }
 }
