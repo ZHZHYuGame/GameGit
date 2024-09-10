@@ -9,7 +9,6 @@ public class HandWeapon : WeaponBase
     {
         base.Start();
         atk = 10;
-        
     }
 
     protected override void Update()
