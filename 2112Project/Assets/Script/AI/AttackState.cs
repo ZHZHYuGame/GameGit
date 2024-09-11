@@ -16,6 +16,7 @@ public class AttackState : FSMState
     public override void Act(GameObject npc)
     {
         Debug.Log(1);
+        npc.GetComponent<EnemyControl>().Attack();
     }
 
     public override void Reason(GameObject npc)

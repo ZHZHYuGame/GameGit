@@ -31,29 +31,15 @@ public class PlayerControl : MonoBehaviour
     /// 是否正在攻击
     /// </summary>
     public bool isAtk;
-    /// <summary>
-    ///旋转武器
-    /// </summary>
-    public GameObject rotateWeapon;
-    /// <summary>
-    /// 旋转速度
-    /// </summary>
-    private float m_rotateSpeed = 300f;
-    /// <summary>
-    /// 旋转半径
-    /// </summary>
-    private float m_distance = 3;
-    private Vector3 m_dir;
-
     private HandWeapon m_handWeapon;
+
 
     void Start()
     {
-        rotateWeapon.SetActive(true);
-        m_EtcMove = GameObject.Find("Canvas/ETCParent/ETC").GetComponent<ETCMove>();
+        m_EtcMove = GameObject.Find("Canvas/GameObject/ETCParent/ETC").GetComponent<ETCMove>();
         m_Animator = GetComponent<Animator>();
         m_handWeapon=GetComponentInChildren<HandWeapon>();
-        m_dir = rotateWeapon.transform.position - transform.position;
+        
     }
 
     // Update is called once per frame
@@ -61,11 +47,6 @@ public class PlayerControl : MonoBehaviour
     {
         Move();
         Attack();
-        //rotateWeapon.transform.eulerAngles = new Vector3(0,180,0);
-        rotateWeapon.transform.LookAt(transform.position);
-        rotateWeapon.transform.position = transform.position + m_dir.normalized * m_distance;
-        rotateWeapon.transform.RotateAround(transform.position, Vector3.up, m_rotateSpeed * Time.deltaTime);
-        m_dir=rotateWeapon.transform.position-transform.position;
     }
     private void Attack()
     {
@@ -108,13 +89,13 @@ public class PlayerControl : MonoBehaviour
     {
         if(!isAtk)
         {
-            float H = m_EtcMove.GetMovePos("H");
-            float V = m_EtcMove.GetMovePos("V");
+            float H = m_EtcMove.GetMovePos("Horizontal");
+            float V = m_EtcMove.GetMovePos("Vertical");
             Vector3 pos = new Vector3(H, 0, V);
             if (pos != Vector3.zero)
             {
                 transform.LookAt(pos + transform.position);
-                transform.Translate(Vector3.forward * (3 * Time.deltaTime));
+                transform.Translate(Vector3.forward * (5 * Time.deltaTime));
                 m_IsMoving = true;
             }
             else
@@ -127,6 +108,9 @@ public class PlayerControl : MonoBehaviour
         {
             transform.Translate(Vector3.forward * 1 * Time.deltaTime);
         }
+
+        //transform.Translate(Vector3.forward * 10 * Time.deltaTime*Input.GetAxisRaw("Horizontal"));
+        //transform.Rotate(Vector3.up * 100 * Time.deltaTime * Input.GetAxisRaw("Vertical"));
         
     }
 }
