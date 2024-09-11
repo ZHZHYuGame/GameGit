@@ -46,13 +46,13 @@ public class RotateCenter : MonoBehaviour
         transform.position = m_playerControl.transform.position;
 
         transform.Rotate(Vector3.up* m_rotateSpeed * Time.deltaTime);
+    }
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Weapon"), transform);
-            go.SetActive(true);
-            RotateLst.Add(go);
-            ArrangeInCircle();
-        }
+    public void AddWeapon()
+    {
+        GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Weapon"), transform);
+        go.SetActive(true);
+        RotateLst.Add(go);
+        ArrangeInCircle();
     }
 }
