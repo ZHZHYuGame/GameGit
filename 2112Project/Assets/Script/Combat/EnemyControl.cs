@@ -18,6 +18,7 @@ public class EnemyControl : MonoBehaviour
     void Start()
     {
         m_SkillMgr=GameObject.Find("SkillMgr").GetComponent<SkillMgr>();
+        print(m_SkillMgr.name);
         m_Animator = GetComponent<Animator>();
         
     }
@@ -43,7 +44,10 @@ public class EnemyControl : MonoBehaviour
         isUsed = false;
         this.transform.localScale = Vector3.zero;
         this.transform.position = new Vector3(999, 999, 999);
-        m_SkillMgr.BeiDongSkill();
+        GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Effects/Leaves PS"));
+        go.transform.position = transform.position + Vector3.up*1;
+        Destroy(go, 1f);
+        m_SkillMgr.AddBeiDongSkill();
     }
     public void Attack()
     {

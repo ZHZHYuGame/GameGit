@@ -17,7 +17,7 @@ public class PropertiesMain : MonoBehaviour
     /// 上升的结束位置
     /// </summary>
     private Vector3 m_endPos;
-    private float m_endYPos = 140f;
+    private float m_endYPos = 90f;
     private float m_elapsedTime = 0;
     private float m_duration = 0.5f;
     /// <summary>
@@ -25,9 +25,11 @@ public class PropertiesMain : MonoBehaviour
     /// </summary>
     public RotateCenter m_rotateCenter;
     public Text skillNum;
+
+    //public Button Skill01_Btn;
     void Start()
     {
-        skillNum.text = "1";
+        skillNum.text = "5";
         m_startPos = PpPanel.rectTransform.position;
         m_endPos = new Vector3(m_startPos.x, m_endYPos, m_startPos.z);
     }
@@ -38,20 +40,17 @@ public class PropertiesMain : MonoBehaviour
         if (m_elapsedTime < m_duration)
         {
             m_elapsedTime += Time.deltaTime;
-            float t=Mathf.Clamp01(m_elapsedTime/m_duration);
+            float t = Mathf.Clamp01(m_elapsedTime / m_duration);
             PpPanel.transform.position = Vector3.Lerp(m_startPos, m_endPos, t);
         }
     }
 
-    public void SetSkillNum(int num)
+    public void SetSkillNum(int num,bool m_isStopRotate=false)
     {
-        if (num <= 50)
+        if (num % 5 == 0 && !m_isStopRotate)
         {
-            if (num % 5 == 0)
-            {
-                m_rotateCenter.AddWeapon();
-            }
-            skillNum.text = num.ToString();
+            m_rotateCenter.AddWeapon();
         }
+        skillNum.text = num.ToString();
     }
 }
