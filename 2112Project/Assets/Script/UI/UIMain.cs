@@ -23,7 +23,7 @@ public class UIMain : MonoBehaviour
         float ram = 0;
         while (value < 100)
         {
-            value++;
+            value+=10;
             Progress_bar.value = value;
             ram = Random.Range(0.1f, 1f);
             int n = Random.Range(0, 9);
