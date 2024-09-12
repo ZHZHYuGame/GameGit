@@ -16,17 +16,23 @@ public class GameStarter : MonoBehaviour
         ProcedureManager.Instance.ChangeProcedure<InitConfigProcedure>();
         StartBtn.onClick.AddListener(OnFight);
         Transcriptbutt.onClick.AddListener(OnTranscript);
+        StartCoroutine(Writ(1f));
+
+    }
+    IEnumerator Writ(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Progress_bar.gameObject.SetActive(true);
         StartCoroutine(Logings());
     }
-
     IEnumerator Logings()
     {
         float value = 0;
         //WaitForSeconds wait = 
-        WaitForSeconds ram = new WaitForSeconds(0.02f);
+        WaitForSeconds ram = new WaitForSeconds(0.5f);
         while (value < 100)
         {
-            value+=10;
+            value += 10;
             Progress_bar.value = value;
             //ram = Random.Range(0.1f, 1f);
             int n = Random.Range(0, 9);
@@ -61,6 +67,6 @@ public class GameStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 }
