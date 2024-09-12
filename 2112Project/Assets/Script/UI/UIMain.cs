@@ -47,7 +47,7 @@ public class UIMain : MonoBehaviour
 
     private void OnFight()
     {
-        SceneManager.LoadScene("HomeScene");
+        SceneManager.LoadScene("CombatScene");
     }
     
     // Update is called once per frame

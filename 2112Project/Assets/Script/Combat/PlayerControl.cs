@@ -36,7 +36,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        m_EtcMove = GameObject.Find("Canvas/GameObject/ETCParent/ETC").GetComponent<ETCMove>();
+        m_EtcMove = GameObject.Find("Canvas/ETCParent/ETC").GetComponent<ETCMove>();
         m_Animator = GetComponent<Animator>();
         m_handWeapon=GetComponentInChildren<HandWeapon>();
         
