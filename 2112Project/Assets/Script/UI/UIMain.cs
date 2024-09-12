@@ -10,6 +10,7 @@ public class UIMain : MonoBehaviour
     public Text tip;
     void Start()
     {
+        ProcedureManager.Instance.ChangeProcedure<InitConfigProcedure>();
         StartBtn.onClick.AddListener(OnFight);
         StartCoroutine(Logings());
     }
