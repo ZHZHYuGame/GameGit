@@ -41,12 +41,15 @@ public class EnemyControl : MonoBehaviour
     }
     public void EnemyHurt(float atk)
     {
+        //死亡例子特效待优化
+        GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Effects/Leaves PS"));
+        go.transform.position = transform.position + Vector3.up * 2;
+        Destroy(go, 0.5f);
         isUsed = false;
         this.transform.localScale = Vector3.zero;
         this.transform.position = new Vector3(999, 999, 999);
-        GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Effects/Leaves PS"));
-        go.transform.position = transform.position + Vector3.up*1;
-        Destroy(go, 1f);
+        
+
         m_SkillMgr.AddBeiDongSkill();
     }
     public void Attack()

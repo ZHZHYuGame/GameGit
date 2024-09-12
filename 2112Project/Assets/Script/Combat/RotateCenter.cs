@@ -19,16 +19,15 @@ public class RotateCenter : MonoBehaviour
     public Transform m_playerControl;
     void Start()
     {
-        
-            GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Weapon"), transform);
-            m_rotateWeaponNum++;
-            go.name= m_rotateWeaponNum.ToString();
-            go.SetActive(true);
-            RotateLst.Add(go);
-            ArrangeInCircle();
+        GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Weapon"), transform);
+        m_rotateWeaponNum++;
+        go.name = m_rotateWeaponNum.ToString();
+        go.SetActive(true);
+        RotateLst.Add(go);
+        ArrangeInCircle();
     }
 
-    void ArrangeInCircle()
+    public void ArrangeInCircle()
     {
         for (int i = 0; i < RotateLst.Count; i++)
         {
@@ -43,7 +42,7 @@ public class RotateCenter : MonoBehaviour
     {
         transform.position = m_playerControl.transform.position;
 
-        transform.Rotate(Vector3.up* RotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * RotateSpeed * Time.deltaTime);
     }
 
     public void AddWeapon()
@@ -53,7 +52,7 @@ public class RotateCenter : MonoBehaviour
         m_rotateWeaponNum++;
         go.name = m_rotateWeaponNum.ToString();
         RotateLst.Add(go);
-        
+
         ArrangeInCircle();
     }
 }
