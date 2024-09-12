@@ -8,11 +8,10 @@ public class UIMain : MonoBehaviour
     public Slider Progress_bar;
     public Button StartBtn;
     public Text tip;
-    public Button Transcriptbutt;
     void Start()
     {
+        ProcedureManager.Instance.ChangeProcedure<InitConfigProcedure>();
         StartBtn.onClick.AddListener(OnFight);
-        Transcriptbutt.onClick.AddListener(OnTranscript);
         StartCoroutine(Logings());
     }
 
@@ -48,12 +47,9 @@ public class UIMain : MonoBehaviour
 
     private void OnFight()
     {
-        SceneManager.LoadScene("CombatScene");
+        SceneManager.LoadScene("HomeScene");
     }
-    private void OnTranscript()
-    {
-        SceneManager.LoadScene("Transcript");
-    }
+    
     // Update is called once per frame
     void Update()
     {
