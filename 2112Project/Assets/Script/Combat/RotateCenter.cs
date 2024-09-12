@@ -9,25 +9,23 @@ public class RotateCenter : MonoBehaviour
     /// <summary>
     /// 旋转速度
     /// </summary>
-    private int m_rotateSpeed = 200;
+    public float RotateSpeed = 50;
     /// <summary>
     /// 旋转半径
     /// </summary>
     private float radius = 3;
 
-    Vector3 m_dir;
-
+    int m_rotateWeaponNum = 0;
     public Transform m_playerControl;
     void Start()
     {
-        for (int i = 0; i < RotateCount; i++)
-        {
+        
             GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Weapon"), transform);
+            m_rotateWeaponNum++;
+            go.name= m_rotateWeaponNum.ToString();
             go.SetActive(true);
             RotateLst.Add(go);
-        }
-        
-        ArrangeInCircle();
+            ArrangeInCircle();
     }
 
     void ArrangeInCircle()
@@ -45,14 +43,17 @@ public class RotateCenter : MonoBehaviour
     {
         transform.position = m_playerControl.transform.position;
 
-        transform.Rotate(Vector3.up* m_rotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up* RotateSpeed * Time.deltaTime);
+    }
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Weapon"), transform);
-            go.SetActive(true);
-            RotateLst.Add(go);
-            ArrangeInCircle();
-        }
+    public void AddWeapon()
+    {
+        GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Weapon"), transform);
+        go.SetActive(true);
+        m_rotateWeaponNum++;
+        go.name = m_rotateWeaponNum.ToString();
+        RotateLst.Add(go);
+        
+        ArrangeInCircle();
     }
 }

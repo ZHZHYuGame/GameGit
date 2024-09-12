@@ -9,10 +9,18 @@ public class EnemyControl : MonoBehaviour
     private Animator m_Animator;
     private bool isUsed = false;
     private float _atkSpeed = 0.5f;
+
+    /// <summary>
+    /// 持有技能类
+    /// </summary>
+    private SkillMgr m_SkillMgr;
     // Start is called before the first frame update
     void Start()
     {
+        m_SkillMgr=GameObject.Find("SkillMgr").GetComponent<SkillMgr>();
+        print(m_SkillMgr.name);
         m_Animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -36,6 +44,10 @@ public class EnemyControl : MonoBehaviour
         isUsed = false;
         this.transform.localScale = Vector3.zero;
         this.transform.position = new Vector3(999, 999, 999);
+        GameObject go = Instantiate(Resources.Load<GameObject>("CombatPrefab/Effects/Leaves PS"));
+        go.transform.position = transform.position + Vector3.up*1;
+        Destroy(go, 1f);
+        m_SkillMgr.AddBeiDongSkill();
     }
     public void Attack()
     {

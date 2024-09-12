@@ -23,5 +23,7 @@ public class Message
 public enum MessageType
 {
     Login=0,
-    Game_Start=1
+    Game_Start=1,
+    TableChanged=2,
+    ChangedText=3,
 }
