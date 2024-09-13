@@ -24,7 +24,7 @@ public class FilyWeapon : MonoBehaviour
     void Update()
     {
 
-        transform.LookAt(m_EndFilyWeapon);
+        transform.LookAt(m_EndFilyWeapon.position);
         transform.position = Vector3.Lerp(transform.position, m_EndFilyWeapon.position, Time.deltaTime * 10);
         delTimer -= Time.deltaTime;
         if (delTimer <= 0)
