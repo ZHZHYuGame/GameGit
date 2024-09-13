@@ -30,6 +30,21 @@ public class TimeManager : Singleton<TimeManager>, IAnimatable
         _SystemTime = Convert.ToSingle(TimeSpan.TotalSeconds);
     }
 
+    /// <summary>
+    /// 调用协程
+    /// </summary>
+    /// <param name="delyTime">时间</param>
+    /// <param name="action">事件</param>
+    public void StartCol(float delyTime, Action action)
+    {
+        StartCoroutine(IEnum(delyTime, action));
+    }
+    IEnumerator IEnum(float delyTime, Action action)
+    {
+        yield return new WaitForSeconds(delyTime);
+        action?.Invoke();
+    }
+
     //基本的时间控制类
     public float GetGameTime
     {

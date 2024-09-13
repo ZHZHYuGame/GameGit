@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SpecialTimeController : Singleton<SpecialTimeController>
 {
+
     public void HitPause(int duration)
     {
         StartCoroutine(Pause(duration));
@@ -16,6 +17,13 @@ public class SpecialTimeController : Singleton<SpecialTimeController>
         yield return new WaitForSecondsRealtime(pauseTime);
         TimeManager.Instance.SetTimeScale(1);
     }
+
+    /// <summary>
+    /// Text计时器显示
+    /// </summary>
+    /// <param name="countdownTime">预定秒数</param>
+    /// <param name="text">text</param>
+    /// <param name="IsCorrect">是否是正计时</param>
     public void Timer(int countdownTime,Text text, bool IsCorrect)
     {
         StartCoroutine(TimerController(countdownTime, text, IsCorrect));
@@ -35,6 +43,7 @@ public class SpecialTimeController : Singleton<SpecialTimeController>
                 yield return new WaitForSeconds(1f);
                 countdownTime++;
             }
+            
         }
         else
         {
@@ -48,7 +57,7 @@ public class SpecialTimeController : Singleton<SpecialTimeController>
                 yield return new WaitForSeconds(1f);
                 countdownTime--;
             }
-            if(countdownTime<0)
+            if (countdownTime < 0) 
             {
                 Debug.Log("游戏失败");
                 TimeManager.Instance.SetTimeScale(0);
