@@ -3,23 +3,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 /// <summary>
-/// 游戏启动
+/// 游戏入口
 /// </summary>
-public class GameStarter : MonoBehaviour
+public class GameStart : MonoBehaviour
 {
     public Slider Progress_bar;
     public Button StartBtn;
     public Text tip;
-    public Button Transcriptbutt;
     void Start()
     {
         ProcedureManager.Instance.ChangeProcedure<InitConfigProcedure>();
         StartBtn.onClick.AddListener(OnFight);
-        Transcriptbutt.onClick.AddListener(OnTranscript);
-        StartCoroutine(Writ(1f));
-
+        StartCoroutine(Wait(1f));
     }
-    IEnumerator Writ(float time)
+    IEnumerator Wait(float time)
     {
         yield return new WaitForSeconds(time);
         Progress_bar.gameObject.SetActive(true);
@@ -29,12 +26,12 @@ public class GameStarter : MonoBehaviour
     {
         float value = 0;
         //WaitForSeconds wait = 
-        WaitForSeconds ram = new WaitForSeconds(0.5f);
+        float ram = 0;
         while (value < 100)
         {
-            value += 10;
+            value+=10;
             Progress_bar.value = value;
-            //ram = Random.Range(0.1f, 1f);
+            ram = Random.Range(0.1f, 1f);
             int n = Random.Range(0, 9);
             switch (n)
             {
@@ -48,7 +45,7 @@ public class GameStarter : MonoBehaviour
                 case 8: tip.text = "背包已满，及时清理无用物品。"; break;
             }
 
-            yield return ram;
+            yield return new WaitForSeconds(ram);
         }
 
         StartBtn.gameObject.SetActive(true);
@@ -57,13 +54,9 @@ public class GameStarter : MonoBehaviour
 
     private void OnFight()
     {
-        Instantiate(Resources.Load<GameObject>("UI/UICanvas"));
         SceneManager.LoadScene("CombatScene");
     }
-    private void OnTranscript()
-    {
-        SceneManager.LoadScene("Transcript");
-    }
+    
     // Update is called once per frame
     void Update()
     {
