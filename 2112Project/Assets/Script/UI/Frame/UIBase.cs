@@ -42,9 +42,7 @@ public class UIBase : MonoBehaviour
 
     public virtual void Update() { }
 
-    public virtual void OnDestroy() { }
 
-    public virtual void OnDisable() { }
 
 
 

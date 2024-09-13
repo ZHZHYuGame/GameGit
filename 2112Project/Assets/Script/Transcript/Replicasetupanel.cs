@@ -72,8 +72,9 @@ public class Replicasetupanel : UIBase
         });
         confirm.onClick.AddListener(() =>
         {
-            UIManager.Instance.CloseUI(UIPanelType.Map);
-            mepanel.transform.GetComponent<MapGenerator>().enabled = true;
+            //UIManager.Instance.CloseUI(UIPanelType.Map);
+            transform.gameObject.SetActive(false);
+            mepanel.transform.GetComponent<TerrainMap>().enabled = true;
         });
         enemybutt.onClick.AddListener(() =>
         {

@@ -31,21 +31,21 @@ public class SpecialTimeController : Singleton<SpecialTimeController>
     private IEnumerator TimerController(int countdownTime,Text text, bool IsCorrect)
     {
         //正计时
-        if(IsCorrect)
-        {
-            while (countdownTime >= 0)
-            {
-                // 计算剩余的分钟和秒
-                int minutes = (int)(countdownTime / 60);
-                int seconds = countdownTime % 60;
+        //if(IsCorrect)
+        //{
+        //    while (countdownTime >= 0)
+        //    {
+        //        // 计算剩余的分钟和秒
+        //        int minutes = (int)(countdownTime / 60);
+        //        int seconds = countdownTime % 60;
 
-                text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-                yield return new WaitForSeconds(1f);
-                countdownTime++;
-            }
+        //        text.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        //        yield return new WaitForSeconds(1f);
+        //        countdownTime++;
+        //    }
             
-        }
-        else
+        //}
+        //else
         {
             while (countdownTime >= 0)
             {
