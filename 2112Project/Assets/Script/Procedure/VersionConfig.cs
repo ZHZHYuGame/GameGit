@@ -48,12 +48,13 @@ public class VersionConfig
     {
         int currentVersionCode = EditorPrefs.GetInt("code", 0);
         VersionConfig vcf = new VersionConfig();
-        vcf.Url = "x";
+        vcf.Url = "http://10.161.16.41/Resources/";
         string[] files = Directory.GetFiles(Application.dataPath + "/Resources");
+        // string[] files = Directory.GetFiles(Application.streamingAssetsPath);
         bool hasChange = false;
         for (int i = 0; i < files.Length; i++)
         {
-            if (Path.GetExtension(files[i]) == ".u3d" || Path.GetExtension(files[i]) == "")
+            if (Path.GetExtension(files[i]) == ".u3d" || Path.GetExtension(files[i]) == ".meta")
             {
                 string fileName = Path.GetFileName(files[i]);
                 int len = File.ReadAllBytes(files[i]).Length;
