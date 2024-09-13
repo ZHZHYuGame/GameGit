@@ -8,7 +8,7 @@ public class TestTime : Singleton<TestTime>
     // Start is called before the first frame update
     void Start()
     {
-        
+        TimeManager.Instance.DoLoop(2000, Creat);
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class TestTime : Singleton<TestTime>
         {
             animatable.AdvanceTime();
         }
-        TimeManager.Instance.DoFrameOnce(2, Creat);
+        
     }
 
     private void Creat()
@@ -26,13 +26,5 @@ public class TestTime : Singleton<TestTime>
         Debug.Log("111");
     }
 
-    public void StartCol(float delyTime, Action action)
-    {
-        StartCoroutine(IEnum(delyTime, action));
-    }
-    IEnumerator IEnum(float delyTime, Action action)
-    {
-        yield return new WaitForSeconds(delyTime);
-        action?.Invoke();
-    }
+
 }
