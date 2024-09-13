@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum MusicType//音乐类型
 {
@@ -91,6 +92,10 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = audioInfo.AudioVolume;
         audioInfo.LastVolume = musicSource.volume;
     }
+    public void SetBackGroundVolume(float value)
+    {
+        musicSource.volume = value; 
+    }
     //设置音效音量
     public void SetSourceEffectVolume(AudioInfo audioInfo)
     {
@@ -101,6 +106,13 @@ public class AudioManager : MonoBehaviour
                 effectSources[i].volume = audioInfo.AudioVolume;
                 audioInfo.LastVolume = effectSources[i].volume;
             }
+        }
+    }
+    public void SetAllEffectVolme(float value)
+    {
+        for (int i = 0; i < effectSources.Length; i++)
+        {
+            effectSources[i].volume = value;
         }
     }
 }
