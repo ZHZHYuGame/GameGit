@@ -1,37 +1,48 @@
 using DG.Tweening;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public enum UIPanelType
 {
-    Bag,            //背包
-    Shop,           //商店
-    Equip,          //装备
-    Deal,           //交易
-    Achievement,    //成就
-    Intensify,      //强化
-    Pet,            //宠物
-    Encyclopedia,   //图鉴
-    Skill,          //技能
-    Vip,            //充值
-    Activity,       //活动
-    Email,          //邮件
-    Set,            //设置
-    Task,           //任务
-    Chat,           //聊天
-    Map,            //地图
-    Wing,           //翅膀
-    First           //首充
+    Bag = 1001,            //背包
+    Shop = 1002,           //商店
+    Equip = 1003,          //装备
+    Deal = 1004,           //交易
+    Achievement = 1005,    //成就
+    Intensify = 1006,      //强化
+    Pet = 1007,            //宠物
+    Encyclopedia = 1008,   //图鉴
+    Skill = 1009,          //技能
+    Vip = 1010,            //充值
+    Activity = 1011,       //活动
+    Email = 1012,          //邮件
+    Set = 1013,            //设置
+    Task = 1014,           //任务
+    Chat = 1015,           //聊天
+    Map = 1016,            //地图
+    Wing = 1017,           //翅膀
+    First = 1018           //首充
+}
+
+public enum CanvasType
+{
+    BackGround = 0,     //背景
+    UI = 1,             //UI
+    Tip = 2,            //提示框
+    Mask = 3,           //遮罩/引导
+    Prefab = 4          //3D层
 }
 
 
-[System.Serializable]
-public struct PanelPrefabConfig
+public class PanelPrefabConfig
 {
-    public UIPanelType type;
+    public int id;
     public string name;
     public bool isResident; //是否持久
 }
@@ -48,14 +59,19 @@ public class UIManager : Singleton<UIManager>
     //UI的父类 
     public Transform UIPanel;
 
-    //所有UI信息
-    public List<PanelPrefabConfig> _panelConfigList;
+    //所有按钮父节点
+    public GameObject _btnParent;
 
-    //提示框
-    public TipsPanel tip;
+    //所有层级
+    public List<Transform> _allCanvas = new List<Transform>();
+
+    //金币数量
+    public Text _moneyNum;
+
+    List<PanelPrefabConfig> panelPrefabs = new List<PanelPrefabConfig>();
 
     //储存所有的面板信息
-    Dictionary<UIPanelType, PanelPrefabConfig> _allPanel = new Dictionary<UIPanelType, PanelPrefabConfig>();
+    Dictionary<int, PanelPrefabConfig> _allPanel = new Dictionary<int, PanelPrefabConfig>();
 
     //储存打开过面板 并且持久的面板
     Dictionary<UIPanelType, UIBase> _openPanel = new Dictionary<UIPanelType, UIBase>();
@@ -64,6 +80,54 @@ public class UIManager : Singleton<UIManager>
     Stack<UIBase> _uIPanelGroup = new Stack<UIBase>();
 
 
+    Stack<GameObject> _textPrompr = new Stack<GameObject>();//文本提示框对象池
+
+    //提示框
+    TipsPanel tip;
+
+    void Awake()
+    {
+        Registration();//注册所有面板
+        //OpenAllPanel();//打开所有面板
+        DontDestroyOnLoad(transform.parent.gameObject);
+    }
+
+    private void OpenAllPanel()
+    {
+        foreach (var item in _allPanel.Keys)
+        {
+            OpenUI((UIPanelType)_allPanel[item].id);
+        }
+
+        foreach (var item in _allPanel.Keys)
+        {
+            _openPanel[(UIPanelType)_allPanel[item].id].HideUI();
+        }
+
+    }
+
+    /// <summary>
+    /// 注册所有的面板
+    /// </summary>
+    public void Registration()
+    {
+        string myuimsg = File.ReadAllText($"{Application.dataPath}/Resources/myuimsg.json");
+        panelPrefabs = JsonConvert.DeserializeObject<List<PanelPrefabConfig>>(myuimsg);
+        for (int i = 0; i < panelPrefabs.Count; i++)
+        {
+            LoadAllPanel(panelPrefabs[i].id, panelPrefabs[i]);
+        }
+    }
+
+    /// <summary>
+    /// 将所有面板加载到所有信息的字典中
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="panelConfig"></param>
+    private void LoadAllPanel(int id, PanelPrefabConfig panelConfig)
+    {
+        _allPanel.Add(id, panelConfig);
+    }
 
     /// <summary>
     /// 打开UI
@@ -71,24 +135,49 @@ public class UIManager : Singleton<UIManager>
     /// <param name="type"></param>
     public void OpenUI(UIPanelType type)
     {
-        HideAllPanel();
         if (_openPanel.ContainsKey(type))
         {
             _openPanel[type].OpenUI();
         }
         else
         {
-            LoadPanel(type, _allPanel[type].name);
+            LoadPanel(type);
         }
-        setAsLastSibling(type);
-        _uIPanelGroup.Push(_openPanel[type]);
     }
 
-    void LoadPanel(UIPanelType type, string name)
+    /// <summary>
+    /// 打开其他面板 
+    /// </summary>
+    /// <param name="type">那个调用的</param>
+    /// <param name="otherType">要打开那个面板</param>
+    public void OpenOtherUI(UIPanelType type, UIPanelType otherType)
+    {
+        if (_openPanel.ContainsKey(type))
+        {
+            _uIPanelGroup.Push(_openPanel[type]);
+            _openPanel[type].HideUI();
+        }
+        OpenUI(otherType);
+    }
+
+    /// <summary>
+    /// 设置面板是否长久存在
+    /// </summary>
+    public void SetPanelResident(UIPanelType type)
+    {
+        _allPanel[(int)type].isResident = true;
+    }
+
+    /// <summary>
+    /// 加载面板
+    /// </summary>
+    /// <param name="type"></param>
+    void LoadPanel(UIPanelType type)
     {
         //资源加载加载面板
+
         #region 模拟
-        var panel = Instantiate(Resources.Load<GameObject>($"UI/{name}"), UIPanel);
+        var panel = Instantiate(Resources.Load<GameObject>($"UI/{_allPanel[(int)type].name}"), UIPanel);
         UIBase uiBase = panel.GetComponent<UIBase>();
         _openPanel.Add(type, uiBase);
         #endregion
@@ -102,23 +191,22 @@ public class UIManager : Singleton<UIManager>
     {
         if (_openPanel.ContainsKey(type))
         {
-            if (_openPanel.Count > 0 && _uIPanelGroup.Count > 0)
-                if (_uIPanelGroup.Peek() == _openPanel[type])
-                {
-                    _uIPanelGroup.Pop();
-                    Debug.Log(111);
-                    OpenLastPanel();
-                    if (_allPanel[type].isResident)
-                    {
-                        _openPanel[type].HideUI();
-                    }
-                    else
-                    {
-                        _openPanel[type].CloseUI();
-                        RemovePanel(type);
-                    }
-                }
+            if (_allPanel[(int)type].isResident)
+            {
+                Debug.Log("111");
+                _openPanel[type].HideUI();
+            }
+            else
+            {
+                _openPanel[type].CloseUI();
+                RemovePanel(type);
+            }
+        }
 
+        if (_uIPanelGroup.Count > 0)
+        {
+            UIBase ui = _uIPanelGroup.Pop();
+            ui.OpenUI();
         }
     }
 
@@ -135,110 +223,164 @@ public class UIManager : Singleton<UIManager>
     }
 
 
-    void Awake()
-    {
-        Registration();//注册所有面板
-        DontDestroyOnLoad(gameObject.transform.parent.parent.gameObject);
-    }
 
     /// <summary>
-    /// 注册所有的面板
+    /// 文本提示框
     /// </summary>
-    public void Registration()
+    /// <param name="msg"></param>
+    public void OpenTextPrompt(string msg, CanvasType type = CanvasType.Tip)
     {
-        for (int i = 0; i < _panelConfigList.Count; i++)
+        if (_textPrompr.Count <= 0)
         {
-            LoadAllPanel(_panelConfigList[i].type, _panelConfigList[i]);
+            #region 测试
+            GameObject textPrompr = Instantiate(Resources.Load<GameObject>("UI/TextPrompt"), _allCanvas[(int)type]);
+            _textPrompr.Push(textPrompr);
+            #endregion
         }
-        _panelConfigList = null;
+
+        GameObject text = _textPrompr.Pop();
+        text.GetComponent<Text>().text = msg;
+        text.transform.localPosition = Vector3.zero;
+
+        StartCoroutine(RecycleText(text));
+        //TimeManager.Instance.DoFrameOnce(3,RecycleText(text));
     }
 
     /// <summary>
-    /// 将所有面板加载到所有信息的字典中
+    /// 鼠标移动到物体身上所显示的提示框
     /// </summary>
-    /// <param name="type"></param>
-    /// <param name="panelConfig"></param>
-    private void LoadAllPanel(UIPanelType type, PanelPrefabConfig panelConfig)
+    /// <param name="saName">图集名字</param>
+    /// <param name="spName">图片名字</param>
+    /// <param name="name">物体名称</param>
+    /// <param name="des">物体描述</param>
+    /// <param name="price">物品价格</param>
+    /// <param name="quality">物品品质</param>
+    /// <param name="pos">鼠标位置</param>
+    public void OpenMouseStayTip(string saName, string spName, string name, string des, string price, string quality, Vector2 pos, CanvasType type = CanvasType.Tip)
     {
-        _allPanel.Add(type, panelConfig);
-    }
-
-    /// <summary>
-    /// 单位本提示
-    /// </summary>
-    /// <param name="message"></param>
-    public void OpenTips(string message)
-    {
-        OnShowTip(false, false, false, false);
-        tip._hint.text = message;
-
-        tip.transform.DOLocalMove(new Vector2(0, 600), 3).OnComplete(() =>
+        if (tip == null)
         {
-            tip.transform.localPosition = tip._startPos;
-            tip.gameObject.SetActive(false);
-        });
-
+            GameObject obj = Instantiate(Resources.Load<GameObject>("UI/Tip"), _allCanvas[(int)type]);
+            tip = obj.GetComponent<TipsPanel>();
+        }
+        TipButtonHide();
+        tip._backGround.transform.position = pos;//更改为鼠标的位置
+        if (!string.IsNullOrEmpty(saName) && !string.IsNullOrEmpty(spName))
+        {
+            AtlasMgr.Ins.Set2D(tip._icon, saName, spName); //图片赋值
+        }
+        tip._name.text = name;
+        tip._des.text = des;
+        tip._price.text = price;
+        tip._quality.text = quality;
     }
 
     /// <summary>
-    /// 带图片提示  需要点击操作 确认 
+    /// 打开单个按钮提示
     /// </summary>
-    public void OpenTips(string message, string atlasName, string iconName, string btnText)
+    /// <param name="saName">图集名字</param>
+    /// <param name="spName">图片名字</param>
+    /// <param name="name">物体名称</param>
+    /// <param name="des">物体描述</param>
+    /// <param name="price">物品价格</param>
+    /// <param name="quality">物品品质</param>
+    /// <param name="leftButton">按钮信息 （确认还是取消或者别的）</param>
+    public void OpensASinglePrompt(string saName, string spName, string name, string des, string price, string quality, string leftButton, CanvasType type = CanvasType.Tip)
     {
-        OnShowTip(true, true, true, false);
+        if (tip == null)
+        {
+            GameObject obj = Instantiate(Resources.Load<GameObject>("UI/Tip"), _allCanvas[(int)type]);
+            tip = obj.GetComponent<TipsPanel>();
+        }
 
-        tip._hint.text = message;
-        tip._leftBtn.GetComponentInChildren<Text>().text = btnText;
-        LeftbtnAlignmentCenter();
+        TipAButtonShow();
+        LeftbtnAlignmentCenter(); 
+        if (!string.IsNullOrEmpty(saName) && !string.IsNullOrEmpty(spName))
+        {
+            AtlasMgr.Ins.Set2D(tip._icon, saName, spName); //图片赋值
+        }
+        tip._name.text = name;
+        tip._des.text = des;
+        tip._price.text = price;
+        tip._quality.text = quality;
+        tip._affirm.GetComponentInChildren<Text>().text = leftButton;
     }
 
+
     /// <summary>
-    /// 带图片提示  需要两个按钮操作 
+    /// 打开所有提示
     /// </summary>
-    public void OpenTips(string message, string atlasName, string iconName, string btn1Text, string btn2Text)
+    /// <param name="saName">图集名字</param>
+    /// <param name="spName">图片名字</param>
+    /// <param name="name">物体名称</param>
+    /// <param name="des">物体描述</param>
+    /// <param name="price">物品价格</param>
+    /// <param name="quality">物品品质</param>
+    /// <param name="leftButton">按钮信息 （确认还是取消或者别的）</param>
+    public void OpenAllSingleprompt(string saName, string spName, string name, string des, string price, string quality, string leftButton, string rightButton,CanvasType type = CanvasType.Tip)
     {
-        OnShowTip(true, true, true, true);
-        tip._hint.text = message;
-        tip._leftBtn.GetComponentInChildren<Text>().text = btn1Text;
-        tip._rightBtn.GetComponentInChildren<Text>().text = btn2Text;
+        if (tip == null)
+        {
+            GameObject obj = Instantiate(Resources.Load<GameObject>("UI/Tip"), _allCanvas[(int)type]);
+            tip = obj.GetComponent<TipsPanel>();
+        }
+        TipButtonShow();
         BtnAlignmentCenter();
+        if (!string.IsNullOrEmpty(saName) && !string.IsNullOrEmpty(spName))
+        {
+            AtlasMgr.Ins.Set2D(tip._icon, saName, spName); //图片赋值
+        }
+        tip._name.text = name;
+        tip._des.text = des;
+        tip._price.text = price;
+        tip._quality.text = quality;
+        tip._affirm.GetComponentInChildren<Text>().text = leftButton;
+    }
+
+    void TipButtonHide()
+    {
+        tip._affirm.gameObject.SetActive(false);
+        tip._cancel.gameObject.SetActive(false);
+    }
+
+    void TipAButtonShow()
+    {
+        tip._affirm.gameObject.SetActive(true);
+        tip._cancel.gameObject.SetActive(false);
+    }
+
+    void TipButtonShow()
+    {
+        tip._affirm.gameObject.SetActive(true);
+        tip._cancel.gameObject.SetActive(true);
+    }
+
+    public void CloseTip()
+    {
+        if (tip != null)
+        {
+            tip.gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
-    /// tip面板当中隐藏或者显示
+    /// 测试 
     /// </summary>
-    /// <param name="type">false 单文本形式</param>
-    /// <param name="icon">图像</param>
-    /// <param name="leftBtn">左按钮</param>
-    /// <param name="rightBtn">右按钮</param>
-    private void OnShowTip(bool type, bool icon, bool leftBtn, bool rightBtn)
+    IEnumerator RecycleText(GameObject text)
     {
-        if (type)
-        {
-            tip.transform.DOKill();
-            tip.transform.localPosition = tip._startPos;
-            tip._backGround.color = new Color(1f, 1f, 1f, 1f);
-            tip._hint.alignment = TextAnchor.UpperLeft;
-            //AtlasMgr.Ins.Get2D(tip._icon, atlasName, iconName);//向图集 调用接口 传入 要赋图片的Image 图集名 和图片名 
-            tip._closeBtn.gameObject.SetActive(true);
-        }
-        else
-        {
-            tip._backGround.color = new Color(1f, 1f, 1f, 0);
-            tip._hint.alignment = TextAnchor.MiddleCenter;
-            tip._closeBtn.gameObject.SetActive(false);
-        }
-        tip.gameObject.SetActive(true);
-        tip._icon.gameObject.SetActive(icon);
-        tip._leftBtn.gameObject.SetActive(leftBtn);
-        tip._rightBtn.gameObject.SetActive(rightBtn);
+        yield return new WaitForSecondsRealtime(3);
+        text.transform.localPosition = Vector3.one * 1000;
+        _textPrompr.Push(text);
+
     }
+
+
     /// <summary>
     /// 单个按钮居中
     /// </summary>
     void LeftbtnAlignmentCenter()
     {
-        RectTransform needChange = tip._leftBtn.GetComponent<RectTransform>();
+        RectTransform needChange = tip._affirm.GetComponent<RectTransform>();
         needChange.anchorMin = new Vector2(0.5f, 0);
         needChange.anchorMax = new Vector2(0.5f, 0);
         needChange.pivot = new Vector2(0.5f, 0.5f);
@@ -250,13 +392,13 @@ public class UIManager : Singleton<UIManager>
     /// </summary>
     void BtnAlignmentCenter()
     {
-        RectTransform needChange = tip._leftBtn.GetComponent<RectTransform>();
+        RectTransform needChange = tip._affirm.GetComponent<RectTransform>();
         needChange.anchorMin = new Vector2(0, 0);
         needChange.anchorMax = new Vector2(0, 0);
         needChange.pivot = new Vector2(0, 0);
         needChange.anchoredPosition = new Vector2(0, 0);
 
-        RectTransform needChange1 = tip._rightBtn.GetComponent<RectTransform>();
+        RectTransform needChange1 = tip._cancel.GetComponent<RectTransform>();
         needChange1.anchorMin = new Vector2(1, 0);
         needChange1.anchorMax = new Vector2(1, 0);
         needChange1.pivot = new Vector2(1, 0);
@@ -271,7 +413,7 @@ public class UIManager : Singleton<UIManager>
     /// <typeparam name="T"></typeparam>
     /// <param name="componentPath"></param>
     /// <returns></returns>
-    public T getComponent<T>(string componentPath) where T : MonoBehaviour
+    public T GetComponent<T>(string componentPath) where T : MonoBehaviour
     {
         if (!componentPath.StartsWith("/"))
         {
@@ -291,7 +433,7 @@ public class UIManager : Singleton<UIManager>
     /// 设置显示在最上层
     /// </summary>
     /// <param name="go"></param>
-    public void setAsLastSibling(UIPanelType type)
+    public void SetAsLastSibling(UIPanelType type)
     {
         if (_openPanel.ContainsKey(type))
         {
@@ -303,7 +445,7 @@ public class UIManager : Singleton<UIManager>
     ///  设置显示在最上层
     /// </summary>
     /// <param name="go"></param>
-    public void setAsFirstSibling(UIPanelType type)
+    public void SetAsFirstSibling(UIPanelType type)
     {
         if (_openPanel.ContainsKey(type))
         {
@@ -311,31 +453,29 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-
     /// <summary>
-    /// 隐藏所有打开面板
+    /// 进入游戏场景时加载 
     /// </summary>
-    public void HideAllPanel()
+    public void EnterGameScene()
     {
-        foreach (var item in _openPanel.Keys)
-        {
-            _openPanel[item].HideAllPanel();
-        }
+        _btnParent.SetActive(false);
     }
 
     /// <summary>
-    /// 打开上一个面板
+    /// 退出游戏场景时加载 
     /// </summary>
-    public void OpenLastPanel()
+    public void ExitGameScene()
     {
-        if (_uIPanelGroup.Count > 0)
-        {
-            UIBase uiBase = _uIPanelGroup.Peek();
-            if (_openPanel.ContainsValue(uiBase))
-            {
-                uiBase.OpenUI();
-            }
-        }
+        _btnParent.SetActive(true);
+    }
+
+    /// <summary>
+    /// 设置金币数量
+    /// </summary>
+    /// <param name="num"></param>
+    public void SetMoney(int num)
+    {
+        _moneyNum.text = $"{num}";
     }
 
 }
