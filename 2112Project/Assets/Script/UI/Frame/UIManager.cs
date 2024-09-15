@@ -87,6 +87,7 @@ public class UIManager : Singleton<UIManager>
 
     void Awake()
     {
+        Debug.Log(UIPanelType.Set.ToString());
         Registration();//注册所有面板
         //OpenAllPanel();//打开所有面板
         DontDestroyOnLoad(transform.parent.gameObject);
@@ -243,7 +244,7 @@ public class UIManager : Singleton<UIManager>
         text.transform.localPosition = Vector3.zero;
 
         StartCoroutine(RecycleText(text));
-        //TimeManager.Instance.DoFrameOnce(3,RecycleText(text));
+       //TimeManager.Instance.DoFrameOnce(3,RecycleText(text));
     }
 
     /// <summary>
@@ -440,6 +441,12 @@ public class UIManager : Singleton<UIManager>
             _openPanel[type].transform.SetAsLastSibling();
         }
     }
+
+    public void GetSprit()
+    {
+
+    }
+
 
     /// <summary>
     ///  设置显示在最上层
