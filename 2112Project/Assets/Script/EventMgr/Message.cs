@@ -26,4 +26,5 @@ public enum MessageType
     Game_Start=1,
     TableChanged=2,
     ChangedText=3,
+    OnUpdateMailListEvent,
 }
