@@ -74,6 +74,7 @@
     <Compile Include="Assets\Script\Time\SpecialTimeController.cs" />
     <Compile Include="Assets\Script\EventMgr\MessageEventMgr.cs" />
     <Compile Include="Assets\Script\Audio\AudioInfo.cs" />
+    <Compile Include="Assets\SystemSettting\AudioSetting.cs" />
     <Compile Include="Assets\Effects\TrailRenderer_Base.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector2.cs" />
     <Compile Include="Assets\Script\Procedure\ProcedureBase.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Script\UI\SafeAreaUIAdapt.cs" />
     <Compile Include="Assets\Script\AI\EnemyAI.cs" />
+    <Compile Include="Assets\SystemSettting\SystemControl.cs" />
     <Compile Include="Assets\Script\Pet\PetPanel.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForFollowPath.cs" />
     <Compile Include="Assets\Script\Audio\AudioLoader.cs" />
@@ -103,9 +105,9 @@
     <Compile Include="Assets\Script\UI\Frame\TipsPanel.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\Script\UI\Mail\MailLanguage.cs" />
     <Compile Include="Assets\Script\Combat\EnemyControl.cs" />
     <Compile Include="Assets\Script\UI\UILoginMouse_Tail.cs" />
-    <Compile Include="Assets\Script\UI\GameStarter.cs" />
     <Compile Include="Assets\Script\Texture\TextureMgr.cs" />
     <Compile Include="Assets\Script\EventMgr\Login.cs" />
     <Compile Include="Assets\Script\Transcript\Enemy.cs" />
@@ -129,7 +131,10 @@
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\Script\Net\Client.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForFlee.cs" />
+    <Compile Include="Assets\SystemSettting\ScreenSettings.cs" />
     <Compile Include="Assets\Script\Game.cs" />
+    <Compile Include="Assets\SystemSettting\OperateSetting.cs" />
+    <Compile Include="Assets\SystemSettting\BaseSetting.cs" />
     <Compile Include="Assets\Script\UI\Frame\OpenClosePanel.cs" />
     <Compile Include="Assets\Script\AI\Steering\Vehicle.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\AccessFlag.cs" />
@@ -165,7 +170,11 @@
     <Compile Include="Assets\Script\AI\Steering\LocomotionController.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector4.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\EQuality.cs" />
+<<<<<<< .mine
     <Compile Include="Assets\Script\Transcript\Transfer.cs" />
+=======
+    <Compile Include="Assets\SystemSettting\GMCommandSetting.cs" />
+>>>>>>> .theirs
     <Compile Include="Assets\Script\AI\PatrolState.cs" />
     <Compile Include="Assets\Script\Procedure\ProcedureManager.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean1.cs" />
@@ -173,11 +182,19 @@
     <Compile Include="Assets\Script\AI\FSMState.cs" />
     <Compile Include="Assets\Script\Net\NetManager.cs" />
     <Compile Include="Assets\Script\Combat\FilyWeapon.cs" />
+<<<<<<< .mine
 <<<<<<< HEAD
     <Compile Include="Assets\Script\Transcript\HomeMain.cs" />
     <Compile Include="Assets\Script\Transcript\Piop.cs" />
 =======
 >>>>>>> 4263e1cd2c53c0231e915b88a0abbef01f050f40
+=======
+    <Compile Include="Assets\Script\UI\Mail\MailServer.cs" />
+
+
+
+
+>>>>>>> .theirs
     <Compile Include="Assets\小机器人—红色机器人\Scripts\CharacterSkinController.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForCollect.cs" />
     <Compile Include="Assets\Script\Procedure\ResourceDownloader.cs" />
@@ -191,9 +208,9 @@
     <Compile Include="Assets\Utillities\GizmosExtra.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean2.cs" />
     <Compile Include="Assets\Script\Pet\PetData.cs" />
-    <Compile Include="Assets\Script\UI\UIMain.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\Script\EventMgr\Test.cs" />
+    <Compile Include="Assets\Script\UI\GameStart.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector3.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForEvade.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForArrival.cs" />
@@ -224,7 +241,11 @@
     <None Include="Assets\Config\面板适配说明.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR.cginc" />
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
+<<<<<<< .mine
     <None Include="Assets\Resources\shader\shadown\Multiply.shader" />
+=======
+    <None Include="Assets\Resources\versioncode.txt" />
+>>>>>>> .theirs
     <None Include="Assets\Leaves Particles\Leaves - Readme.txt" />
     <None Include="Assets\Resources\shader\shadown\ProjectorMultiply2.shader" />
     <None Include="Assets\Demigiant\DOTween\DOTween.dll" />
@@ -2009,23 +2030,6 @@
       <Project>{FAC4C91F-C4E2-8189-5D57-4BB3EC5BFA7F}</Project>
       <Name>UnityEditor.UI</Name>
 >>>>>>> 4263e1cd2c53c0231e915b88a0abbef01f050f40
-    </ProjectReference>
-    <ProjectReference Include="CFXRDemo.csproj">
-      <Project>{06610027-3B53-E9A3-A8ED-84B5357E14F9}</Project>
-      <Name>CFXRDemo</Name>
-    </ProjectReference>
-<<<<<<< HEAD
-    <ProjectReference Include="KinoBloom.Runtime.csproj">
-      <Project>{CCF804D5-C25E-DC2C-261C-F31BFE3B9964}</Project>
-      <Name>KinoBloom.Runtime</Name>
-=======
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{5A751BB1-8641-CE40-52D2-7CFCCE455D17}</Project>
-      <Name>Unity.2D.Sprite.Editor</Name>
->>>>>>> 1033f10e3321bc029c7ba7c6c13b39c008503a0f
->>>>>>> 4263e1cd2c53c0231e915b88a0abbef01f050f40
-=======
->>>>>>> 091935e081f2ec01e9f5ffce965a1a917b76eb14
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
