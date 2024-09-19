@@ -93,6 +93,8 @@ public class UIManager : Singleton<UIManager>
         DontDestroyOnLoad(transform.parent.gameObject);
     }
 
+    
+
     private void OpenAllPanel()
     {
         foreach (var item in _allPanel.Keys)
@@ -244,7 +246,7 @@ public class UIManager : Singleton<UIManager>
         text.transform.localPosition = Vector3.zero;
 
         StartCoroutine(RecycleText(text));
-       //TimeManager.Instance.DoFrameOnce(3,RecycleText(text));
+        //TimeManager.Instance.DoFrameOnce(3,RecycleText(text));
     }
 
     /// <summary>
@@ -295,7 +297,7 @@ public class UIManager : Singleton<UIManager>
         }
 
         TipAButtonShow();
-        LeftbtnAlignmentCenter(); 
+        LeftbtnAlignmentCenter();
         if (!string.IsNullOrEmpty(saName) && !string.IsNullOrEmpty(spName))
         {
             AtlasMgr.Ins.Set2D(tip._icon, saName, spName); //图片赋值
@@ -318,7 +320,7 @@ public class UIManager : Singleton<UIManager>
     /// <param name="price">物品价格</param>
     /// <param name="quality">物品品质</param>
     /// <param name="leftButton">按钮信息 （确认还是取消或者别的）</param>
-    public void OpenAllSingleprompt(string saName, string spName, string name, string des, string price, string quality, string leftButton, string rightButton,CanvasType type = CanvasType.Tip)
+    public void OpenAllSingleprompt(string saName, string spName, string name, string des, string price, string quality, string leftButton, string rightButton, CanvasType type = CanvasType.Tip)
     {
         if (tip == null)
         {
