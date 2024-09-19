@@ -17,7 +17,7 @@ public class EnemyControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_SkillMgr=GameObject.Find("SkillMgr").GetComponent<SkillMgr>();
+        m_SkillMgr=GameObject.Find("Canvas/Skills").GetComponent<SkillMgr>();
         print(m_SkillMgr.name);
         m_Animator = GetComponent<Animator>();
         
