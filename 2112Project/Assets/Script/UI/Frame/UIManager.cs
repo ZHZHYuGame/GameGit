@@ -44,7 +44,7 @@ public class PanelPrefabConfig
 {
     public int id;
     public string name;
-    public bool isResident; //是否持久
+    public bool isResident; //是否持久F
 }
 
 public class UIManager : Singleton<UIManager>
