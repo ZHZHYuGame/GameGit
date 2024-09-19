@@ -85,6 +85,9 @@ public class UIManager : Singleton<UIManager>
     //提示框
     TipsPanel tip;
 
+    //物品刷新是调用委托
+    public Action MsgUpdate;
+
     void Awake()
     {
         Debug.Log(UIPanelType.Set.ToString());
