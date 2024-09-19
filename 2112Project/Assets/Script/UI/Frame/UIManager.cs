@@ -44,7 +44,7 @@ public class PanelPrefabConfig
 {
     public int id;
     public string name;
-    public bool isResident; //是否持久
+    public bool isResident; //是否持久F
 }
 
 public class UIManager : Singleton<UIManager>
@@ -85,12 +85,18 @@ public class UIManager : Singleton<UIManager>
     //提示框
     TipsPanel tip;
 
+    //物品刷新是调用委托
+    public Action MsgUpdate;
+
     void Awake()
     {
+        Debug.Log(UIPanelType.Set.ToString());
         Registration();//注册所有面板
         //OpenAllPanel();//打开所有面板
         DontDestroyOnLoad(transform.parent.gameObject);
     }
+
+    
 
     private void OpenAllPanel()
     {
@@ -294,7 +300,7 @@ public class UIManager : Singleton<UIManager>
         }
 
         TipAButtonShow();
-        LeftbtnAlignmentCenter(); 
+        LeftbtnAlignmentCenter();
         if (!string.IsNullOrEmpty(saName) && !string.IsNullOrEmpty(spName))
         {
             AtlasMgr.Ins.Set2D(tip._icon, saName, spName); //图片赋值
@@ -317,7 +323,7 @@ public class UIManager : Singleton<UIManager>
     /// <param name="price">物品价格</param>
     /// <param name="quality">物品品质</param>
     /// <param name="leftButton">按钮信息 （确认还是取消或者别的）</param>
-    public void OpenAllSingleprompt(string saName, string spName, string name, string des, string price, string quality, string leftButton, string rightButton,CanvasType type = CanvasType.Tip)
+    public void OpenAllSingleprompt(string saName, string spName, string name, string des, string price, string quality, string leftButton, string rightButton, CanvasType type = CanvasType.Tip)
     {
         if (tip == null)
         {
@@ -440,6 +446,12 @@ public class UIManager : Singleton<UIManager>
             _openPanel[type].transform.SetAsLastSibling();
         }
     }
+
+    public void GetSprit()
+    {
+
+    }
+
 
     /// <summary>
     ///  设置显示在最上层

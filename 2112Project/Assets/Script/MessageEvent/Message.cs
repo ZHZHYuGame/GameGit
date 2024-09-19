@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Message
 {
-    //事件类型，使用枚举类型EventTyppe
+    //类型，使用枚举类型EventTyppe
     public MessageType type;
-    //事件数据，使用object类型，可以存储任何类型的数据
+    //数据，使用object类型，可以存储任何类型的数据
     public object data;
 
     public Message(MessageType type, object data)
@@ -18,7 +18,7 @@ public class Message
 
 
 /// <summary>
-/// 事件类型
+/// 类型
 /// </summary>
 public enum MessageType
 {
@@ -34,4 +34,8 @@ public enum MessageType
     OnResGetMailAttachMessage,
     OnResGetAllMailAttachMessage,
     OnUpdateMailListEvent,
+
+    Transaction = 4,//交易
+    Transaction_Succed = 5,//交易成功
+    RemoveListGood = 6//移除交易列表里的物品
 }
