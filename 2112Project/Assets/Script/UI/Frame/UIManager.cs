@@ -33,7 +33,7 @@ public struct PanelPrefabConfig
 {
     public UIPanelType type;
     public string name;
-    public bool isResident; //是否持久
+    public bool isResident; //是否持久F
 }
 
 public class UIManager : Singleton<UIManager>
@@ -64,6 +64,63 @@ public class UIManager : Singleton<UIManager>
     Stack<UIBase> _uIPanelGroup = new Stack<UIBase>();
 
 
+<<<<<<< HEAD
+=======
+    Stack<GameObject> _textPrompr = new Stack<GameObject>();//文本提示框对象池
+
+    //提示框
+    TipsPanel tip;
+
+    //物品刷新是调用委托
+    public Action MsgUpdate;
+
+    void Awake()
+    {
+        Debug.Log(UIPanelType.Set.ToString());
+        Registration();//注册所有面板
+        //OpenAllPanel();//打开所有面板
+        DontDestroyOnLoad(transform.parent.gameObject);
+    }
+
+    
+
+    private void OpenAllPanel()
+    {
+        foreach (var item in _allPanel.Keys)
+        {
+            OpenUI((UIPanelType)_allPanel[item].id);
+        }
+
+        foreach (var item in _allPanel.Keys)
+        {
+            _openPanel[(UIPanelType)_allPanel[item].id].HideUI();
+        }
+
+    }
+
+    /// <summary>
+    /// 注册所有的面板
+    /// </summary>
+    public void Registration()
+    {
+        string myuimsg = File.ReadAllText($"{Application.dataPath}/Resources/myuimsg.json");
+        panelPrefabs = JsonConvert.DeserializeObject<List<PanelPrefabConfig>>(myuimsg);
+        for (int i = 0; i < panelPrefabs.Count; i++)
+        {
+            LoadAllPanel(panelPrefabs[i].id, panelPrefabs[i]);
+        }
+    }
+
+    /// <summary>
+    /// 将所有面板加载到所有信息的字典中
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="panelConfig"></param>
+    private void LoadAllPanel(int id, PanelPrefabConfig panelConfig)
+    {
+        _allPanel.Add(id, panelConfig);
+    }
+>>>>>>> ba83aeb45bbc05ddbf6f5529b3976dcab27dac40
 
     /// <summary>
     /// 打开UI
@@ -160,14 +217,45 @@ public class UIManager : Singleton<UIManager>
     /// <param name="panelConfig"></param>
     private void LoadAllPanel(UIPanelType type, PanelPrefabConfig panelConfig)
     {
+<<<<<<< HEAD
         _allPanel.Add(type, panelConfig);
+=======
+        if (tip == null)
+        {
+            GameObject obj = Instantiate(Resources.Load<GameObject>("UI/Tip"), _allCanvas[(int)type]);
+            tip = obj.GetComponent<TipsPanel>();
+        }
+
+        TipAButtonShow();
+        LeftbtnAlignmentCenter();
+        if (!string.IsNullOrEmpty(saName) && !string.IsNullOrEmpty(spName))
+        {
+            AtlasMgr.Ins.Set2D(tip._icon, saName, spName); //图片赋值
+        }
+        tip._name.text = name;
+        tip._des.text = des;
+        tip._price.text = price;
+        tip._quality.text = quality;
+        tip._affirm.GetComponentInChildren<Text>().text = leftButton;
+>>>>>>> ba83aeb45bbc05ddbf6f5529b3976dcab27dac40
     }
 
     /// <summary>
     /// 单位本提示
     /// </summary>
+<<<<<<< HEAD
     /// <param name="message"></param>
     public void OpenTips(string message)
+=======
+    /// <param name="saName">图集名字</param>
+    /// <param name="spName">图片名字</param>
+    /// <param name="name">物体名称</param>
+    /// <param name="des">物体描述</param>
+    /// <param name="price">物品价格</param>
+    /// <param name="quality">物品品质</param>
+    /// <param name="leftButton">按钮信息 （确认还是取消或者别的）</param>
+    public void OpenAllSingleprompt(string saName, string spName, string name, string des, string price, string quality, string leftButton, string rightButton, CanvasType type = CanvasType.Tip)
+>>>>>>> ba83aeb45bbc05ddbf6f5529b3976dcab27dac40
     {
         OnShowTip(false, false, false, false);
         tip._hint.text = message;
@@ -298,6 +386,12 @@ public class UIManager : Singleton<UIManager>
             _openPanel[type].transform.SetAsLastSibling();
         }
     }
+
+    public void GetSprit()
+    {
+
+    }
+
 
     /// <summary>
     ///  设置显示在最上层
