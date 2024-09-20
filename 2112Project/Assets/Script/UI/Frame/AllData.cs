@@ -20,8 +20,6 @@ public class AllData : MonoBehaviour
     {
         //向服务器发送请求背包数据
 
-        //向服务器发送请求商店数据
-
         //向服务器发送请求宠物数据
 
     }
