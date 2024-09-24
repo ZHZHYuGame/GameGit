@@ -47,7 +47,7 @@ public class SkillMgr : MonoBehaviour
     /// <summary>
     /// 是否按下E技能
     /// </summary>
-    private bool m_isE;
+    public bool m_isE;
     /// <summary>
     /// 是否Lerp收回相机
     /// </summary>
@@ -78,9 +78,6 @@ public class SkillMgr : MonoBehaviour
     private Image m_ECD_img;
     private float m_ECDTimer = 10;
     private float m_AllECDTimer = 10;
-
-
-    string ceshi = "22222";
     private bool isQCD=false, isWCD=false, isECD = false;
     private void Awake()
     {
@@ -157,12 +154,13 @@ public class SkillMgr : MonoBehaviour
                    
                     break;
                 case KeyCode.E:
-                    if (m_skillNum < 50)
+                    if (m_skillNum < 50||m_Properties.CdValue<50)
                     {
                         return;
                     }
                     if (!isECD)
                     {
+                        m_Properties.ClearCDValue();
                         m_RotateCenter.transform.localScale = Vector3.zero;
                         m_ECD_img.fillAmount = 1f;
                         m_isE = true;
@@ -195,6 +193,7 @@ public class SkillMgr : MonoBehaviour
                 {
                     m_AddRotateSpeed += 200;
                     SetSkill01();
+                    Debug.Log(m_AddRotateSpeed);
                     m_BigRotateTimer -= Time.deltaTime;
                     if (m_BigRotateTimer <= 0)
                     {

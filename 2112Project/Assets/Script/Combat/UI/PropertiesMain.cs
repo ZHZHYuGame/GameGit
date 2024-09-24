@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,13 +26,41 @@ public class PropertiesMain : MonoBehaviour
     /// </summary>
     public RotateCenter m_rotateCenter;
     public Text skillNum;
+    /// <summary>
+    /// 持有技能面板
+    /// </summary>
+    private SkillMgr m_skillMgr;
+    //血量,蓝量,能量条
+    public Slider hpSlider;
+    public Slider mpSlider;
+    public Slider cdSlider;
 
-    //public Button Skill01_Btn;
+    private float hpValue;
+    private float hpValue_MAX = 100;
+    private float mpValue;
+    private float mpValue_MAX = 100;
+    private float cdValue;
+    private float cdValue_MAX = 100;
+
+    public float HpValue
+    {
+        get { return hpValue; }
+    }
+    public float MpValue
+    {
+        get { return mpValue; }
+    }
+    public float CdValue
+    {
+        get { return cdValue; }
+    }
+
     void Start()
     {
         skillNum.text = "5";
         m_startPos = PpPanel.rectTransform.position;
         m_endPos = new Vector3(m_startPos.x, m_endYPos, m_startPos.z);
+        m_skillMgr=GameObject.Find("Canvas/Skills").GetComponent<SkillMgr>();
     }
 
     // Update is called once per frame
@@ -52,5 +81,29 @@ public class PropertiesMain : MonoBehaviour
             m_rotateCenter.AddWeapon();
         }
         skillNum.text = num.ToString();
+    }
+
+    /// <summary>
+    /// 增加能量的地方
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddCDValue(float value)
+    {
+        if (!m_skillMgr.m_isE)
+        {
+            if (cdValue <= cdValue_MAX)
+            {
+                cdValue += value;
+                cdSlider.value = cdValue;
+            }
+        }
+        
+       
+    }
+
+    public void ClearCDValue()
+    {
+        cdValue = 0;
+        cdSlider.value = cdValue;
     }
 }
