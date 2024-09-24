@@ -1,37 +1,42 @@
-using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-public class ChaseState : FSMState
-{
-    private Transform playerTrans;
-    private float speed;
 
-    public ChaseState(FSMSystem fsmSystem,float speed) : base(fsmSystem)
+public class ChaseState: FSMState
+{
+    float speed;
+
+    public ChaseState(FSMSystem fsmSystem, Transform playerTransform, Animator anim,float speed) : base(fsmSystem, playerTransform, anim)
     {
         stateID = StateID.Chase;
         this.speed = speed;
-        playerTrans = GameObject.Find("Player").transform;
     }
-    public override void OnEnter()
+    public override void DOBeforeEntering()
     {
-        base.OnEnter();
-    }
-    public override void OnExit()
-    {
-        base.OnExit();
-    }
-    // ×·Öð
-    public override void Act(GameObject npc)
-    {
-        npc.transform.LookAt(playerTrans.position);
-        npc.transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        base.DOBeforeEntering();
+        anim.SetBool("isMove", true);
     }
 
-    // ÇÐ»»
+    public override void DOAfterEntering()
+    {
+        base.DOAfterEntering();
+        anim.SetBool("isMove", false);
+    }
+    public override void Act(GameObject npc)
+    {
+        npc.transform.LookAt(playerTransform.position);
+        npc.transform.Translate(Vector3.forward*speed*Time.deltaTime);
+    }
+
     public override void Reason(GameObject npc)
     {
-        if (Vector3.Distance(playerTrans.position, npc.transform.position) > 6)
+        //if(Vector3.Distance(playerTransform.position,npc.transform.position)>6)
+        //{
+        //    fsmSystem.PerformTransition(Transition.LostPlayer);
+        //}
+        if(Vector3.Distance(playerTransform.position,npc.transform.position)<1.5f)
         {
-            fsmSystem.PerformTransition(Transition.LostPlayer);
+            fsmSystem.PerformTransition(Transition.AtkPlayer);
         }
     }
 }

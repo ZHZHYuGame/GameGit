@@ -30,28 +30,30 @@ public class PlayerControl : MonoBehaviour
     /// <summary>
     /// ÊÇ·ñÕýÔÚ¹¥»÷
     /// </summary>
-    private bool m_isAtk;
+    public bool isAtk;
+    private HandWeapon m_handWeapon;
+
+    public float Speed = 5;
     void Start()
     {
         m_EtcMove = GameObject.Find("Canvas/ETCParent/ETC").GetComponent<ETCMove>();
         m_Animator = GetComponent<Animator>();
+        m_handWeapon=GetComponentInChildren<HandWeapon>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
         Move();
         Attack();
-        
-
     }
-
     private void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.A)&&!m_isAtk)
+        if(Input.GetKeyDown(KeyCode.A)&&!isAtk)
         {
-            m_isAtk = true;
+            isAtk = true;
+            m_handWeapon.isAtk = true;
             m_atkCount++;
             if (m_atkCount > 2)
             {
@@ -79,21 +81,21 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     public void AttackOver()
     {
-        print(111);
-        m_isAtk = false;
+        m_handWeapon.isAtk = false;
+        isAtk = false;
     }
 
     private void Move()
     {
-        if(!m_isAtk)
+        if(!isAtk)
         {
-            float H = m_EtcMove.GetMovePos("H");
-            float V = m_EtcMove.GetMovePos("V");
+            float H = m_EtcMove.GetMovePos("Horizontal");
+            float V = m_EtcMove.GetMovePos("Vertical");
             Vector3 pos = new Vector3(H, 0, V);
             if (pos != Vector3.zero)
             {
                 transform.LookAt(pos + transform.position);
-                transform.Translate(Vector3.forward * (3 * Time.deltaTime));
+                transform.Translate(Vector3.forward * (Speed * Time.deltaTime));
                 m_IsMoving = true;
             }
             else
@@ -106,6 +108,9 @@ public class PlayerControl : MonoBehaviour
         {
             transform.Translate(Vector3.forward * 1 * Time.deltaTime);
         }
+
+        //transform.Translate(Vector3.forward * 10 * Time.deltaTime*Input.GetAxisRaw("Horizontal"));
+        //transform.Rotate(Vector3.up * 100 * Time.deltaTime * Input.GetAxisRaw("Vertical"));
         
     }
 }

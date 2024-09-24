@@ -1,0 +1,28 @@
+多语言表位置 Assets/Localization/UITextTable.csv
+
+导入语言信息 
+1.Assets/Localization/UITextTable.asset
+2.Inspector/Open in Table Editor
+3.右上角/Import/CSV/选择Assets/Localization/UITextTable.csv文件
+
+语言Key表 Assets/Script/Language/LanguageInfo.cs
+
+面板中语言绑定
+1.在初始化时,绑定事件
+private void Start()
+{
+	MessageEventMgr.GetInstance().AddListener(MessageType.TableChanged, SetText);
+}
+2.在面板销毁时,解绑事件
+private void OnDestroy()
+{
+    MessageEventMgr.GetInstance().RemoveListener(MessageType.TableChanged, SetText);
+}
+3.事件方法
+public void SetText(Message message)
+{
+    //消息转换
+    StringTable value = message.data as StringTable;
+    //文本赋值
+    ChineseText.text = LanguageMgr.GetText(value, LanguageInfo.CHINESE_TEXT);
+}

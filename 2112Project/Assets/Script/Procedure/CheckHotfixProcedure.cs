@@ -34,7 +34,9 @@ public class CheckHotfixProcedure : ProcedureBase
 
     void CheckForHotfix()
     {
+        VersionConfig.MakeVersionConfig();
         // 检查热更逻辑，与服务器通信比较版本号等
+        //if (!VersionConfig.CompareResourceLists(VersionConfig.ConfigFilePath, "new")) return;
         // 如果有热更，下载并安装热更文件
     }
 
