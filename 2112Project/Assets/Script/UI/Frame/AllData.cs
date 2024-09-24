@@ -24,6 +24,9 @@ public class AllData : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 背包数据赋值 一开始就要接收
+    /// </summary>
     public void OnReceiveBagMsg()
     {
 
