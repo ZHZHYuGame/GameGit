@@ -48,7 +48,7 @@ public class UIMain : MonoBehaviour
 
     private void OnFight()
     {
-        SceneManager.LoadScene("CombatScene");
+        SceneManager.LoadScene("HomeScene");
     }
     private void OnTranscript()
     {
