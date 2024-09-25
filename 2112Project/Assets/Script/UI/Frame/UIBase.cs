@@ -5,6 +5,23 @@ using UnityEngine.UI;
 
 public class UIBase : MonoBehaviour
 {
+    //C
+    //持有M V
+    //初始化 --》 M new V Get
+                //面板赋值
+
+    //M初始化    //添加监听
+                //向服务器发消息
+                //从缓存中读数据
+   
+
+
+
+
+
+
+
+
 
     Image _image;
     

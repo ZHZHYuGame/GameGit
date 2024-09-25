@@ -177,6 +177,7 @@ public class UIManager : Singleton<UIManager>
         #region Ä£Äâ
         var panel = Instantiate(Resources.Load<GameObject>($"UI/{_allPanel[(int)type].name}"), _allCanvas[(int)canvasType]);
         UIBase uiBase = panel.GetComponent<UIBase>();
+        
         _openPanel.Add(type, uiBase);
         #endregion
     }

@@ -46,7 +46,7 @@ public class MailMgr
         //消息回调
 
         //固定时间循环调用
-        TimeManager.Instance.DoLoop(1,Tick);
+        //TimeManager.Instance.DoLoop(1,Tick);
     }
 
     void Tick()

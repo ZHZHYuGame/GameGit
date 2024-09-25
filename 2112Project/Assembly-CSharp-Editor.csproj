@@ -955,12 +955,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Localization">
       <HintPath>Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
@@ -985,33 +985,9 @@
       <Project>{2A26F41E-09F1-806B-5D3D-F5009F60BC36}</Project>
       <Name>QuarkRuntime</Name>
     </ProjectReference>
-    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
-      <Project>{59F98654-C0E5-6D2C-FC66-2F42E33A583B}</Project>
-      <Name>ToonyColorsPro.Demo.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXRRuntime.csproj">
-      <Project>{FCEC5C66-F2C7-A6B8-4569-F51BF4BC9DA4}</Project>
-      <Name>CFXRRuntime</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXR.WelcomeScreen.csproj">
-      <Project>{315AF6BB-CF57-3B23-C006-D672F72C8866}</Project>
-      <Name>CFXR.WelcomeScreen</Name>
-    </ProjectReference>
     <ProjectReference Include="QuarkEditor.csproj">
       <Project>{CDB4F004-68D7-5644-009D-A1F13B7145B7}</Project>
       <Name>QuarkEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXREditor.csproj">
-      <Project>{08536AEA-4F87-0D71-782C-ED04A43E81B7}</Project>
-      <Name>CFXREditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXRDemo.csproj">
-      <Project>{06610027-3B53-E9A3-A8ED-84B5357E14F9}</Project>
-      <Name>CFXRDemo</Name>
-    </ProjectReference>
-    <ProjectReference Include="KinoBloom.Runtime.csproj">
-      <Project>{CCF804D5-C25E-DC2C-261C-F31BFE3B9964}</Project>
-      <Name>KinoBloom.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{FAC4C91F-C4E2-8189-5D57-4BB3EC5BFA7F}</Project>

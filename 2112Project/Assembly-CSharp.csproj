@@ -62,32 +62,24 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ConfigGoods\Tables.cs" />
     <Compile Include="Assets\Script\Procedure\InitGameCoreProcedure.cs" />
+    <Compile Include="Assets\Script\AI\Steering\behavior\Radar.cs" />
     <Compile Include="Assets\Script\Combat\EnemyPool.cs" />
     <Compile Include="Assets\Script\Procedure\Singleton.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\Script\Time\SpecialTimeController.cs" />
-=======
-    <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\GoodsType.cs" />
-    <Compile Include="Assets\Script\Procedure\VersionConfig.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\TbGoods.cs" />
-    <Compile Include="Assets\Script\EventMgr\MessageEventMgr.cs" />
->>>>>>> d663ba9992ecc15f1b70d691a967bd7d3e1b5e4f
     <Compile Include="Assets\Script\Audio\AudioInfo.cs" />
     <Compile Include="Assets\Effects\TrailRenderer_Base.cs" />
-    <Compile Include="Assets\Script\AI\ChaseState.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector2.cs" />
     <Compile Include="Assets\Script\Procedure\ProcedureBase.cs" />
-    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Script\Combat\UI\PropertiesMain.cs" />
-    <Compile Include="Assets\Script\Combat\EHp.cs" />
+    <Compile Include="Assets\Script\UI\SafeAreaUIAdapt.cs" />
     <Compile Include="Assets\Script\AI\EnemyAI.cs" />
+    <Compile Include="Assets\SystemSettting\SystemControl.cs" />
+    <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForFollowPath.cs" />
     <Compile Include="Assets\Script\Audio\AudioLoader.cs" />
     <Compile Include="Assets\Script\UI\Frame\UIBase.cs" />
-    <Compile Include="Assets\Script\Combat\ETCMove.cs" />
+    <Compile Include="Assets\Script\UI\Mail\MailInfo.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Script\MessageEvent\Login.cs" />
     <Compile Include="Assets\Script\Procedure\SplashProcedure.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForDisperse.cs" />
     <Compile Include="Assets\Script\Combat\RotateCenter.cs" />
     <Compile Include="Assets\Effects\SmokeTrail.cs" />
@@ -100,23 +92,19 @@
     <Compile Include="Assets\Script\Procedure\CheckHotfixProcedure.cs" />
     <Compile Include="Assets\Script\UI\Frame\TipsPanel.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\Script\Deal\Good.cs" />
     <Compile Include="Assets\Script\UI\Mail\MailLanguage.cs" />
     <Compile Include="Assets\Script\Combat\EnemyControl.cs" />
-    <Compile Include="Assets\Script\UI\UILoginMouse_Tail.cs" />
     <Compile Include="Assets\Script\Texture\TextureMgr.cs" />
     <Compile Include="Assets\Script\MessageEvent\MessageEventMgr.cs" />
-    <Compile Include="Assets\Script\Pet\PetItem.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForPursuit.cs" />
     <Compile Include="Assets\Utillities\CircularBuffer.cs" />
     <Compile Include="Assets\Script\Combat\SkillMgr.cs" />
     <Compile Include="Assets\Script\AI\FSMSystem.cs" />
     <Compile Include="Assets\Script\Language\LanguageInfo.cs" />
     <Compile Include="Assets\Script\Transcript\OpenPanel.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Script\Combat\HandWeapon.cs" />
+    <Compile Include="Assets\Script\Procedure\GameStarter.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\item\ItemExchange.cs" />
     <Compile Include="Assets\Script\UI\Frame\LoadUI.cs" />
     <Compile Include="Assets\Script\Combat\RotateWeapon.cs" />
@@ -126,123 +114,76 @@
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForFlee.cs" />
     <Compile Include="Assets\SystemSettting\ScreenSettings.cs" />
     <Compile Include="Assets\Script\Game.cs" />
-    <Compile Include="Assets\SystemSettting\OperateSetting.cs" />
     <Compile Include="Assets\SystemSettting\BaseSetting.cs" />
     <Compile Include="Assets\Script\UI\Frame\OpenClosePanel.cs" />
     <Compile Include="Assets\Script\AI\Steering\Vehicle.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\AccessFlag.cs" />
-    <Compile Include="Assets\Script\Time\TimeManager.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForEvadeObstacle.cs" />
     <Compile Include="Assets\Script\UI\Mail\MailMgr.cs" />
     <Compile Include="Assets\Script\UI\Mail\MailPanel.cs" />
     <Compile Include="Assets\Script\Language\LanguageMgr.cs" />
     <Compile Include="Assets\Script\AI\Steering\Steering.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\GoodsType.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Script\Procedure\VersionConfig.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_New.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\TbGoods.cs" />
     <Compile Include="Assets\Script\AI\ChaseState.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
-    <Compile Include="Assets\小机器人—红色机器人\Scripts\MovementInput.cs" />
     <Compile Include="Assets\Script\Combat\EHp.cs" />
     <Compile Include="Assets\Script\Combat\ETCMove.cs" />
-=======
->>>>>>> d663ba9992ecc15f1b70d691a967bd7d3e1b5e4f
     <Compile Include="Assets\Script\Transcript\MapGenerator.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Script\AI\AttackState.cs" />
-    <Compile Include="Assets\Script\Combat\RotateCenter.cs" />
     <Compile Include="Assets\Script\Atlas\AtlasMgr.cs" />
-    <Compile Include="Assets\Effects\SmokeTrail.cs" />
+    <Compile Include="Assets\Script\AI\Steering\LocomotionController.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\vector4.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\EQuality.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\SystemSettting\GMCommandSetting.cs" />
     <Compile Include="Assets\Script\MessageEvent\Test.cs" />
     <Compile Include="Assets\Script\AI\PatrolState.cs" />
     <Compile Include="Assets\Script\Procedure\ProcedureManager.cs" />
     <Compile Include="Assets\Script\MessageEvent\GameManager.cs" />
-=======
-    <Compile Include="Assets\Script\Net\MsgData.cs" />
-    <Compile Include="Assets\Scripts\LittleMap\LittleMap.cs" />
-    <Compile Include="Assets\Script\AI\PatrolState.cs" />
-    <Compile Include="Assets\Script\Procedure\ProcedureManager.cs" />
-    <Compile Include="Assets\Script\Combat\CameraControl.cs" />
-    <Compile Include="Assets\QuarkAssets\QuarkLauncher.cs" />
->>>>>>> d663ba9992ecc15f1b70d691a967bd7d3e1b5e4f
     <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean1.cs" />
     <Compile Include="Assets\Utillities\Range.cs" />
-    <Compile Include="Assets\Script\Procedure\CheckHotfixProcedure.cs" />
-    <Compile Include="Assets\Script\UI\Frame\TipsPanel.cs" />
     <Compile Include="Assets\Script\AI\FSMState.cs" />
     <Compile Include="Assets\Script\Net\NetManager.cs" />
     <Compile Include="Assets\Script\Deal\DealPanel.cs" />
     <Compile Include="Assets\Script\Combat\FilyWeapon.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Script\UI\Mail\MailServer.cs" />
-    <Compile Include="Assets\小机器人—红色机器人\Scripts\CharacterSkinController.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForCollect.cs" />
-=======
-    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
-    <Compile Include="Assets\Script\Combat\EnemyControl.cs" />
->>>>>>> d663ba9992ecc15f1b70d691a967bd7d3e1b5e4f
     <Compile Include="Assets\Script\Procedure\ResourceDownloader.cs" />
     <Compile Include="Assets\Script\Transcript\Replicasetupanel.cs" />
+    <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForWander.cs" />
     <Compile Include="Assets\Script\Combat\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\ConfigGoods\Goods.cs" />
     <Compile Include="Assets\Script\Scene\SceneControlManager.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Script\Deal\DealItem.cs" />
     <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForCohesion.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Utillities\GizmosExtra.cs" />
     <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean2.cs" />
     <Compile Include="Assets\Script\MessageEvent\Message.cs" />
-    <Compile Include="Assets\Script\Pet\PetData.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\Script\UI\GameStart.cs" />
-=======
-    <Compile Include="Assets\Script\Texture\TextureMgr.cs" />
-    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
-    <Compile Include="Assets\Utillities\GizmosExtra.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\test\TestExcelBean2.cs" />
-    <Compile Include="Assets\Script\EventMgr\Login.cs" />
-    <Compile Include="Assets\Script\EventMgr\GameManager.cs" />
-    <Compile Include="Assets\Script\UI\UIMain.cs" />
-    <Compile Include="Assets\Script\EventMgr\Test.cs" />
-    <Compile Include="Assets\Utillities\CircularBuffer.cs" />
->>>>>>> d663ba9992ecc15f1b70d691a967bd7d3e1b5e4f
     <Compile Include="Assets\Scripts\ConfigGoods\vector3.cs" />
-    <Compile Include="Assets\Script\Combat\SkillMgr.cs" />
-    <Compile Include="Assets\Script\AI\FSMSystem.cs" />
-    <Compile Include="Assets\Script\Transcript\OpenPanel.cs" />
-    <Compile Include="Assets\Script\Combat\HandWeapon.cs" />
+    <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForEvade.cs" />
+    <Compile Include="Assets\Script\AI\Steering\behavior\SteeringForArrival.cs" />
     <Compile Include="Assets\Effects\Trail.cs" />
     <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\Script\Procedure\GameStarter.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\item\ItemExchange.cs" />
     <Compile Include="Assets\Script\AI\SleepState.cs" />
-    <Compile Include="Assets\Script\Combat\RotateWeapon.cs" />
-    <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
-    <Compile Include="Assets\Script\Net\Client.cs" />
     <Compile Include="Assets\Script\UI\Frame\UIManager.cs" />
     <Compile Include="Assets\Script\Audio\AudioManager.cs" />
-    <Compile Include="Assets\Script\Game.cs" />
     <Compile Include="Assets\Script\Combat\WeaponBase.cs" />
-    <Compile Include="Assets\Script\UI\Frame\OpenClosePanel.cs" />
     <Compile Include="Assets\Script\Procedure\LoadMainMenuProcedure.cs" />
-    <Compile Include="Assets\Scripts\ConfigGoods\test\AccessFlag.cs" />
     <Compile Include="Assets\Script\Procedure\InitConfigProcedure.cs" />
-    <Compile Include="Assets\Script\EventMgr\Message.cs" />
     <Compile Include="Assets\Script\Procedure\MessageManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Config\战斗系统说明.txt" />
+    <None Include="Assets\Config\面板适配说明.txt" />
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Resources\versioncode.txt" />
     <None Include="Assets\Leaves Particles\Leaves - Readme.txt" />
     <None Include="Assets\Demigiant\DOTween\DOTween.dll" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Config\多语言使用说明.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1073,37 +1014,44 @@
       <HintPath>D:\unity\2022.3.42f1c1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Addressables.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Luban.Runtime">
       <HintPath>Library\ScriptAssemblies\Luban.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Localization.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Localization.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+      <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-<<<<<<< HEAD
-    <Reference Include="Unity.Localization">
-      <HintPath>Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
-=======
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
->>>>>>> d663ba9992ecc15f1b70d691a967bd7d3e1b5e4f
       <Private>False</Private>
     </Reference>
     <Reference Include="Luban.Editor">
       <HintPath>Library\ScriptAssemblies\Luban.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -1115,19 +1063,6 @@
     <ProjectReference Include="QuarkEditor.csproj">
       <Project>{CDB4F004-68D7-5644-009D-A1F13B7145B7}</Project>
       <Name>QuarkEditor</Name>
-    </ProjectReference>
-<<<<<<< HEAD
-    <ProjectReference Include="CFXREditor.csproj">
-      <Project>{08536AEA-4F87-0D71-782C-ED04A43E81B7}</Project>
-      <Name>CFXREditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXRDemo.csproj">
-      <Project>{06610027-3B53-E9A3-A8ED-84B5357E14F9}</Project>
-      <Name>CFXRDemo</Name>
-    </ProjectReference>
-    <ProjectReference Include="KinoBloom.Runtime.csproj">
-      <Project>{CCF804D5-C25E-DC2C-261C-F31BFE3B9964}</Project>
-      <Name>KinoBloom.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{FAC4C91F-C4E2-8189-5D57-4BB3EC5BFA7F}</Project>
@@ -1141,8 +1076,6 @@
       <Project>{5A751BB1-8641-CE40-52D2-7CFCCE455D17}</Project>
       <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
-=======
->>>>>>> d663ba9992ecc15f1b70d691a967bd7d3e1b5e4f
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
