@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// 资源数据类，包含资源名称、大小和MD5值
+/// </summary>
 public class ABData
 {
     public string ABName;
@@ -23,38 +26,39 @@ public class ABData
 }
 
 /// <summary>
-/// 资源清单
+/// 资源清单类
 /// </summary>
 public class VersionConfig
 {
-    public const string ConfigFilePath = "Assets/Resources/versionconfig.json";
-    public const string VersionCodeFilePath = "Assets/Resources/versioncode.txt"; // 存储版本号的文件路径
-    public int VersionCode; // 版本号定义
+    public const string ConfigFilePath = "Assets/Resources/versionconfig.json";  // 资源清单文件路径
+    public const string VersionCodeFilePath = "Assets/Resources/versioncode.txt"; // 版本号存储文件路径
+    public string VersionCode;  // 版本号（现在改为字符串）
     public string Url;
     public List<ABData> listDatas = new List<ABData>();
 
     /// <summary>
     /// 获取当前版本号
     /// </summary>
-    public static int GetCurrentVersionCode()
+    public static string GetCurrentVersionCode()
     {
         if (File.Exists(VersionCodeFilePath))
         {
-            return int.Parse(File.ReadAllText(VersionCodeFilePath));
+            return File.ReadAllText(VersionCodeFilePath).Trim();
         }
-        return 0;
+        return "1.0.0"; // 默认初始版本号
     }
 
     /// <summary>
-    /// 更新版本号
+    /// 更新版本号并存储到文件
     /// </summary>
-    public static void UpdateVersionCode(int newVersionCode)
+    public static void UpdateVersionCode(string newVersionCode)
     {
-        File.WriteAllText(VersionCodeFilePath, newVersionCode.ToString());
+        Debug.Log(newVersionCode);
+        File.WriteAllText(VersionCodeFilePath, newVersionCode);
     }
 
     /// <summary>
-    /// 获取文件的大小和MD5
+    /// 获取文件的大小和MD5值
     /// </summary>
     static (int, string) GetFileSizeAndMD5(string filePath)
     {
@@ -90,11 +94,11 @@ public class VersionConfig
     [MenuItem("Tools/生成资源清单")]
     public static void MakeVersionConfig()
     {
-        int currentVersionCode = GetCurrentVersionCode();
+        string currentVersionCode = GetCurrentVersionCode();  // 获取当前版本号
         VersionConfig vcf = new VersionConfig();
         vcf.Url = "http://10.161.16.41/Resources/";
 
-        // 尝试读取旧的版本配置文件
+        // 读取旧的版本配置文件
         VersionConfig oldConfig = null;
         if (File.Exists(VersionConfig.ConfigFilePath))
         {
@@ -102,7 +106,7 @@ public class VersionConfig
             oldConfig = JsonConvert.DeserializeObject<VersionConfig>(oldJson);
         }
 
-        // 创建字典，用来快速查找旧的资源信息
+        // 创建一个字典来查找旧的资源信息
         Dictionary<string, ABData> oldResourceDict = new Dictionary<string, ABData>();
         if (oldConfig != null)
         {
@@ -115,7 +119,7 @@ public class VersionConfig
         string[] files = null;
         try
         {
-            files = Directory.GetFiles(Application.dataPath + "/Resources");
+            files = Directory.GetFiles(Application.dataPath + "/Resources");//生成资源清单路径
         }
         catch (Exception ex)
         {
@@ -123,8 +127,14 @@ public class VersionConfig
             return;
         }
 
-        bool hasChange = false;
-        HashSet<string> currentFiles = new HashSet<string>(); // 当前存在的文件
+        bool hasMajorChange = false;  // 标识是否有重大变化（如资源删除）
+        bool hasMinorChange = false;  // 标识是否有小版本变化（如资源新增或修改）
+
+        int addedCount = 0;   // 新增资源计数
+        int modifiedCount = 0; // 修改资源计数
+        int deletedCount = 0; // 删除资源计数
+
+        HashSet<string> currentFiles = new HashSet<string>();  // 当前存在的文件
 
         // 并行处理文件
         Parallel.For(0, files.Length, i =>
@@ -143,20 +153,31 @@ public class VersionConfig
 
                 lock (vcf.listDatas)  // 确保访问资源列表的线程安全
                 {
-                    if (oldResourceDict.ContainsKey(fileName) && oldResourceDict[fileName].ABbytes == fileSize && oldResourceDict[fileName].Md5 == md5)
+                    if (oldResourceDict.ContainsKey(fileName))
                     {
-                        vcf.listDatas.Add(oldResourceDict[fileName]);  // 保留旧数据
+                        var oldData = oldResourceDict[fileName];
+                        if (oldData.ABbytes != fileSize || oldData.Md5 != md5)
+                        {
+                            hasMinorChange = true;  // 文件有变化，标记小版本变化
+                            modifiedCount++;
+                            vcf.listDatas.Add(newABData);
+                        }
+                        else
+                        {
+                            vcf.listDatas.Add(oldData);  // 保留旧数据
+                        }
                     }
                     else
                     {
-                        hasChange = true;
-                        vcf.listDatas.Add(newABData);  // 添加新数据
+                        hasMinorChange = true;  // 新增资源，标记小版本变化
+                        addedCount++;
+                        vcf.listDatas.Add(newABData);
                     }
                 }
             }
         });
 
-        // 检测删除的资源
+        // 检测资源是否被删除
         if (oldConfig != null)
         {
             foreach (var oldData in oldConfig.listDatas)
@@ -164,24 +185,40 @@ public class VersionConfig
                 if (!currentFiles.Contains(oldData.ABName))
                 {
                     Debug.Log($"资源 \"{oldData.ABName}\" 被删除。");
-                    hasChange = true;  // 资源被删除，更新版本
+                    hasMajorChange = true;  // 资源删除，标记重大变化
+                    deletedCount++;
                 }
             }
         }
 
-        // 版本号更新逻辑
-        if (hasChange)
+        // 根据变化情况更新版本号
+        string[] versionParts = currentVersionCode.Split('.');
+        int major = int.Parse(versionParts[0]);
+        int minor = int.Parse(versionParts[1]);
+        int patch = int.Parse(versionParts[2]);
+
+        // 如果有删除的资源，更新中版本号
+        if (hasMajorChange)
         {
-            vcf.VersionCode = currentVersionCode + 1;
-            UpdateVersionCode(vcf.VersionCode);
+            vcf.VersionCode = $"{major}.{minor + 1}.0";  // 更新中版本号，重置修订号
         }
-        else if (oldConfig != null)
+        else if (hasMinorChange)
         {
-            vcf.VersionCode = oldConfig.VersionCode;
+            // 增加或修改资源次数用于判断是否需要更新大版本
+            int middleVersionUpdates = oldConfig != null ? int.Parse(versionParts[1]) : 0;
+
+            if (middleVersionUpdates >= 10)
+            {
+                vcf.VersionCode = $"{major + 1}.0.0";  // 中版本更新次数超过10次，更新大版本
+            }
+            else
+            {
+                vcf.VersionCode = $"{major}.{minor}.{patch + 1}";  // 小版本变化，更新修订号
+            }
         }
         else
         {
-            vcf.VersionCode = currentVersionCode;
+            vcf.VersionCode = $"{major}.{minor}.{patch}";  // 无变化，保持原版本号
         }
 
         // 保存新的资源清单
@@ -195,12 +232,13 @@ public class VersionConfig
         {
             Debug.LogError($"保存资源清单时出现错误：{ex.Message}\n{ex.StackTrace}");
         }
+
+        UpdateVersionCode(vcf.VersionCode);  // 更新版本号到文件
     }
+
     /// <summary>
-    /// 对比资源清单
+    /// 对比资源清单，检测是否有新增、修改或删除的资源
     /// </summary>
-    /// <param name="oldListPath">本地资源清单</param>
-    /// <param name="newListPath">服务器资源清单</param>
     public static bool CompareResourceLists(string oldListPath, string newListPath)
     {
         bool isChanged = false;
@@ -215,45 +253,41 @@ public class VersionConfig
 
         // 创建两个字典方便对比
         Dictionary<string, ABData> oldResourceDict = new Dictionary<string, ABData>();
-        Dictionary<string, ABData> newResourceDict = new Dictionary<string, ABData>();
-
         foreach (var data in oldConfig.listDatas)
         {
             oldResourceDict[data.ABName] = data;
         }
 
+        Dictionary<string, ABData> newResourceDict = new Dictionary<string, ABData>();
         foreach (var data in newConfig.listDatas)
         {
             newResourceDict[data.ABName] = data;
         }
 
-        // 对比资源：检测新增或修改的资源
-        foreach (var newData in newConfig.listDatas)
+        // 检测新增或修改的资源
+        foreach (var newData in newResourceDict)
         {
-            if (oldResourceDict.ContainsKey(newData.ABName))
+            if (!oldResourceDict.ContainsKey(newData.Key))
             {
-                var oldData = oldResourceDict[newData.ABName];
-                if (oldData.ABbytes != newData.ABbytes || oldData.Md5 != newData.Md5)
-                {
-                    Debug.Log($"资源 \"{newData.ABName}\" 已被修改。");
-                    Debug.Log($"旧大小: {oldData.ABbytes}, 新大小: {newData.ABbytes}");
-                    Debug.Log($"旧MD5: {oldData.Md5}, 新MD5: {newData.Md5}");
-                    isChanged = true;
-                }
+                Debug.Log($"新增资源: {newData.Key}");
+                isChanged = true;
             }
             else
             {
-                Debug.Log($"资源 \"{newData.ABName}\" 为新增资源。");
-                isChanged = true;
+                if (oldResourceDict[newData.Key].Md5 != newData.Value.Md5)
+                {
+                    Debug.Log($"修改资源: {newData.Key}");
+                    isChanged = true;
+                }
             }
         }
 
-        // 检测被删除的资源
+        // 检测删除的资源
         foreach (var oldData in oldResourceDict)
         {
             if (!newResourceDict.ContainsKey(oldData.Key))
             {
-                Debug.Log($"资源 \"{oldData.Key}\" 被删除。");
+                Debug.Log($"删除资源: {oldData.Key}");
                 isChanged = true;
             }
         }
