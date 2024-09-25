@@ -21,7 +21,7 @@ public class ScreenSettings : MonoBehaviour
 
     //亮度
     public Slider Slider;
-    public Light Light;
+    Light Light;
     private void Awake()
     {
         list.Add(GetResolutionData("1334*750"));
@@ -35,6 +35,7 @@ public class ScreenSettings : MonoBehaviour
     }
     void Start()
     {
+
         //如果之前设置过了，先刷新设置显示
         LoadRefreshUI();
 
