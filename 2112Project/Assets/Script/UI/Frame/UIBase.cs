@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class UIBase : MonoBehaviour
 {
 
-    //ui界面得Image 用来调透明度
     Image _image;
-
+    
+    //ui界面得CanvasGroup 用来调透明度
+    CanvasGroup _canvasGroup;
     //打开
     public virtual void OpenUI()
     {
+        //_canvasGroup.alpha = 1;
         _image.color = new Color(1, 1, 1, 1);
         gameObject.SetActive(true);
     }
@@ -19,7 +21,6 @@ public class UIBase : MonoBehaviour
     //关闭
     public virtual void CloseUI()
     {
-
         Destroy(gameObject);
     }
 
@@ -27,18 +28,24 @@ public class UIBase : MonoBehaviour
     public virtual void HideUI()
     {
         gameObject.SetActive(false);
+        //_canvasGroup.alpha = 0;
     }
 
     public void HideAllPanel()
     {
         gameObject.SetActive(false);
+        //_canvasGroup.alpha = 0;
     }
 
     public virtual void Awake() { }
 
     public virtual void OnEnable() { }
 
-    public virtual void Start() { _image = GetComponent<Image>(); }
+    public virtual void Start()
+    {
+        _image = GetComponent<Image>();
+        //_canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     public virtual void Update() { }
 
