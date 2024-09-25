@@ -33,10 +33,10 @@ public class PlayerControl : MonoBehaviour
     public bool isAtk;
     private HandWeapon m_handWeapon;
 
-
+    public float Speed = 5;
     void Start()
     {
-        m_EtcMove = GameObject.Find("Canvas/GameObject/ETCParent/ETC").GetComponent<ETCMove>();
+        m_EtcMove = GameObject.Find("Canvas/ETCParent/ETC").GetComponent<ETCMove>();
         m_Animator = GetComponent<Animator>();
         m_handWeapon=GetComponentInChildren<HandWeapon>();
         
@@ -95,7 +95,7 @@ public class PlayerControl : MonoBehaviour
             if (pos != Vector3.zero)
             {
                 transform.LookAt(pos + transform.position);
-                transform.Translate(Vector3.forward * (5 * Time.deltaTime));
+                transform.Translate(Vector3.forward * (Speed * Time.deltaTime));
                 m_IsMoving = true;
             }
             else
