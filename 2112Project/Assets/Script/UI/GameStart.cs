@@ -2,26 +2,20 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-/// <summary>
-/// ÓÎÏ·Èë¿Ú
-/// </summary>
-public class GameStart : MonoBehaviour
+
+public class UIMain : MonoBehaviour
 {
     public Slider Progress_bar;
     public Button StartBtn;
     public Text tip;
+    public Button Transcriptbutt;
     void Start()
     {
-        ProcedureManager.Instance.ChangeProcedure<InitConfigProcedure>();
         StartBtn.onClick.AddListener(OnFight);
-        StartCoroutine(Wait(1f));
-    }
-    IEnumerator Wait(float time)
-    {
-        yield return new WaitForSeconds(time);
-        Progress_bar.gameObject.SetActive(true);
+        Transcriptbutt.onClick.AddListener(OnTranscript);
         StartCoroutine(Logings());
     }
+
     IEnumerator Logings()
     {
         float value = 0;
@@ -56,7 +50,10 @@ public class GameStart : MonoBehaviour
     {
         SceneManager.LoadScene("HomeScene");
     }
-    
+    private void OnTranscript()
+    {
+        SceneManager.LoadScene("Transcript");
+    }
     // Update is called once per frame
     void Update()
     {

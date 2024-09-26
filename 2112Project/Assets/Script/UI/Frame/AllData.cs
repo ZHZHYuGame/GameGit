@@ -7,25 +7,26 @@ public class AllData : MonoBehaviour
 {
     public List<Data> _bagData = new List<Data>();
     public List<Data> _shopData = new List<Data>();
-    public List<PetData> _petData = new List<PetData>();
+    // public List<PetData> _petData = new List<PetData>();
 
-    
+
 
     private void Awake()
     {
-        
+
     }
 
     private void Start()
     {
         //向服务器发送请求背包数据
 
-        //向服务器发送请求商店数据
-
         //向服务器发送请求宠物数据
 
     }
 
+    /// <summary>
+    /// 背包数据赋值 一开始就要接收
+    /// </summary>
     public void OnReceiveBagMsg()
     {
 

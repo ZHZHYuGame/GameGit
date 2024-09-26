@@ -27,6 +27,18 @@ public enum UIPanelType
     First           //首充
 }
 
+<<<<<<< HEAD
+=======
+public enum CanvasType
+{
+    BackGround = 0,     //背景
+    UI = 1,             //UI
+    Tip = 2,            //提示框
+    Mask = 3,           //遮罩/引导
+    Prefab = 4          //3D层
+
+}
+>>>>>>> 795f0458aa55e7c23f5ea287f6335d9ad8b16de5
 
 [System.Serializable]
 public struct PanelPrefabConfig
@@ -39,6 +51,7 @@ public struct PanelPrefabConfig
 public class UIManager : Singleton<UIManager>
 {
 
+<<<<<<< HEAD
     //Canvas名字
     string _canvasName = "UICanvas/Canvas";
 
@@ -50,6 +63,13 @@ public class UIManager : Singleton<UIManager>
 
     //所有UI信息
     public List<PanelPrefabConfig> _panelConfigList;
+=======
+    //所有按钮父节点
+    public GameObject _btnParent;
+
+    //所有层级
+    public List<Transform> _allCanvas = new List<Transform>();
+>>>>>>> 795f0458aa55e7c23f5ea287f6335d9ad8b16de5
 
     //提示框
     public TipsPanel tip;
@@ -76,13 +96,12 @@ public class UIManager : Singleton<UIManager>
 
     void Awake()
     {
-        Debug.Log(UIPanelType.Set.ToString());
         Registration();//注册所有面板
         //OpenAllPanel();//打开所有面板
         DontDestroyOnLoad(transform.parent.gameObject);
     }
 
-    
+
 
     private void OpenAllPanel()
     {
@@ -101,7 +120,7 @@ public class UIManager : Singleton<UIManager>
     /// <summary>
     /// 注册所有的面板
     /// </summary>
-    public void Registration()
+    void Registration()
     {
         string myuimsg = File.ReadAllText($"{Application.dataPath}/Resources/myuimsg.json");
         panelPrefabs = JsonConvert.DeserializeObject<List<PanelPrefabConfig>>(myuimsg);
@@ -137,16 +156,55 @@ public class UIManager : Singleton<UIManager>
         {
             LoadPanel(type, _allPanel[type].name);
         }
+<<<<<<< HEAD
         setAsLastSibling(type);
         _uIPanelGroup.Push(_openPanel[type]);
     }
 
     void LoadPanel(UIPanelType type, string name)
+=======
+        SetAsLastSibling(type);
+    }
+
+    /// <summary>
+    /// 打开其他面板 
+    /// </summary>
+    /// <param name="type">那个调用的</param>
+    /// <param name="otherType">要打开那个面板</param>
+    public void OpenOtherUI(UIPanelType type, UIPanelType otherType)
+    {
+        if (_openPanel.ContainsKey(type))
+        {
+            _uIPanelGroup.Push(_openPanel[type]);
+            _openPanel[type].HideUI();
+        }
+        OpenUI(otherType);
+    }
+
+    /// <summary>
+    /// 设置面板是否长久存在
+    /// </summary>
+    public void SetPanelResident(UIPanelType type)
+    {
+        _allPanel[(int)type].isResident = true;
+    }
+
+    /// <summary>
+    /// 加载面板
+    /// </summary>
+    /// <param name="type"></param>
+    void LoadPanel(UIPanelType type, CanvasType canvasType = CanvasType.UI)
+>>>>>>> 795f0458aa55e7c23f5ea287f6335d9ad8b16de5
     {
         //资源加载加载面板
         #region 模拟
+<<<<<<< HEAD
         var panel = Instantiate(Resources.Load<GameObject>($"UI/{name}"), UIPanel);
+=======
+        var panel = Instantiate(Resources.Load<GameObject>($"UI/{_allPanel[(int)type].name}"), _allCanvas[(int)canvasType]);
+>>>>>>> 795f0458aa55e7c23f5ea287f6335d9ad8b16de5
         UIBase uiBase = panel.GetComponent<UIBase>();
+        
         _openPanel.Add(type, uiBase);
         #endregion
     }
@@ -351,9 +409,11 @@ public class UIManager : Singleton<UIManager>
         needChange1.anchoredPosition = new Vector2(1, 1);
     }
 
+    
 
 
     /// <summary>
+<<<<<<< HEAD
     /// 获取对象身上得脚本
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -380,6 +440,12 @@ public class UIManager : Singleton<UIManager>
     /// </summary>
     /// <param name="go"></param>
     public void setAsLastSibling(UIPanelType type)
+=======
+    /// 设置显示在最上层
+    /// </summary>
+    /// <param name="go"></param>
+    void SetAsLastSibling(UIPanelType type)
+>>>>>>> 795f0458aa55e7c23f5ea287f6335d9ad8b16de5
     {
         if (_openPanel.ContainsKey(type))
         {
@@ -387,7 +453,7 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void GetSprit()
+    void GetSprit()
     {
 
     }
@@ -397,7 +463,11 @@ public class UIManager : Singleton<UIManager>
     ///  设置显示在最上层
     /// </summary>
     /// <param name="go"></param>
+<<<<<<< HEAD
     public void setAsFirstSibling(UIPanelType type)
+=======
+    void SetAsFirstSibling(UIPanelType type)
+>>>>>>> 795f0458aa55e7c23f5ea287f6335d9ad8b16de5
     {
         if (_openPanel.ContainsKey(type))
         {

@@ -9,10 +9,14 @@ public class EnemyControl : MonoBehaviour
     private Animator m_Animator;
     private bool isUsed = false;
     private float _atkSpeed = 0.5f;
-
+    private float m_CDCount = 5;
     /// <summary>
     /// 持有技能类
     /// </summary>
+    
+
+    private PropertiesMain m_Properties;
+
     private SkillMgr m_SkillMgr;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +24,7 @@ public class EnemyControl : MonoBehaviour
         m_SkillMgr=GameObject.Find("Canvas/Skills").GetComponent<SkillMgr>();
         print(m_SkillMgr.name);
         m_Animator = GetComponent<Animator>();
-        
+        m_Properties=GameObject.Find("Canvas/HeroDisPanel/root").GetComponent<PropertiesMain>();
     }
 
     // Update is called once per frame
@@ -49,8 +53,10 @@ public class EnemyControl : MonoBehaviour
         this.transform.localScale = Vector3.zero;
         this.transform.position = new Vector3(999, 999, 999);
         
-
+        //添加被动
         m_SkillMgr.AddBeiDongSkill();
+        //添加能量
+        m_Properties.AddCDValue(m_CDCount);
     }
     public void Attack()
     {
