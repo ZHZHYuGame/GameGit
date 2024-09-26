@@ -37,6 +37,7 @@ public enum CanvasType
     Tip = 2,            //提示框
     Mask = 3,           //遮罩/引导
     Prefab = 4          //3D层
+
 }
 
 
@@ -49,15 +50,6 @@ public class PanelPrefabConfig
 
 public class UIManager : Singleton<UIManager>
 {
-
-    //Canvas名字
-    string _canvasName = "UICanvas/Canvas";
-
-    //ui父类名字
-    string _uiName = "UIPanel";
-
-    //UI的父类 
-    public Transform UIPanel;
 
     //所有按钮父节点
     public GameObject _btnParent;
@@ -90,13 +82,12 @@ public class UIManager : Singleton<UIManager>
 
     void Awake()
     {
-        Debug.Log(UIPanelType.Set.ToString());
         Registration();//注册所有面板
         //OpenAllPanel();//打开所有面板
         DontDestroyOnLoad(transform.parent.gameObject);
     }
 
-    
+
 
     private void OpenAllPanel()
     {
@@ -115,7 +106,7 @@ public class UIManager : Singleton<UIManager>
     /// <summary>
     /// 注册所有的面板
     /// </summary>
-    public void Registration()
+    void Registration()
     {
         string myuimsg = File.ReadAllText($"{Application.dataPath}/Resources/myuimsg.json");
         panelPrefabs = JsonConvert.DeserializeObject<List<PanelPrefabConfig>>(myuimsg);
@@ -149,6 +140,7 @@ public class UIManager : Singleton<UIManager>
         {
             LoadPanel(type);
         }
+        SetAsLastSibling(type);
     }
 
     /// <summary>
@@ -178,13 +170,14 @@ public class UIManager : Singleton<UIManager>
     /// 加载面板
     /// </summary>
     /// <param name="type"></param>
-    void LoadPanel(UIPanelType type)
+    void LoadPanel(UIPanelType type, CanvasType canvasType = CanvasType.UI)
     {
         //资源加载加载面板
 
         #region 模拟
-        var panel = Instantiate(Resources.Load<GameObject>($"UI/{_allPanel[(int)type].name}"), UIPanel);
+        var panel = Instantiate(Resources.Load<GameObject>($"UI/{_allPanel[(int)type].name}"), _allCanvas[(int)canvasType]);
         UIBase uiBase = panel.GetComponent<UIBase>();
+        
         _openPanel.Add(type, uiBase);
         #endregion
     }
@@ -411,35 +404,14 @@ public class UIManager : Singleton<UIManager>
         needChange1.anchoredPosition = new Vector2(1, 1);
     }
 
+    
 
-
-    /// <summary>
-    /// 获取对象身上得脚本
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="componentPath"></param>
-    /// <returns></returns>
-    public T GetComponent<T>(string componentPath) where T : MonoBehaviour
-    {
-        if (!componentPath.StartsWith("/"))
-        {
-            componentPath = "/" + componentPath;
-        }
-
-        GameObject go = GameObject.Find($"{_canvasName}/{_uiName}{componentPath}");
-
-        if (go == null)
-        {
-            Debug.Log($"获取GameObject为空,路径为{_canvasName}/{_uiName}{componentPath}");
-        }
-        return go.GetComponent<T>();
-    }
 
     /// <summary>
     /// 设置显示在最上层
     /// </summary>
     /// <param name="go"></param>
-    public void SetAsLastSibling(UIPanelType type)
+    void SetAsLastSibling(UIPanelType type)
     {
         if (_openPanel.ContainsKey(type))
         {
@@ -447,7 +419,7 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public void GetSprit()
+    void GetSprit()
     {
 
     }
@@ -457,7 +429,7 @@ public class UIManager : Singleton<UIManager>
     ///  设置显示在最上层
     /// </summary>
     /// <param name="go"></param>
-    public void SetAsFirstSibling(UIPanelType type)
+    void SetAsFirstSibling(UIPanelType type)
     {
         if (_openPanel.ContainsKey(type))
         {

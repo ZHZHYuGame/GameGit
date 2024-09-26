@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class BaseSetting : MonoBehaviour
 {
     public Slider Slider;
-    public Camera MainCamera;
+    Camera MainCamera;
     
     private void Awake()
     {
@@ -17,6 +17,7 @@ public class BaseSetting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Slider.onValueChanged.AddListener((a) =>
         {
             Slider.value = a;
@@ -34,6 +35,10 @@ public class BaseSetting : MonoBehaviour
     }
     void LoadDataRefreshUI()
     {
+        if (MainCamera == null)
+        {
+            MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        }
         float value0= PlayerPrefs.GetFloat("CameraValue");
         MainCamera.fieldOfView = value0;
         float index0= PlayerPrefs.GetFloat("CameraIndex");
