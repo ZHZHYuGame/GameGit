@@ -7,13 +7,13 @@ public class AllData : MonoBehaviour
 {
     public List<Data> _bagData = new List<Data>();
     public List<Data> _shopData = new List<Data>();
-    public List<PetData> _petData = new List<PetData>();
+    // public List<PetData> _petData = new List<PetData>();
 
-    
+
 
     private void Awake()
     {
-        
+
     }
 
     private void Start()
