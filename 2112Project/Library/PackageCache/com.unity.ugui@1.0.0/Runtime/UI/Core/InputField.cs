@@ -1515,7 +1515,11 @@ namespace UnityEngine.UI
 
                         if (lineType == LineType.MultiLineSubmit && c == '\n')
                         {
+<<<<<<< HEAD
                             m_Keyboard.text = m_Text;
+=======
+                            UpdateLabel();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
                             SendOnSubmit();
                             OnDeselect(null);

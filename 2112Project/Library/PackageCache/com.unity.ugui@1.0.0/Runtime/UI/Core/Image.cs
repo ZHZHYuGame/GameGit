@@ -1105,6 +1105,12 @@ namespace UnityEngine.UI
 
                     int y2 = y + 1;
 
+<<<<<<< HEAD
+=======
+                    // Check for zero or negative dimensions to prevent invalid quads (UUM-71372)
+                    if ((s_VertScratch[x2].x - s_VertScratch[x].x <= 0) || (s_VertScratch[y2].y - s_VertScratch[y].y <= 0))
+                        continue;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
                     AddQuad(toFill,
                         new Vector2(s_VertScratch[x].x, s_VertScratch[y].y),
