@@ -11,6 +11,11 @@ namespace UnityEditor.Tilemaps
         static class Styles
         {
             public static readonly GUIContent gridSelectionLabel = EditorGUIUtility.TrTextContent("Grid Selection");
+<<<<<<< HEAD
+=======
+
+            public static readonly string iconPath = "Packages/com.unity.2d.tilemap/Editor/Icons/GridSelection.png";
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         private void OnValidate()
@@ -22,7 +27,11 @@ namespace UnityEditor.Tilemaps
         private void OnEnable()
         {
             // Give focus to Inspector window for keyboard actions
+<<<<<<< HEAD
             EditorWindow.FocusWindowIfItsOpen<InspectorWindow>();
+=======
+            EditorApplication.delayCall += () => EditorWindow.FocusWindowIfItsOpen<InspectorWindow>();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         public override void OnInspectorGUI()
@@ -39,13 +48,24 @@ namespace UnityEditor.Tilemaps
                     GridPaintingState.UnlockGridPaintPaletteClipboardForEditing();
                     GridPaintingState.RepaintGridPaintPaletteWindow();
                 }
+<<<<<<< HEAD
+=======
+                else
+                {
+                    GridSelection.SaveStandalone();
+                }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             }
         }
 
         protected override void OnHeaderGUI()
         {
             EditorGUILayout.BeginHorizontal(EditorStyles.inspectorBig);
+<<<<<<< HEAD
             Texture2D icon = AssetPreview.GetMiniTypeThumbnail(typeof(Grid));
+=======
+            Texture2D icon = EditorGUIUtility.LoadIcon(Styles.iconPath);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             GUILayout.Label(icon, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
             EditorGUILayout.BeginVertical();
             GUILayout.Label(Styles.gridSelectionLabel);

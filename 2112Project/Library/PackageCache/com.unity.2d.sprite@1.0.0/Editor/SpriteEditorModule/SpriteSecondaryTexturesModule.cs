@@ -14,6 +14,10 @@ namespace UnityEditor._2D.Sprite.Editor
         private static class Styles
         {
             public static readonly string invalidEntriesWarning = L10n.Tr("Invalid secondary Texture entries (without names or Textures) have been removed.");
+<<<<<<< HEAD
+=======
+            public static readonly string invalidSourcesWarning = L10n.Tr("Source texture used as secondary Texture. This is invalid and removed.");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             public static readonly string nameUniquenessWarning = L10n.Tr("Every secondary Texture attached to the Sprite must have a unique name.");
             public static readonly string builtInNameCollisionWarning = L10n.Tr("The names _MainTex and _AlphaTex are reserved for internal use.");
             public static readonly GUIContent panelTitle = EditorGUIUtility.TrTextContent("Secondary Textures");
@@ -38,15 +42,35 @@ namespace UnityEditor._2D.Sprite.Editor
         {
             if (apply)
             {
+<<<<<<< HEAD
                 var secondaryTextureDataProvider = spriteEditor.GetDataProvider<ISecondaryTextureDataProvider>();
 
+=======
+                var spriteAssetPath = "";
+                var secondaryTextureDataProvider = spriteEditor.GetDataProvider<ISecondaryTextureDataProvider>();
+                var spriteDataProvider = spriteEditor.GetDataProvider<ISpriteEditorDataProvider>();
+                if (spriteDataProvider != null)
+                {
+                    var assetImporter = spriteDataProvider.targetObject as AssetImporter;
+                    spriteAssetPath = assetImporter != null ? assetImporter.assetPath : spriteAssetPath;
+                }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
                 // Remove invalid entries.
                 var validEntries = secondaryTextureList.FindAll(x => (x.name != null && x.name != "" && x.texture != null));
                 if (validEntries.Count < secondaryTextureList.Count)
                     Debug.Log(Styles.invalidEntriesWarning);
 
+<<<<<<< HEAD
                 secondaryTextureDataProvider.textures = validEntries.ToArray();
+=======
+                // Remove entries with Sprite's source as secondary textures.
+                var finalEntries = validEntries.FindAll(x => (AssetDatabase.GetAssetPath(x.texture) != spriteAssetPath));
+                if (finalEntries.Count < validEntries.Count)
+                    Debug.Log(Styles.invalidSourcesWarning);
+
+                secondaryTextureDataProvider.textures = finalEntries.ToArray();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             }
 
             return true;

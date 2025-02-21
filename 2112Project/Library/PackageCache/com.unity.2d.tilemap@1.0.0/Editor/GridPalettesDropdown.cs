@@ -14,13 +14,22 @@ namespace UnityEditor.Tilemaps
         {
             public int Count()
             {
+<<<<<<< HEAD
                 return GridPalettes.palettes.Count + 1;
+=======
+                return GridPaintingState.palettes.Count + 1;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             }
 
             public object GetItem(int index)
             {
+<<<<<<< HEAD
                 if (index < GridPalettes.palettes.Count)
                     return GridPalettes.palettes[index];
+=======
+                if (index < GridPaintingState.palettes.Count)
+                    return GridPaintingState.palettes[index];
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
                 return null;
             }
@@ -52,9 +61,15 @@ namespace UnityEditor.Tilemaps
 
             public string GetName(int index)
             {
+<<<<<<< HEAD
                 if (index < GridPalettes.palettes.Count)
                     return GridPalettes.palettes[index].name;
                 else if (index == GridPalettes.palettes.Count)
+=======
+                if (index < GridPaintingState.palettes.Count)
+                    return GridPaintingState.palettes[index].name;
+                else if (index == GridPaintingState.palettes.Count)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                     return "Create New Palette";
                 else
                     return "";
@@ -67,7 +82,11 @@ namespace UnityEditor.Tilemaps
 
             public int[] GetSeperatorIndices()
             {
+<<<<<<< HEAD
                 return new int[] { GridPalettes.palettes.Count - 1 };
+=======
+                return new int[] { GridPaintingState.palettes.Count - 1 };
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             }
         }
     }

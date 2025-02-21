@@ -140,6 +140,7 @@ namespace UnityEngine.UI
             else
                 displayIndex = currentEventCamera.targetDisplay;
 
+<<<<<<< HEAD
             var eventPosition = MultipleDisplayUtilities.RelativeMouseAtScaled(eventData.position);
             if (eventPosition != Vector3.zero)
             {
@@ -165,6 +166,13 @@ namespace UnityEngine.UI
 
                 // We dont really know in which display the event occured. We will process the event assuming it occured in our display.
             }
+=======
+            Vector3 eventPosition = MultipleDisplayUtilities.GetRelativeMousePositionForRaycast(eventData);
+
+            // Discard events that are not part of this display so the user does not interact with multiple displays at once.
+            if ((int) eventPosition.z != displayIndex)
+                return;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
             // Convert to view space
             Vector2 pos;
@@ -212,9 +220,17 @@ namespace UnityEngine.UI
                 {
                     if (ReflectionMethodsCache.Singleton.raycast3D != null)
                     {
+<<<<<<< HEAD
                         var hits = ReflectionMethodsCache.Singleton.raycast3DAll(ray, distanceToClipPlane, (int)m_BlockingMask);
                         if (hits.Length > 0)
                             hitDistance = hits[0].distance;
+=======
+                        RaycastHit hit;
+                        if (ReflectionMethodsCache.Singleton.raycast3D(ray, out hit, distanceToClipPlane, (int)m_BlockingMask))
+                        {
+                            hitDistance = hit.distance;
+                        }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                     }
                 }
 #endif

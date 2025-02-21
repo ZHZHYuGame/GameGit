@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor.EditorTools;
+<<<<<<< HEAD
 using UnityEngine;
 using Object = UnityEngine.Object;
+=======
+using UnityEditor.ShortcutManagement;
+using UnityEngine;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
 namespace UnityEditor.Tilemaps
 {
@@ -23,7 +28,18 @@ namespace UnityEditor.Tilemaps
         [SerializeField] private GridBrushBase m_Brush; // Which brush will handle painting callbacks
         [SerializeField] private PaintableGrid m_ActiveGrid; // Grid that has painting focus (can be palette, too)
         [SerializeField] private PaintableGrid m_LastActiveGrid; // Grid that last had painting focus (can be palette, too)
+<<<<<<< HEAD
         [SerializeField] private HashSet<Object> m_InterestedPainters = new HashSet<Object>(); // A list of objects that can paint using the GridPaintingState
+=======
+        [SerializeField] private HashSet<System.Object> m_InterestedPainters = new HashSet<System.Object>(); // A list of objects that can paint using the GridPaintingState
+
+        [SerializeField] private GameObject m_Palette;
+
+        [SerializeField] private bool m_DrawGridGizmo = true;
+        [SerializeField] private bool m_DrawGizmos;
+
+        [SerializeField] private bool m_IsEditing;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
         private GameObject[] m_CachedPaintTargets;
         private bool m_FlushPaintTargetCache;
@@ -31,6 +47,14 @@ namespace UnityEditor.Tilemaps
         private bool m_SavingPalette;
         private float m_BrushToolbarSize;
 
+<<<<<<< HEAD
+=======
+        private GridBrushEditorBase m_PreviousToolActivatedEditor;
+        private GridBrushBase.Tool m_PreviousToolActivated;
+
+        private PaintableSceneViewGrid m_PaintableSceneViewGrid;
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         /// <summary>
         /// Callback when the Tile Palette's active target has changed
         /// </summary>
@@ -40,15 +64,61 @@ namespace UnityEditor.Tilemaps
         /// </summary>
         public static event Action<GridBrushBase> brushChanged;
         /// <summary>
+<<<<<<< HEAD
         /// Callback when the Tile Palette's active palette GameObject has changed.
         /// </summary>
         public static event Action<GameObject> paletteChanged;
+=======
+        /// Callback when the Tile Palette's active brush tools have changed.
+        /// </summary>
+        public static event Action brushToolsChanged;
+        /// <summary>
+        /// Callback before the Tile Palette's active palette GameObject has changed.
+        /// </summary>
+        public static event Action beforePaletteChanged;
+        /// <summary>
+        /// Callback when the Tile Palette's active palette GameObject has changed.
+        /// </summary>
+        public static event Action<GameObject> paletteChanged;
+        /// <summary>
+        /// Callback when the Tile Palette's list of palettes has changed
+        /// </summary>
+        public static event Action palettesChanged;
+        /// <summary>
+        /// Callback when the Tile Palette's valid targets has changed.
+        /// </summary>
+        public static event Action validTargetsChanged;
+        /// <summary>
+        /// Callback when Tile Palette edit mode has changed.
+        /// </summary>
+        public static event Action editModeChanged;
+
+        private static readonly string k_TilemapLastPaletteEditorPref = "TilemapLastPalette";
+        private string lastTilemapPalette
+        {
+            get
+            {
+                return EditorPrefs.GetString(k_TilemapLastPaletteEditorPref, "");
+            }
+            set
+            {
+                EditorPrefs.SetString(k_TilemapLastPaletteEditorPref, value);
+            }
+        }
+
+        readonly TilemapEditorTool.ShortcutContext m_ShortcutContext = new TilemapEditorTool.ShortcutContext { active = true };
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
         private void OnEnable()
         {
             EditorApplication.hierarchyChanged += HierarchyChanged;
             EditorApplication.playModeStateChanged += PlayModeStateChanged;
             Selection.selectionChanged += OnSelectionChange;
+<<<<<<< HEAD
+=======
+            Undo.selectionUndoRedoPerformed += OnSelectionUndoRedoPerformed;
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             m_FlushPaintTargetCache = true;
         }
 
@@ -58,6 +128,7 @@ namespace UnityEditor.Tilemaps
             EditorApplication.hierarchyChanged -= HierarchyChanged;
             EditorApplication.playModeStateChanged -= PlayModeStateChanged;
             Selection.selectionChanged -= OnSelectionChange;
+<<<<<<< HEAD
             FlushCache();
         }
 
@@ -69,6 +140,178 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+=======
+            Undo.selectionUndoRedoPerformed -= OnSelectionUndoRedoPerformed;
+            FlushCache();
+        }
+
+        private void OnEditEnable()
+        {
+            isEditing = true;
+            if (palette == null && !String.IsNullOrEmpty(lastTilemapPalette))
+            {
+                var lastPalette = GridPalettes.palettes
+                    .Where((paletteInList, _) => (AssetDatabase.GetAssetPath(paletteInList) == lastTilemapPalette))
+                    .FirstOrDefault();
+                if (lastPalette != null)
+                    palette = lastPalette;
+            }
+            if (palette == null && GridPalettes.palettes.Count > 0)
+            {
+                palette = GridPalettes.palettes[0];
+            }
+
+            if (m_PaintableSceneViewGrid == null)
+            {
+                m_PaintableSceneViewGrid = CreateInstance<PaintableSceneViewGrid>();
+                m_PaintableSceneViewGrid.hideFlags = HideFlags.HideAndDontSave;
+            }
+
+            m_FlushPaintTargetCache = true;
+            GridPaletteBrushes.FlushCache();
+            GridPalettes.palettesChanged += PalettesChanged;
+            ShortcutIntegration.instance.profileManager.shortcutBindingChanged += UpdateTooltips;
+
+            scenePaintTargetChanged += TilemapFocusModeUtility.OnScenePaintTargetChanged;
+            brushChanged += TilemapFocusModeUtility.OnBrushChanged;
+            paletteChanged += PaletteChanged;
+            SceneView.duringSceneGui += TilemapFocusModeUtility.OnSceneViewGUI;
+
+            ToolManager.activeToolChanged += ActiveToolChanged;
+            ToolManager.activeToolChanging += ActiveToolChanging;
+
+            ShortcutIntegration.instance.contextManager.RegisterToolContext(m_ShortcutContext);
+        }
+
+        private void PaletteChanged(GameObject obj)
+        {
+            lastTilemapPalette = AssetDatabase.GetAssetPath(palette);
+        }
+
+        private void PalettesChanged()
+        {
+            palettesChanged?.Invoke();
+        }
+
+        private void OnEditDisable()
+        {
+            TilemapFocusModeUtility.SetFocusMode(TilemapFocusModeUtility.TilemapFocusMode.None);
+
+            CallOnToolDeactivated();
+
+            gridBrush = null;
+
+            DestroyImmediate(m_PaintableSceneViewGrid);
+
+            if (PaintableGrid.InGridEditMode())
+            {
+                // Set Editor Tool to an always available Tool, as Tile Palette Tools are not available any more
+                ToolManager.SetActiveTool<ViewModeTool>();
+            }
+
+            ShortcutIntegration.instance.profileManager.shortcutBindingChanged -= UpdateTooltips;
+            ToolManager.activeToolChanged -= ActiveToolChanged;
+            ToolManager.activeToolChanging -= ActiveToolChanging;
+            SceneView.duringSceneGui -= TilemapFocusModeUtility.OnSceneViewGUI;
+            brushChanged -= TilemapFocusModeUtility.OnBrushChanged;
+            paletteChanged -= PaletteChanged;
+            GridPalettes.palettesChanged -= PalettesChanged;
+
+            ShortcutIntegration.instance.contextManager.DeregisterToolContext(m_ShortcutContext);
+
+            isEditing = false;
+        }
+
+        private void ActiveToolChanged()
+        {
+            if (gridBrush != null && PaintableGrid.InGridEditMode() && activeBrushEditor != null)
+            {
+                GridBrushBase.Tool tool = PaintableGrid.EditTypeToBrushTool(ToolManager.activeToolType);
+                activeBrushEditor.OnToolActivated(tool);
+                m_PreviousToolActivatedEditor = activeBrushEditor;
+                m_PreviousToolActivated = tool;
+
+                for (int i = 0; i < TilePaletteMouseCursorUtility.MouseStyles.sceneViewEditModes.Length; ++i)
+                {
+                    if (TilePaletteMouseCursorUtility.MouseStyles.sceneViewEditModes[i] == tool)
+                    {
+                        Cursor.SetCursor(TilePaletteMouseCursorUtility.MouseStyles.mouseCursorTextures[i],
+                            TilePaletteMouseCursorUtility.MouseStyles.mouseCursorTextures[i] != null ? TilePaletteMouseCursorUtility.MouseStyles.mouseCursorOSHotspot[(int)SystemInfo.operatingSystemFamily] : Vector2.zero,
+                            CursorMode.Auto);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            }
+
+            if (GridSelection.active
+                && !TilemapEditorTool.IsActive(typeof(MoveTool))
+                && !TilemapEditorTool.IsActive(typeof(SelectTool))
+                && !ToolManager.activeToolType.IsSubclassOf(typeof(GridSelectionTool)))
+            {
+                GridSelection.Clear();
+            }
+        }
+
+        private void ActiveToolChanging()
+        {
+            CallOnToolDeactivated();
+        }
+
+        private void CallOnToolDeactivated()
+        {
+            if (gridBrush != null && m_PreviousToolActivatedEditor != null)
+            {
+                m_PreviousToolActivatedEditor.OnToolDeactivated(m_PreviousToolActivated);
+                m_PreviousToolActivatedEditor = null;
+
+                if (!PaintableGrid.InGridEditMode())
+                    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            }
+        }
+
+        private void OnSelectionChange()
+        {
+            if (!hasInterestedPainters)
+                return;
+
+            var selectedObject = Selection.activeGameObject;
+            if (ValidatePaintTarget(selectedObject))
+            {
+                scenePaintTarget = selectedObject;
+            }
+
+            if (selectedObject != null)
+            {
+                var isPrefab = EditorUtility.IsPersistent(selectedObject) || (selectedObject.hideFlags & HideFlags.NotEditable) != 0;
+                if (isPrefab)
+                {
+                    var assetPath = AssetDatabase.GetAssetPath(selectedObject);
+                    var allAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
+                    foreach (var asset in allAssets)
+                    {
+                        if (asset != null && asset.GetType() == typeof(GridPalette))
+                        {
+                            var targetPalette = (GameObject)AssetDatabase.LoadMainAssetAtPath(assetPath);
+                            if (targetPalette != palette)
+                                palette = targetPalette;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OnSelectionUndoRedoPerformed(Undo.UndoRedoType undo)
+        {
+            if (GridSelection.active && !TilemapEditorTool.IsActive(typeof(SelectTool)))
+                TilemapEditorTool.ToggleActiveEditorTool(typeof(SelectTool));
+        }
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         private void PlayModeStateChanged(PlayModeStateChange state)
         {
             if (state == PlayModeStateChange.ExitingEditMode)
@@ -119,12 +362,31 @@ namespace UnityEditor.Tilemaps
                     if (comparer != null)
                         Array.Sort(m_CachedPaintTargets, comparer);
                 }
+<<<<<<< HEAD
 
                 m_FlushPaintTargetCache = false;
+=======
+                m_FlushPaintTargetCache = false;
+                validTargetsChanged?.Invoke();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             }
             return m_CachedPaintTargets;
         }
 
+<<<<<<< HEAD
+=======
+        private static void UpdateTooltips(IShortcutProfileManager obj, Identifier identifier, ShortcutBinding oldBinding, ShortcutBinding newBinding)
+        {
+            TilemapEditorTool.UpdateTooltips();
+        }
+
+        internal static void RegisterShortcutContext()
+        {
+            // ShortcutIntegration instance is recreated after LoadLayout which wipes the OnEnable registration
+            ShortcutIntegration.instance.contextManager.RegisterToolContext(instance.m_ShortcutContext);
+        }
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         internal static void AutoSelectPaintTarget()
         {
             if (activeBrushEditor != null)
@@ -222,17 +484,29 @@ namespace UnityEditor.Tilemaps
         {
             get
             {
+<<<<<<< HEAD
                 if (GridPaintPaletteWindow.instances.Count > 0)
                     return GridPaintPaletteWindow.instances[0].palette;
                 return null;
+=======
+                return instance.m_Palette;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             }
             set
             {
                 if (value == null || !GridPalettes.palettes.Contains(value))
                     throw new ArgumentException(L10n.Tr("Unable to set invalid palette"));
+<<<<<<< HEAD
                 if (GridPaintPaletteWindow.instances.Count > 0 && GridPaintPaletteWindow.instances[0].palette != value)
                 {
                     GridPaintPaletteWindow.instances[0].palette = value;
+=======
+                if (instance.m_Palette != value)
+                {
+                    OnBeforePaletteChanged();
+                    instance.m_Palette = value;
+                    OnPaletteChanged(instance.m_Palette);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 }
             }
         }
@@ -244,8 +518,16 @@ namespace UnityEditor.Tilemaps
         /// <returns>True if the target GameObject is part of the active palette. False if not.</returns>
         public static bool IsPartOfActivePalette(GameObject target)
         {
+<<<<<<< HEAD
             if (GridPaintPaletteWindow.instances.Count > 0 && target == GridPaintPaletteWindow.instances[0].paletteInstance)
                 return true;
+=======
+            foreach (var clipboard in GridPaintPaletteClipboard.instances)
+            {
+                if (target == clipboard.paletteInstance)
+                    return true;
+            }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             if (target == palette)
                 return true;
             var parent = target.transform.parent;
@@ -298,10 +580,46 @@ namespace UnityEditor.Tilemaps
             get { return instance.m_LastActiveGrid; }
         }
 
+<<<<<<< HEAD
         internal static EditorTool[] activeBrushTools
         {
             get { return instance.m_BrushTools; }
             set { instance.m_BrushTools = value; }
+=======
+        internal static PaintableSceneViewGrid paintableSceneViewGrid
+        {
+            get => instance.m_PaintableSceneViewGrid;
+        }
+
+        /// <summary>
+        /// The last active mouse position on the `SceneView`
+        /// when the `GridPaintingState` is active.
+        /// </summary>
+        public static Vector2 lastSceneViewMousePosition
+        {
+            get => paintableSceneViewGrid.mousePosition;
+        }
+
+        /// <summary>
+        /// The last active grid position on the `SceneView`
+        /// when the `GridPaintingState` is active.
+        /// </summary>
+        public static Vector3Int lastSceneViewGridPosition
+        {
+            get => new Vector3Int(paintableSceneViewGrid.mouseGridPosition.x
+                , paintableSceneViewGrid.mouseGridPosition.y
+                , paintableSceneViewGrid.zPosition);
+        }
+
+        internal static EditorTool[] activeBrushTools
+        {
+            get { return instance.m_BrushTools; }
+            set
+            {
+                instance.m_BrushTools = value;
+                brushToolsChanged?.Invoke();
+            }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         internal static float activeBrushToolbarSize
@@ -315,6 +633,37 @@ namespace UnityEditor.Tilemaps
             set { instance.m_BrushToolbarSize = value;  }
         }
 
+<<<<<<< HEAD
+=======
+        internal static bool drawGridGizmo
+        {
+            get => instance.m_DrawGridGizmo;
+            set => instance.m_DrawGridGizmo = value;
+        }
+
+        internal static bool drawGizmos
+        {
+            get => instance.m_DrawGizmos;
+            set => instance.m_DrawGizmos = value;
+        }
+
+        /// <summary>
+        /// Returns whether GridPaintingState is active for editing.
+        /// </summary>
+        public static bool isEditing
+        {
+            get => instance.m_IsEditing;
+            internal set
+            {
+                if (value != instance.m_IsEditing)
+                {
+                    instance.m_IsEditing = value;
+                    editModeChanged?.Invoke();
+                }
+            }
+        }
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         private static void CalculateToolbarSize()
         {
             GUIStyle toolbarStyle = "Command";
@@ -372,10 +721,23 @@ namespace UnityEditor.Tilemaps
             set { instance.m_SavingPalette = value; }
         }
 
+<<<<<<< HEAD
         internal static void OnPaletteChanged(GameObject palette)
         {
             if (null != paletteChanged)
                 paletteChanged(palette);
+=======
+        internal static void OnBeforePaletteChanged()
+        {
+            if (null != beforePaletteChanged)
+                beforePaletteChanged();
+        }
+
+        internal static void OnPaletteChanged(GameObject changedPalette)
+        {
+            if (null != paletteChanged)
+                paletteChanged(changedPalette);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         internal static void UpdateBrushToolbar()
@@ -388,18 +750,33 @@ namespace UnityEditor.Tilemaps
 
         internal static void UpdateActiveGridPalette()
         {
+<<<<<<< HEAD
             if (GridPaintPaletteWindow.instances.Count > 0)
                 GridPaintPaletteWindow.instances[0].DelayedResetPreviewInstance();
+=======
+            foreach (var clipboard in GridPaintPaletteClipboard.instances)
+            {
+                clipboard.DelayedResetPreviewInstance();
+            }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         internal static void RepaintGridPaintPaletteWindow()
         {
+<<<<<<< HEAD
             if (GridPaintPaletteWindow.instances.Count > 0)
                 GridPaintPaletteWindow.instances[0].Repaint();
+=======
+            foreach (var clipboard in GridPaintPaletteClipboard.instances)
+            {
+                clipboard.Repaint();
+            }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         internal static void UnlockGridPaintPaletteClipboardForEditing()
         {
+<<<<<<< HEAD
             if (GridPaintPaletteWindow.instances.Count > 0)
                 GridPaintPaletteWindow.instances[0].clipboardView.UnlockAndEdit();
         }
@@ -417,6 +794,31 @@ namespace UnityEditor.Tilemaps
         private bool hasInterestedPainters
         {
             get { return m_InterestedPainters.Count > 0; }
+=======
+            foreach (var clipboard in GridPaintPaletteClipboard.instances)
+            {
+                clipboard.UnlockAndEdit();
+            }
+        }
+
+        internal static void RegisterPainterInterest(System.Object painter)
+        {
+            var added = instance.m_InterestedPainters.Add(painter);
+            if (added && instance.m_InterestedPainters.Count == 1)
+                instance.OnEditEnable();
+        }
+
+        internal static void UnregisterPainterInterest(System.Object painter)
+        {
+            var removed = instance.m_InterestedPainters.Remove(painter);
+            if (removed && instance.m_InterestedPainters.Count == 0)
+                instance.OnEditDisable();
+        }
+
+        internal static bool hasInterestedPainters
+        {
+            get { return instance != null && instance.m_InterestedPainters.Count > 0; }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
     }
 }

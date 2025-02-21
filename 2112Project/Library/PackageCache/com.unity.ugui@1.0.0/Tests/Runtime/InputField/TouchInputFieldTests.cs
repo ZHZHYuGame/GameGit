@@ -132,7 +132,11 @@ namespace InputfieldTests
             inputField.OnSelect(eventData);
 
 #if UNITY_GAMECORE && !UNITY_EDITOR
+<<<<<<< HEAD
             // On Xbox, the onScreenKeyboard is going to constrain the application and make it go out of focus. 
+=======
+            // On Xbox, the onScreenKeyboard is going to constrain the application and make it go out of focus.
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             // We need to wait for the application to go out of focus before we can close the onScreenKeyboard.
             while (Application.isFocused)
             {
@@ -279,7 +283,11 @@ namespace InputfieldTests
         }
 
         [UnityTest]
+<<<<<<< HEAD
         [UnityPlatform(exclude = new[] { RuntimePlatform.IPhonePlayer, RuntimePlatform.PS4, RuntimePlatform.PS5 })]
+=======
+        [UnityPlatform(exclude = new[] { RuntimePlatform.IPhonePlayer, RuntimePlatform.PS4, RuntimePlatform.PS5, RuntimePlatform.VisionOS })] // disabled on visionOS due to UUM-61018
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         public IEnumerator IsTouchScreenKeyboardVisible()
         {
             if (!TouchScreenKeyboard.isSupported)

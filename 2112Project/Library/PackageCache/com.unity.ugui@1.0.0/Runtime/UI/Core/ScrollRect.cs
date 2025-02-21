@@ -329,7 +329,11 @@ namespace UnityEngine.UI
                 if (m_HorizontalScrollbar)
                     m_HorizontalScrollbar.onValueChanged.RemoveListener(SetHorizontalNormalizedPosition);
                 m_HorizontalScrollbar = value;
+<<<<<<< HEAD
                 if (m_HorizontalScrollbar)
+=======
+                if (m_Horizontal && m_HorizontalScrollbar)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                     m_HorizontalScrollbar.onValueChanged.AddListener(SetHorizontalNormalizedPosition);
                 SetDirtyCaching();
             }
@@ -373,7 +377,11 @@ namespace UnityEngine.UI
                 if (m_VerticalScrollbar)
                     m_VerticalScrollbar.onValueChanged.RemoveListener(SetVerticalNormalizedPosition);
                 m_VerticalScrollbar = value;
+<<<<<<< HEAD
                 if (m_VerticalScrollbar)
+=======
+                if (m_Vertical && m_VerticalScrollbar)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                     m_VerticalScrollbar.onValueChanged.AddListener(SetVerticalNormalizedPosition);
                 SetDirtyCaching();
             }
@@ -572,9 +580,15 @@ namespace UnityEngine.UI
         {
             base.OnEnable();
 
+<<<<<<< HEAD
             if (m_HorizontalScrollbar)
                 m_HorizontalScrollbar.onValueChanged.AddListener(SetHorizontalNormalizedPosition);
             if (m_VerticalScrollbar)
+=======
+            if (m_Horizontal && m_HorizontalScrollbar)
+                m_HorizontalScrollbar.onValueChanged.AddListener(SetHorizontalNormalizedPosition);
+            if (m_Vertical && m_VerticalScrollbar)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 m_VerticalScrollbar.onValueChanged.AddListener(SetVerticalNormalizedPosition);
 
             CanvasUpdateRegistry.RegisterCanvasElementForLayoutRebuild(this);
@@ -835,6 +849,11 @@ namespace UnityEngine.UI
             UpdateBounds();
             float deltaTime = Time.unscaledDeltaTime;
             Vector2 offset = CalculateOffset(Vector2.zero);
+<<<<<<< HEAD
+=======
+
+            // Skip processing if deltaTime is invalid (0 or less) as it will cause inaccurate velocity calculations and a divide by zero error.
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             if (deltaTime > 0.0f)
             {
                 if (!m_Dragging && (offset != Vector2.zero || m_Velocity != Vector2.zero))

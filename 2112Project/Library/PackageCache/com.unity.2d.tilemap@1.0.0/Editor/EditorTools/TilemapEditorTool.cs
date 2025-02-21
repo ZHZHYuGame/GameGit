@@ -17,6 +17,12 @@ namespace UnityEditor.Tilemaps
         /// </summary>
         public class ShortcutContext : IShortcutToolContext
         {
+<<<<<<< HEAD
+=======
+            /// <summary>
+            /// Returns whether the ShortcutContext is active or not.
+            /// </summary>
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             public bool active { get; set; }
         }
 
@@ -53,6 +59,10 @@ namespace UnityEditor.Tilemaps
         /// <summary>
         /// The horizontal size of a Toolbar with all the TilemapEditorTools
         /// </summary>
+<<<<<<< HEAD
+=======
+        [Obsolete]
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         public static float tilemapEditorToolsToolbarSize
         {
             get
@@ -122,7 +132,20 @@ namespace UnityEditor.Tilemaps
         /// <returns>Whether the tool is available for use</returns>
         public override bool IsAvailable()
         {
+<<<<<<< HEAD
             return (GridPaintPaletteWindow.instances.Count > 0) && GridPaintingState.gridBrush;
+=======
+            return (GridPaintingState.isEditing) && GridPaintingState.gridBrush;
+        }
+
+        /// <summary>
+        /// Callback when a TilemapEditorTool is activated
+        /// </summary>
+        public override void OnActivated()
+        {
+            //if (ToolManager.activeContextType != typeof(GridSelectionToolContext))
+            //    ToolManager.SetActiveContext<GridSelectionToolContext>();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         internal static void UpdateTooltips()
@@ -230,7 +253,11 @@ namespace UnityEditor.Tilemaps
                     var toolType = brushToolsAttribute.toolList[i];
                     if (!s_TilemapEditorToolsMap.TryGetValue(toolType, out EditorTool editorTool))
                     {
+<<<<<<< HEAD
                         editorTool = (EditorTool)ScriptableObject.CreateInstance(toolType);
+=======
+                        editorTool = (EditorTool)CreateInstance(toolType);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                         s_TilemapEditorToolsMap.Add(toolType, editorTool);
                     }
                     editorTools[i] = editorTool;

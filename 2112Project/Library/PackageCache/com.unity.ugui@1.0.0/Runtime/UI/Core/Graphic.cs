@@ -506,13 +506,22 @@ namespace UnityEngine.UI
         {
             get
             {
+<<<<<<< HEAD
                 var components = ListPool<Component>.Get();
                 GetComponents(typeof(IMaterialModifier), components);
+=======
+                var components = ListPool<IMaterialModifier>.Get();
+                GetComponents<IMaterialModifier>(components);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
                 var currentMat = material;
                 for (var i = 0; i < components.Count; i++)
                     currentMat = (components[i] as IMaterialModifier).GetModifiedMaterial(currentMat);
+<<<<<<< HEAD
                 ListPool<Component>.Release(components);
+=======
+                ListPool<IMaterialModifier>.Release(components);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 return currentMat;
             }
         }
@@ -745,7 +754,10 @@ namespace UnityEngine.UI
                 {
                     s_Mesh = new Mesh();
                     s_Mesh.name = "Shared UI Mesh";
+<<<<<<< HEAD
                     s_Mesh.hideFlags = HideFlags.HideAndDontSave;
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 }
                 return s_Mesh;
             }
