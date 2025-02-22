@@ -65,11 +65,15 @@ namespace UnityEditor.UI
                 if (EditorGUI.EndChangeCheck())
                 {
                     if (m_WholeNumbers.boolValue ? Mathf.Round(newMin) < m_MaxValue.floatValue : newMin < m_MaxValue.floatValue)
+<<<<<<< HEAD
+                        m_MinValue.floatValue = newMin;
+=======
                     {
                         m_MinValue.floatValue = newMin;
                         if (m_Value.floatValue < newMin)
                             m_Value.floatValue = newMin;
                     }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 }
 
                 EditorGUI.BeginChangeCheck();
@@ -77,11 +81,15 @@ namespace UnityEditor.UI
                 if (EditorGUI.EndChangeCheck())
                 {
                     if (m_WholeNumbers.boolValue ? Mathf.Round(newMax) > m_MinValue.floatValue : newMax > m_MinValue.floatValue)
+<<<<<<< HEAD
+                        m_MaxValue.floatValue = newMax;
+=======
                     {
                         m_MaxValue.floatValue = newMax;
                         if (m_Value.floatValue > newMax)
                             m_Value.floatValue = newMax;
                     }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 }
 
                 EditorGUILayout.PropertyField(m_WholeNumbers);
@@ -91,6 +99,10 @@ namespace UnityEditor.UI
                 if (areMinMaxEqual)
                     EditorGUILayout.HelpBox("Min Value and Max Value cannot be equal.", MessageType.Warning);
 
+<<<<<<< HEAD
+                EditorGUI.BeginDisabledGroup(areMinMaxEqual);
+                EditorGUILayout.Slider(m_Value, m_MinValue.floatValue, m_MaxValue.floatValue);
+=======
                 if (m_WholeNumbers.boolValue)
                     m_Value.floatValue = Mathf.Round(m_Value.floatValue);
 
@@ -110,6 +122,7 @@ namespace UnityEditor.UI
                         }
                     }
                 }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 EditorGUI.EndDisabledGroup();
 
                 bool warning = false;

@@ -265,6 +265,12 @@ namespace UnityEditor.U2D.Sprites
         {
             float mipLevel = Mathf.Min(m_MipLevel, TextureUtil.GetMipmapCount(m_Texture) - 1);
 
+<<<<<<< HEAD
+            FilterMode oldFilter = m_Texture.filterMode;
+            TextureUtil.SetFilterModeNoDirty(m_Texture, FilterMode.Point);
+
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             if (m_ShowAlpha)
             {
                 // check if we have a valid alpha texture
@@ -276,6 +282,11 @@ namespace UnityEditor.U2D.Sprites
             }
             else
                 EditorGUI.DrawTextureTransparent(m_TextureRect, m_Texture, ScaleMode.StretchToFill, 0, mipLevel);
+<<<<<<< HEAD
+
+            TextureUtil.SetFilterModeNoDirty(m_Texture, oldFilter);
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         protected void DrawScreenspaceBackground()

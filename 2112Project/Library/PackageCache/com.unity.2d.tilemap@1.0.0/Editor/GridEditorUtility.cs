@@ -352,10 +352,17 @@ namespace UnityEditor.Tilemaps
                 case GridLayout.CellLayout.Isometric:
                 case GridLayout.CellLayout.IsometricZAsY:
                 case GridLayout.CellLayout.Rectangle:
+<<<<<<< HEAD
+                    int min = k_GridGizmoVertexCount / -32;
+                    int max = min * -1;
+                    int numCells = max - min;
+                    RectInt bounds = new RectInt(min, min, numCells, numCells);
+=======
                     var min = k_GridGizmoVertexCount / -32;
                     var max = min * -1;
                     var numCells = max - min;
                     var bounds = new RectInt(min, min, numCells, numCells);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
                     return GenerateCachedGridMesh(gridLayout, color, 0f, bounds, MeshTopology.Lines);
             }

@@ -33,6 +33,10 @@ namespace UnityEditor.Tilemaps
         private static long s_LastClosedTime;
         private string m_Name = "New Palette";
         private static GridPaletteAddPopup s_Instance;
+<<<<<<< HEAD
+        private GridPaintPaletteWindow m_Owner;
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         private GridLayout.CellLayout m_Layout;
         private int m_HexagonLayout;
         private GridPalette.CellSizing m_CellSizing;
@@ -40,8 +44,14 @@ namespace UnityEditor.Tilemaps
         private TransparencySortMode m_TransparencySortMode;
         private Vector3 m_TransparencySortAxis = new Vector3(0f, 0f, 1f);
 
+<<<<<<< HEAD
+        void Init(Rect buttonRect, GridPaintPaletteWindow owner)
+        {
+            m_Owner = owner;
+=======
         void Init(Rect buttonRect)
         {
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             m_CellSize = new Vector3(1, 1, 0);
             buttonRect = GUIUtility.GUIToScreenRect(buttonRect);
             ShowAsDropDown(buttonRect, new Vector2(312, 185));
@@ -99,7 +109,11 @@ namespace UnityEditor.Tilemaps
             if (m_Layout == GridLayout.CellLayout.Hexagon)
             {
                 GUILayout.BeginHorizontal();
+<<<<<<< HEAD
+                float oldLabelWidth = UnityEditor.EditorGUIUtility.labelWidth;
+=======
                 float oldLabelWidth = EditorGUIUtility.labelWidth;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 EditorGUIUtility.labelWidth = 94;
                 m_HexagonLayout = EditorGUILayout.Popup(Styles.hexagonLabel, m_HexagonLayout, Styles.hexagonSwizzleTypeLabel);
                 EditorGUIUtility.labelWidth = oldLabelWidth;
@@ -159,7 +173,12 @@ namespace UnityEditor.Tilemaps
                         , swizzle, m_TransparencySortMode, m_TransparencySortAxis);
                     if (go != null)
                     {
+<<<<<<< HEAD
+                        m_Owner.palette = go;
+                        m_Owner.Repaint();
+=======
                         GridPaintingState.palette = go;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                     }
 
                     GUIUtility.ExitGUI();
@@ -170,7 +189,11 @@ namespace UnityEditor.Tilemaps
             GUILayout.EndHorizontal();
         }
 
+<<<<<<< HEAD
+        internal static bool ShowAtPosition(Rect buttonRect, GridPaintPaletteWindow owner)
+=======
         internal static bool ShowAtPosition(Rect buttonRect)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         {
             // We could not use realtimeSinceStartUp since it is set to 0 when entering/exitting playmode, we assume an increasing time when comparing time.
             long nowMilliSeconds = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
@@ -181,7 +204,11 @@ namespace UnityEditor.Tilemaps
                 if (s_Instance == null)
                     s_Instance = ScriptableObject.CreateInstance<GridPaletteAddPopup>();
 
+<<<<<<< HEAD
+                s_Instance.Init(buttonRect, owner);
+=======
                 s_Instance.Init(buttonRect);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 return true;
             }
             return false;

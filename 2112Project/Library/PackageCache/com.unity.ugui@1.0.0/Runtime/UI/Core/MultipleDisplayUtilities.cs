@@ -29,6 +29,8 @@ namespace UnityEngine.UI
             return true;
         }
 
+<<<<<<< HEAD
+=======
         internal static Vector3 GetRelativeMousePositionForRaycast(PointerEventData eventData)
         {
             // The multiple display system is not supported on all platforms, when it is not supported the returned position
@@ -57,6 +59,7 @@ namespace UnityEngine.UI
             return eventPosition;
         }
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         /// <summary>
         /// A version of Display.RelativeMouseAt that scales the position when the main display has a different rendering resolution to the system resolution.
         /// By default, the mouse position is relative to the main render area, we need to adjust this so it is relative to the system resolution

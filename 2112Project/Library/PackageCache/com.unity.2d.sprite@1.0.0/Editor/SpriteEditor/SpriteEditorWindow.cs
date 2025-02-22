@@ -230,6 +230,11 @@ namespace UnityEditor.U2D.Sprites
             public static readonly GUIContent revertButtonLabel = EditorGUIUtility.TrTextContent("Revert");
             public static readonly GUIContent applyButtonLabel = EditorGUIUtility.TrTextContent("Apply");
 
+<<<<<<< HEAD
+            public static readonly GUIContent spriteEditorWindowTitle = EditorGUIUtility.TrTextContent("Sprite Editor");
+
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             public static readonly GUIContent pendingChangesDialogContent = EditorGUIUtility.TrTextContent("The asset was modified outside of Sprite Editor Window.\nDo you want to apply pending changes?");
 
             public static readonly GUIContent applyRevertDialogTitle = EditorGUIUtility.TrTextContent("Unapplied import settings");
@@ -499,10 +504,17 @@ namespace UnityEditor.U2D.Sprites
 
         void OnEnable()
         {
+<<<<<<< HEAD
+            this.name = "SpriteEditorWindow";
+            selectedObject = Selection.activeObject;
+            minSize = new Vector2(360, 200);
+            titleContent = SpriteEditorWindowStyles.spriteEditorWindowTitle;
+=======
             name = "SpriteEditorWindow";
             titleContent = EditorGUIUtility.TrTextContentWithIcon(L10n.Tr("Sprite Editor"), "Packages/com.unity.2d.sprite/Editor/Assets/SpriteEditor.png");
             selectedObject = Selection.activeObject;
             minSize = new Vector2(360, 200);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             m_UndoSystem.RegisterUndoCallback(UndoRedoPerformed);
             EditorApplication.modifierKeysChanged += ModifierKeysChanged;
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
