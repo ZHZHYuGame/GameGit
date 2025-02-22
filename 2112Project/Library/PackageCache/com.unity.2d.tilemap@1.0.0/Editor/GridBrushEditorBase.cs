@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 using UnityEditor.EditorTools;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.Tilemaps;
@@ -16,6 +19,8 @@ namespace UnityEditor.Tilemaps
             public static readonly Color executingColor = new Color(1f, .75f, 0.25f);
         }
 
+<<<<<<< HEAD
+=======
         /// <summary>Returns a tooltip describing the usage of the brush and other helpful information.</summary>
         public virtual string tooltip
         {
@@ -28,6 +33,7 @@ namespace UnityEditor.Tilemaps
             get { return null; }
         }
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         /// <summary>Checks if the Brush allows the changing of Z Position.</summary>
         /// <returns>Whether the Brush can change Z Position.</returns>
         public virtual bool canChangeZPosition
@@ -127,9 +133,14 @@ namespace UnityEditor.Tilemaps
             if (Event.current.type != EventType.Repaint)
                 return;
 
+<<<<<<< HEAD
+            if (tool == GridBrushBase.Tool.Select ||
+                tool == GridBrushBase.Tool.Move)
+=======
             if (tool == GridBrushBase.Tool.Select
                 || tool == GridBrushBase.Tool.Move
                 || GridSelectionTool.IsActive())
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             {
                 if (GridSelection.active && !executing)
                 {
@@ -150,9 +161,14 @@ namespace UnityEditor.Tilemaps
             if (tool == GridBrushBase.Tool.Paint && executing)
                 color = Color.yellow;
 
+<<<<<<< HEAD
+            if (tool == GridBrushBase.Tool.Select ||
+                tool == GridBrushBase.Tool.Move)
+=======
             if (tool == GridBrushBase.Tool.Select
                 || tool == GridBrushBase.Tool.Move
                 || GridSelectionTool.IsActive())
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             {
                 if (executing)
                     color = Styles.executingColor;

@@ -121,6 +121,8 @@ namespace UnityEngine.UI.Tests
         }
 
         [Test]
+<<<<<<< HEAD
+=======
         public void RaycastOverImageWithNonZeroSpritePosition_AlphaHitTestMinimumThreshold()
         {
             var canvas = m_CanvasRoot.GetComponent<Canvas>();
@@ -150,6 +152,7 @@ namespace UnityEngine.UI.Tests
         }
 
         [Test]
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         public void RaycastOverImage_IgnoresDisabledCanvasGroup()
         {
             var canvasGroup = m_CanvasRoot.AddComponent<CanvasGroup>();

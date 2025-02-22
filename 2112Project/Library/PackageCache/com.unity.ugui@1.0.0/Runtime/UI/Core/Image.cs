@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+<<<<<<< HEAD
+=======
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine.Experimental.Rendering;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 using UnityEngine.Serialization;
 using UnityEngine.U2D;
 
@@ -291,7 +294,10 @@ namespace UnityEngine.UI
                         m_SkipMaterialUpdate = m_Sprite.texture == (value ? value.texture : null);
                         m_Sprite = value;
 
+<<<<<<< HEAD
+=======
                         ResetAlphaHitThresholdIfNeeded();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                         SetAllDirty();
                         TrackSprite();
                     }
@@ -302,6 +308,11 @@ namespace UnityEngine.UI
                     m_SkipMaterialUpdate = value.texture == null;
                     m_Sprite = value;
 
+<<<<<<< HEAD
+                    SetAllDirty();
+                    TrackSprite();
+                }
+=======
                     ResetAlphaHitThresholdIfNeeded();
                     SetAllDirty();
                     TrackSprite();
@@ -320,6 +331,7 @@ namespace UnityEngine.UI
                 {
                     return m_Sprite != null && m_Sprite.texture != null && !GraphicsFormatUtility.IsCrunchFormat(m_Sprite.texture.format) && m_Sprite.texture.isReadable;
                 }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             }
         }
 
@@ -638,6 +650,9 @@ namespace UnityEngine.UI
         /// ]]>
         ///</code>
         /// </example>
+<<<<<<< HEAD
+        public float alphaHitTestMinimumThreshold { get { return m_AlphaHitTestMinimumThreshold; } set { m_AlphaHitTestMinimumThreshold = value; } }
+=======
         public float alphaHitTestMinimumThreshold { get { return m_AlphaHitTestMinimumThreshold; }
             set
             {
@@ -647,6 +662,7 @@ namespace UnityEngine.UI
                 m_AlphaHitTestMinimumThreshold = value;
             }
         }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
         /// Controls whether or not to use the generated mesh from the sprite importer.
         [SerializeField] private bool m_UseSpriteMesh;
@@ -769,6 +785,11 @@ namespace UnityEngine.UI
             {
                 if (m_Material != null)
                     return m_Material;
+<<<<<<< HEAD
+#if UNITY_EDITOR
+                if (Application.isPlaying && activeSprite && activeSprite.associatedAlphaSplitTexture != null)
+                    return defaultETC1GraphicMaterial;
+=======
 
                 //Edit and Runtime should use Split Alpha Shader if EditorSettings.spritePackerMode = Sprite Atlas V2
 #if UNITY_EDITOR
@@ -777,6 +798,7 @@ namespace UnityEngine.UI
                 {
                     return defaultETC1GraphicMaterial;
                 }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 #else
 
                 if (activeSprite && activeSprite.associatedAlphaSplitTexture != null)
@@ -917,7 +939,11 @@ namespace UnityEngine.UI
 
         private void TrackSprite()
         {
+<<<<<<< HEAD
+            if (activeSprite != null && (activeSprite.texture == null || activeSprite.isUsingPlaceholder))
+=======
             if (activeSprite != null && activeSprite.texture == null)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             {
                 TrackImage(this);
                 m_Tracked = true;
@@ -1831,9 +1857,12 @@ namespace UnityEngine.UI
 
             Rect rect = GetPixelAdjustedRect();
 
+<<<<<<< HEAD
+=======
             if (m_PreserveAspect)
                 PreserveSpriteAspectRatio(ref rect, new Vector2(activeSprite.texture.width, activeSprite.texture.height));
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             // Convert to have lower left corner as reference point.
             local.x += rectTransform.pivot.x * rect.width;
             local.y += rectTransform.pivot.y * rect.height;
@@ -1841,8 +1870,14 @@ namespace UnityEngine.UI
             local = MapCoordinate(local, rect);
 
             // Convert local coordinates to texture space.
+<<<<<<< HEAD
+            Rect spriteRect = activeSprite.textureRect;
+            float x = (spriteRect.x + local.x) / activeSprite.texture.width;
+            float y = (spriteRect.y + local.y) / activeSprite.texture.height;
+=======
             float x = local.x / activeSprite.texture.width;
             float y = local.y / activeSprite.texture.height;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
             try
             {
@@ -1859,7 +1894,11 @@ namespace UnityEngine.UI
         {
             Rect spriteRect = activeSprite.rect;
             if (type == Type.Simple || type == Type.Filled)
+<<<<<<< HEAD
+                return new Vector2(local.x * spriteRect.width / rect.width, local.y * spriteRect.height / rect.height);
+=======
                 return new Vector2(spriteRect.position.x + local.x * spriteRect.width / rect.width, spriteRect.position.y + local.y * spriteRect.height / rect.height);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
             Vector4 border = activeSprite.border;
             Vector4 adjustedBorder = GetAdjustedBorders(border / pixelsPerUnit, rect);
@@ -1888,7 +1927,11 @@ namespace UnityEngine.UI
                 }
             }
 
+<<<<<<< HEAD
+            return local;
+=======
             return local + spriteRect.position;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         // To track textureless images, which will be rebuild if sprite atlas manager registered a Sprite Atlas that will give this image new texture
@@ -1903,7 +1946,14 @@ namespace UnityEngine.UI
                 if (null != g.activeSprite && spriteAtlas.CanBindTo(g.activeSprite))
                 {
                     g.SetAllDirty();
+<<<<<<< HEAD
+                    if (!spriteAtlas.IsPlaceholder())
+                    {
+                        m_TrackedTexturelessImages.RemoveAt(i);
+                    }
+=======
                     m_TrackedTexturelessImages.RemoveAt(i);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 }
             }
         }

@@ -1,4 +1,16 @@
 using System;
+<<<<<<< HEAD
+
+namespace UnityEditor.Tilemaps
+{
+    internal class GridPaintTargetsDropdown : FlexibleMenu
+    {
+        public GridPaintTargetsDropdown(IFlexibleMenuItemProvider itemProvider, int selectionIndex, FlexibleMenuModifyItemUI modifyItemUi, Action<int, object> itemClickedCallback, float minWidth)
+            : base(itemProvider, selectionIndex, modifyItemUi, itemClickedCallback)
+        {
+            minTextWidth = minWidth;
+        }
+=======
 using UnityEditor.Experimental;
 using UnityEngine;
 
@@ -77,6 +89,7 @@ namespace UnityEditor.Tilemaps
         int maxIndex { get { return m_ShowAddNewPresetItem ? m_ItemProvider.Count() : m_ItemProvider.Count() - 1; } }
         public int selectedIndex { get; set; }
         protected float minTextWidth { get { return m_MinTextWidth; } set { m_MinTextWidth = value; ClearCachedWidth(); } }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
         internal class MenuItemProvider : IFlexibleMenuItemProvider
         {
@@ -130,6 +143,8 @@ namespace UnityEditor.Tilemaps
                 return new int[0];
             }
         }
+<<<<<<< HEAD
+=======
 
         // itemClickedCallback arguments is clicked index, clicked item object
         public GridPaintTargetsDropdown(IFlexibleMenuItemProvider itemProvider, int selectionIndex, FlexibleMenuModifyItemUI modifyItemUi, Action<int, object> itemClickedCallback, float minWidth)
@@ -330,5 +345,6 @@ namespace UnityEditor.Tilemaps
         {
             HandleUtility.Repaint(); // repaints current guiview (needs rename)
         }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     }
 }

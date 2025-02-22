@@ -38,8 +38,11 @@ namespace UnityEditor.Tilemaps
             return instance.CreateDefaultTilemapEditorTools();
         }
 
+<<<<<<< HEAD
+=======
         internal static event Action tilemapEditorToolsChanged;
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         private ReorderableList m_DefaultTypes;
         private ReorderableList m_OtherTypes;
         private bool m_Changed;
@@ -78,7 +81,11 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+        internal void LoadDefaultEditorToolTypes()
+=======
         private void LoadDefaultEditorToolTypes()
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         {
             InitializeAllTilemapEditorToolTypes();
 
@@ -157,9 +164,21 @@ namespace UnityEditor.Tilemaps
             return s_DefaultTilemapEditorTools;
         }
 
+<<<<<<< HEAD
+        internal void ClearExistingDefaultTilemapEditorTools()
+        {
+            if (s_DefaultTilemapEditorTools == null)
+                return;
+
+            for (int i = 0; i < s_DefaultTilemapEditorTools.Length; ++i)
+            {
+                s_DefaultTilemapEditorTools[i] = null;
+            }
+=======
         internal void UpdateTilemapEditorToolsChange()
         {
             tilemapEditorToolsChanged?.Invoke();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         private void OnDrawDefaultElement(Rect rect, int i, bool isactive, bool isfocused)
@@ -263,7 +282,12 @@ namespace UnityEditor.Tilemaps
             {
                 if (GUILayout.Button(TilemapEditorToolProperties.saveLabel))
                 {
+<<<<<<< HEAD
+                    SaveTilemapEditorToolPreferencesAsset(m_DefaultTilemapEditorToolTypes);
+                    ClearExistingDefaultTilemapEditorTools();
+=======
                     SaveTilemapEditorToolPreferences(m_DefaultTilemapEditorToolTypes);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                     m_Changed = false;
                     GridPaintingState.RepaintGridPaintPaletteWindow();
                 }
@@ -277,7 +301,13 @@ namespace UnityEditor.Tilemaps
             }
             if (GUILayout.Button(TilemapEditorToolProperties.resetLabel))
             {
+<<<<<<< HEAD
+                DeleteTilemapEditorToolPreferencesAsset();
+                ClearExistingDefaultTilemapEditorTools();
+                LoadDefaultEditorToolTypes();
+=======
                 ResetTilemapEditorToolPreferences();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 m_DefaultTypes.index = -1;
                 m_OtherTypes.index = -1;
                 m_Changed = false;
@@ -286,6 +316,9 @@ namespace UnityEditor.Tilemaps
             EditorGUILayout.EndHorizontal();
         }
 
+<<<<<<< HEAD
+        internal void DeleteTilemapEditorToolPreferencesAsset()
+=======
         internal void SaveTilemapEditorToolPreferences(List<DefaultTilemapEditorTool> defaultTools)
         {
             SaveTilemapEditorToolPreferencesAsset(defaultTools);
@@ -305,6 +338,7 @@ namespace UnityEditor.Tilemaps
         }
 
         private static void DeleteTilemapEditorToolPreferencesAsset()
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         {
             if (File.Exists(s_AssetPath))
             {
@@ -312,7 +346,11 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+        internal void SaveTilemapEditorToolPreferencesAsset(List<DefaultTilemapEditorTool> defaultTools)
+=======
         private static void SaveTilemapEditorToolPreferencesAsset(List<DefaultTilemapEditorTool> defaultTools)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         {
             if (defaultTools == null)
                 return;
@@ -336,6 +374,9 @@ namespace UnityEditor.Tilemaps
             InternalEditorUtility.SaveToSerializedFileAndForget(new Object[] { saveAsset }, s_AssetPath, true);
         }
 
+<<<<<<< HEAD
+        internal List<DefaultTilemapEditorTool> LoadTilemapEditorToolPreferencesAsset()
+=======
         private static void ClearExistingDefaultTilemapEditorTools()
         {
             if (s_DefaultTilemapEditorTools == null)
@@ -348,6 +389,7 @@ namespace UnityEditor.Tilemaps
         }
 
         private List<DefaultTilemapEditorTool> LoadTilemapEditorToolPreferencesAsset()
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         {
             if (!File.Exists(s_AssetPath))
                 return null;
@@ -361,6 +403,8 @@ namespace UnityEditor.Tilemaps
             }
             return null;
         }
+<<<<<<< HEAD
+=======
 
         private void DeactivateToolIfNotInDefault()
         {
@@ -382,5 +426,6 @@ namespace UnityEditor.Tilemaps
 
             ToolManager.SetActiveTool(typeof(ViewModeTool));
         }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     }
 }
