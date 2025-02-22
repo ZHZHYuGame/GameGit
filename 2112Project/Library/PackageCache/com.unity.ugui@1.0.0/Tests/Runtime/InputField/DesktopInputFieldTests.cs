@@ -49,7 +49,10 @@ namespace InputfieldTests
         }
 
         [UnityTest]
+<<<<<<< HEAD
+=======
         [UnityPlatform(exclude = new[] { RuntimePlatform.Switch })] // Currently InputField.ActivateInputFieldInternal calls Switch SoftwareKeyboard screen ; without user input or a command to close the SoftwareKeyboard this blocks the tests suite
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         public IEnumerator FocusOnPointerClickWithLeftButton()
         {
             InputField inputField = m_PrefabRoot.GetComponentInChildren<InputField>();

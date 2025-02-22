@@ -7,6 +7,9 @@ using UnityObject = UnityEngine.Object;
 namespace UnityEditor.U2D.Sprites
 {
     /// <summary>An interface that allows Sprite Editor Window to edit Sprite data for user custom importer.</summary>
+<<<<<<< HEAD
+    /// <remarks>Implement this interface for [[ScriptedImporter]] to leverage on Sprite Editor Window to edit Sprite data.</remarks>
+=======
     /// <remarks> Use this interface to edit Sprite data.
     /// <code>
     /// using UnityEditor;
@@ -40,6 +43,7 @@ namespace UnityEditor.U2D.Sprites
     /// }
     /// </code>
     /// </remarks>
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     public interface ISpriteEditorDataProvider
     {
         /// <summary>SpriteImportMode to indicate how Sprite data will be imported.</summary>

@@ -268,8 +268,12 @@ namespace UnityEditor.U2D.Sprites
 
             spriteRect.spriteID = GUID.Generate();
 
+<<<<<<< HEAD
+            m_RectsCache.Add(spriteRect);
+=======
             if (!m_RectsCache.Add(spriteRect))
                 return -1;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             spriteEditor.SetDataModified();
 
             return m_RectsCache.spriteRects.Count - 1;
@@ -533,6 +537,8 @@ namespace UnityEditor.U2D.Sprites
                 spriteEditor.SetDataModified();
             }
         }
+<<<<<<< HEAD
+=======
 
         public bool IsOnlyUsingDefaultNamedSpriteRects()
         {
@@ -551,5 +557,6 @@ namespace UnityEditor.U2D.Sprites
 
             return onlyDefaultNames;
         }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     }
 }

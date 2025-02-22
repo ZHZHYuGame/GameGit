@@ -83,7 +83,11 @@ namespace UnityEditor.U2D
         [MenuItem("Assets/Create/2D/Sprite Atlas", priority = k_SpriteAtlasAssetMenuPriority)]
         static void AssetsCreateSpriteAtlas(MenuCommand menuCommand)
         {
+<<<<<<< HEAD
+            if (EditorSettings.spritePackerMode == SpritePackerMode.SpriteAtlasV2)
+=======
             if (EditorSettings.spritePackerMode == SpritePackerMode.SpriteAtlasV2 || EditorSettings.spritePackerMode == SpritePackerMode.SpriteAtlasV2Build)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 CreateSpriteAtlas();
             else
                 ItemCreationUtility.CreateAssetObject<SpriteAtlas>("New Sprite Atlas.spriteatlas");

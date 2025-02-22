@@ -24,8 +24,11 @@ namespace UnityEngine.EventSystems
 
         private PointerEventData m_InputPointerEvent;
 
+<<<<<<< HEAD
+=======
         private const float doubleClickTime = 0.3f;
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         protected StandaloneInputModule()
         {
         }
@@ -349,12 +352,15 @@ namespace UnityEngine.EventSystems
                     pointerEvent.pointerEnter = currentOverGo;
                 }
 
+<<<<<<< HEAD
+=======
                 var resetDiffTime = Time.unscaledTime - pointerEvent.clickTime;
                 if (resetDiffTime >= doubleClickTime)
                 {
                     pointerEvent.clickCount = 0;
                 }
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 // search for the control that will receive the press
                 // if we can't find a press handler set the press
                 // handler to be what would receive a click.
@@ -373,7 +379,11 @@ namespace UnityEngine.EventSystems
                 if (newPressed == pointerEvent.lastPress)
                 {
                     var diffTime = time - pointerEvent.clickTime;
+<<<<<<< HEAD
+                    if (diffTime < 0.3f)
+=======
                     if (diffTime < doubleClickTime)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                         ++pointerEvent.clickCount;
                     else
                         pointerEvent.clickCount = 1;
@@ -598,12 +608,15 @@ namespace UnityEngine.EventSystems
 
                 DeselectIfSelectionChanged(currentOverGo, pointerEvent);
 
+<<<<<<< HEAD
+=======
                 var resetDiffTime = Time.unscaledTime - pointerEvent.clickTime;
                 if (resetDiffTime >= doubleClickTime)
                 {
                     pointerEvent.clickCount = 0;
                 }
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 // search for the control that will receive the press
                 // if we can't find a press handler set the press
                 // handler to be what would receive a click.
@@ -621,7 +634,11 @@ namespace UnityEngine.EventSystems
                 if (newPressed == pointerEvent.lastPress)
                 {
                     var diffTime = time - pointerEvent.clickTime;
+<<<<<<< HEAD
+                    if (diffTime < 0.3f)
+=======
                     if (diffTime < doubleClickTime)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                         ++pointerEvent.clickCount;
                     else
                         pointerEvent.clickCount = 1;

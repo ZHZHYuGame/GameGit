@@ -121,6 +121,9 @@ public class GraphicRaycasterTests
 
         Assert.IsNotEmpty(results, "Expected at least 1 result from a raycast ");
     }
+<<<<<<< HEAD
+
+=======
 #if ENABLE_INPUT_SYSTEM && PACKAGE_INPUTSYSTEM
     [UnityTest]
     public IEnumerator GraphicRaycasterIgnoresEventsFromTheWrongDisplay()
@@ -141,6 +144,7 @@ public class GraphicRaycasterTests
         Assert.IsEmpty(results, "Pointer event on display 1 was not ignored on display 0");
     }
 #endif
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     [TearDown]
     public void TearDown()
     {

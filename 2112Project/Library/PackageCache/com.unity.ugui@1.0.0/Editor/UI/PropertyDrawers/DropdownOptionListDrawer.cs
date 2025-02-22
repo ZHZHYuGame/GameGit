@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+using UnityEditorInternal;
+using UnityEngine;
+using UnityEngine.UI;
+=======
 using System;
 using UnityEditorInternal;
 using UnityEngine;
@@ -5,6 +10,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
 namespace UnityEditor.UI
 {
@@ -14,6 +20,8 @@ namespace UnityEditor.UI
     /// </summary>
     class DropdownOptionListDrawer : PropertyDrawer
     {
+<<<<<<< HEAD
+=======
         const string kOptionsPath = "m_Options";
         const string kTextPath = "m_Text";
         const string kImagePath = "m_Image";
@@ -24,16 +32,24 @@ namespace UnityEditor.UI
         // Offset for fixed size list items, so it wouldn't look tight or overlap each other
         const float itemOffset = 4;
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         private ReorderableList m_ReorderableList;
 
         private void Init(SerializedProperty property)
         {
+<<<<<<< HEAD
+            if (m_ReorderableList != null)
+                return;
+
+            SerializedProperty array = property.FindPropertyRelative("m_Options");
+=======
             if (m_ReorderableList != null && m_ReorderableList.serializedProperty.serializedObject.m_NativeObjectPtr != IntPtr.Zero)
             {
                 return;
             }
 
             SerializedProperty array = property.FindPropertyRelative(kOptionsPath);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
             m_ReorderableList = new ReorderableList(property.serializedObject, array);
             m_ReorderableList.drawElementCallback = DrawOptionData;
@@ -50,14 +66,23 @@ namespace UnityEditor.UI
 
         private void DrawHeader(Rect rect)
         {
+<<<<<<< HEAD
+            GUI.Label(rect, "Options");
+=======
             GUI.Label(rect, kHeader);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         }
 
         private void DrawOptionData(Rect rect, int index, bool isActive, bool isFocused)
         {
             SerializedProperty itemData = m_ReorderableList.serializedProperty.GetArrayElementAtIndex(index);
+<<<<<<< HEAD
+            SerializedProperty itemText = itemData.FindPropertyRelative("m_Text");
+            SerializedProperty itemImage = itemData.FindPropertyRelative("m_Image");
+=======
             SerializedProperty itemText = itemData.FindPropertyRelative(kTextPath);
             SerializedProperty itemImage = itemData.FindPropertyRelative(kImagePath);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
             RectOffset offset = new RectOffset(0, 0, -1, -3);
             rect = offset.Add(rect);
@@ -74,6 +99,8 @@ namespace UnityEditor.UI
 
             return m_ReorderableList.GetHeight();
         }
+<<<<<<< HEAD
+=======
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
@@ -117,5 +144,6 @@ namespace UnityEditor.UI
 
             return listView;
         }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     }
 }

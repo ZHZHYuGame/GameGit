@@ -1364,8 +1364,11 @@ namespace UnityEngine.UI
                         return TouchScreenKeyboard.isSupported;
 
                     return !TouchScreenKeyboard.isInPlaceEditingAllowed;
+<<<<<<< HEAD
+=======
                 case RuntimePlatform.WebGLPlayer:
                     return !TouchScreenKeyboard.isInPlaceEditingAllowed;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 default:
                     return TouchScreenKeyboard.isSupported;
             }
@@ -1383,6 +1386,8 @@ namespace UnityEngine.UI
             return !s_IsQuestDevice && m_TouchKeyboardAllowsInPlaceEditing != TouchScreenKeyboard.isInPlaceEditingAllowed;
         }
 
+<<<<<<< HEAD
+=======
         RangeInt GetInternalSelection()
         {
             var selectionStart = Mathf.Min(caretSelectPositionInternal, caretPositionInternal);
@@ -1403,6 +1408,7 @@ namespace UnityEngine.UI
             }
         }
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         void UpdateCaretFromKeyboard()
         {
             var selectionRange = m_Keyboard.selection;
@@ -1550,6 +1556,15 @@ namespace UnityEngine.UI
                     SendOnValueChangedAndUpdateLabel();
                 }
             }
+<<<<<<< HEAD
+            else if (m_HideMobileInput && m_Keyboard.canSetSelection)
+            {
+                var selectionStart = Mathf.Min(caretSelectPositionInternal, caretPositionInternal);
+                var selectionLength = Mathf.Abs(caretSelectPositionInternal - caretPositionInternal);
+                m_Keyboard.selection = new RangeInt(selectionStart, selectionLength);
+            }
+            else if (m_Keyboard.canGetSelection && !m_HideMobileInput)
+=======
             // On iOS/tvOS we always have TouchScreenKeyboard instance even when using external keyboard
             // so we keep track of the caret position there
             else if (m_HideMobileInput && m_Keyboard != null && m_Keyboard.canSetSelection &&
@@ -1558,10 +1573,15 @@ namespace UnityEngine.UI
                 m_Keyboard.selection = GetInternalSelection();
             }
             else if (m_Keyboard != null && m_Keyboard.canGetSelection)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             {
                 UpdateCaretFromKeyboard();
             }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             if (m_Keyboard.status != TouchScreenKeyboard.Status.Visible)
             {
                 if (m_Keyboard.status == TouchScreenKeyboard.Status.Canceled)
@@ -1713,7 +1733,10 @@ namespace UnityEngine.UI
             if (m_DragPositionOutOfBounds && m_DragCoroutine == null)
                 m_DragCoroutine = StartCoroutine(MouseDragOutsideRect(eventData));
 
+<<<<<<< HEAD
+=======
             UpdateKeyboardCaret();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             eventData.Use();
         }
 
@@ -1800,7 +1823,10 @@ namespace UnityEngine.UI
             }
 
             UpdateLabel();
+<<<<<<< HEAD
+=======
             UpdateKeyboardCaret();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             eventData.Use();
         }
 
@@ -2539,11 +2565,14 @@ namespace UnityEngine.UI
                     m_DrawEnd = m_Text.Length;
                 }
 
+<<<<<<< HEAD
+=======
                 // To fix case 1320719; we need to rebuild the layout before we check the number of characters that can fit within the extents.
                 // Otherwise, the extents provided may not be good.
                 textComponent.SetLayoutDirty();
 
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 if (!isEmpty)
                 {
                     // Determine what will actually fit into the given line
@@ -3427,7 +3456,11 @@ namespace UnityEngine.UI
         /// <summary>
         /// See ILayoutElement.minWidth.
         /// </summary>
+<<<<<<< HEAD
+        public virtual float minWidth { get { return 0; } }
+=======
         public virtual float minWidth { get { return 5; } }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
         /// <summary>
         /// Get the displayed with of all input characters.
