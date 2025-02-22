@@ -50,8 +50,11 @@ namespace UnityEditor.UI
                 EditorGUILayout.PropertyField(m_Direction);
                 if (EditorGUI.EndChangeCheck())
                 {
+<<<<<<< HEAD
+=======
                     Undo.RecordObjects(serializedObject.targetObjects, "Change Slider Direction");
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     Slider.Direction direction = (Slider.Direction)m_Direction.enumValueIndex;
                     foreach (var obj in serializedObject.targetObjects)
                     {
@@ -60,6 +63,14 @@ namespace UnityEditor.UI
                     }
                 }
 
+<<<<<<< HEAD
+
+                EditorGUI.BeginChangeCheck();
+                float newMin = EditorGUILayout.FloatField("Min Value", m_MinValue.floatValue);
+                if (EditorGUI.EndChangeCheck() && newMin <= m_MaxValue.floatValue)
+                {
+                    m_MinValue.floatValue = newMin;
+=======
                 EditorGUI.BeginChangeCheck();
                 float newMin = EditorGUILayout.FloatField("Min Value", m_MinValue.floatValue);
                 if (EditorGUI.EndChangeCheck())
@@ -74,10 +85,20 @@ namespace UnityEditor.UI
                             m_Value.floatValue = newMin;
                     }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
 
                 EditorGUI.BeginChangeCheck();
                 float newMax = EditorGUILayout.FloatField("Max Value", m_MaxValue.floatValue);
+<<<<<<< HEAD
+                if (EditorGUI.EndChangeCheck() && newMax >= m_MinValue.floatValue)
+                {
+                    m_MaxValue.floatValue = newMax;
+                }
+
+                EditorGUILayout.PropertyField(m_WholeNumbers);
+                EditorGUILayout.Slider(m_Value, m_MinValue.floatValue, m_MaxValue.floatValue);
+=======
                 if (EditorGUI.EndChangeCheck())
                 {
                     if (m_WholeNumbers.boolValue ? Mathf.Round(newMax) > m_MinValue.floatValue : newMax > m_MinValue.floatValue)
@@ -124,6 +145,7 @@ namespace UnityEditor.UI
                 }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 EditorGUI.EndDisabledGroup();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 bool warning = false;
                 foreach (var obj in serializedObject.targetObjects)

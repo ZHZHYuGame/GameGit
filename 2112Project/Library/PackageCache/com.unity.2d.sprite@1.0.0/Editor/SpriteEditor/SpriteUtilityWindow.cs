@@ -79,6 +79,16 @@ namespace UnityEditor.U2D.Sprites
 
         protected ITexture2D m_Texture;
         protected ITexture2D m_TextureAlphaOverride;
+<<<<<<< HEAD
+        protected Rect m_TextureViewRect;
+        protected Rect m_TextureRect;
+
+        protected bool m_ShowAlpha = false;
+        protected float m_Zoom = -1f;
+        protected float m_MipLevel = 0;
+        protected Vector2 m_ScrollPosition = new Vector2();
+
+=======
         Rect m_TextureViewRect;
         protected Rect m_TextureRect;
 
@@ -138,6 +148,7 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected float GetMinZoom()
         {
             if (m_Texture == null)
@@ -270,7 +281,13 @@ namespace UnityEditor.U2D.Sprites
             TextureUtil.SetFilterModeNoDirty(m_Texture, FilterMode.Point);
 
 =======
+<<<<<<< HEAD
+            FilterMode oldFilter = m_Texture.filterMode;
+            TextureUtil.SetFilterModeNoDirty(m_Texture, FilterMode.Point);
+
+=======
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (m_ShowAlpha)
             {
                 // check if we have a valid alpha texture
@@ -286,7 +303,12 @@ namespace UnityEditor.U2D.Sprites
 
             TextureUtil.SetFilterModeNoDirty(m_Texture, oldFilter);
 =======
+<<<<<<< HEAD
+
+            TextureUtil.SetFilterModeNoDirty(m_Texture, oldFilter);
+=======
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected void DrawScreenspaceBackground()
@@ -309,7 +331,11 @@ namespace UnityEditor.U2D.Sprites
             // Offset from top left to center in view space
             Vector3 handlesPos = new Vector3(m_TextureRect.x, m_TextureRect.yMax, 0f);
             // We flip Y-scale because Unity texture space is bottom-up
+<<<<<<< HEAD
+            Vector3 handlesScale = new Vector3(m_Zoom, -m_Zoom, 1f);
+=======
             Vector3 handlesScale = new Vector3(zoomLevel, -zoomLevel, 1f);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             // Handle matrix is for converting between view and texture space coordinates, without taking account the scroll position.
             // Scroll position is added separately so we can use it with GUIClip.
@@ -340,7 +366,11 @@ namespace UnityEditor.U2D.Sprites
 
             drawArea.width = EditorGUI.kSliderMinW;
             drawArea.x -= drawArea.width;
+<<<<<<< HEAD
+            m_Zoom = GUI.HorizontalSlider(drawArea, m_Zoom, GetMinZoom(), k_MaxZoom, m_Styles.preSlider, m_Styles.preSliderThumb);
+=======
             zoomLevel = GUI.HorizontalSlider(drawArea, zoomLevel, GetMinZoom(), k_MaxZoom, m_Styles.preSlider, m_Styles.preSliderThumb);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             drawArea.width = EditorGUI.kObjectFieldMiniThumbnailWidth;
             drawArea.x -= drawArea.width + EditorGUI.kSpacing;

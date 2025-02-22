@@ -18,8 +18,11 @@ namespace UnityEditor.U2D.Sprites
         public List<Vector2[]> spritePhysicsOutline;
         public List<SpriteBone> spriteBone;
 
+<<<<<<< HEAD
+=======
         long m_InternalID;
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         internal SpriteDataExt(SerializedObject so)
         {
             var ti = so.targetObject as TextureImporter;
@@ -36,7 +39,11 @@ namespace UnityEditor.U2D.Sprites
             var guidSP = so.FindProperty("m_SpriteSheet.m_SpriteID");
             spriteID = new GUID(guidSP.stringValue);
 
+<<<<<<< HEAD
+            internalID = so.FindProperty("m_SpriteSheet.m_InternalID").longValue;
+=======
             m_InternalID = so.FindProperty("m_SpriteSheet.m_InternalID").longValue;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         internal SpriteDataExt(SerializedProperty sp)
@@ -48,6 +55,9 @@ namespace UnityEditor.U2D.Sprites
             pivot = SpriteEditorUtility.GetPivotValue(alignment, sp.FindPropertyRelative("m_Pivot").vector2Value);
             tessellationDetail = sp.FindPropertyRelative("m_TessellationDetail").floatValue;
             spriteID = new GUID(sp.FindPropertyRelative("m_SpriteID").stringValue);
+<<<<<<< HEAD
+            internalID = sp.FindPropertyRelative("m_InternalID").longValue;
+=======
             m_InternalID = sp.FindPropertyRelative("m_InternalID").longValue;
         }
 
@@ -68,6 +78,7 @@ namespace UnityEditor.U2D.Sprites
             edges = new List<Vector2Int>();
             spritePhysicsOutline = new List<Vector2[]>();
             spriteBone = new List<SpriteBone>();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         internal SpriteDataExt(SpriteRect sr)
@@ -78,7 +89,11 @@ namespace UnityEditor.U2D.Sprites
             tessellationDetail = 0;
             rect = sr.rect;
             spriteID = sr.spriteID;
+<<<<<<< HEAD
+            internalID = sr.internalID;
+=======
             m_InternalID = sr.spriteID.GetHashCode();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             alignment = sr.alignment;
             pivot = sr.pivot;
             spriteOutline = new List<Vector2[]>();
@@ -96,7 +111,11 @@ namespace UnityEditor.U2D.Sprites
             so.FindProperty("m_SpritePivot").vector2Value = pivot;
             so.FindProperty("m_SpriteTessellationDetail").floatValue = tessellationDetail;
             so.FindProperty("m_SpriteSheet.m_SpriteID").stringValue = spriteID.ToString();
+<<<<<<< HEAD
+            so.FindProperty("m_SpriteSheet.m_InternalID").longValue = internalID;
+=======
             so.FindProperty("m_SpriteSheet.m_InternalID").longValue = m_InternalID;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             var sp = so.FindProperty("m_SpriteSheet");
             if (spriteBone != null)
@@ -118,7 +137,11 @@ namespace UnityEditor.U2D.Sprites
             sp.FindPropertyRelative("m_Pivot").vector2Value = pivot;
             sp.FindPropertyRelative("m_TessellationDetail").floatValue = tessellationDetail;
             sp.FindPropertyRelative("m_SpriteID").stringValue = spriteID.ToString();
+<<<<<<< HEAD
+            sp.FindPropertyRelative("m_InternalID").longValue = internalID;
+=======
             sp.FindPropertyRelative("m_InternalID").longValue = m_InternalID;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             if (spriteBone != null)
                 SpriteBoneDataTransfer.Apply(sp, spriteBone);
@@ -138,6 +161,9 @@ namespace UnityEditor.U2D.Sprites
             pivot = spriteRect.pivot;
             rect = spriteRect.rect;
             spriteID = spriteRect.spriteID;
+<<<<<<< HEAD
+            internalID = spriteRect.internalID;
+=======
         }
 
         public long internalID
@@ -188,6 +214,7 @@ namespace UnityEditor.U2D.Sprites
         {
             sp.FindPropertyRelative(k_NameField).stringValue = name;
             sp.FindPropertyRelative(k_FileIdField).longValue = internalID;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }

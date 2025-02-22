@@ -1,7 +1,17 @@
+<<<<<<< HEAD
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEditor;
+using UnityEditor.Events;
+using UnityEngine.TestTools;
+using NUnit.Framework;
+using System.Collections;
+=======
 using NUnit.Framework;
 using UnityEditor.Events;
 using UnityEngine;
 using UnityEngine.Events;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 public class UnityEventInvoke
 {
@@ -57,6 +67,8 @@ public class UnityEventInvoke
 
         Assert.AreEqual(2, Counter.m_Count);
     }
+<<<<<<< HEAD
+=======
 
     [Test]
     [Description("Using a CachedInvokableCall in a UnityEvent should not go re-trigger all the calls stored in the UnityEvent. Case-950588")]
@@ -80,4 +92,5 @@ public class UnityEventInvoke
 
         Assert.AreEqual(0, Counter.m_Count, "Expected Event to not be called when not in play mode and event is marked as Runtime only");
     }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 }

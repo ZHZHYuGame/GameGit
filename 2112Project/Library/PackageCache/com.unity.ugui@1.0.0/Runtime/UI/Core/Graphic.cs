@@ -7,7 +7,10 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI.CoroutineTween;
+<<<<<<< HEAD
+=======
 using UnityEngine.Pool;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEngine.UI
 {
@@ -15,6 +18,10 @@ namespace UnityEngine.UI
     /// Base class for all UI components that should be derived from when creating new Graphic types.
     /// </summary>
     [DisallowMultipleComponent]
+<<<<<<< HEAD
+    [RequireComponent(typeof(CanvasRenderer))]
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [RequireComponent(typeof(RectTransform))]
     [ExecuteAlways]
     /// <summary>
@@ -24,7 +31,10 @@ namespace UnityEngine.UI
     /// <example>
     /// Below is a simple example that draws a colored quad inside the Rect Transform area.
     /// <code>
+<<<<<<< HEAD
+=======
     /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// using UnityEngine;
     /// using UnityEngine.UI;
     ///
@@ -75,8 +85,12 @@ namespace UnityEngine.UI
     ///         vh.AddTriangle(2, 3, 0);
     ///     }
     /// }
+<<<<<<< HEAD
+    /// </code>
+=======
     /// ]]>
     ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// </example>
     public abstract class Graphic
         : UIBehaviour,
@@ -116,7 +130,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Place this script on a GameObject with a Graphic component attached e.g. a visual UI element (Image).
         ///
         /// using UnityEngine;
@@ -150,13 +167,23 @@ namespace UnityEngine.UI
         ///         m_Graphic.color = m_MyColor;
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public virtual Color color { get { return m_Color; } set { if (SetPropertyUtility.SetColor(ref m_Color, value)) SetVerticesDirty(); } }
 
         [SerializeField] private bool m_RaycastTarget = true;
 
+<<<<<<< HEAD
+        /// <summary>
+        /// Should this graphic be considered a target for raycasting?
+        /// </summary>
+        public virtual bool raycastTarget { get { return m_RaycastTarget; } set { m_RaycastTarget = value; } }
+=======
         private bool m_RaycastTargetCache = true;
 
         /// <summary>
@@ -202,6 +229,7 @@ namespace UnityEngine.UI
                 m_RaycastPadding = value;
             }
         }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         [NonSerialized] private RectTransform m_RectTransform;
         [NonSerialized] private CanvasRenderer m_CanvasRenderer;
@@ -264,7 +292,10 @@ namespace UnityEngine.UI
             }
 
             SetVerticesDirty();
+<<<<<<< HEAD
+=======
             SetRaycastDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -320,6 +351,8 @@ namespace UnityEngine.UI
                 m_OnDirtyMaterialCallback();
         }
 
+<<<<<<< HEAD
+=======
         public void SetRaycastDirty()
         {
             if (m_RaycastTargetCache != m_RaycastTarget)
@@ -333,6 +366,7 @@ namespace UnityEngine.UI
             m_RaycastTargetCache = m_RaycastTarget;
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected override void OnRectTransformDimensionsChange()
         {
             if (gameObject.activeInHierarchy)
@@ -433,10 +467,13 @@ namespace UnityEngine.UI
                         m_Canvas = list[i];
                         break;
                     }
+<<<<<<< HEAD
+=======
 
                     // if we reached the end and couldn't find an active and enabled canvas, we should return null . case 1171433
                     if (i == list.Count - 1)
                         m_Canvas = null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
             else
@@ -459,11 +496,14 @@ namespace UnityEngine.UI
                 if (ReferenceEquals(m_CanvasRenderer, null))
                 {
                     m_CanvasRenderer = GetComponent<CanvasRenderer>();
+<<<<<<< HEAD
+=======
 
                     if (ReferenceEquals(m_CanvasRenderer, null))
                     {
                         m_CanvasRenderer = gameObject.AddComponent<CanvasRenderer>();
                     }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
                 return m_CanvasRenderer;
             }
@@ -510,9 +550,14 @@ namespace UnityEngine.UI
                 var components = ListPool<Component>.Get();
                 GetComponents(typeof(IMaterialModifier), components);
 =======
+<<<<<<< HEAD
+                var components = ListPool<Component>.Get();
+                GetComponents(typeof(IMaterialModifier), components);
+=======
                 var components = ListPool<IMaterialModifier>.Get();
                 GetComponents<IMaterialModifier>(components);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 var currentMat = material;
                 for (var i = 0; i < components.Count; i++)
@@ -520,8 +565,12 @@ namespace UnityEngine.UI
 <<<<<<< HEAD
                 ListPool<Component>.Release(components);
 =======
+<<<<<<< HEAD
+                ListPool<Component>.Release(components);
+=======
                 ListPool<IMaterialModifier>.Release(components);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return currentMat;
             }
         }
@@ -570,8 +619,13 @@ namespace UnityEngine.UI
 #if UNITY_EDITOR
             GraphicRebuildTracker.UnTrackGraphic(this);
 #endif
+<<<<<<< HEAD
+            GraphicRegistry.UnregisterGraphicForCanvas(canvas, this);
+            CanvasUpdateRegistry.UnRegisterCanvasElementForRebuild(this);
+=======
             GraphicRegistry.DisableGraphicForCanvas(canvas, this);
             CanvasUpdateRegistry.DisableCanvasElementForRebuild(this);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             if (canvasRenderer != null)
                 canvasRenderer.Clear();
@@ -583,11 +637,14 @@ namespace UnityEngine.UI
 
         protected override void OnDestroy()
         {
+<<<<<<< HEAD
+=======
 #if UNITY_EDITOR
             GraphicRebuildTracker.UnTrackGraphic(this);
 #endif
             GraphicRegistry.UnregisterGraphicForCanvas(canvas, this);
             CanvasUpdateRegistry.UnRegisterCanvasElementForRebuild(this);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (m_CachedMesh)
                 Destroy(m_CachedMesh);
             m_CachedMesh = null;
@@ -604,10 +661,14 @@ namespace UnityEngine.UI
             m_Canvas = null;
 
             if (!IsActive())
+<<<<<<< HEAD
+                return;
+=======
             {
                 GraphicRegistry.UnregisterGraphicForCanvas(currentCanvas, this);
                 return;
             }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             CacheCanvas();
 
@@ -757,7 +818,11 @@ namespace UnityEngine.UI
 <<<<<<< HEAD
                     s_Mesh.hideFlags = HideFlags.HideAndDontSave;
 =======
+<<<<<<< HEAD
+                    s_Mesh.hideFlags = HideFlags.HideAndDontSave;
+=======
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
                 return s_Mesh;
             }
@@ -814,7 +879,10 @@ namespace UnityEngine.UI
             // and associated components... The correct way to do this is by
             // calling OnValidate... Because MB's don't have a common base class
             // we do this via reflection. It's nasty and ugly... Editor only.
+<<<<<<< HEAD
+=======
             m_SkipLayoutUpdate = true;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             var mbs = gameObject.GetComponents<MonoBehaviour>();
             foreach (var mb in mbs)
             {
@@ -824,7 +892,10 @@ namespace UnityEngine.UI
                 if (methodInfo != null)
                     methodInfo.Invoke(mb, null);
             }
+<<<<<<< HEAD
+=======
             m_SkipLayoutUpdate = false;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void Reset()
@@ -882,9 +953,12 @@ namespace UnityEngine.UI
                     var group = components[i] as CanvasGroup;
                     if (group != null)
                     {
+<<<<<<< HEAD
+=======
                         if (!group.enabled)
                             continue;
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         if (ignoreParentGroups == false && group.ignoreParentGroups)
                         {
                             ignoreParentGroups = true;

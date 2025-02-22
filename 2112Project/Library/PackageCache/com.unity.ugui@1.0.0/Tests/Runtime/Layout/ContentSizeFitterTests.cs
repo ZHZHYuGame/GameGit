@@ -82,10 +82,17 @@ namespace LayoutTests
         [TearDown]
         public void TearDown()
         {
+<<<<<<< HEAD
+            m_PrefabRoot = null;
+            m_ContentSizeFitter = null;
+            m_RectTransform = null;
+            GameObject.DestroyImmediate(m_PrefabRoot);
+=======
             GameObject.DestroyImmediate(m_PrefabRoot);
             m_PrefabRoot = null;
             m_ContentSizeFitter = null;
             m_RectTransform = null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         [OneTimeTearDown]

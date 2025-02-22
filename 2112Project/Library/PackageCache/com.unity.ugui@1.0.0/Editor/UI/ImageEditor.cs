@@ -35,6 +35,8 @@ namespace UnityEditor.UI
         AnimBool m_ShowTiled;
         AnimBool m_ShowFilled;
         AnimBool m_ShowType;
+<<<<<<< HEAD
+=======
         bool m_bIsDriven;
 
         private class Styles
@@ -76,6 +78,7 @@ namespace UnityEditor.UI
                 EditorGUIUtility.TrTextContent("Left")
             };
         }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         protected override void OnEnable()
         {
@@ -111,14 +114,20 @@ namespace UnityEditor.UI
             m_ShowFilled.valueChanged.AddListener(Repaint);
 
             SetShowNativeSize(true);
+<<<<<<< HEAD
+=======
 
             m_bIsDriven = false;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void OnDisable()
         {
+<<<<<<< HEAD
+=======
             base.OnDisable();
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             m_ShowType.valueChanged.RemoveListener(Repaint);
             m_ShowSlicedOrTiled.valueChanged.RemoveListener(Repaint);
             m_ShowSliced.valueChanged.RemoveListener(Repaint);
@@ -130,10 +139,13 @@ namespace UnityEditor.UI
         {
             serializedObject.Update();
 
+<<<<<<< HEAD
+=======
             Image image = target as Image;
             RectTransform rect = image.GetComponent<RectTransform>();
             m_bIsDriven = (rect.drivenByObject as Slider)?.fillRect == rect;
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             SpriteGUI();
             AppearanceControlsGUI();
             RaycastControlsGUI();
@@ -234,7 +246,11 @@ namespace UnityEditor.UI
 
                 if (EditorGUILayout.BeginFadeGroup(m_ShowTiled.faded))
                 {
+<<<<<<< HEAD
+                    if (image.sprite != null && !image.hasBorder && (image.sprite.texture.wrapMode != TextureWrapMode.Repeat || image.sprite.packed))
+=======
                     if (image.sprite != null && !image.hasBorder && (image.sprite.texture != null && image.sprite.texture.wrapMode != TextureWrapMode.Repeat || image.sprite.packed))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         EditorGUILayout.HelpBox("It looks like you want to tile a sprite with no border. It would be more efficient to modify the Sprite properties, clear the Packing tag and set the Wrap mode to Repeat.", MessageType.Warning);
                 }
                 EditorGUILayout.EndFadeGroup();
@@ -247,6 +263,27 @@ namespace UnityEditor.UI
                     {
                         m_FillOrigin.intValue = 0;
                     }
+<<<<<<< HEAD
+                    switch ((Image.FillMethod)m_FillMethod.enumValueIndex)
+                    {
+                        case Image.FillMethod.Horizontal:
+                            m_FillOrigin.intValue = (int)(Image.OriginHorizontal)EditorGUILayout.EnumPopup("Fill Origin", (Image.OriginHorizontal)m_FillOrigin.intValue);
+                            break;
+                        case Image.FillMethod.Vertical:
+                            m_FillOrigin.intValue = (int)(Image.OriginVertical)EditorGUILayout.EnumPopup("Fill Origin", (Image.OriginVertical)m_FillOrigin.intValue);
+                            break;
+                        case Image.FillMethod.Radial90:
+                            m_FillOrigin.intValue = (int)(Image.Origin90)EditorGUILayout.EnumPopup("Fill Origin", (Image.Origin90)m_FillOrigin.intValue);
+                            break;
+                        case Image.FillMethod.Radial180:
+                            m_FillOrigin.intValue = (int)(Image.Origin180)EditorGUILayout.EnumPopup("Fill Origin", (Image.Origin180)m_FillOrigin.intValue);
+                            break;
+                        case Image.FillMethod.Radial360:
+                            m_FillOrigin.intValue = (int)(Image.Origin360)EditorGUILayout.EnumPopup("Fill Origin", (Image.Origin360)m_FillOrigin.intValue);
+                            break;
+                    }
+                    EditorGUILayout.PropertyField(m_FillAmount);
+=======
                     var shapeRect = EditorGUILayout.GetControlRect(true);
                     switch ((Image.FillMethod)m_FillMethod.enumValueIndex)
                     {
@@ -274,6 +311,7 @@ namespace UnityEditor.UI
                         EditorGUILayout.PropertyField(m_FillAmount);
                     }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     if ((Image.FillMethod)m_FillMethod.enumValueIndex > Image.FillMethod.Vertical)
                     {
                         EditorGUILayout.PropertyField(m_FillClockwise, m_ClockwiseContent);

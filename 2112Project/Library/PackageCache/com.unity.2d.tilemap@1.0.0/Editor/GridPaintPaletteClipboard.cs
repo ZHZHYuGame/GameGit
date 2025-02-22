@@ -2,6 +2,11 @@ using System;
 using System.Collections.Generic;
 <<<<<<< HEAD
 using System.Linq;
+using UnityEditorInternal;
+=======
+<<<<<<< HEAD
+using System.Linq;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Event = UnityEngine.Event;
@@ -9,6 +14,8 @@ using Object = UnityEngine.Object;
 
 namespace UnityEditor.Tilemaps
 {
+<<<<<<< HEAD
+=======
 =======
 using UnityEditor.EditorTools;
 using UnityEngine;
@@ -20,10 +27,16 @@ namespace UnityEditor.Tilemaps
 {
     [Serializable]
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     internal class GridPaintPaletteClipboard : PaintableGrid
     {
         static class Styles
         {
+<<<<<<< HEAD
+            public static readonly GUIStyle background = "CurveEditorBackground";
+        }
+
+=======
 <<<<<<< HEAD
             public static readonly GUIStyle background = "CurveEditorBackground";
         }
@@ -54,6 +67,7 @@ namespace UnityEditor.Tilemaps
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         private static readonly string paletteSavedOutsideClipboard = L10n.Tr("Palette Asset {0} was changed outside of the Tile Palette. All changes in the Tile Palette made will be reverted.");
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private bool m_PaletteNeedsSave;
         private const float k_ZoomSpeed = 7f;
         private const float k_MinZoom = 10f; // How many pixels per cell at minimum
@@ -64,8 +78,11 @@ namespace UnityEditor.Tilemaps
         private int m_MousePanningID;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         private Vector2 m_MouseZoomInitialPosition;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         private float k_KeyboardPanningSpeed = 3.0f;
 
@@ -74,6 +91,9 @@ namespace UnityEditor.Tilemaps
         private Rect m_GUIRect = new Rect(0, 0, 200, 200);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private bool m_OldFog;
 
         public Rect guiRect
@@ -91,6 +111,8 @@ namespace UnityEditor.Tilemaps
         }
 
         [SerializeField] private GridPaintPaletteWindow m_Owner;
+<<<<<<< HEAD
+=======
 =======
         public Rect guiRect
         {
@@ -107,6 +129,7 @@ namespace UnityEditor.Tilemaps
 
         private VisualElement m_VisualElement;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         public bool activeDragAndDrop { get { return DragAndDrop.objectReferences.Length > 0 && guiRect.Contains(Event.current.mousePosition); } }
 
@@ -117,7 +140,13 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
 
         private RectInt? m_ActivePick;
+        private Dictionary<Vector2Int, Object> m_HoverData;
+=======
+<<<<<<< HEAD
+
+        private RectInt? m_ActivePick;
         private Dictionary<Vector2Int, TileDragAndDropHoverData> m_HoverData;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private bool m_Unlocked;
         private bool m_PingTileAsset;
 
@@ -129,6 +158,8 @@ namespace UnityEditor.Tilemaps
         public PreviewRenderUtility previewUtility { get { return m_Owner.previewUtility; } }
 
         private GridBrushBase gridBrush { get { return GridPaintingState.gridBrush; } }
+<<<<<<< HEAD
+=======
 =======
         [SerializeField] public GridLayout.CellSwizzle m_CameraSwizzleView;
 
@@ -190,11 +221,14 @@ namespace UnityEditor.Tilemaps
         private Grid grid { get { return paletteInstance != null ? paletteInstance.GetComponent<Grid>() : null; } }
         private Grid prefabGrid { get { return palette != null ? palette.GetComponent<Grid>() : null; } }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         private Mesh m_GridMesh;
         private int m_LastGridHash;
         private Material m_GridMaterial;
         private static readonly Color k_GridColor = Color.white.AlphaMultiplied(0.1f);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
         private static readonly PrefColor tilePaletteBackgroundColor = new PrefColor("2D/Tile Palette Background"
@@ -207,10 +241,13 @@ namespace UnityEditor.Tilemaps
             , 31.0f / 255.0f
             , 127.0f / 255.0f);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         private bool m_PaletteUsed; // We mark palette used, when it has been changed in any way during being actively open.
         private Vector2? m_PreviousMousePosition;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
         private bool m_DelayedResetPaletteInstance;
@@ -220,6 +257,7 @@ namespace UnityEditor.Tilemaps
         }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public TileBase activeTile
         {
             get
@@ -227,8 +265,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                 if (m_ActivePick.HasValue && m_ActivePick.Value.size == Vector2Int.one && GridPaintingState.defaultBrush != null && GridPaintingState.defaultBrush.cellCount > 0)
 =======
+<<<<<<< HEAD
+                if (m_ActivePick.HasValue && m_ActivePick.Value.size == Vector2Int.one && GridPaintingState.defaultBrush != null && GridPaintingState.defaultBrush.cellCount > 0)
+=======
                 if (m_ActivePick.HasValue && m_ActivePick.Value.size == Vector3Int.one && GridPaintingState.defaultBrush != null && GridPaintingState.defaultBrush.cellCount > 0)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     return GridPaintingState.defaultBrush.cells[0].tile;
                 return null;
             }
@@ -237,12 +279,19 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
         // TODO: Faster codepath for this
 =======
+<<<<<<< HEAD
+        // TODO: Faster codepath for this
+=======
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private RectInt bounds
         {
             get
             {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 if (tilemap == null)
                     return new RectInt();
 
@@ -269,6 +318,8 @@ namespace UnityEditor.Tilemaps
                     }
                 }
                 return new RectInt(minX, minY, maxX - minX + 1, maxY - minY + 1);
+<<<<<<< HEAD
+=======
 =======
                 RectInt r = default;
                 if (tilemap == null || TilemapIsEmpty(tilemap))
@@ -280,6 +331,7 @@ namespace UnityEditor.Tilemaps
                 r = new RectInt(origin.x, origin.y, size.x, size.y);
                 return r;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -288,6 +340,11 @@ namespace UnityEditor.Tilemaps
         {
             get
             {
+<<<<<<< HEAD
+                float GUIAspect = m_GUIRect.width / m_GUIRect.height;
+                float paddingW = previewUtility.camera.orthographicSize * GUIAspect * k_Padding * 2f;
+                float paddingH = previewUtility.camera.orthographicSize * k_Padding * 2f;
+=======
                 var GUIAspect = m_GUIRect.width / m_GUIRect.height;
 <<<<<<< HEAD
                 var orthographicSize = previewUtility.camera.orthographicSize;
@@ -296,6 +353,7 @@ namespace UnityEditor.Tilemaps
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 var paddingW = orthographicSize * GUIAspect * k_Padding * 2f;
                 var paddingH = orthographicSize * k_Padding * 2f;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 Bounds localBounds = grid.GetBoundsLocal(
                     new Vector3(bounds.xMin, bounds.yMin, 0.0f),
@@ -316,9 +374,14 @@ namespace UnityEditor.Tilemaps
                 Vector3Int min = grid.LocalToCell(paddedBounds.min);
                 Vector3Int max = grid.LocalToCell(paddedBounds.max) + Vector3Int.one;
 =======
+<<<<<<< HEAD
+                Vector3Int min = grid.LocalToCell(paddedBounds.min);
+                Vector3Int max = grid.LocalToCell(paddedBounds.max) + Vector3Int.one;
+=======
                 var min = Vector3Int.FloorToInt(paddedBounds.min);
                 var max = Vector3Int.CeilToInt(paddedBounds.max);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return new RectInt(min.x, min.y, max.x - min.x, max.y - min.y);
             }
         }
@@ -327,7 +390,11 @@ namespace UnityEditor.Tilemaps
         {
             get
             {
+<<<<<<< HEAD
+                return (tilemap != null) ? tilemap.gameObject : null;
+=======
                 return (tilemap != null) ? tilemap.gameObject : (grid != null) ? grid.gameObject : null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -336,6 +403,16 @@ namespace UnityEditor.Tilemaps
             get { return m_Unlocked; }
             set
             {
+<<<<<<< HEAD
+                if (value == false && m_Unlocked && tilemap != null)
+                {
+                    tilemap.ClearAllEditorPreviewTiles();
+                    SavePaletteIfNecessary();
+                }
+                m_Unlocked = value;
+            }
+        }
+=======
                 if (value == false && m_Unlocked)
                 {
                     if (tilemap != null)
@@ -347,6 +424,7 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public bool pingTileAsset
         {
             get { return m_PingTileAsset; }
@@ -356,6 +434,9 @@ namespace UnityEditor.Tilemaps
                 m_PingTileAsset = value;
             }
         }
+<<<<<<< HEAD
+        public bool invalidClipboard { get { return m_Owner.palette == null; } }
+=======
 
         public bool invalidClipboard { get { return m_Owner.palette == null; } }
 =======
@@ -365,6 +446,7 @@ namespace UnityEditor.Tilemaps
         public event Action<bool> unlockedChanged;
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public bool isReceivingDragAndDrop { get { return m_HoverData != null && m_HoverData.Count > 0; } }
 
         public bool showNewEmptyClipboardInfo
@@ -377,6 +459,11 @@ namespace UnityEditor.Tilemaps
                 if (tilemap == null)
                     return false;
 
+<<<<<<< HEAD
+                if (!TilemapIsEmpty(tilemap))
+                    return false;
+
+=======
                 if (unlocked && inEditMode)
                     return false;
 
@@ -386,6 +473,7 @@ namespace UnityEditor.Tilemaps
                 if (tilemap.transform.childCount > 0)
                     return false;
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 if (isReceivingDragAndDrop)
                     return false;
 
@@ -404,10 +492,16 @@ namespace UnityEditor.Tilemaps
         {
             set { m_Owner = value; }
 =======
+<<<<<<< HEAD
+        public GridPaintPaletteWindow owner
+        {
+            set { m_Owner = value; }
+=======
         public VisualElement attachedVisualElement
         {
             set { m_VisualElement = value; }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public void OnBeforePaletteSelectionChanged()
@@ -446,10 +540,15 @@ namespace UnityEditor.Tilemaps
         private void LoadSavedCameraPosition()
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             previewUtility.camera.transform.position = m_CameraPosition;
             previewUtility.camera.orthographicSize = m_CameraOrthographicSize;
             previewUtility.camera.nearClipPlane = 0.01f;
             previewUtility.camera.farClipPlane = 100f;
+<<<<<<< HEAD
+=======
 =======
             m_PreviewUtility.camera.transform.position = m_CameraPosition;
             m_PreviewUtility.camera.orthographicSize = m_CameraOrthographicSize;
@@ -503,11 +602,15 @@ namespace UnityEditor.Tilemaps
             }
             return position;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void ResetPreviewCamera()
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             var transform = previewUtility.camera.transform;
             transform.position = new Vector3(0, 0, -10f);
             transform.rotation = Quaternion.identity;
@@ -528,6 +631,8 @@ namespace UnityEditor.Tilemaps
         }
 
         public void ResetPreviewMesh()
+<<<<<<< HEAD
+=======
 =======
             var transform = m_PreviewUtility.camera.transform;
 
@@ -694,6 +799,7 @@ namespace UnityEditor.Tilemaps
 
         private void ResetPreviewGridMesh()
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             if (m_GridMesh != null)
             {
@@ -711,12 +817,20 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
         void Frame(RectInt rect)
 =======
+<<<<<<< HEAD
+        void Frame(RectInt rect)
+=======
         private void Frame(RectInt rect)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             if (grid == null)
                 return;
 
+<<<<<<< HEAD
+            previewUtility.camera.transform.position = grid.CellToLocalInterpolated(new Vector3(rect.center.x, rect.center.y, 0));
+            previewUtility.camera.transform.position.Set(previewUtility.camera.transform.position.x, previewUtility.camera.transform.position.y, -10f);
+=======
             var position = grid.CellToLocalInterpolated(new Vector3(rect.center.x, rect.center.y, 0));
 <<<<<<< HEAD
             position.z = -10f;
@@ -724,6 +838,7 @@ namespace UnityEditor.Tilemaps
 =======
             position = GetCameraPosition(position);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             var height = (grid.CellToLocal(new Vector3Int(0, rect.yMax, 0)) - grid.CellToLocal(new Vector3Int(0, rect.yMin, 0))).magnitude;
             var width = (grid.CellToLocal(new Vector3Int(rect.xMax, 0, 0)) - grid.CellToLocal(new Vector3Int(rect.xMin, 0, 0))).magnitude;
@@ -737,10 +852,14 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             previewUtility.camera.orthographicSize = (GUIAspect > contentAspect ? height : width / GUIAspect) / 2f;
 =======
+<<<<<<< HEAD
+            previewUtility.camera.orthographicSize = (GUIAspect > contentAspect ? height : width / GUIAspect) / 2f;
+=======
 
             m_PreviewUtility.camera.transform.position = position;
             m_PreviewUtility.camera.orthographicSize = (GUIAspect > contentAspect ? height : width / GUIAspect) / 2f;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             ClampZoomAndPan();
         }
@@ -754,6 +873,12 @@ namespace UnityEditor.Tilemaps
         protected override void OnEnable()
         {
             base.OnEnable();
+<<<<<<< HEAD
+            EditorApplication.editorApplicationQuit += EditorApplicationQuit;
+            Undo.undoRedoPerformed += UndoRedoPerformed;
+            m_KeyboardPanningID = GUIUtility.GetPermanentControlID();
+            m_MousePanningID = GUIUtility.GetPermanentControlID();
+=======
 <<<<<<< HEAD
             EditorApplication.editorApplicationQuit += EditorApplicationQuit;
             Undo.undoRedoPerformed += UndoRedoPerformed;
@@ -774,11 +899,15 @@ namespace UnityEditor.Tilemaps
             ResetPreviewInstance();
             SetupPreviewCameraOnInit();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void OnDisable()
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (m_Owner && previewUtility != null && previewUtility.camera != null)
             {
                 // Save Preview camera coordinates
@@ -794,6 +923,8 @@ namespace UnityEditor.Tilemaps
             base.OnDisable();
         }
 
+<<<<<<< HEAD
+=======
 =======
             SavePaletteIfNecessary();
             unlocked = false;
@@ -876,6 +1007,7 @@ namespace UnityEditor.Tilemaps
         }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public override void OnGUI()
         {
             if (Mathf.Approximately(guiRect.width, 0f) || Mathf.Approximately(guiRect.height, 0f))
@@ -887,6 +1019,8 @@ namespace UnityEditor.Tilemaps
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             if (m_DelayedResetPaletteInstance)
             {
                 var originalSwizzleView = m_CameraSwizzleView;
@@ -896,14 +1030,18 @@ namespace UnityEditor.Tilemaps
             }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (palette == null)
                 return;
 
             HandlePanAndZoom();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             HandleKeyboardMousePick();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             if (showNewEmptyClipboardInfo)
                 return;
@@ -920,6 +1058,9 @@ namespace UnityEditor.Tilemaps
                 base.OnGUI();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (Event.current.type == EventType.Repaint)
                 Render();
             else
@@ -929,6 +1070,8 @@ namespace UnityEditor.Tilemaps
         }
 
         public void OnViewSizeChanged(Rect oldSize, Rect newSize)
+<<<<<<< HEAD
+=======
 =======
             if (Event.current.type == EventType.Repaint
                 || (unlocked && (inEditMode || GridSelectionTool.IsActive())))
@@ -945,6 +1088,7 @@ namespace UnityEditor.Tilemaps
 
         private void OnViewSizeChanged(Rect oldSize, Rect newSize)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             if (Mathf.Approximately(oldSize.height * oldSize.width * newSize.height * newSize.width, 0f))
                 return;
@@ -952,8 +1096,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             Camera cam = previewUtility.camera;
 =======
+<<<<<<< HEAD
+            Camera cam = previewUtility.camera;
+=======
             Camera cam = m_PreviewUtility.camera;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             Vector2 sizeDelta = new Vector2(
                 newSize.width / LocalToScreenRatio(newSize.height) - oldSize.width / LocalToScreenRatio(oldSize.height),
@@ -971,6 +1119,9 @@ namespace UnityEditor.Tilemaps
 
         private void UndoRedoPerformed()
         {
+<<<<<<< HEAD
+            if (unlocked)
+=======
             if (!unlocked)
                 return;
 
@@ -985,6 +1136,7 @@ namespace UnityEditor.Tilemaps
         {
             // case 947462: Reset the palette instance after its prefab has been updated as it could have been changed
             if (m_PaletteInstance != null && PrefabUtility.GetCorrespondingObjectFromSource(updatedPrefab) == palette && !GridPaintingState.savingPalette)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 m_PaletteNeedsSave = true;
                 RefreshAllTiles();
@@ -992,7 +1144,10 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+=======
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private void HandlePanAndZoom()
         {
             switch (Event.current.type)
@@ -1003,8 +1158,11 @@ namespace UnityEditor.Tilemaps
                         GUIUtility.hotControl = m_MousePanningID;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
                         m_MouseZoomInitialPosition = Event.current.mousePosition;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         Event.current.Use();
                     }
                     break;
@@ -1021,12 +1179,16 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                             Frame(m_ActivePick.Value);
 =======
+<<<<<<< HEAD
+                            Frame(m_ActivePick.Value);
+=======
                         {
                             var rect = new RectInt(m_ActivePick.Value.x, m_ActivePick.Value.y,
                                 m_ActivePick.Value.size.x, m_ActivePick.Value.size.y);
                             Frame(rect);
                         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         else
                             FrameEntirePalette();
                         Event.current.Use();
@@ -1036,6 +1198,9 @@ namespace UnityEditor.Tilemaps
                     if (guiRect.Contains(Event.current.mousePosition))
                     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         float zoomDelta = HandleUtility.niceMouseDeltaZoom * (Event.current.shift ? -9 : -3) * k_ZoomSpeed;
                         Camera camera = previewUtility.camera;
                         Vector3 oldLocalPos = ScreenToLocal(Event.current.mousePosition);
@@ -1043,17 +1208,31 @@ namespace UnityEditor.Tilemaps
                         ClampZoomAndPan();
                         Vector3 newLocalPos = ScreenToLocal(Event.current.mousePosition);
                         Vector3 localDelta = newLocalPos - oldLocalPos;
+<<<<<<< HEAD
+                        camera.transform.position = camera.transform.position - localDelta;
+                        ClampZoomAndPan();
+=======
                         camera.transform.position -= localDelta;
                         ClampZoomAndPan();
 =======
                         HandleMouseZoom(Event.current.mousePosition);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         Event.current.Use();
                     }
                     break;
                 case EventType.MouseDrag:
                     if (GUIUtility.hotControl == m_MousePanningID)
                     {
+<<<<<<< HEAD
+                        Vector3 delta = new Vector3(-Event.current.delta.x, Event.current.delta.y, 0f) / LocalToScreenRatio();
+                        previewUtility.camera.transform.Translate(delta);
+                        ClampZoomAndPan();
+                        Event.current.Use();
+                    }
+                    break;
+                case EventType.MouseMove: // Fix mousecursor being stuck when panning ended outside our window
+=======
 <<<<<<< HEAD
                         Vector3 delta = new Vector3(-Event.current.delta.x, Event.current.delta.y, 0f) / LocalToScreenRatio();
                         previewUtility.camera.transform.Translate(delta);
@@ -1074,6 +1253,7 @@ namespace UnityEditor.Tilemaps
                     }
                     break;
                 case EventType.MouseMove: // Fix mouse cursor being stuck when panning ended outside our window
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     if (GUIUtility.hotControl == m_MousePanningID && !MousePanningEvent())
                         GUIUtility.hotControl = 0;
                     break;
@@ -1089,8 +1269,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                     if (GUIUtility.hotControl == 0)
 =======
+<<<<<<< HEAD
+                    if (GUIUtility.hotControl == 0)
+=======
                     if ((GUIUtility.hotControl == 0 || GUIUtility.hotControl == m_KeyboardPanningID) && !Event.current.shift)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     {
                         switch (Event.current.keyCode)
                         {
@@ -1098,8 +1282,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                                 m_KeyboardPanning = new Vector3(-k_KeyboardPanningSpeed, 0f) / LocalToScreenRatio();
 =======
+<<<<<<< HEAD
+                                m_KeyboardPanning = new Vector3(-k_KeyboardPanningSpeed, 0f) / LocalToScreenRatio();
+=======
                                 m_KeyboardPanning.x = -k_KeyboardPanningSpeed / LocalToScreenRatio();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                                 GUIUtility.hotControl = m_KeyboardPanningID;
                                 Event.current.Use();
                                 break;
@@ -1107,8 +1295,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                                 m_KeyboardPanning = new Vector3(k_KeyboardPanningSpeed, 0f) / LocalToScreenRatio();
 =======
+<<<<<<< HEAD
+                                m_KeyboardPanning = new Vector3(k_KeyboardPanningSpeed, 0f) / LocalToScreenRatio();
+=======
                                 m_KeyboardPanning.x = k_KeyboardPanningSpeed / LocalToScreenRatio();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                                 GUIUtility.hotControl = m_KeyboardPanningID;
                                 Event.current.Use();
                                 break;
@@ -1116,8 +1308,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                                 m_KeyboardPanning = new Vector3(0f, k_KeyboardPanningSpeed) / LocalToScreenRatio();
 =======
+<<<<<<< HEAD
+                                m_KeyboardPanning = new Vector3(0f, k_KeyboardPanningSpeed) / LocalToScreenRatio();
+=======
                                 m_KeyboardPanning.y = k_KeyboardPanningSpeed / LocalToScreenRatio();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                                 GUIUtility.hotControl = m_KeyboardPanningID;
                                 Event.current.Use();
                                 break;
@@ -1125,8 +1321,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                                 m_KeyboardPanning = new Vector3(0f, -k_KeyboardPanningSpeed) / LocalToScreenRatio();
 =======
+<<<<<<< HEAD
+                                m_KeyboardPanning = new Vector3(0f, -k_KeyboardPanningSpeed) / LocalToScreenRatio();
+=======
                                 m_KeyboardPanning.y = -k_KeyboardPanningSpeed / LocalToScreenRatio();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                                 GUIUtility.hotControl = m_KeyboardPanningID;
                                 Event.current.Use();
                                 break;
@@ -1147,8 +1347,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                         previewUtility.camera.transform.Translate(m_KeyboardPanning);
 =======
+<<<<<<< HEAD
+                        previewUtility.camera.transform.Translate(m_KeyboardPanning);
+=======
                         m_PreviewUtility.camera.transform.Translate(m_KeyboardPanning);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         ClampZoomAndPan();
                         Repaint();
                     }
@@ -1160,6 +1364,8 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
         private void HandleMouseZoom(Vector2 currentMousePosition)
@@ -1213,6 +1419,7 @@ namespace UnityEditor.Tilemaps
         }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private static bool MousePanningEvent()
         {
             return (Event.current.button == 0 && Event.current.alt || Event.current.button > 0);
@@ -1222,18 +1429,33 @@ namespace UnityEditor.Tilemaps
         public void ClampZoomAndPan()
         {
             float pixelsPerCell = grid.cellSize.y * LocalToScreenRatio();
+
+=======
+<<<<<<< HEAD
+        public void ClampZoomAndPan()
+        {
+            float pixelsPerCell = grid.cellSize.y * LocalToScreenRatio();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (pixelsPerCell < k_MinZoom)
                 previewUtility.camera.orthographicSize = (grid.cellSize.y * guiRect.height) / (k_MinZoom * 2f);
             else if (pixelsPerCell > k_MaxZoom)
                 previewUtility.camera.orthographicSize = (grid.cellSize.y * guiRect.height) / (k_MaxZoom * 2f);
 
             Camera cam = previewUtility.camera;
+<<<<<<< HEAD
+            Rect r = paddedBounds;
+
+            Vector3 camPos = cam.transform.position;
+            Vector2 camMin = camPos - new Vector3(cam.orthographicSize * (guiRect.width / guiRect.height), cam.orthographicSize);
+            Vector2 camMax = camPos + new Vector3(cam.orthographicSize * (guiRect.width / guiRect.height), cam.orthographicSize);
+=======
             float cameraOrthographicSize = cam.orthographicSize;
             Rect r = paddedBounds;
 
             Vector3 camPos = cam.transform.position;
             Vector2 camMin = camPos - new Vector3(cameraOrthographicSize * (guiRect.width / guiRect.height), cameraOrthographicSize);
             Vector2 camMax = camPos + new Vector3(cameraOrthographicSize * (guiRect.width / guiRect.height), cameraOrthographicSize);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             if (camMin.x < r.min.x)
             {
@@ -1254,6 +1476,8 @@ namespace UnityEditor.Tilemaps
 
             camPos.Set(camPos.x, camPos.y, -10f);
 
+<<<<<<< HEAD
+=======
 =======
         private void ClampZoomAndPan()
         {
@@ -1312,6 +1536,7 @@ namespace UnityEditor.Tilemaps
             }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             cam.transform.position = camPos;
 
             DestroyImmediate(m_GridMesh);
@@ -1321,12 +1546,28 @@ namespace UnityEditor.Tilemaps
         private void Render()
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (m_GridMesh != null && GetGridHash() != m_LastGridHash)
             {
                 ResetPreviewInstance();
                 ResetPreviewMesh();
             }
 
+<<<<<<< HEAD
+            previewUtility.BeginPreview(guiRect, Styles.background);
+
+            BeginPreviewInstance();
+            RenderGrid();
+            EndPreviewInstance();
+
+            RenderDragAndDropPreview();
+            RenderSelectedBrushMarquee();
+            DoBrush();
+
+            previewUtility.EndAndDrawPreview(guiRect);
+=======
             using (new PreviewInstanceScope(guiRect, previewUtility, paletteInstance, m_Owner.drawGizmos))
             {
                 previewUtility.Render(true);
@@ -1378,12 +1619,16 @@ namespace UnityEditor.Tilemaps
 
             m_PreviewUtility.EndAndDrawPreview(guiRect);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             m_LastGridHash = GetGridHash();
         }
 
         private int GetGridHash()
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (prefabGrid == null)
                 return 0;
 
@@ -1394,6 +1639,8 @@ namespace UnityEditor.Tilemaps
                 hash = hash * 33 + prefabGrid.cellLayout.GetHashCode();
                 hash = hash * 33 + prefabGrid.cellSize.GetHashCode();
                 hash = hash * 33 + prefabGrid.cellSwizzle.GetHashCode();
+<<<<<<< HEAD
+=======
 =======
             var gridToHash = prefabGrid;
             if (gridToHash == null)
@@ -1407,6 +1654,7 @@ namespace UnityEditor.Tilemaps
                 hash = hash * 33 + gridToHash.cellSize.GetHashCode();
                 hash = hash * 33 + gridToHash.cellSwizzle.GetHashCode();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 hash = hash * 33 + SceneViewGridManager.sceneViewGridComponentGizmo.Color.GetHashCode();
             }
             return hash;
@@ -1420,8 +1668,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             RectInt rect = TileDragAndDrop.GetMinMaxRect(m_HoverData.Keys.ToList());
 =======
+<<<<<<< HEAD
+            RectInt rect = TileDragAndDrop.GetMinMaxRect(m_HoverData.Keys.ToList());
+=======
             var rect = TileDragAndDrop.GetMinMaxRect(m_HoverData.Keys);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             rect.position += mouseGridPosition;
             DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
             GridEditorUtility.DrawGridMarquee(grid, new BoundsInt(new Vector3Int(rect.xMin, rect.yMin, zPosition), new Vector3Int(rect.width, rect.height, 1)), Color.white);
@@ -1432,6 +1684,9 @@ namespace UnityEditor.Tilemaps
             // MeshTopology.Lines doesn't give nice pixel perfect grid so we have to have separate codepath with MeshTopology.Quads specially for palette window here
             if (m_GridMesh == null && grid.cellLayout == GridLayout.CellLayout.Rectangle)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 m_GridMesh = GridEditorUtility.GenerateCachedGridMesh(grid, k_GridColor, 1f / LocalToScreenRatio(), paddedBoundsInt, MeshTopology.Quads);
 
             GridEditorUtility.DrawGridGizmo(grid, grid.transform, k_GridColor, ref m_GridMesh, ref m_GridMaterial);
@@ -1446,6 +1701,25 @@ namespace UnityEditor.Tilemaps
             CallOnPaintSceneGUI(mouseGridPosition);
         }
 
+<<<<<<< HEAD
+        private void BeginPreviewInstance()
+        {
+            m_OldFog = RenderSettings.fog;
+            Unsupported.SetRenderSettingsUseFogNoDirty(false);
+            Handles.DrawCameraImpl(m_GUIRect, previewUtility.camera, DrawCameraMode.Textured, false, new DrawGridParameters(), true, false);
+            PreviewRenderUtility.SetEnabledRecursive(paletteInstance, true);
+            previewUtility.AddManagedGO(paletteInstance);
+        }
+
+        private void EndPreviewInstance()
+        {
+            previewUtility.Render();
+            PreviewRenderUtility.SetEnabledRecursive(paletteInstance, false);
+            Unsupported.SetRenderSettingsUseFogNoDirty(m_OldFog);
+        }
+
+        public void HandleDragAndDrop()
+=======
         private class PreviewInstanceScope : IDisposable
         {
             private readonly PreviewRenderUtility m_PreviewRenderUtility;
@@ -1544,6 +1818,7 @@ namespace UnityEditor.Tilemaps
 =======
         private void HandleDragAndDrop()
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             if (DragAndDrop.objectReferences.Length == 0 || !guiRect.Contains(Event.current.mousePosition))
                 return;
@@ -1556,7 +1831,11 @@ namespace UnityEditor.Tilemaps
                     List<Texture2D> sheets = TileDragAndDrop.GetValidSpritesheets(DragAndDrop.objectReferences);
                     List<Sprite> sprites = TileDragAndDrop.GetValidSingleSprites(DragAndDrop.objectReferences);
                     List<TileBase> tiles = TileDragAndDrop.GetValidTiles(DragAndDrop.objectReferences);
+<<<<<<< HEAD
+                    m_HoverData = TileDragAndDrop.CreateHoverData(sheets, sprites, tiles);
+=======
                     m_HoverData = TileDragAndDrop.CreateHoverData(sheets, sprites, tiles, tilemap.cellLayout);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                     if (m_HoverData != null && m_HoverData.Count > 0)
                     {
@@ -1568,8 +1847,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                 break;
 =======
+<<<<<<< HEAD
+                break;
+=======
                     break;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 case EventType.DragPerform:
                 {
                     if (m_HoverData == null || m_HoverData.Count == 0)
@@ -1578,10 +1861,19 @@ namespace UnityEditor.Tilemaps
                     RegisterUndo();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     bool wasEmpty = TilemapIsEmpty(tilemap);
 
                     Vector2Int targetPosition = mouseGridPosition;
                     DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+<<<<<<< HEAD
+                    Dictionary<Vector2Int, TileBase> tileSheet = TileDragAndDrop.ConvertToTileSheet(m_HoverData);
+                    foreach (KeyValuePair<Vector2Int, TileBase> item in tileSheet)
+                        SetTile(tilemap, targetPosition + item.Key, item.Value, Color.white, Matrix4x4.identity);
+
+=======
                     var tileSheet = TileDragAndDrop.ConvertToTileSheet(m_HoverData);
                     int i = 0;
                     foreach (KeyValuePair<Vector2Int, TileDragAndDropHoverData> item in m_HoverData)
@@ -1619,6 +1911,7 @@ namespace UnityEditor.Tilemaps
                             , Color.white
                             , Matrix4x4.TRS(offset, Quaternion.identity, Vector3.one));
                     }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     OnPaletteChanged();
 
                     m_PaletteNeedsSave = true;
@@ -1638,8 +1931,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                 break;
 =======
+<<<<<<< HEAD
+                break;
+=======
                     break;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 case EventType.Repaint:
                     // Handled in Render()
                     break;
@@ -1650,9 +1947,14 @@ namespace UnityEditor.Tilemaps
                 Event.current.type == EventType.DragExited ||
                 Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Escape))
 =======
+<<<<<<< HEAD
+                Event.current.type == EventType.DragExited ||
+                Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Escape))
+=======
                     Event.current.type == EventType.DragExited ||
                     Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Escape))
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 DragAndDrop.visualMode = DragAndDropVisualMode.None;
                 FlushHoverData();
@@ -1660,6 +1962,14 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+        public void SetTile(Tilemap tilemap, Vector2Int position, TileBase tile, Color color, Matrix4x4 matrix)
+        {
+            Vector3Int pos3 = new Vector3Int(position.x, position.y, zPosition);
+            tilemap.SetTile(pos3, tile);
+            tilemap.SetColor(pos3, color);
+            tilemap.SetTransformMatrix(pos3, matrix);
+=======
 <<<<<<< HEAD
         public void SetTile(Tilemap tilemapTarget, Vector2Int position, TileBase tile, Color color, Matrix4x4 matrix)
 =======
@@ -1674,6 +1984,7 @@ namespace UnityEditor.Tilemaps
 =======
             tilemapTarget.SetTransformMatrix(pos3, tilemapTarget.GetTransformMatrix(pos3) * matrix);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void Paint(Vector3Int position)
@@ -1734,12 +2045,16 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             m_ActivePick = new RectInt(position.min.x, position.min.y, position.size.x, position.size.y);
 =======
+<<<<<<< HEAD
+            m_ActivePick = new RectInt(position.min.x, position.min.y, position.size.x, position.size.y);
+=======
             m_ActivePick = position;
             m_ActivePivot = pickingStart;
 
             if (!disableOnBrushPicked)
                 onBrushPicked?.Invoke();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void Select(BoundsInt position)
@@ -1772,6 +2087,11 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+        public override void Repaint()
+        {
+            m_Owner.Repaint();
+=======
 <<<<<<< HEAD
         protected override bool CustomTool(bool isHotControl, TilemapEditorTool tool, Vector3Int position)
 =======
@@ -1807,6 +2127,7 @@ namespace UnityEditor.Tilemaps
             if (m_VisualElement != null)
                 m_VisualElement.MarkDirtyRepaint();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void ClearGridSelection()
@@ -1814,8 +2135,11 @@ namespace UnityEditor.Tilemaps
             GridSelection.Clear();
         }
 
+<<<<<<< HEAD
+=======
         public override bool isActive => grid != null;
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected override void OnBrushPickStarted()
         {
         }
@@ -1825,8 +2149,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             m_ActivePick = new RectInt(position.min.x, position.min.y, position.size.x, position.size.y);
 =======
+<<<<<<< HEAD
+            m_ActivePick = new RectInt(position.min.x, position.min.y, position.size.x, position.size.y);
+=======
             m_ActivePick = position;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void OnBrushPickCancelled()
@@ -1834,8 +2162,11 @@ namespace UnityEditor.Tilemaps
             m_ActivePick = null;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             m_ActivePivot = Vector3Int.zero;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void PingTileAsset(RectInt rect)
@@ -1878,11 +2209,17 @@ namespace UnityEditor.Tilemaps
             Vector3Int result3 = grid.LocalToCell(local);
             Vector2Int result = new Vector2Int(result3.x, result3.y);
 =======
+<<<<<<< HEAD
+            Vector2 local = ScreenToLocal(screenPosition);
+            Vector3Int result3 = grid.LocalToCell(local);
+            Vector2Int result = new Vector2Int(result3.x, result3.y);
+=======
             Vector3 local = ScreenToLocal(screenPosition);
             var localS = Grid.Swizzle(m_CameraSwizzleView, local);
             var result3 = grid.LocalToCell(localS);
             var result = new Vector2Int(result3.x, result3.y);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return result;
         }
 
@@ -1891,8 +2228,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             if (!unlocked && m_ActivePick.HasValue)
 =======
+<<<<<<< HEAD
+            if (!unlocked && m_ActivePick.HasValue)
+=======
             if (!activeDragAndDrop && !unlocked && m_ActivePick.HasValue)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 DrawSelectionGizmo(m_ActivePick.Value);
             }
@@ -1901,8 +2242,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
         protected void DrawSelectionGizmo(RectInt rect)
 =======
+<<<<<<< HEAD
+        protected void DrawSelectionGizmo(RectInt rect)
+=======
         private void DrawSelectionGizmo(BoundsInt selectionBounds)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             if (Event.current.type != EventType.Repaint || !GUI.enabled)
                 return;
@@ -1914,8 +2259,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             GridEditorUtility.DrawGridMarquee(grid, new BoundsInt(new Vector3Int(rect.xMin, rect.yMin, 0), new Vector3Int(rect.width, rect.height, 1)), color);
 =======
+<<<<<<< HEAD
+            GridEditorUtility.DrawGridMarquee(grid, new BoundsInt(new Vector3Int(rect.xMin, rect.yMin, 0), new Vector3Int(rect.width, rect.height, 1)), color);
+=======
             GridEditorUtility.DrawGridMarquee(grid, new BoundsInt(new Vector3Int(selectionBounds.xMin, selectionBounds.yMin, 0), new Vector3Int(selectionBounds.size.x, selectionBounds.size.y, 1)), color);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void HandleMouseEnterLeave()
@@ -1943,6 +2292,10 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+        private void CallOnPaintSceneGUI(Vector2Int position)
+        {
+=======
         private void CallOnSceneGUI()
         {
             var gridLayout = tilemap != null ? tilemap : grid as GridLayout;
@@ -1979,6 +2332,7 @@ namespace UnityEditor.Tilemaps
         private void CallOnPaintSceneGUI(Vector2Int position)
         {
 <<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (!unlocked && !TilemapEditorTool.IsActive(typeof(SelectTool)) && !TilemapEditorTool.IsActive(typeof(PickingTool)))
                 return;
 
@@ -1987,6 +2341,8 @@ namespace UnityEditor.Tilemaps
                 return;
 
             GridBrushBase brush = GridPaintingState.gridBrush;
+<<<<<<< HEAD
+=======
 =======
             if (!activeDragAndDrop && !unlocked && !TilemapEditorTool.IsActive(typeof(SelectTool)) && !TilemapEditorTool.IsActive(typeof(PickingTool)))
                 return;
@@ -1997,6 +2353,7 @@ namespace UnityEditor.Tilemaps
 
             var brush = GridPaintingState.gridBrush;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (brush == null)
                 return;
 
@@ -2007,6 +2364,15 @@ namespace UnityEditor.Tilemaps
             else if (hasSelection)
                 rect = new RectInt(GridSelection.position.xMin, GridSelection.position.yMin, GridSelection.position.size.x, GridSelection.position.size.y);
 
+<<<<<<< HEAD
+            var gridLayout = tilemap != null ? tilemap : grid as GridLayout;
+            BoundsInt brushBounds = new BoundsInt(new Vector3Int(rect.x, rect.y, zPosition), new Vector3Int(rect.width, rect.height, 1));
+
+            if (GridPaintingState.activeBrushEditor != null)
+                GridPaintingState.activeBrushEditor.OnPaintSceneGUI(gridLayout, brushTarget, brushBounds, EditTypeToBrushTool(EditorTools.EditorTools.activeToolType), m_MarqueeStart.HasValue || executing);
+            else // Fallback when user hasn't defined custom editor
+                GridBrushEditorBase.OnPaintSceneGUIInternal(gridLayout, Selection.activeGameObject, brushBounds, EditTypeToBrushTool(EditorTools.EditorTools.activeToolType), m_MarqueeStart.HasValue || executing);
+=======
             var gridLayout = tilemap != null ? tilemap.layoutGrid : grid as GridLayout;
 <<<<<<< HEAD
             BoundsInt brushBounds = new BoundsInt(new Vector3Int(rect.x, rect.y, zPosition), new Vector3Int(rect.width, rect.height, 1));
@@ -2030,19 +2396,26 @@ namespace UnityEditor.Tilemaps
                     EditTypeToBrushTool(ToolManager.activeToolType),
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                     m_MarqueeStart.HasValue || executing);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void RegisterUndo()
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (!invalidClipboard)
             {
                 Undo.RegisterFullObjectHierarchyUndo(paletteInstance, "Edit Palette");
             }
+<<<<<<< HEAD
+=======
 =======
             if (palette != null && paletteInstance != null)
                 Undo.RegisterFullObjectHierarchyUndo(paletteInstance, "Edit Palette");
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void OnPaletteChanged()
@@ -2052,6 +2425,8 @@ namespace UnityEditor.Tilemaps
             Undo.FlushUndoRecordObjects();
         }
 
+<<<<<<< HEAD
+=======
         public void CheckRevertIfChanged(string[] paths)
         {
             if (paths != null && m_PaletteNeedsSave && palette != null)
@@ -2071,6 +2446,7 @@ namespace UnityEditor.Tilemaps
         }
 
 <<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public void SavePaletteIfNecessary()
         {
             if (m_PaletteNeedsSave)
@@ -2078,6 +2454,8 @@ namespace UnityEditor.Tilemaps
                 m_Owner.SavePalette();
                 m_PaletteNeedsSave = false;
             }
+<<<<<<< HEAD
+=======
 =======
         public bool SavePaletteIfNecessary()
         {
@@ -2099,6 +2477,7 @@ namespace UnityEditor.Tilemaps
                 Repaint();
             }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public Vector2 GridToScreen(Vector2 gridPosition)
@@ -2106,18 +2485,27 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             Vector3 gridPosition3 = new Vector3(gridPosition.x, gridPosition.y, 0);
 =======
+<<<<<<< HEAD
+            Vector3 gridPosition3 = new Vector3(gridPosition.x, gridPosition.y, 0);
+=======
             var gridPosition3 = new Vector3(gridPosition.x, gridPosition.y, 0);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return LocalToScreen(grid.CellToLocalInterpolated(gridPosition3));
         }
 
         public Vector2 ScreenToLocal(Vector2 screenPosition)
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             Vector2 viewPosition = previewUtility.camera.transform.position;
             screenPosition -= new Vector2(guiRect.xMin, guiRect.yMin);
             Vector2 offsetFromCenter = new Vector2(screenPosition.x - guiRect.width * .5f, guiRect.height * .5f - screenPosition.y);
             return viewPosition + offsetFromCenter / LocalToScreenRatio();
+<<<<<<< HEAD
+=======
 =======
             var viewPosition = m_PreviewUtility.camera.transform.position;
             Vector2 viewXYPosition = Grid.InverseSwizzle(m_CameraSwizzleView, viewPosition);
@@ -2125,6 +2513,7 @@ namespace UnityEditor.Tilemaps
             var offsetFromCenter = new Vector2(screenPosition.x - guiRect.width * .5f, guiRect.height * .5f - screenPosition.y);
             return viewXYPosition + offsetFromCenter / LocalToScreenRatio();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected Vector2 LocalToScreen(Vector2 localPosition)
@@ -2133,10 +2522,15 @@ namespace UnityEditor.Tilemaps
             Vector2 viewPosition = previewUtility.camera.transform.position;
             Vector2 offsetFromCenter = new Vector2(localPosition.x - viewPosition.x, viewPosition.y - localPosition.y);
 =======
+<<<<<<< HEAD
+            Vector2 viewPosition = previewUtility.camera.transform.position;
+            Vector2 offsetFromCenter = new Vector2(localPosition.x - viewPosition.x, viewPosition.y - localPosition.y);
+=======
             var viewPosition = m_PreviewUtility.camera.transform.position;
             Vector2 viewXYPosition = Grid.InverseSwizzle(m_CameraSwizzleView, viewPosition);
             var offsetFromCenter = new Vector2(localPosition.x - viewXYPosition.x, viewXYPosition.y - localPosition.y);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return offsetFromCenter * LocalToScreenRatio() + new Vector2(guiRect.width * .5f + guiRect.xMin, guiRect.height * .5f + guiRect.yMin);
         }
 
@@ -2145,8 +2539,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             return guiRect.height / (previewUtility.camera.orthographicSize * 2f);
 =======
+<<<<<<< HEAD
+            return guiRect.height / (previewUtility.camera.orthographicSize * 2f);
+=======
             return guiRect.height / (m_PreviewUtility.camera.orthographicSize * 2f);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private float LocalToScreenRatio(float viewHeight)
@@ -2154,14 +2552,20 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             return viewHeight / (previewUtility.camera.orthographicSize * 2f);
 =======
+<<<<<<< HEAD
+            return viewHeight / (previewUtility.camera.orthographicSize * 2f);
+=======
             return viewHeight / (m_PreviewUtility.camera.orthographicSize * 2f);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private static bool TilemapIsEmpty(Tilemap tilemap)
         {
             return tilemap.GetUsedTilesCount() == 0;
         }
+<<<<<<< HEAD
+=======
 
         public void UnlockAndEdit()
         {
@@ -2218,5 +2622,6 @@ namespace UnityEditor.Tilemaps
             }
         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

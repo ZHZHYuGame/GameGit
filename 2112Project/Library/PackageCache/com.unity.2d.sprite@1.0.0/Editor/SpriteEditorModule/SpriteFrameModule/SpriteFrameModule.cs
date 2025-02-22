@@ -22,6 +22,10 @@ namespace UnityEditor.U2D.Sprites
         private bool[] m_AlphaPixelCache;
         SpriteFrameModuleContext m_SpriteFrameModuleContext;
 
+<<<<<<< HEAD
+        private StringBuilder m_SpriteNameStringBuilder;
+
+=======
         private const float kOverlapTolerance = 0.00001f;
         private StringBuilder m_SpriteNameStringBuilder;
 
@@ -31,6 +35,7 @@ namespace UnityEditor.U2D.Sprites
             set => m_PotentialRects = value;
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public SpriteFrameModule(ISpriteEditor sw, IEventSystem es, IUndoSystem us, IAssetDatabase ad) :
             base("Sprite Editor", sw, es, us, ad)
         {}
@@ -72,14 +77,21 @@ namespace UnityEditor.U2D.Sprites
             m_SpriteFrameModuleContext = new SpriteFrameModuleContext(this);
             ShortcutIntegration.instance.contextManager.RegisterToolContext(m_SpriteFrameModuleContext);
             m_SpriteNameStringBuilder = new StringBuilder(GetSpriteNamePrefix() + "_");
+<<<<<<< HEAD
+=======
             m_PotentialRects = null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public override void OnModuleDeactivate()
         {
             base.OnModuleDeactivate();
             ShortcutIntegration.instance.contextManager.DeregisterToolContext(m_SpriteFrameModuleContext);
+<<<<<<< HEAD
+
+=======
             m_PotentialRects = null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             m_AlphaPixelCache = null;
         }
 
@@ -102,6 +114,10 @@ namespace UnityEditor.U2D.Sprites
             return name;
         }
 
+<<<<<<< HEAD
+        // Aurajoki-Sweep Rect Sorting(tm)
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         // 1. Find top-most rectangle
         // 2. Sweep it vertically to find out all rects from that "row"
         // 3. goto 1.
@@ -154,6 +170,46 @@ namespace UnityEditor.U2D.Sprites
             return containedRects;
         }
 
+<<<<<<< HEAD
+        private void AddSprite(Rect frame, int alignment, Vector2 pivot, AutoSlicingMethod slicingMethod, ref int index)
+        {
+            if (slicingMethod != AutoSlicingMethod.DeleteAll)
+            {
+                // Smart: Whenever we overlap, we just modify the existing rect and keep its other properties
+                // Safe: We only add new rect if it doesn't overlap existing one
+
+                SpriteRect existingSprite = GetExistingOverlappingSprite(frame);
+                if (existingSprite != null)
+                {
+                    if (slicingMethod == AutoSlicingMethod.Smart)
+                    {
+                        existingSprite.rect = frame;
+                        existingSprite.alignment = (SpriteAlignment)alignment;
+                        existingSprite.pivot = pivot;
+                    }
+                }
+                else
+                {
+                    while (AddSprite(frame, alignment, pivot, GenerateSpriteNameWithIndex(index++), Vector4.zero) == -1)
+                    {}
+                }
+            }
+            else
+            {
+                while (AddSprite(frame, alignment, pivot, GenerateSpriteNameWithIndex(index++), Vector4.zero) == -1) {}
+            }
+        }
+
+        private SpriteRect GetExistingOverlappingSprite(Rect rect)
+        {
+            for (int i = 0; i < m_RectsCache.spriteRects.Count; i++)
+            {
+                Rect existingRect = m_RectsCache.spriteRects[i].rect;
+                if (existingRect.Overlaps(rect))
+                    return m_RectsCache.spriteRects[i];
+            }
+            return null;
+=======
         private int AddSprite(Rect frame, int alignment, Vector2 pivot, AutoSlicingMethod slicingMethod, int originalCount, ref int nameIndex)
         {
             int outSprite = -1;
@@ -237,6 +293,7 @@ namespace UnityEditor.U2D.Sprites
                 }
             }
             return bestRect;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private bool PixelHasAlpha(int x, int y, UnityTexture2D texture)
@@ -253,9 +310,19 @@ namespace UnityEditor.U2D.Sprites
             return m_AlphaPixelCache[index];
         }
 
+<<<<<<< HEAD
+        private int AddSprite(Rect rect, int alignment, Vector2 pivot, string name, Vector4 border, bool uniqueNameCheck = true)
+        {
+            var sed = spriteEditor.GetDataProvider<ISpriteEditorDataProvider>();
+            long internalID = AssetImporter.MakeLocalFileIDWithHash(spriteType.persistentTypeID, name, 0);
+            if (m_RectsCache.HasName(name))
+                return -1;
+            if (m_RectsCache.HasInternalID(internalID))
+=======
         private int AddSprite(Rect rect, int alignment, Vector2 pivot, string name, Vector4 border)
         {
             if (m_RectsCache.IsNameUsed(name))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return -1;
 
             SpriteRect spriteRect = new SpriteRect();
@@ -266,6 +333,27 @@ namespace UnityEditor.U2D.Sprites
             spriteRect.originalName = spriteRect.name;
             spriteRect.border = border;
 
+<<<<<<< HEAD
+            spriteRect.internalID = internalID;
+            spriteRect.spriteID = GUID.CreateGUIDFromSInt64(internalID);
+
+            // check if someone is using the internal id, if so, we change it to us.
+            // Only TextureImporter needs this now.
+            var ai = sed.targetObject as TextureImporter;
+            var oldName = "";
+            if (ai != null && ai.GetNameFromInternalIDMap(internalID, ref oldName))
+            {
+                if (string.IsNullOrEmpty(oldName))
+                    return -1;
+                spriteRect.originalName = oldName;
+            }
+            else
+            {
+                spriteRect.m_RegisterInternalID = true;
+            }
+
+            m_RectsCache.Add(spriteRect);
+=======
             spriteRect.spriteID = GUID.Generate();
 
 <<<<<<< HEAD
@@ -274,6 +362,7 @@ namespace UnityEditor.U2D.Sprites
             if (!m_RectsCache.Add(spriteRect))
                 return -1;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             spriteEditor.SetDataModified();
 
             return m_RectsCache.spriteRects.Count - 1;
@@ -295,6 +384,12 @@ namespace UnityEditor.U2D.Sprites
             List<Rect> frames = new List<Rect>(InternalSpriteUtility.GenerateAutomaticSpriteRectangles((UnityTexture2D)textureToUse, minimumSpriteSize, 0));
             frames = SortRects(frames);
             int index = 0;
+<<<<<<< HEAD
+
+            foreach (Rect frame in frames)
+                AddSprite(frame, alignment, pivot, slicingMethod, ref index);
+
+=======
             int originalCount = m_RectsCache.spriteRects.Count;
 
             foreach (Rect frame in frames)
@@ -302,6 +397,7 @@ namespace UnityEditor.U2D.Sprites
 
             if (slicingMethod == AutoSlicingMethod.DeleteAll)
                 m_RectsCache.ClearUnusedFileID();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selected = null;
             spriteEditor.SetDataModified();
             Repaint();
@@ -319,6 +415,14 @@ namespace UnityEditor.U2D.Sprites
             return texture;
         }
 
+<<<<<<< HEAD
+        public void DoGridSlicing(Vector2 size, Vector2 offset, Vector2 padding, int alignment, Vector2 pivot, AutoSlicingMethod slicingMethod, bool keepEmptyRects = false)
+        {
+            var textureToUse = GetTextureToSlice();
+            Rect[] frames = InternalSpriteUtility.GenerateGridSpriteRectangles((UnityTexture2D)textureToUse, offset, size, padding, keepEmptyRects);
+
+            int index = 0;
+=======
         public IEnumerable<Rect> GetGridRects(Vector2 size, Vector2 offset, Vector2 padding, bool keepEmptyRects)
         {
             var textureToUse = GetTextureToSlice();
@@ -329,10 +433,16 @@ namespace UnityEditor.U2D.Sprites
         {
             var frames = GetGridRects(size, offset, padding, keepEmptyRects);
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             undoSystem.RegisterCompleteObjectUndo(m_RectsCache, "Grid Slicing");
             if (slicingMethod == AutoSlicingMethod.DeleteAll)
                 m_RectsCache.Clear();
 
+<<<<<<< HEAD
+            foreach (Rect frame in frames)
+                AddSprite(frame, alignment, pivot, slicingMethod, ref index);
+
+=======
             int index = 0;
             int originalCount = m_RectsCache.spriteRects.Count;
             foreach (Rect frame in frames)
@@ -434,6 +544,7 @@ namespace UnityEditor.U2D.Sprites
             }
             if (slicingMethod == AutoSlicingMethod.DeleteAll)
                 m_RectsCache.ClearUnusedFileID();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selected = null;
             spriteEditor.SetDataModified();
             Repaint();
@@ -539,6 +650,8 @@ namespace UnityEditor.U2D.Sprites
         }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
         public bool IsOnlyUsingDefaultNamedSpriteRects()
         {
@@ -558,5 +671,6 @@ namespace UnityEditor.U2D.Sprites
             return onlyDefaultNames;
         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

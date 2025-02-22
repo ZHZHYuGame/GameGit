@@ -29,6 +29,14 @@ namespace UnityEditor
         [SerializeField]
         string m_SpriteID;
 
+<<<<<<< HEAD
+        [SerializeField]
+        internal long m_InternalID;
+
+        internal bool m_RegisterInternalID;
+
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         GUID m_GUID;
 
         // <summary>The name of the Sprite data.</summary>
@@ -117,6 +125,21 @@ namespace UnityEditor
         {
             return new GUID(sp.FindPropertyRelative("m_SpriteID").stringValue);
         }
+<<<<<<< HEAD
+
+        internal long internalID
+        {
+            get
+            {
+                return m_InternalID;
+            }
+            set
+            {
+                m_InternalID = value;
+            }
+        }
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 
     internal class SpriteRectCache : ScriptableObject

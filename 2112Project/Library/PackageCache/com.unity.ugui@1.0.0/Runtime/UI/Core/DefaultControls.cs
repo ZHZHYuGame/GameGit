@@ -132,9 +132,13 @@ namespace UnityEngine.UI
             lbl.color = s_TextColor;
 
             // Reset() is not called when playing. We still want the default font to be assigned
+<<<<<<< HEAD
+            lbl.AssignDefaultFont();
+=======
             // We may have a font assigned from default preset. We shouldn't override it
             if (lbl.font == null)
                 lbl.AssignDefaultFont();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private static void SetDefaultColorTransitionValues(Selectable slider)
@@ -208,9 +212,15 @@ namespace UnityEngine.UI
         /// <returns>The root GameObject of the created element.</returns>
         public static GameObject CreateButton(Resources resources)
         {
+<<<<<<< HEAD
+            GameObject buttonRoot = CreateUIElementRoot("Button", s_ThickElementSize, typeof(Image), typeof(Button));
+
+            GameObject childText = CreateUIObject("Text", buttonRoot, typeof(Text));
+=======
             GameObject buttonRoot = CreateUIElementRoot("Button (Legacy)", s_ThickElementSize, typeof(Image), typeof(Button));
 
             GameObject childText = CreateUIObject("Text (Legacy)", buttonRoot, typeof(Text));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             Image image = buttonRoot.GetComponent<Image>();
             image.sprite = resources.standard;
@@ -245,7 +255,11 @@ namespace UnityEngine.UI
         /// <returns>The root GameObject of the created element.</returns>
         public static GameObject CreateText(Resources resources)
         {
+<<<<<<< HEAD
+            GameObject go = CreateUIElementRoot("Text", s_ThickElementSize, typeof(Text));
+=======
             GameObject go = CreateUIElementRoot("Text (Legacy)", s_ThickElementSize, typeof(Text));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             Text lbl = go.GetComponent<Text>();
             lbl.text = "New Text";
@@ -486,10 +500,17 @@ namespace UnityEngine.UI
         /// <returns>The root GameObject of the created element.</returns>
         public static GameObject CreateInputField(Resources resources)
         {
+<<<<<<< HEAD
+            GameObject root = CreateUIElementRoot("InputField", s_ThickElementSize, typeof(Image), typeof(InputField));
+
+            GameObject childPlaceholder = CreateUIObject("Placeholder", root, typeof(Text));
+            GameObject childText = CreateUIObject("Text", root, typeof(Text));
+=======
             GameObject root = CreateUIElementRoot("InputField (Legacy)", s_ThickElementSize, typeof(Image), typeof(InputField));
 
             GameObject childPlaceholder = CreateUIObject("Placeholder", root, typeof(Text));
             GameObject childText = CreateUIObject("Text (Legacy)", root, typeof(Text));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             Image image = root.GetComponent<Image>();
             image.sprite = resources.inputField;
@@ -556,7 +577,11 @@ namespace UnityEngine.UI
         /// <returns>The root GameObject of the created element.</returns>
         public static GameObject CreateDropdown(Resources resources)
         {
+<<<<<<< HEAD
+            GameObject root = CreateUIElementRoot("Dropdown", s_ThickElementSize, typeof(Image), typeof(Dropdown));
+=======
             GameObject root = CreateUIElementRoot("Dropdown (Legacy)", s_ThickElementSize, typeof(Image), typeof(Dropdown));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             GameObject label = CreateUIObject("Label", root, typeof(Text));
             GameObject arrow = CreateUIObject("Arrow", root, typeof(Image));

@@ -48,12 +48,17 @@ namespace InputfieldTests
 #endif
         }
 
+<<<<<<< HEAD
+        [Test]
+        public void FocusOnPointerClickWithLeftButton()
+=======
         [UnityTest]
 <<<<<<< HEAD
 =======
         [UnityPlatform(exclude = new[] { RuntimePlatform.Switch })] // Currently InputField.ActivateInputFieldInternal calls Switch SoftwareKeyboard screen ; without user input or a command to close the SoftwareKeyboard this blocks the tests suite
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         public IEnumerator FocusOnPointerClickWithLeftButton()
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             InputField inputField = m_PrefabRoot.GetComponentInChildren<InputField>();
             PointerEventData data = new PointerEventData(m_PrefabRoot.GetComponentInChildren<EventSystem>());
@@ -63,6 +68,9 @@ namespace InputfieldTests
             MethodInfo lateUpdate = typeof(InputField).GetMethod("LateUpdate", BindingFlags.NonPublic | BindingFlags.Instance);
             lateUpdate.Invoke(inputField, null);
 
+<<<<<<< HEAD
+            Assert.IsTrue(inputField.isFocused);
+=======
 #if UNITY_GAMECORE && !UNITY_EDITOR
             if (TouchScreenKeyboard.isSupported)
             {
@@ -96,6 +104,7 @@ namespace InputfieldTests
 #else
             yield break;
 #endif
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         [UnityTest]

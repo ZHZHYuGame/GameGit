@@ -13,7 +13,10 @@ namespace UnityEngine.UI
     /// best to use it only for backgrounds or temporary visible graphics.
     /// </remarks>
 
+<<<<<<< HEAD
+=======
     [RequireComponent(typeof(CanvasRenderer))]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [AddComponentMenu("UI/Raw Image", 12)]
     public class RawImage : MaskableGraphic
     {
@@ -55,7 +58,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Create a new RawImage by going to Create>UI>Raw Image in the hierarchy.
         /// //Attach this script to the RawImage GameObject.
         ///
@@ -76,8 +82,12 @@ namespace UnityEngine.UI
         ///         m_RawImage.texture = m_Texture;
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public Texture texture
         {
@@ -159,7 +169,10 @@ namespace UnityEngine.UI
         {
             SetMaterialDirty();
             SetVerticesDirty();
+<<<<<<< HEAD
+=======
             SetRaycastDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }
