@@ -15,6 +15,35 @@ namespace UnityEditor.U2D.Sprites
         {
             base.DoMainGUI();
             DrawSpriteRectGizmos();
+<<<<<<< HEAD
+
+            HandleGizmoMode();
+
+            if (containsMultipleSprites)
+                HandleRectCornerScalingHandles();
+
+            HandleBorderCornerScalingHandles();
+            HandleBorderSidePointScalingSliders();
+
+            if (containsMultipleSprites)
+                HandleRectSideScalingHandles();
+
+            HandleBorderSideScalingHandles();
+            HandlePivotHandle();
+
+            if (containsMultipleSprites)
+                HandleDragging();
+
+            spriteEditor.HandleSpriteSelection();
+
+            if (containsMultipleSprites)
+            {
+                HandleCreate();
+                HandleDelete();
+                HandleDuplicate();
+            }
+            spriteEditor.spriteRects = m_RectsCache.GetSpriteRects();
+=======
             DrawPotentialSpriteRectGizmos();
 
             if (!spriteEditor.editingDisabled)
@@ -52,6 +81,7 @@ namespace UnityEditor.U2D.Sprites
         {
             if (m_PotentialRects != null && m_PotentialRects.Count > 0)
                 DrawRectGizmos(m_PotentialRects, Color.red);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public override void DoToolbarGUI(Rect toolbarRect)

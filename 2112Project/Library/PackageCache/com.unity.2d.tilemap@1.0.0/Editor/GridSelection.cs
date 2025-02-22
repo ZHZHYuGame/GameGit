@@ -2,10 +2,14 @@ using System;
 <<<<<<< HEAD
 using UnityEngine;
 =======
+<<<<<<< HEAD
+using UnityEngine;
+=======
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEngine.Scripting.APIUpdating;
 using Object = UnityEngine.Object;
 
@@ -13,6 +17,16 @@ namespace UnityEditor.Tilemaps
 {
     /// <summary>Stores the selection made on a GridLayout.</summary>
     [MovedFrom(true, "UnityEditor", "UnityEditor")]
+<<<<<<< HEAD
+    public class GridSelection : ScriptableObject
+    {
+        /// <summary>Callback for when the active GridSelection has changed.</summary>
+        public static event Action gridSelectionChanged;
+        private BoundsInt m_Position;
+        private GameObject m_Target;
+        [SerializeField] private Object m_PreviousSelection;
+
+=======
     [HelpURL("https://docs.unity3d.com/Manual/TilemapPainting-SelectionTool.html#GridSelect")]
     [Serializable]
     public class GridSelection : ScriptableObject
@@ -46,6 +60,7 @@ namespace UnityEditor.Tilemaps
         private GameObject m_OriginalPalette;
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>Whether there is an active GridSelection made on a GridLayout.</summary>
         public static bool active { get { return Selection.activeObject is GridSelection && selection.m_Target != null; } }
 
@@ -59,7 +74,10 @@ namespace UnityEditor.Tilemaps
             {
                 if (selection != null && selection.m_Position != value)
                 {
+<<<<<<< HEAD
+=======
                     RegisterUndo();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     selection.m_Position = value;
                     if (gridSelectionChanged != null)
                         gridSelectionChanged();
@@ -79,11 +97,16 @@ namespace UnityEditor.Tilemaps
         public static void Select(Object target, BoundsInt bounds)
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             GridSelection newSelection = CreateInstance<GridSelection>();
             newSelection.m_PreviousSelection = Selection.activeObject;
             newSelection.m_Target = target as GameObject;
             newSelection.m_Position = bounds;
             Selection.activeObject = newSelection;
+<<<<<<< HEAD
+=======
 =======
             var newSelection = CreateInstance<GridSelection>();
             newSelection.m_PreviousSelection = Selection.activeObject;
@@ -97,6 +120,7 @@ namespace UnityEditor.Tilemaps
             Undo.CollapseUndoOperations(currentGroup);
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (gridSelectionChanged != null)
                 gridSelectionChanged();
         }
@@ -106,6 +130,10 @@ namespace UnityEditor.Tilemaps
         {
             if (active)
             {
+<<<<<<< HEAD
+                selection.m_Position = new BoundsInt();
+                Selection.activeObject = selection.m_PreviousSelection;
+=======
                 RegisterUndo();
                 selection.m_Position = new BoundsInt();
 <<<<<<< HEAD
@@ -121,10 +149,13 @@ namespace UnityEditor.Tilemaps
                 Selection.activeObject = selection.m_PreviousSelection;
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 if (gridSelectionChanged != null)
                     gridSelectionChanged();
             }
         }
+<<<<<<< HEAD
+=======
 
 <<<<<<< HEAD
 =======
@@ -168,5 +199,6 @@ namespace UnityEditor.Tilemaps
             Clear();
         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

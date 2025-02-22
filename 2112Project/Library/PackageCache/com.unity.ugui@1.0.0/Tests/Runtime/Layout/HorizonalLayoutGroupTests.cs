@@ -116,6 +116,8 @@ namespace LayoutTests
             Assert.AreEqual(1, layoutGroup.flexibleHeight);
             Assert.AreEqual(1, layoutGroup.flexibleHeight);
         }
+<<<<<<< HEAD
+=======
 
         [Test]
         public void TestCalculateLayoutHorizontal()
@@ -161,5 +163,6 @@ namespace LayoutTests
             Assert.AreEqual(66.7f, element2Trans.anchoredPosition.x, 0.1f);
             Assert.AreEqual(31.4f, element3Trans.anchoredPosition.x, 0.1f);
         }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

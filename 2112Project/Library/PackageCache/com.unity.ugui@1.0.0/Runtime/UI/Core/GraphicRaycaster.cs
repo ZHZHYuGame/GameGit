@@ -94,11 +94,14 @@ namespace UnityEngine.UI
         [SerializeField]
         protected LayerMask m_BlockingMask = kNoEventMaskSet;
 
+<<<<<<< HEAD
+=======
         /// <summary>
         /// The type of objects specified through LayerMask that are checked to determine if they block graphic raycasts.
         /// </summary>
         public LayerMask blockingMask { get { return m_BlockingMask; } set { m_BlockingMask = value; } }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private Canvas m_Canvas;
 
         protected GraphicRaycaster()
@@ -128,7 +131,11 @@ namespace UnityEngine.UI
             if (canvas == null)
                 return;
 
+<<<<<<< HEAD
+            var canvasGraphics = GraphicRegistry.GetGraphicsForCanvas(canvas);
+=======
             var canvasGraphics = GraphicRegistry.GetRaycastableGraphicsForCanvas(canvas);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (canvasGraphics == null || canvasGraphics.Count == 0)
                 return;
 
@@ -141,6 +148,9 @@ namespace UnityEngine.UI
                 displayIndex = currentEventCamera.targetDisplay;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             var eventPosition = MultipleDisplayUtilities.RelativeMouseAtScaled(eventData.position);
             if (eventPosition != Vector3.zero)
             {
@@ -158,6 +168,10 @@ namespace UnityEngine.UI
                 // will be all zeros so when the returned index is 0 we will default to the event data to be safe.
                 eventPosition = eventData.position;
 
+<<<<<<< HEAD
+                // We dont really know in which display the event occured. We will process the event assuming it occured in our display.
+            }
+=======
 #if UNITY_EDITOR
                 if (Display.activeEditorGameViewTarget != displayIndex)
                     return;
@@ -173,6 +187,7 @@ namespace UnityEngine.UI
             if ((int) eventPosition.z != displayIndex)
                 return;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             // Convert to view space
             Vector2 pos;
@@ -225,12 +240,18 @@ namespace UnityEngine.UI
                         if (hits.Length > 0)
                             hitDistance = hits[0].distance;
 =======
+<<<<<<< HEAD
+                        var hits = ReflectionMethodsCache.Singleton.raycast3DAll(ray, distanceToClipPlane, (int)m_BlockingMask);
+                        if (hits.Length > 0)
+                            hitDistance = hits[0].distance;
+=======
                         RaycastHit hit;
                         if (ReflectionMethodsCache.Singleton.raycast3D(ray, out hit, distanceToClipPlane, (int)m_BlockingMask))
                         {
                             hitDistance = hit.distance;
                         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     }
                 }
 #endif
@@ -325,6 +346,12 @@ namespace UnityEngine.UI
         {
             get
             {
+<<<<<<< HEAD
+                if (canvas.renderMode == RenderMode.ScreenSpaceOverlay || (canvas.renderMode == RenderMode.ScreenSpaceCamera && canvas.worldCamera == null))
+                    return null;
+
+                return canvas.worldCamera != null ? canvas.worldCamera : Camera.main;
+=======
                 var canvas = this.canvas;
                 var renderMode = canvas.renderMode;
                 if (renderMode == RenderMode.ScreenSpaceOverlay
@@ -332,6 +359,7 @@ namespace UnityEngine.UI
                     return null;
 
                 return canvas.worldCamera ?? Camera.main;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -351,7 +379,11 @@ namespace UnityEngine.UI
                 if (!graphic.raycastTarget || graphic.canvasRenderer.cull || graphic.depth == -1)
                     continue;
 
+<<<<<<< HEAD
+                if (!RectTransformUtility.RectangleContainsScreenPoint(graphic.rectTransform, pointerPosition, eventCamera))
+=======
                 if (!RectTransformUtility.RectangleContainsScreenPoint(graphic.rectTransform, pointerPosition, eventCamera, graphic.raycastPadding))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     continue;
 
                 if (eventCamera != null && eventCamera.WorldToScreenPoint(graphic.rectTransform.position).z > eventCamera.farClipPlane)

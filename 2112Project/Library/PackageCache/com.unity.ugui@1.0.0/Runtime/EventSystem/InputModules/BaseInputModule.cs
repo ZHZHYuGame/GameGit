@@ -12,7 +12,10 @@ namespace UnityEngine.EventSystems
     /// </remarks>
     /// <example>
     /// <code>
+<<<<<<< HEAD
+=======
     /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     ///
@@ -31,14 +34,20 @@ namespace UnityEngine.EventSystems
     ///         ExecuteEvents.Execute (m_TargetObject, new BaseEventData (eventSystem), ExecuteEvents.moveHandler);
     ///     }
     /// }
+<<<<<<< HEAD
+    /// </code>
+=======
     /// ]]>
     ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// </example>
     public abstract class BaseInputModule : UIBehaviour
     {
         [NonSerialized]
         protected List<RaycastResult> m_RaycastResultCache = new List<RaycastResult>();
 
+<<<<<<< HEAD
+=======
         /// <summary>
         /// True if pointer hover events will be sent to the parent
         /// </summary>
@@ -46,6 +55,7 @@ namespace UnityEngine.EventSystems
         //This is needed for testing
         internal bool sendPointerHoverToParent { get { return m_SendPointerHoverToParent; } set { m_SendPointerHoverToParent = value; } }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private AxisEventData m_AxisEventData;
 
         private EventSystem m_EventSystem;
@@ -125,8 +135,12 @@ namespace UnityEngine.EventSystems
         /// </summary>
         protected static RaycastResult FindFirstRaycast(List<RaycastResult> candidates)
         {
+<<<<<<< HEAD
+            for (var i = 0; i < candidates.Count; ++i)
+=======
             var candidatesCount = candidates.Count;
             for (var i = 0; i < candidatesCount; ++i)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 if (candidates[i].gameObject == null)
                     continue;
@@ -160,10 +174,23 @@ namespace UnityEngine.EventSystems
 
             if (Mathf.Abs(x) > Mathf.Abs(y))
             {
+<<<<<<< HEAD
+                if (x > 0)
+                    return MoveDirection.Right;
+                return MoveDirection.Left;
+            }
+            else
+            {
+                if (y > 0)
+                    return MoveDirection.Up;
+                return MoveDirection.Down;
+            }
+=======
                 return x > 0 ? MoveDirection.Right : MoveDirection.Left;
             }
 
             return y > 0 ? MoveDirection.Up : MoveDirection.Down;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -192,10 +219,16 @@ namespace UnityEngine.EventSystems
             return null;
         }
 
+<<<<<<< HEAD
+        // walk up the tree till a common root between the last entered and the current entered is foung
+        // send exit events up to (but not inluding) the common root. Then send enter events up to
+        // (but not including the common root).
+=======
         // walk up the tree till a common root between the last entered and the current entered is found
         // send exit events up to (but not including) the common root. Then send enter events up to
         // (but not including) the common root.
         // Send move events before exit, after enter, and on hovered objects when pointer data has changed.
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected void HandlePointerExitAndEnter(PointerEventData currentPointerData, GameObject newEnterTarget)
         {
             // if we have no target / pointerEnter has been deleted
@@ -203,6 +236,10 @@ namespace UnityEngine.EventSystems
             // then exit
             if (newEnterTarget == null || currentPointerData.pointerEnter == null)
             {
+<<<<<<< HEAD
+                for (var i = 0; i < currentPointerData.hovered.Count; ++i)
+                    ExecuteEvents.Execute(currentPointerData.hovered[i], currentPointerData, ExecuteEvents.pointerExitHandler);
+=======
                 var hoveredCount = currentPointerData.hovered.Count;
                 for (var i = 0; i < hoveredCount; ++i)
                 {
@@ -210,6 +247,7 @@ namespace UnityEngine.EventSystems
                     ExecuteEvents.Execute(currentPointerData.hovered[i], currentPointerData, ExecuteEvents.pointerMoveHandler);
                     ExecuteEvents.Execute(currentPointerData.hovered[i], currentPointerData, ExecuteEvents.pointerExitHandler);
                 }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 currentPointerData.hovered.Clear();
 
@@ -222,6 +260,11 @@ namespace UnityEngine.EventSystems
 
             // if we have not changed hover target
             if (currentPointerData.pointerEnter == newEnterTarget && newEnterTarget)
+<<<<<<< HEAD
+                return;
+
+            GameObject commonRoot = FindCommonRoot(currentPointerData.pointerEnter, newEnterTarget);
+=======
             {
                 if (currentPointerData.IsPointerMoving())
                 {
@@ -234,18 +277,30 @@ namespace UnityEngine.EventSystems
 
             GameObject commonRoot = FindCommonRoot(currentPointerData.pointerEnter, newEnterTarget);
             GameObject pointerParent = ((Component)newEnterTarget.GetComponentInParent<IPointerExitHandler>())?.gameObject;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             // and we already an entered object from last time
             if (currentPointerData.pointerEnter != null)
             {
                 // send exit handler call to all elements in the chain
                 // until we reach the new target, or null!
+<<<<<<< HEAD
+=======
                 // ** or when !m_SendPointerEnterToParent, stop when meeting a gameobject with an exit event handler
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 Transform t = currentPointerData.pointerEnter.transform;
 
                 while (t != null)
                 {
                     // if we reach the common root break out!
+<<<<<<< HEAD
+                    if (commonRoot != null && commonRoot.transform == t)
+                        break;
+
+                    ExecuteEvents.Execute(t.gameObject, currentPointerData, ExecuteEvents.pointerExitHandler);
+                    currentPointerData.hovered.Remove(t.gameObject);
+                    t = t.parent;
+=======
                     if (m_SendPointerHoverToParent && commonRoot != null && commonRoot.transform == t)
                         break;
 
@@ -265,16 +320,27 @@ namespace UnityEngine.EventSystems
                         break;
 
                     if (!m_SendPointerHoverToParent) t = t.parent;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
 
             // now issue the enter call up to but not including the common root
+<<<<<<< HEAD
+=======
             var oldPointerEnter = currentPointerData.pointerEnter;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             currentPointerData.pointerEnter = newEnterTarget;
             if (newEnterTarget != null)
             {
                 Transform t = newEnterTarget.transform;
 
+<<<<<<< HEAD
+                while (t != null && t.gameObject != commonRoot)
+                {
+                    ExecuteEvents.Execute(t.gameObject, currentPointerData, ExecuteEvents.pointerEnterHandler);
+                    currentPointerData.hovered.Add(t.gameObject);
+                    t = t.parent;
+=======
                 while (t != null)
                 {
                     currentPointerData.reentered = t.gameObject == commonRoot && t.gameObject != oldPointerEnter;
@@ -297,6 +363,7 @@ namespace UnityEngine.EventSystems
                         break;
 
                     if (!m_SendPointerHoverToParent) t = t.parent;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
         }
@@ -374,6 +441,8 @@ namespace UnityEngine.EventSystems
         {
             return true;
         }
+<<<<<<< HEAD
+=======
 
         /// <summary>
         /// Returns Id of the pointer following <see cref="UnityEngine.UIElements.PointerId"/> convention.
@@ -390,5 +459,6 @@ namespace UnityEngine.EventSystems
             return -1;
 #endif
         }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

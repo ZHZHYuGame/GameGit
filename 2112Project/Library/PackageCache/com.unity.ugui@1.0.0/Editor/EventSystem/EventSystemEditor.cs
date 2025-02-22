@@ -24,8 +24,12 @@ namespace UnityEditor.EventSystems
             // no input modules :(
             if (GUILayout.Button("Add Default Input Modules"))
             {
+<<<<<<< HEAD
+                Undo.AddComponent<StandaloneInputModule>(eventSystem.gameObject);
+=======
                 ObjectFactory.AddComponent<StandaloneInputModule>(eventSystem.gameObject);
                 Undo.RegisterCreatedObjectUndo(eventSystem.gameObject, "Add StandaloneInputModule");
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 

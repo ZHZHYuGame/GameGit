@@ -1,8 +1,15 @@
+<<<<<<< HEAD
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using Object = UnityEngine.Object;
+=======
 using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEditor.Tilemaps
 {
@@ -10,10 +17,14 @@ namespace UnityEditor.Tilemaps
     internal class TileDragAndDropManager : ScriptableSingleton<TileDragAndDropManager>
     {
         private bool m_RegisteredEventHandlers;
+<<<<<<< HEAD
+        private Dictionary<Vector2Int, Object> m_HoverData;
+=======
         private Dictionary<Vector2Int, TileDragAndDropHoverData> m_HoverData;
 
         [SerializeField]
         private string m_LastUserTileAssetPath;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         [InitializeOnLoadMethod]
         static void Initialize()
@@ -60,7 +71,11 @@ namespace UnityEditor.Tilemaps
                 case EventType.DragUpdated:
                     DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
                     List<TileBase> tiles = TileDragAndDrop.GetValidTiles(DragAndDrop.objectReferences);
+<<<<<<< HEAD
+                    instance.m_HoverData = TileDragAndDrop.CreateHoverData(null, null, tiles);
+=======
                     instance.m_HoverData = TileDragAndDrop.CreateHoverData(null, null, tiles, activeGrid.cellLayout);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     if (instance.m_HoverData.Count > 0)
                     {
                         Event.current.Use();
@@ -71,6 +86,15 @@ namespace UnityEditor.Tilemaps
                     if (instance.m_HoverData.Count > 0)
                     {
                         DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+<<<<<<< HEAD
+                        Dictionary<Vector2Int, TileBase> tileSheet = TileDragAndDrop.ConvertToTileSheet(instance.m_HoverData);
+                        Tilemap tilemap = GetOrCreateActiveTilemap();
+                        tilemap.ClearAllEditorPreviewTiles();
+                        foreach (KeyValuePair<Vector2Int, TileBase> item in tileSheet)
+                        {
+                            Vector3Int position = new Vector3Int(mouseGridPosition.x + item.Key.x, mouseGridPosition.y + item.Key.y, 0);
+                            tilemap.SetTile(position, item.Value);
+=======
                         var tileSheet = TileDragAndDrop.ConvertToTileSheet(instance.m_HoverData);
                         Tilemap tilemap = GetOrCreateActiveTilemap();
                         tilemap.ClearAllEditorPreviewTiles();
@@ -83,6 +107,7 @@ namespace UnityEditor.Tilemaps
                                 item.Value.hasOffset ? item.Value.positionOffset - tilemap.tileAnchor : Vector3.zero
                                 , Quaternion.identity
                                 , Vector3.one));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         }
                         instance.m_HoverData = null;
                         GUI.changed = true;
@@ -98,12 +123,21 @@ namespace UnityEditor.Tilemaps
                             map.ClearAllEditorPreviewTiles();
 
                         DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+<<<<<<< HEAD
+                        foreach (KeyValuePair<Vector2Int, Object> item in instance.m_HoverData)
+                        {
+                            Vector3Int gridPos = mouseGridPosition + new Vector3Int(item.Key.x, item.Key.y, 0);
+                            if (item.Value is TileBase)
+                            {
+                                TileBase tile = item.Value as TileBase;
+=======
                         foreach (KeyValuePair<Vector2Int, TileDragAndDropHoverData> item in instance.m_HoverData)
                         {
                             Vector3Int gridPos = mouseGridPosition + new Vector3Int(item.Key.x, item.Key.y, 0);
                             if (item.Value.hoverObject is TileBase)
                             {
                                 TileBase tile = item.Value.hoverObject as TileBase;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                                 if (map != null)
                                 {
                                     map.SetEditorPreviewTile(gridPos, tile);
@@ -131,6 +165,8 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+=======
         internal static string GetDefaultTileAssetDirectoryPath()
         {
             var path = instance.m_LastUserTileAssetPath;
@@ -160,6 +196,7 @@ namespace UnityEditor.Tilemaps
             instance.m_LastUserTileAssetPath = directoryPath;
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         static Tilemap GetOrCreateActiveTilemap()
         {
             if (Selection.activeGameObject != null)
@@ -184,7 +221,11 @@ namespace UnityEditor.Tilemaps
             return map;
         }
 
+<<<<<<< HEAD
+        public static Grid GetActiveGrid()
+=======
         static Grid GetActiveGrid()
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             if (Selection.activeGameObject != null)
             {

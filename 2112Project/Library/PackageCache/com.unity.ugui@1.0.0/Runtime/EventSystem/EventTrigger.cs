@@ -18,7 +18,10 @@ namespace UnityEngine.EventSystems
     /// <example>
     /// There are two ways to intercept events: You could extend EventTrigger, and override the functions for the events you are interested in intercepting; as shown in this example:
     /// <code>
+<<<<<<< HEAD
+=======
     /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     ///
@@ -109,11 +112,17 @@ namespace UnityEngine.EventSystems
     ///         Debug.Log("OnUpdateSelected called.");
     ///     }
     /// }
+<<<<<<< HEAD
+    /// </code>
+    /// or you can specify individual delegates:
+    /// <code>
+=======
     /// ]]>
     ///</code>
     /// or you can specify individual delegates:
     /// <code>
     /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     ///
@@ -134,8 +143,12 @@ namespace UnityEngine.EventSystems
     ///         Debug.Log("OnPointerDownDelegate called.");
     ///     }
     /// }
+<<<<<<< HEAD
+    /// </code>
+=======
     /// ]]>
     ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// </example>
     public class EventTrigger :
         MonoBehaviour,
@@ -212,12 +225,16 @@ namespace UnityEngine.EventSystems
         private void Execute(EventTriggerType id, BaseEventData eventData)
         {
 <<<<<<< HEAD
+            for (int i = 0, imax = triggers.Count; i < imax; ++i)
+=======
+<<<<<<< HEAD
             var triggerCount = triggers.Count;
 
             for (int i = 0, imax = triggers.Count; i < imax; ++i)
 =======
             for (int i = 0; i < triggers.Count; ++i)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 var ent = triggers[i];
                 if (ent.eventID == id && ent.callback != null)

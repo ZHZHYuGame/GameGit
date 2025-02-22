@@ -17,8 +17,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                 return GridPalettes.palettes.Count + 1;
 =======
+<<<<<<< HEAD
+                return GridPalettes.palettes.Count + 1;
+=======
                 return GridPaintingState.palettes.Count + 1;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
 
             public object GetItem(int index)
@@ -27,9 +31,14 @@ namespace UnityEditor.Tilemaps
                 if (index < GridPalettes.palettes.Count)
                     return GridPalettes.palettes[index];
 =======
+<<<<<<< HEAD
+                if (index < GridPalettes.palettes.Count)
+                    return GridPalettes.palettes[index];
+=======
                 if (index < GridPaintingState.palettes.Count)
                     return GridPaintingState.palettes[index];
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 return null;
             }
@@ -66,10 +75,16 @@ namespace UnityEditor.Tilemaps
                     return GridPalettes.palettes[index].name;
                 else if (index == GridPalettes.palettes.Count)
 =======
+<<<<<<< HEAD
+                if (index < GridPalettes.palettes.Count)
+                    return GridPalettes.palettes[index].name;
+                else if (index == GridPalettes.palettes.Count)
+=======
                 if (index < GridPaintingState.palettes.Count)
                     return GridPaintingState.palettes[index].name;
                 else if (index == GridPaintingState.palettes.Count)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     return "Create New Palette";
                 else
                     return "";
@@ -85,8 +100,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                 return new int[] { GridPalettes.palettes.Count - 1 };
 =======
+<<<<<<< HEAD
+                return new int[] { GridPalettes.palettes.Count - 1 };
+=======
                 return new int[] { GridPaintingState.palettes.Count - 1 };
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
     }

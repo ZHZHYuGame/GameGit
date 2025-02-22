@@ -55,7 +55,11 @@ namespace UnityEditor.Tilemaps
         private static void GetCreateTileFromPaletteAttributeMethods()
         {
             m_CreateTileFromPaletteMethods = new List<MethodInfo>();
+<<<<<<< HEAD
+            foreach (var sortingMethod in EditorAssemblies.GetAllMethodsWithAttribute<CreateTileFromPaletteAttribute>())
+=======
             foreach (var sortingMethod in TypeCache.GetMethodsWithAttribute<CreateTileFromPaletteAttribute>())
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 m_CreateTileFromPaletteMethods.Add(sortingMethod);
             }

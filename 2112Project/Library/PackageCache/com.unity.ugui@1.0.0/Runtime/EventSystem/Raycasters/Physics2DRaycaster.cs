@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
+<<<<<<< HEAD
+=======
 using UnityEngine.Rendering;
 
 #if PACKAGE_TILEMAP
 using UnityEngine.Tilemaps;
 #endif
 using UnityEngine.U2D;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEngine.EventSystems
 {
@@ -65,6 +68,9 @@ namespace UnityEngine.EventSystems
             {
                 for (int b = 0, bmax = hitCount; b < bmax; ++b)
                 {
+<<<<<<< HEAD
+                    var sr = m_Hits[b].collider.gameObject.GetComponent<SpriteRenderer>();
+=======
                     Renderer r2d = null;
                     // Case 1198442: Check for 2D renderers when filling in RaycastResults
                     var rendererResult = m_Hits[b].collider.gameObject.GetComponent<Renderer>();
@@ -85,6 +91,7 @@ namespace UnityEngine.EventSystems
                             r2d = rendererResult;
                         }
                     }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                     var result = new RaycastResult
                     {
@@ -93,13 +100,22 @@ namespace UnityEngine.EventSystems
 <<<<<<< HEAD
                         distance = Vector3.Distance(eventCamera.transform.position, m_Hits[b].point),
 =======
+<<<<<<< HEAD
+                        distance = Vector3.Distance(eventCamera.transform.position, m_Hits[b].point),
+=======
                         distance = m_Hits[b].distance,
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         worldPosition = m_Hits[b].point,
                         worldNormal = m_Hits[b].normal,
                         screenPosition = eventData.position,
                         displayIndex = displayIndex,
                         index = resultAppendList.Count,
+<<<<<<< HEAD
+                        sortingLayer =  sr != null ? sr.sortingLayerID : 0,
+                        sortingOrder = sr != null ? sr.sortingOrder : 0
+                    };
+=======
                         sortingGroupID = r2d != null ? r2d.sortingGroupID : SortingGroup.invalidSortingGroupID,
                         sortingGroupOrder = r2d != null ? r2d.sortingGroupOrder : 0,
                         sortingLayer = r2d != null ? r2d.sortingLayerID : 0,
@@ -115,6 +131,7 @@ namespace UnityEngine.EventSystems
                         result.sortingOrder = sortingGroup.sortingOrder;
                     }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     resultAppendList.Add(result);
                 }
             }

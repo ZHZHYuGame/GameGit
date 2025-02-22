@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+using UnityEditor.Presets;
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,6 +12,10 @@ namespace UnityEditor.Tilemaps
     /// </summary>
     public class TileUtility
     {
+<<<<<<< HEAD
+        [MenuItem("Assets/Create/Tile", priority = 357)]
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         internal static void CreateNewTile()
         {
             string message = string.Format("Save tile'{0}':", "tile");

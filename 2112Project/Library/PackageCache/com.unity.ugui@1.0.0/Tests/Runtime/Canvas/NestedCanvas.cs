@@ -82,7 +82,10 @@ public class NestedCanvas : IPrebuildSetup
         yield return null;
 
         Assert.True(image.canvasRenderer.GetInheritedAlpha() == 0.5f);
+<<<<<<< HEAD
+=======
         GameObject.DestroyImmediate(root);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 
     [TearDown]

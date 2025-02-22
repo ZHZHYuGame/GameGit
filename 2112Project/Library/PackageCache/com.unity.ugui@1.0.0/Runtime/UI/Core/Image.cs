@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine.Experimental.Rendering;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEngine.Serialization;
 using UnityEngine.U2D;
 
@@ -17,7 +20,10 @@ namespace UnityEngine.UI
     /// Image is a textured element in the UI hierarchy.
     /// </summary>
 
+<<<<<<< HEAD
+=======
     [RequireComponent(typeof(CanvasRenderer))]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [AddComponentMenu("UI/Image", 11)]
     /// <summary>
     ///   Displays a Sprite inside the UI System.
@@ -249,7 +255,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Attach this script to an Image GameObject and set its Source Image to the Sprite you would like.
         /// //Press the space key to change the Sprite. Remember to assign a second Sprite in this script's section of the Inspector.
         ///
@@ -277,8 +286,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
 
         public Sprite sprite
@@ -296,8 +309,11 @@ namespace UnityEngine.UI
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
                         ResetAlphaHitThresholdIfNeeded();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         SetAllDirty();
                         TrackSprite();
                     }
@@ -308,6 +324,11 @@ namespace UnityEngine.UI
                     m_SkipMaterialUpdate = value.texture == null;
                     m_Sprite = value;
 
+<<<<<<< HEAD
+                    SetAllDirty();
+                    TrackSprite();
+                }
+=======
 <<<<<<< HEAD
                     SetAllDirty();
                     TrackSprite();
@@ -332,6 +353,7 @@ namespace UnityEngine.UI
                     return m_Sprite != null && m_Sprite.texture != null && !GraphicsFormatUtility.IsCrunchFormat(m_Sprite.texture.format) && m_Sprite.texture.isReadable;
                 }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -368,7 +390,10 @@ namespace UnityEngine.UI
         /// the example code.  /Example1/ and /Example2/ are functions called by the button OnClick
         /// functions.  Example1 calls overrideSprite and Example2 sets overrideSprite to null.
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using System.Collections;
         /// using System.Collections.Generic;
         /// using UnityEngine;
@@ -403,8 +428,12 @@ namespace UnityEngine.UI
         ///         i.overrideSprite = null;
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public Sprite overrideSprite
         {
@@ -453,7 +482,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -468,8 +500,12 @@ namespace UnityEngine.UI
         ///         xmasCalenderDoor.fillCenter = false;
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public bool fillCenter { get { return m_FillCenter; } set { if (SetPropertyUtility.SetStruct(ref m_FillCenter, value)) SetVerticesDirty(); } }
 
@@ -490,7 +526,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -511,8 +550,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public float fillAmount { get { return m_FillAmount; } set { if (SetPropertyUtility.SetStruct(ref m_FillAmount, Mathf.Clamp01(value))) SetVerticesDirty(); } }
 
@@ -527,7 +570,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -550,8 +596,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public bool fillClockwise { get { return m_FillClockwise; } set { if (SetPropertyUtility.SetStruct(ref m_FillClockwise, value)) SetVerticesDirty(); } }
 
@@ -567,7 +617,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using UnityEngine.UI;
         /// using System.Collections;
@@ -603,8 +656,12 @@ namespace UnityEngine.UI
         ///         Debug.Log(string.Format("{0} is using {1} fill method with the origin on {2}", name, image.fillMethod, fillOriginName));
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public int fillOrigin { get { return m_FillOrigin; } set { if (SetPropertyUtility.SetStruct(ref m_FillOrigin, value)) SetVerticesDirty(); } }
 
@@ -632,7 +689,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -647,6 +707,11 @@ namespace UnityEngine.UI
         ///         theButton.alphaHitTestMinimumThreshold = 0.5f;
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+        /// </example>
+        public float alphaHitTestMinimumThreshold { get { return m_AlphaHitTestMinimumThreshold; } set { m_AlphaHitTestMinimumThreshold = value; } }
+=======
         /// ]]>
         ///</code>
         /// </example>
@@ -663,6 +728,7 @@ namespace UnityEngine.UI
             }
         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         /// Controls whether or not to use the generated mesh from the sprite importer.
         [SerializeField] private bool m_UseSpriteMesh;
@@ -749,7 +815,10 @@ namespace UnityEngine.UI
             set
             {
                 m_PixelsPerUnitMultiplier = Mathf.Max(0.01f, value);
+<<<<<<< HEAD
+=======
                 SetVerticesDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -790,6 +859,11 @@ namespace UnityEngine.UI
                 if (Application.isPlaying && activeSprite && activeSprite.associatedAlphaSplitTexture != null)
                     return defaultETC1GraphicMaterial;
 =======
+<<<<<<< HEAD
+#if UNITY_EDITOR
+                if (Application.isPlaying && activeSprite && activeSprite.associatedAlphaSplitTexture != null)
+                    return defaultETC1GraphicMaterial;
+=======
 
                 //Edit and Runtime should use Split Alpha Shader if EditorSettings.spritePackerMode = Sprite Atlas V2
 #if UNITY_EDITOR
@@ -799,6 +873,7 @@ namespace UnityEngine.UI
                     return defaultETC1GraphicMaterial;
                 }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 #else
 
                 if (activeSprite && activeSprite.associatedAlphaSplitTexture != null)
@@ -942,8 +1017,12 @@ namespace UnityEngine.UI
 <<<<<<< HEAD
             if (activeSprite != null && (activeSprite.texture == null || activeSprite.isUsingPlaceholder))
 =======
+<<<<<<< HEAD
+            if (activeSprite != null && (activeSprite.texture == null || activeSprite.isUsingPlaceholder))
+=======
             if (activeSprite != null && activeSprite.texture == null)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 TrackImage(this);
                 m_Tracked = true;
@@ -1133,10 +1212,13 @@ namespace UnityEngine.UI
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
                     // Check for zero or negative dimensions to prevent invalid quads (UUM-71372)
                     if ((s_VertScratch[x2].x - s_VertScratch[x].x <= 0) || (s_VertScratch[y2].y - s_VertScratch[y].y <= 0))
                         continue;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                     AddQuad(toFill,
                         new Vector2(s_VertScratch[x].x, s_VertScratch[y].y),
@@ -1197,7 +1279,11 @@ namespace UnityEngine.UI
             if (tileHeight <= 0)
                 tileHeight = yMax - yMin;
 
+<<<<<<< HEAD
+            if (activeSprite != null && (hasBorder || activeSprite.packed || activeSprite.texture.wrapMode != TextureWrapMode.Repeat))
+=======
             if (activeSprite != null && (hasBorder || activeSprite.packed || activeSprite.texture != null && activeSprite.texture.wrapMode != TextureWrapMode.Repeat))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 // Sprite has border, or is not in repeat mode, or cannot be repeated because of packing.
                 // We cannot use texture tiling so we will generate a mesh of quads to tile the texture.
@@ -1859,10 +1945,13 @@ namespace UnityEngine.UI
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             if (m_PreserveAspect)
                 PreserveSpriteAspectRatio(ref rect, new Vector2(activeSprite.texture.width, activeSprite.texture.height));
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             // Convert to have lower left corner as reference point.
             local.x += rectTransform.pivot.x * rect.width;
             local.y += rectTransform.pivot.y * rect.height;
@@ -1875,9 +1964,15 @@ namespace UnityEngine.UI
             float x = (spriteRect.x + local.x) / activeSprite.texture.width;
             float y = (spriteRect.y + local.y) / activeSprite.texture.height;
 =======
+<<<<<<< HEAD
+            Rect spriteRect = activeSprite.textureRect;
+            float x = (spriteRect.x + local.x) / activeSprite.texture.width;
+            float y = (spriteRect.y + local.y) / activeSprite.texture.height;
+=======
             float x = local.x / activeSprite.texture.width;
             float y = local.y / activeSprite.texture.height;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             try
             {
@@ -1897,8 +1992,12 @@ namespace UnityEngine.UI
 <<<<<<< HEAD
                 return new Vector2(local.x * spriteRect.width / rect.width, local.y * spriteRect.height / rect.height);
 =======
+<<<<<<< HEAD
+                return new Vector2(local.x * spriteRect.width / rect.width, local.y * spriteRect.height / rect.height);
+=======
                 return new Vector2(spriteRect.position.x + local.x * spriteRect.width / rect.width, spriteRect.position.y + local.y * spriteRect.height / rect.height);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             Vector4 border = activeSprite.border;
             Vector4 adjustedBorder = GetAdjustedBorders(border / pixelsPerUnit, rect);
@@ -1918,12 +2017,23 @@ namespace UnityEngine.UI
                 {
                     float lerp = Mathf.InverseLerp(adjustedBorder[i], rect.size[i] - adjustedBorder[i + 2], local[i]);
                     local[i] = Mathf.Lerp(border[i], spriteRect.size[i] - border[i + 2], lerp);
+<<<<<<< HEAD
+                    continue;
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
                 else
                 {
                     local[i] -= adjustedBorder[i];
                     local[i] = Mathf.Repeat(local[i], spriteRect.size[i] - border[i] - border[i + 2]);
                     local[i] += border[i];
+<<<<<<< HEAD
+                    continue;
+                }
+            }
+
+            return local;
+=======
                 }
             }
 
@@ -1932,6 +2042,7 @@ namespace UnityEngine.UI
 =======
             return local + spriteRect.position;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         // To track textureless images, which will be rebuild if sprite atlas manager registered a Sprite Atlas that will give this image new texture
@@ -1947,13 +2058,19 @@ namespace UnityEngine.UI
                 {
                     g.SetAllDirty();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     if (!spriteAtlas.IsPlaceholder())
                     {
                         m_TrackedTexturelessImages.RemoveAt(i);
                     }
+<<<<<<< HEAD
+=======
 =======
                     m_TrackedTexturelessImages.RemoveAt(i);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
         }
@@ -1978,7 +2095,10 @@ namespace UnityEngine.UI
         {
             SetMaterialDirty();
             SetVerticesDirty();
+<<<<<<< HEAD
+=======
             SetRaycastDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
 #if UNITY_EDITOR

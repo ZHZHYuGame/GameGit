@@ -11,7 +11,10 @@ namespace UnityEngine.UI.Collections
         //  - Fast random removal
         //  - Fast unique inclusion to the end
         //  - Sequential access
+<<<<<<< HEAD
+=======
         //  - Possibility to have disabled items registered
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         //Downsides:
         //  - Uses more memory
         //  - Ordering is not persistent
@@ -23,6 +26,23 @@ namespace UnityEngine.UI.Collections
 
         readonly List<T> m_List = new List<T>();
         Dictionary<T, int> m_Dictionary = new Dictionary<T, int>();
+<<<<<<< HEAD
+
+        public void Add(T item)
+        {
+            m_List.Add(item);
+            m_Dictionary.Add(item, m_List.Count - 1);
+        }
+
+        public bool AddUnique(T item)
+        {
+            if (m_Dictionary.ContainsKey(item))
+                return false;
+
+            m_List.Add(item);
+            m_Dictionary.Add(item, m_List.Count - 1);
+
+=======
         int m_EnabledObjectCount = 0;
 
         public void Add(T item)
@@ -81,6 +101,7 @@ namespace UnityEngine.UI.Collections
                 Swap(index, m_EnabledObjectCount - 1);
 
             m_EnabledObjectCount--;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return true;
         }
 
@@ -108,7 +129,10 @@ namespace UnityEngine.UI.Collections
         {
             m_List.Clear();
             m_Dictionary.Clear();
+<<<<<<< HEAD
+=======
             m_EnabledObjectCount = 0;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public bool Contains(T item)
@@ -121,8 +145,12 @@ namespace UnityEngine.UI.Collections
             m_List.CopyTo(array, arrayIndex);
         }
 
+<<<<<<< HEAD
+        public int Count { get { return m_List.Count; } }
+=======
         public int Count { get { return m_EnabledObjectCount; } }
         public int Capacity { get { return m_List.Count; } }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public bool IsReadOnly { get { return false; } }
         public int IndexOf(T item)
         {
@@ -141,6 +169,19 @@ namespace UnityEngine.UI.Collections
         public void RemoveAt(int index)
         {
             T item = m_List[index];
+<<<<<<< HEAD
+            m_Dictionary.Remove(item);
+            if (index == m_List.Count - 1)
+                m_List.RemoveAt(index);
+            else
+            {
+                int replaceItemIndex = m_List.Count - 1;
+                T replaceItem = m_List[replaceItemIndex];
+                m_List[index] = replaceItem;
+                m_Dictionary[replaceItem] = index;
+                m_List.RemoveAt(replaceItemIndex);
+            }
+=======
             if (index == m_List.Count - 1)
             {
                 if (m_EnabledObjectCount == m_List.Count)
@@ -177,10 +218,20 @@ namespace UnityEngine.UI.Collections
             m_List[index2] = item1;
             m_Dictionary[item2] = index1;
             m_Dictionary[item1] = index2;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public T this[int index]
         {
+<<<<<<< HEAD
+            get { return m_List[index]; }
+            set
+            {
+                T item = m_List[index];
+                m_Dictionary.Remove(item);
+                m_List[index] = value;
+                m_Dictionary.Add(item, index);
+=======
             get
             {
                 if ((uint)index >= (uint)m_EnabledObjectCount)
@@ -195,6 +246,7 @@ namespace UnityEngine.UI.Collections
                 m_Dictionary.Remove(item);
                 m_List[index] = value;
                 m_Dictionary.Add(value, index);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 

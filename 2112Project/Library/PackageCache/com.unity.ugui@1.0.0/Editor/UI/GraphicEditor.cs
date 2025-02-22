@@ -18,12 +18,17 @@ namespace UnityEditor.UI
         protected SerializedProperty m_Color;
         protected SerializedProperty m_Material;
         protected SerializedProperty m_RaycastTarget;
+<<<<<<< HEAD
+=======
         protected SerializedProperty m_RaycastPadding;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected SerializedProperty m_Maskable;
 
         private GUIContent m_CorrectButtonContent;
         protected AnimBool m_ShowNativeSize;
 
+<<<<<<< HEAD
+=======
         GUIContent m_PaddingContent;
         GUIContent m_LeftContent;
         GUIContent m_RightContent;
@@ -31,33 +36,46 @@ namespace UnityEditor.UI
         GUIContent m_BottomContent;
         static private bool m_ShowPadding = false;
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected virtual void OnDisable()
         {
             Tools.hidden = false;
             m_ShowNativeSize.valueChanged.RemoveListener(Repaint);
+<<<<<<< HEAD
+=======
             SceneView.duringSceneGui -= DrawAnchorsOnSceneView;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected virtual void OnEnable()
         {
             m_CorrectButtonContent = EditorGUIUtility.TrTextContent("Set Native Size", "Sets the size to match the content.");
+<<<<<<< HEAD
+=======
             m_PaddingContent = EditorGUIUtility.TrTextContent("Raycast Padding");
             m_LeftContent = EditorGUIUtility.TrTextContent("Left");
             m_RightContent = EditorGUIUtility.TrTextContent("Right");
             m_TopContent = EditorGUIUtility.TrTextContent("Top");
             m_BottomContent = EditorGUIUtility.TrTextContent("Bottom");
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             m_Script = serializedObject.FindProperty("m_Script");
             m_Color = serializedObject.FindProperty("m_Color");
             m_Material = serializedObject.FindProperty("m_Material");
             m_RaycastTarget = serializedObject.FindProperty("m_RaycastTarget");
+<<<<<<< HEAD
+=======
             m_RaycastPadding = serializedObject.FindProperty("m_RaycastPadding");
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             m_Maskable = serializedObject.FindProperty("m_Maskable");
 
             m_ShowNativeSize = new AnimBool(false);
             m_ShowNativeSize.valueChanged.AddListener(Repaint);
+<<<<<<< HEAD
+=======
 
             SceneView.duringSceneGui += DrawAnchorsOnSceneView;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public override void OnInspectorGUI()
@@ -70,6 +88,8 @@ namespace UnityEditor.UI
             serializedObject.ApplyModifiedProperties();
         }
 
+<<<<<<< HEAD
+=======
         void DrawAnchorsOnSceneView(SceneView sceneView)
         {
             if (!target || targets.Length > 1)
@@ -101,6 +121,7 @@ namespace UnityEditor.UI
             Handles.DrawLine(p3, p0);
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>
         /// Set if the 'Set Native Size' button should be visible for this editor.
         /// </summary>
@@ -158,6 +179,9 @@ namespace UnityEditor.UI
         /// </summary>
         protected void RaycastControlsGUI()
         {
+<<<<<<< HEAD
+            EditorGUILayout.PropertyField(m_RaycastTarget);
+=======
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(m_RaycastTarget);
             if (EditorGUI.EndChangeCheck() && target is Graphic graphic)
@@ -210,6 +234,7 @@ namespace UnityEditor.UI
             }
 
             EditorGUI.EndProperty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }

@@ -5,7 +5,11 @@ using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
+<<<<<<< HEAD
+    [AddComponentMenu("UI/Scrollbar", 34)]
+=======
     [AddComponentMenu("UI/Scrollbar", 36)]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [ExecuteAlways]
     [RequireComponent(typeof(RectTransform))]
     /// <summary>
@@ -142,10 +146,14 @@ namespace UnityEngine.UI
         // Size of each step.
         float stepSize { get { return (m_NumberOfSteps > 1) ? 1f / (m_NumberOfSteps - 1) : 0.1f; } }
 
+<<<<<<< HEAD
+        private DrivenRectTransformTracker m_Tracker;
+=======
         // field is never assigned warning
         #pragma warning disable 649
         private DrivenRectTransformTracker m_Tracker;
         #pragma warning restore 649
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private Coroutine m_PointerDownRepeat;
         private bool isPointerDownAndNotDragging = false;
 
@@ -424,9 +432,12 @@ namespace UnityEngine.UI
 
                         float change = axisCoordinate < 0 ? size : -size;
                         value += reverseValue ? change : -change;
+<<<<<<< HEAD
+=======
                         value = Mathf.Clamp01(value);
                         // Only keep 4 decimals of precision
                         value = Mathf.Round(value * 10000f) / 10000f;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     }
                 }
                 yield return new WaitForEndOfFrame();

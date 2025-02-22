@@ -1,6 +1,9 @@
 using NUnit.Framework;
 using UnityEngine;
+<<<<<<< HEAD
+=======
 using UnityEngine.UI;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 [Category("Canvas")]
 public class RootCanvasTests : TestBehaviourBase<UnityEngine.Canvas>
@@ -47,6 +50,8 @@ public class RootCanvasTests : TestBehaviourBase<UnityEngine.Canvas>
         Assert.AreEqual(m_TestObject, rootCanvasChild.rootCanvas);
         Assert.AreEqual(m_TestObject, baseCanvas.rootCanvas);
     }
+<<<<<<< HEAD
+=======
 
     [Test]
     public void NotRootCanvasAnchorsDontGetReset()
@@ -78,4 +83,5 @@ public class RootCanvasTests : TestBehaviourBase<UnityEngine.Canvas>
 
         Assert.IsTrue(raycasts.Count == 0);
     }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 }
