@@ -11,6 +11,10 @@ namespace UnityEngine.UI
         private static GraphicRegistry s_Instance;
 
         private readonly Dictionary<Canvas, IndexedSet<Graphic>> m_Graphics = new Dictionary<Canvas, IndexedSet<Graphic>>();
+<<<<<<< HEAD
+=======
+        private readonly Dictionary<Canvas, IndexedSet<Graphic>> m_RaycastableGraphics = new Dictionary<Canvas, IndexedSet<Graphic>>();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         protected GraphicRegistry()
         {
@@ -45,7 +49,11 @@ namespace UnityEngine.UI
         /// <param name="graphic">The Graphic being associated with the Canvas.</param>
         public static void RegisterGraphicForCanvas(Canvas c, Graphic graphic)
         {
+<<<<<<< HEAD
             if (c == null)
+=======
+            if (c == null || graphic == null)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return;
 
             IndexedSet<Graphic> graphics;
@@ -54,6 +62,12 @@ namespace UnityEngine.UI
             if (graphics != null)
             {
                 graphics.AddUnique(graphic);
+<<<<<<< HEAD
+=======
+
+                RegisterRaycastGraphicForCanvas(c, graphic);
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return;
             }
 
@@ -61,6 +75,37 @@ namespace UnityEngine.UI
             graphics = new IndexedSet<Graphic>();
             graphics.Add(graphic);
             instance.m_Graphics.Add(c, graphics);
+<<<<<<< HEAD
+=======
+
+            RegisterRaycastGraphicForCanvas(c, graphic);
+        }
+
+        /// <summary>
+        /// Associates a raycastable Graphic with a Canvas and stores this association in the registry.
+        /// </summary>
+        /// <param name="c">The canvas being associated with the Graphic.</param>
+        /// <param name="graphic">The Graphic being associated with the Canvas.</param>
+        public static void RegisterRaycastGraphicForCanvas(Canvas c, Graphic graphic)
+        {
+            if (c == null || graphic == null || !graphic.raycastTarget)
+                return;
+
+            IndexedSet<Graphic> graphics;
+            instance.m_RaycastableGraphics.TryGetValue(c, out graphics);
+
+            if (graphics != null)
+            {
+                graphics.AddUnique(graphic);
+
+                return;
+            }
+
+            // Dont need to AddUnique as we know its the only item in the list
+            graphics = new IndexedSet<Graphic>();
+            graphics.Add(graphic);
+            instance.m_RaycastableGraphics.Add(c, graphics);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -70,7 +115,11 @@ namespace UnityEngine.UI
         /// <param name="graphic">The Graphic to dissociate from the Canvas.</param>
         public static void UnregisterGraphicForCanvas(Canvas c, Graphic graphic)
         {
+<<<<<<< HEAD
             if (c == null)
+=======
+            if (c == null || graphic == null)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return;
 
             IndexedSet<Graphic> graphics;
@@ -78,8 +127,77 @@ namespace UnityEngine.UI
             {
                 graphics.Remove(graphic);
 
+<<<<<<< HEAD
                 if (graphics.Count == 0)
                     instance.m_Graphics.Remove(c);
+=======
+                if (graphics.Capacity == 0)
+                    instance.m_Graphics.Remove(c);
+
+                UnregisterRaycastGraphicForCanvas(c, graphic);
+            }
+        }
+
+        /// <summary>
+        /// Dissociates a Graphic from a Canvas, removing this association from the registry.
+        /// </summary>
+        /// <param name="c">The Canvas to dissociate from the Graphic.</param>
+        /// <param name="graphic">The Graphic to dissociate from the Canvas.</param>
+        public static void UnregisterRaycastGraphicForCanvas(Canvas c, Graphic graphic)
+        {
+            if (c == null || graphic == null)
+                return;
+
+            IndexedSet<Graphic> graphics;
+            if (instance.m_RaycastableGraphics.TryGetValue(c, out graphics))
+            {
+                graphics.Remove(graphic);
+
+                if (graphics.Count == 0)
+                    instance.m_RaycastableGraphics.Remove(c);
+            }
+        }
+
+        /// <summary>
+        /// Disables a Graphic from a Canvas, disabling this association from the registry.
+        /// </summary>
+        /// <param name="c">The Canvas to dissociate from the Graphic.</param>
+        /// <param name="graphic">The Graphic to dissociate from the Canvas.</param>
+        public static void DisableGraphicForCanvas(Canvas c, Graphic graphic)
+        {
+            if (c == null)
+                return;
+
+            IndexedSet<Graphic> graphics;
+            if (instance.m_Graphics.TryGetValue(c, out graphics))
+            {
+                graphics.DisableItem(graphic);
+
+                if (graphics.Capacity == 0)
+                    instance.m_Graphics.Remove(c);
+
+                DisableRaycastGraphicForCanvas(c, graphic);
+            }
+        }
+
+        /// <summary>
+        /// Disables the raycast for a Graphic from a Canvas, disabling this association from the registry.
+        /// </summary>
+        /// <param name="c">The Canvas to dissociate from the Graphic.</param>
+        /// <param name="graphic">The Graphic to dissociate from the Canvas.</param>
+        public static void DisableRaycastGraphicForCanvas(Canvas c, Graphic graphic)
+        {
+            if (c == null || !graphic.raycastTarget)
+                return;
+
+            IndexedSet<Graphic> graphics;
+            if (instance.m_RaycastableGraphics.TryGetValue(c, out graphics))
+            {
+                graphics.DisableItem(graphic);
+
+                if (graphics.Capacity == 0)
+                    instance.m_RaycastableGraphics.Remove(c);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -98,5 +216,22 @@ namespace UnityEngine.UI
 
             return s_EmptyList;
         }
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Retrieves the list of Graphics that are raycastable and associated with a Canvas.
+        /// </summary>
+        /// <param name="canvas">The Canvas to search</param>
+        /// <returns>Returns a list of Graphics. Returns an empty list if no Graphics are associated with the specified Canvas.</returns>
+        public static IList<Graphic> GetRaycastableGraphicsForCanvas(Canvas canvas)
+        {
+            IndexedSet<Graphic> graphics;
+            if (instance.m_RaycastableGraphics.TryGetValue(canvas, out graphics))
+                return graphics;
+
+            return s_EmptyList;
+        }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

@@ -23,7 +23,11 @@ public class DropdownTests : IPrebuildSetup
         canvas.renderMode = RenderMode.WorldSpace;
         canvasGO.transform.SetParent(rootGO.transform);
 
+<<<<<<< HEAD
         var dropdownGO = new GameObject("Dropdown", typeof(Dropdown), typeof(RectTransform));
+=======
+        var dropdownGO = new GameObject("Dropdown", typeof(RectTransform), typeof(Dropdown));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         var dropdownTransform = dropdownGO.GetComponent<RectTransform>();
         dropdownTransform.SetParent(canvas.transform);
         dropdownTransform.anchoredPosition = Vector2.zero;
@@ -144,6 +148,10 @@ public class DropdownTests : IPrebuildSetup
     public void TearDown()
     {
         Object.DestroyImmediate(m_PrefabRoot);
+<<<<<<< HEAD
+=======
+        GameObject.DestroyImmediate(m_CameraGO);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 
     [OneTimeTearDown]

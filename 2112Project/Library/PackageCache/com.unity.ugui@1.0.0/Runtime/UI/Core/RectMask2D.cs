@@ -1,10 +1,18 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+<<<<<<< HEAD
 
 namespace UnityEngine.UI
 {
     [AddComponentMenu("UI/Rect Mask 2D", 13)]
+=======
+using UnityEngine.Pool;
+
+namespace UnityEngine.UI
+{
+    [AddComponentMenu("UI/Rect Mask 2D", 14)]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [ExecuteAlways]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(RectTransform))]
@@ -86,7 +94,11 @@ namespace UnityEngine.UI
         /// Returns a non-destroyed instance or a null reference.
         /// </remarks>
         [NonSerialized] private Canvas m_Canvas;
+<<<<<<< HEAD
         private Canvas Canvas
+=======
+        internal Canvas Canvas
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             get
             {
@@ -145,10 +157,23 @@ namespace UnityEngine.UI
             m_ClipTargets.Clear();
             m_MaskableTargets.Clear();
             m_Clippers.Clear();
+<<<<<<< HEAD
             ClipperRegistry.Unregister(this);
             MaskUtilities.Notify2DMaskStateChanged(this);
         }
 
+=======
+            ClipperRegistry.Disable(this);
+            MaskUtilities.Notify2DMaskStateChanged(this);
+        }
+
+        protected override void OnDestroy()
+        {
+            ClipperRegistry.Unregister(this);
+            base.OnDestroy();
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
@@ -265,8 +290,13 @@ namespace UnityEngine.UI
             {
                 foreach (MaskableGraphic maskableTarget in m_MaskableTargets)
                 {
+<<<<<<< HEAD
                     if (maskableTarget.canvasRenderer.hasMoved)
                         maskableTarget.Cull(clipRect, validRect);
+=======
+                    //Case 1170399 - hasMoved is not a valid check when animating on pivot of the object
+                    maskableTarget.Cull(clipRect, validRect);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
 
@@ -337,6 +367,10 @@ namespace UnityEngine.UI
 
         protected override void OnTransformParentChanged()
         {
+<<<<<<< HEAD
+=======
+            m_Canvas = null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             base.OnTransformParentChanged();
             m_ShouldRecalculateClipRects = true;
         }

@@ -58,6 +58,12 @@ namespace UnityEngine.UI
         // This "delayed" mechanism is required for case 1014834.
         private bool m_DelayedSetDirty = false;
 
+<<<<<<< HEAD
+=======
+        //Does the gameobject has a parent for reference to enable FitToParent/EnvelopeParent modes.
+        private bool m_DoesParentExist = false;
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private RectTransform rectTransform
         {
             get
@@ -68,16 +74,38 @@ namespace UnityEngine.UI
             }
         }
 
+<<<<<<< HEAD
         private DrivenRectTransformTracker m_Tracker;
+=======
+        // field is never assigned warning
+        #pragma warning disable 649
+        private DrivenRectTransformTracker m_Tracker;
+        #pragma warning restore 649
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         protected AspectRatioFitter() {}
 
         protected override void OnEnable()
         {
             base.OnEnable();
+<<<<<<< HEAD
             SetDirty();
         }
 
+=======
+            m_DoesParentExist = rectTransform.parent ? true : false;
+            SetDirty();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            //Disable the component if the aspect mode is not valid or the object state/setup is not supported with AspectRatio setup.
+            if (!IsComponentValidOnObject() || !IsAspectModeValid())
+                this.enabled = false;
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected override void OnDisable()
         {
             m_Tracker.Clear();
@@ -85,6 +113,17 @@ namespace UnityEngine.UI
             base.OnDisable();
         }
 
+<<<<<<< HEAD
+=======
+        protected override void OnTransformParentChanged()
+        {
+            base.OnTransformParentChanged();
+
+            m_DoesParentExist = rectTransform.parent ? true : false;
+            SetDirty();
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>
         /// Update the rect based on the delayed dirty.
         /// Got around issue of calling onValidate from OnEnable function.
@@ -108,7 +147,11 @@ namespace UnityEngine.UI
 
         private void UpdateRect()
         {
+<<<<<<< HEAD
             if (!IsActive())
+=======
+            if (!IsActive() || !IsComponentValidOnObject())
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return;
 
             m_Tracker.Clear();
@@ -139,6 +182,12 @@ namespace UnityEngine.UI
                 case AspectMode.FitInParent:
                 case AspectMode.EnvelopeParent:
                 {
+<<<<<<< HEAD
+=======
+                    if (!DoesParentExists())
+                        break;
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     m_Tracker.Add(this, rectTransform,
                         DrivenTransformProperties.Anchors |
                         DrivenTransformProperties.AnchoredPosition |
@@ -174,9 +223,13 @@ namespace UnityEngine.UI
         private Vector2 GetParentSize()
         {
             RectTransform parent = rectTransform.parent as RectTransform;
+<<<<<<< HEAD
             if (!parent)
                 return Vector2.zero;
             return parent.rect.size;
+=======
+            return !parent ? Vector2.zero : parent.rect.size;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -197,6 +250,32 @@ namespace UnityEngine.UI
             UpdateRect();
         }
 
+<<<<<<< HEAD
+=======
+        public bool IsComponentValidOnObject()
+        {
+            Canvas canvas = gameObject.GetComponent<Canvas>();
+            if (canvas && canvas.isRootCanvas && canvas.renderMode != RenderMode.WorldSpace)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool IsAspectModeValid()
+        {
+            if (!DoesParentExists() && (aspectMode == AspectMode.EnvelopeParent || aspectMode == AspectMode.FitInParent))
+                return false;
+
+            return true;
+        }
+
+        private bool DoesParentExists()
+        {
+            return m_DoesParentExist;
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     #if UNITY_EDITOR
         protected override void OnValidate()
         {

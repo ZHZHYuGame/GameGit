@@ -17,7 +17,11 @@ public class ScrollBarTests : IPrebuildSetup
 #if UNITY_EDITOR
         var rootGO = new GameObject("rootGo");
 
+<<<<<<< HEAD
         var canvasGO = new GameObject("Canvas", typeof(Canvas), typeof(RectTransform));
+=======
+        var canvasGO = new GameObject("Canvas", typeof(RectTransform), typeof(Canvas));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         canvasGO.transform.SetParent(rootGO.transform);
 
         var scrollBarGo = new GameObject("ScrollBar", typeof(Scrollbar));

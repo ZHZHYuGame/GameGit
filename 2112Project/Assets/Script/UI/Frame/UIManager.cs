@@ -413,7 +413,7 @@ public class UIManager : Singleton<UIManager>
 
 
     /// <summary>
-<<<<<<< HEAD
+<<<<<<< HEAD 
     /// 获取对象身上得脚本
     /// </summary>
     /// <typeparam name="T"></typeparam>

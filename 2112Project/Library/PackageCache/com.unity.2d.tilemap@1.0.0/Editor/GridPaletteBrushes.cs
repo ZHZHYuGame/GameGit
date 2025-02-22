@@ -40,6 +40,22 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        private string[] m_BrushTooltips;
+
+        public static string[] brushTooltips
+        {
+            get
+            {
+                return instance.m_BrushTooltips;
+            }
+        }
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public GridBrushBase GetLastUsedBrush()
         {
             var sessionIndex = SessionState.GetInt(s_SessionStateLastUsedBrush, -1);
@@ -122,9 +138,24 @@ namespace UnityEditor.Tilemaps
             }
 
             m_BrushNames = new string[m_Brushes.Count];
+<<<<<<< HEAD
             for (int i = 0; i < m_Brushes.Count; i++)
             {
                 m_BrushNames[i] = m_Brushes[i].name;
+=======
+<<<<<<< HEAD
+            for (int i = 0; i < m_Brushes.Count; i++)
+            {
+                m_BrushNames[i] = m_Brushes[i].name;
+=======
+            m_BrushTooltips = new string[m_Brushes.Count];
+            for (int i = 0; i < m_Brushes.Count; i++)
+            {
+                m_BrushNames[i] = m_Brushes[i].name;
+                var editor = Editor.CreateEditor(m_Brushes[i]) as GridBrushEditorBase;
+                m_BrushTooltips[i] = editor != null ? editor.tooltip : null;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 

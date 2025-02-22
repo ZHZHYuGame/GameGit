@@ -70,7 +70,10 @@ public class ScrollRectTests : IPrebuildSetup
     [TearDown]
     public void TearDown()
     {
+<<<<<<< HEAD
         EventSystem.current = null;
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         GameObject.DestroyImmediate(m_PrefabRoot);
     }
 

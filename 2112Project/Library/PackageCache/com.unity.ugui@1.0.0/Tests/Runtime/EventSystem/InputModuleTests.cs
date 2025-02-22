@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
+<<<<<<< HEAD
+=======
+[UnityPlatform()]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 public class InputModuleTests
 {
     EventSystem m_EventSystem;
@@ -12,6 +16,10 @@ public class InputModuleTests
     StandaloneInputModule m_StandaloneInputModule;
     Canvas m_Canvas;
     Image m_Image;
+<<<<<<< HEAD
+=======
+    Image m_NestedImage;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
     [SetUp]
     public void TestSetup()
@@ -28,16 +36,32 @@ public class InputModuleTests
         imageRectTransform.sizeDelta = new Vector2(400f, 400f);
         imageRectTransform.localPosition = Vector3.zero;
 
+<<<<<<< HEAD
         GameObject go = new GameObject("Event System");
+=======
+        m_NestedImage = new GameObject("NestedImage").AddComponent<Image>();
+        m_NestedImage.gameObject.transform.SetParent(m_Image.transform);
+        RectTransform nestedImageRectTransform = m_NestedImage.GetComponent<RectTransform>();
+        nestedImageRectTransform.sizeDelta = new Vector2(200f, 200f);
+        nestedImageRectTransform.localPosition = Vector3.zero;
+
+        GameObject go = new GameObject("Event System");
+        m_EventSystem = go.AddComponent<EventSystem>();
+        m_EventSystem.pixelDragThreshold = 1;
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         m_StandaloneInputModule = go.AddComponent<StandaloneInputModule>();
         m_FakeBaseInput = go.AddComponent<FakeBaseInput>();
 
         // Override input with FakeBaseInput so we can send fake mouse/keyboards button presses and touches
         m_StandaloneInputModule.inputOverride = m_FakeBaseInput;
 
+<<<<<<< HEAD
         m_EventSystem = go.AddComponent<EventSystem>();
         m_EventSystem.pixelDragThreshold = 1;
 
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Cursor.lockState = CursorLockMode.None;
     }
 
@@ -84,6 +108,10 @@ public class InputModuleTests
         Assert.IsTrue(callbackCheck.onBeginDragCalled, "OnBeginDrag not called");
         Assert.IsTrue(callbackCheck.onDragCalled, "OnDragCalled not called");
         Assert.IsTrue(callbackCheck.onEndDragCalled, "OnEndDragCalled not called");
+<<<<<<< HEAD
+=======
+        Assert.IsTrue(callbackCheck.onDropCalled, "OnDrop not called");
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 
     [UnityTest]
@@ -112,6 +140,13 @@ public class InputModuleTests
         yield return null;
         m_FakeBaseInput.MouseButtonDown[0] = false;
         yield return null;
+<<<<<<< HEAD
+=======
+        m_FakeBaseInput.MouseButtonUp[0] = true;
+        yield return null;
+        m_FakeBaseInput.MouseButtonUp[0] = false;
+        yield return null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Assert.IsTrue(callbackCheck.pointerDown);
 
         //Reset the callbackcheck and click outside the mask but still in the image.
@@ -122,6 +157,13 @@ public class InputModuleTests
         yield return null;
         m_FakeBaseInput.MouseButtonDown[0] = false;
         yield return null;
+<<<<<<< HEAD
+=======
+        m_FakeBaseInput.MouseButtonUp[0] = true;
+        yield return null;
+        m_FakeBaseInput.MouseButtonUp[0] = false;
+        yield return null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Assert.IsTrue(callbackCheck.pointerDown);
 
         //Reset the callbackcheck and click outside the mask and outside in the image.
@@ -132,9 +174,114 @@ public class InputModuleTests
         yield return null;
         m_FakeBaseInput.MouseButtonDown[0] = false;
         yield return null;
+<<<<<<< HEAD
         Assert.IsFalse(callbackCheck.pointerDown);
     }
 
+=======
+        m_FakeBaseInput.MouseButtonUp[0] = true;
+        yield return null;
+        m_FakeBaseInput.MouseButtonUp[0] = false;
+        yield return null;
+        Assert.IsFalse(callbackCheck.pointerDown);
+    }
+
+    [UnityTest]
+    public IEnumerator PointerEnterChildShouldNotFullyExit_NotSendPointerEventToParent()
+    {
+        m_StandaloneInputModule.sendPointerHoverToParent = false;
+        PointerExitCallbackCheck callbackCheck = m_Image.gameObject.AddComponent<PointerExitCallbackCheck>();
+        m_NestedImage.gameObject.AddComponent<PointerExitCallbackCheck>();
+        var screenMiddle = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        m_FakeBaseInput.MousePresent = true;
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        m_FakeBaseInput.MousePosition = screenMiddle;
+        yield return null;
+        Assert.IsTrue(callbackCheck.pointerData.fullyExited == false);
+    }
+
+    [UnityTest]
+    public IEnumerator PointerEnterChildShouldNotExit_SendPointerEventToParent()
+    {
+        m_StandaloneInputModule.sendPointerHoverToParent = true;
+        PointerExitCallbackCheck callbackCheck = m_Image.gameObject.AddComponent<PointerExitCallbackCheck>();
+        m_NestedImage.gameObject.AddComponent<PointerExitCallbackCheck>();
+        var screenMiddle = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        m_FakeBaseInput.MousePresent = true;
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        m_FakeBaseInput.MousePosition = screenMiddle;
+        yield return null;
+        Assert.IsTrue(callbackCheck.pointerData == null);
+    }
+
+    [UnityTest]
+    public IEnumerator PointerEnterChildShouldNotReenter()
+    {
+        PointerEnterCallbackCheck callbackCheck = m_NestedImage.gameObject.AddComponent<PointerEnterCallbackCheck>();
+        var screenMiddle = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        m_FakeBaseInput.MousePresent = true;
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        m_FakeBaseInput.MousePosition = screenMiddle;
+        yield return null;
+        Assert.IsTrue(callbackCheck.pointerData.reentered == false);
+    }
+
+    [UnityTest]
+    public IEnumerator PointerExitChildShouldReenter_NotSendPointerEventToParent()
+    {
+        m_StandaloneInputModule.sendPointerHoverToParent = false;
+        PointerEnterCallbackCheck callbackCheck = m_Image.gameObject.AddComponent<PointerEnterCallbackCheck>();
+        var screenMiddle = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        m_FakeBaseInput.MousePresent = true;
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        m_FakeBaseInput.MousePosition = screenMiddle;
+        yield return null;
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        Assert.IsTrue(callbackCheck.pointerData.reentered == true);
+    }
+
+    [UnityTest]
+    public IEnumerator PointerExitChildShouldNotSendEnter_SendPointerEventToParent()
+    {
+        m_StandaloneInputModule.sendPointerHoverToParent = true;
+        m_NestedImage.gameObject.AddComponent<PointerEnterCallbackCheck>();
+        var screenMiddle = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        m_FakeBaseInput.MousePresent = true;
+        m_FakeBaseInput.MousePosition = screenMiddle;
+        yield return null;
+        PointerEnterCallbackCheck callbackCheck = m_Image.gameObject.AddComponent<PointerEnterCallbackCheck>();
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        Assert.IsTrue(callbackCheck.pointerData == null);
+    }
+
+    [UnityTest]
+    public IEnumerator PointerExitChildShouldFullyExit()
+    {
+        PointerExitCallbackCheck callbackCheck = m_NestedImage.gameObject.AddComponent<PointerExitCallbackCheck>();
+        var screenMiddle = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        m_FakeBaseInput.MousePresent = true;
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        m_FakeBaseInput.MousePosition = screenMiddle;
+        yield return null;
+        m_FakeBaseInput.MousePosition = screenMiddle - new Vector2(150, 150);
+        yield return null;
+        Assert.IsTrue(callbackCheck.pointerData.fullyExited == true);
+    }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [TearDown]
     public void TearDown()
     {

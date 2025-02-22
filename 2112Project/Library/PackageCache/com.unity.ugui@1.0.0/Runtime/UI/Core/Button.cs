@@ -32,6 +32,10 @@ namespace UnityEngine.UI
         /// </summary>
         ///<example>
         ///<code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using UnityEngine.UI;
         /// using System.Collections;
@@ -51,6 +55,10 @@ namespace UnityEngine.UI
         ///         Debug.Log("You have clicked the button!");
         ///     }
         /// }
+<<<<<<< HEAD
+=======
+        /// ]]>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         ///</code>
         ///</example>
         public ButtonClickedEvent onClick
@@ -76,6 +84,10 @@ namespace UnityEngine.UI
         /// <param name="eventData">Pointer Data associated with the event. Typically by the event system.</param>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Attatch this script to a Button GameObject
         /// using UnityEngine;
         /// using UnityEngine.EventSystems;
@@ -99,7 +111,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
 
         public virtual void OnPointerClick(PointerEventData eventData)

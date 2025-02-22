@@ -40,6 +40,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -54,7 +58,12 @@ namespace UnityEngine.UI
         ///         buttonAnimator.SetTrigger(button.animationTriggers.normalTrigger);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public string normalTrigger      { get { return m_NormalTrigger; } set { m_NormalTrigger = value; } }
 
@@ -63,6 +72,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -77,7 +90,12 @@ namespace UnityEngine.UI
         ///         buttonAnimator.SetTrigger(button.animationTriggers.highlightedTrigger);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public string highlightedTrigger { get { return m_HighlightedTrigger; } set { m_HighlightedTrigger = value; } }
 
@@ -86,6 +104,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -100,7 +122,12 @@ namespace UnityEngine.UI
         ///         buttonAnimator.SetTrigger(button.animationTriggers.pressedTrigger);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public string pressedTrigger     { get { return m_PressedTrigger; } set { m_PressedTrigger = value; } }
 
@@ -109,6 +136,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -123,7 +154,12 @@ namespace UnityEngine.UI
         ///         buttonAnimator.SetTrigger(button.animationTriggers.selectedTrigger);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public string selectedTrigger    { get { return m_SelectedTrigger; } set { m_SelectedTrigger = value; } }
 
@@ -132,6 +168,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -146,7 +186,12 @@ namespace UnityEngine.UI
         ///         buttonAnimator.SetTrigger(button.animationTriggers.disabledTrigger);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public string disabledTrigger    { get { return m_DisabledTrigger; } set { m_DisabledTrigger = value; } }
     }

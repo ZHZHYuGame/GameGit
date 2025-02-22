@@ -32,7 +32,11 @@ namespace UnityEditor.Tilemaps
             if (Camera.current.orthographic)
             {
                 Vector2 screen = EditorGUIUtility.PointsToPixels(GUIClip.Unclip(screenPosition));
+<<<<<<< HEAD
                 screen.y = Screen.height - screen.y;
+=======
+                screen.y = Camera.current.pixelHeight - screen.y;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 Vector3 cameraWorldPoint = Camera.current.ScreenToWorldPoint(screen);
                 ray = new Ray(cameraWorldPoint, Camera.current.transform.forward);
             }
@@ -190,6 +194,12 @@ namespace UnityEditor.Tilemaps
 
         public static void DrawGridMarquee(GridLayout gridLayout, BoundsInt area, Color color)
         {
+<<<<<<< HEAD
+=======
+            if (gridLayout == null)
+                return;
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             switch (gridLayout.cellLayout)
             {
                 case GridLayout.CellLayout.Hexagon:
@@ -247,12 +257,21 @@ namespace UnityEditor.Tilemaps
             int right = horizontalCount;
             Vector3[] cellOffset =
             {
+<<<<<<< HEAD
                 Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, gridLayout.cellSize.y / 2, area.zMin)),
                 Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, area.zMin)),
                 Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, area.zMin)),
                 Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, -gridLayout.cellSize.y / 2, area.zMin)),
                 Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, area.zMin)),
                 Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, area.zMin))
+=======
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, gridLayout.cellSize.y / 2, 0)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, 0)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, 0)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, -gridLayout.cellSize.y / 2, 0)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, 0)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, 0))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             };
             // Fill Top and Bottom Vertices
             for (int x = area.min.x; x < area.max.x; x++)
@@ -349,10 +368,23 @@ namespace UnityEditor.Tilemaps
                 case GridLayout.CellLayout.Isometric:
                 case GridLayout.CellLayout.IsometricZAsY:
                 case GridLayout.CellLayout.Rectangle:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     int min = k_GridGizmoVertexCount / -32;
                     int max = min * -1;
                     int numCells = max - min;
                     RectInt bounds = new RectInt(min, min, numCells, numCells);
+<<<<<<< HEAD
+=======
+=======
+                    var min = k_GridGizmoVertexCount / -32;
+                    var max = min * -1;
+                    var numCells = max - min;
+                    var bounds = new RectInt(min, min, numCells, numCells);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                     return GenerateCachedGridMesh(gridLayout, color, 0f, bounds, MeshTopology.Lines);
             }

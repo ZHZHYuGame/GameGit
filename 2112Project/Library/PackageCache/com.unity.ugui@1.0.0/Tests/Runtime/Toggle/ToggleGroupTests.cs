@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+<<<<<<< HEAD
+=======
+using System.Linq;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -52,6 +56,11 @@ namespace ToggleTest
                 Directory.CreateDirectory("Assets/Resources/");
 
             PrefabUtility.SaveAsPrefabAsset(rootGO, kPrefabToggleGroupPath);
+<<<<<<< HEAD
+=======
+
+            GameObject.DestroyImmediate(rootGO);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 #endif
         }
 
@@ -137,5 +146,24 @@ namespace ToggleTest
             m_toggle[0].group = null;
             Assert.IsFalse(m_toggleGroup.ToggleListContains(m_toggle[0]));
         }
+<<<<<<< HEAD
+=======
+
+        [Test]
+        public void DisabledToggleGroupDoesntControlChildren()
+        {
+            m_toggleGroup.enabled = false;
+            m_toggle[0].group = m_toggleGroup;
+            m_toggle[1].group = m_toggleGroup;
+            m_toggle[0].isOn = true;
+            m_toggle[1].isOn = true;
+            Assert.IsTrue(m_toggle[0].isOn);
+            Assert.IsTrue(m_toggle[1].isOn);
+
+            m_toggleGroup.enabled = true;
+            IEnumerable<Toggle> activeToggles = m_toggleGroup.ActiveToggles();
+            Assert.IsTrue(activeToggles.Count() == 1);
+        }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

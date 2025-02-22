@@ -1,5 +1,9 @@
 using NUnit.Framework;
 using UnityEngine;
+<<<<<<< HEAD
+=======
+using UnityEngine.UI;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 [Category("Canvas")]
 public class RootCanvasTests : TestBehaviourBase<UnityEngine.Canvas>
@@ -46,4 +50,38 @@ public class RootCanvasTests : TestBehaviourBase<UnityEngine.Canvas>
         Assert.AreEqual(m_TestObject, rootCanvasChild.rootCanvas);
         Assert.AreEqual(m_TestObject, baseCanvas.rootCanvas);
     }
+<<<<<<< HEAD
+=======
+
+    [Test]
+    public void NotRootCanvasAnchorsDontGetReset()
+    {
+        var rect = rootCanvasChild.GetComponent<RectTransform>();
+
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+
+        Assert.IsTrue(rect.anchorMin == Vector2.zero);
+        Assert.IsTrue(rect.anchorMax == Vector2.one);
+
+        m_TestObject.gameObject.SetActive(false);
+
+        Assert.IsTrue(rect.anchorMin == Vector2.zero);
+        Assert.IsTrue(rect.anchorMax == Vector2.one);
+    }
+
+    [Test]
+    public void ChildOfDisabledCanvasCantReceiveClicks()
+    {
+        rootCanvasChild.gameObject.AddComponent<Image>();
+        var raycasts = GraphicRegistry.GetRaycastableGraphicsForCanvas(rootCanvasChild);
+
+        Assert.IsTrue(raycasts.Count == 1);
+
+        m_TestObject.gameObject.SetActive(false);
+        raycasts = GraphicRegistry.GetRaycastableGraphicsForCanvas(rootCanvasChild);
+
+        Assert.IsTrue(raycasts.Count == 0);
+    }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 }

@@ -50,6 +50,11 @@ namespace UnityEditor.UI
                 EditorGUILayout.PropertyField(m_Direction);
                 if (EditorGUI.EndChangeCheck())
                 {
+<<<<<<< HEAD
+=======
+                    Undo.RecordObjects(serializedObject.targetObjects, "Change Slider Direction");
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     Slider.Direction direction = (Slider.Direction)m_Direction.enumValueIndex;
                     foreach (var obj in serializedObject.targetObjects)
                     {
@@ -58,16 +63,34 @@ namespace UnityEditor.UI
                     }
                 }
 
+<<<<<<< HEAD
 
                 EditorGUI.BeginChangeCheck();
                 float newMin = EditorGUILayout.FloatField("Min Value", m_MinValue.floatValue);
                 if (EditorGUI.EndChangeCheck() && newMin <= m_MaxValue.floatValue)
                 {
                     m_MinValue.floatValue = newMin;
+=======
+                EditorGUI.BeginChangeCheck();
+                float newMin = EditorGUILayout.FloatField("Min Value", m_MinValue.floatValue);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    if (m_WholeNumbers.boolValue ? Mathf.Round(newMin) < m_MaxValue.floatValue : newMin < m_MaxValue.floatValue)
+<<<<<<< HEAD
+                        m_MinValue.floatValue = newMin;
+=======
+                    {
+                        m_MinValue.floatValue = newMin;
+                        if (m_Value.floatValue < newMin)
+                            m_Value.floatValue = newMin;
+                    }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
 
                 EditorGUI.BeginChangeCheck();
                 float newMax = EditorGUILayout.FloatField("Max Value", m_MaxValue.floatValue);
+<<<<<<< HEAD
                 if (EditorGUI.EndChangeCheck() && newMax >= m_MinValue.floatValue)
                 {
                     m_MaxValue.floatValue = newMax;
@@ -75,6 +98,54 @@ namespace UnityEditor.UI
 
                 EditorGUILayout.PropertyField(m_WholeNumbers);
                 EditorGUILayout.Slider(m_Value, m_MinValue.floatValue, m_MaxValue.floatValue);
+=======
+                if (EditorGUI.EndChangeCheck())
+                {
+                    if (m_WholeNumbers.boolValue ? Mathf.Round(newMax) > m_MinValue.floatValue : newMax > m_MinValue.floatValue)
+<<<<<<< HEAD
+                        m_MaxValue.floatValue = newMax;
+=======
+                    {
+                        m_MaxValue.floatValue = newMax;
+                        if (m_Value.floatValue > newMax)
+                            m_Value.floatValue = newMax;
+                    }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+                }
+
+                EditorGUILayout.PropertyField(m_WholeNumbers);
+
+                bool areMinMaxEqual = (m_MinValue.floatValue == m_MaxValue.floatValue);
+
+                if (areMinMaxEqual)
+                    EditorGUILayout.HelpBox("Min Value and Max Value cannot be equal.", MessageType.Warning);
+
+<<<<<<< HEAD
+                EditorGUI.BeginDisabledGroup(areMinMaxEqual);
+                EditorGUILayout.Slider(m_Value, m_MinValue.floatValue, m_MaxValue.floatValue);
+=======
+                if (m_WholeNumbers.boolValue)
+                    m_Value.floatValue = Mathf.Round(m_Value.floatValue);
+
+                EditorGUI.BeginDisabledGroup(areMinMaxEqual);
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.Slider(m_Value, m_MinValue.floatValue, m_MaxValue.floatValue);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    // Apply the change before sending the event
+                    serializedObject.ApplyModifiedProperties();
+
+                    foreach (var t in targets)
+                    {
+                        if (t is Slider slider)
+                        {
+                            slider.onValueChanged?.Invoke(slider.value);
+                        }
+                    }
+                }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+                EditorGUI.EndDisabledGroup();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 bool warning = false;
                 foreach (var obj in serializedObject.targetObjects)

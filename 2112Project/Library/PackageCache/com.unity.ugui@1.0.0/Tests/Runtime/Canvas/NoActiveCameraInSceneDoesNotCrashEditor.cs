@@ -21,7 +21,11 @@ public class NoActiveCameraInSceneDoesNotCrashEditor : IPrebuildSetup
 #if UNITY_EDITOR
         Action codeToExecute = delegate()
         {
+<<<<<<< HEAD
             UnityEditor.EditorApplication.ExecuteMenuItem("GameObject/UI/Button");
+=======
+            UnityEditor.EditorApplication.ExecuteMenuItem("GameObject/UI/Legacy/Button");
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         };
 
         CreateSceneUtility.CreateScene(k_SceneName, codeToExecute);

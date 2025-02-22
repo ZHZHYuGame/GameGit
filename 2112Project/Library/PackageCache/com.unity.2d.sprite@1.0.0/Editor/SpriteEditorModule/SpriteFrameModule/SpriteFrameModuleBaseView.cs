@@ -1,4 +1,8 @@
 using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using UnityEngine;
@@ -307,7 +311,15 @@ namespace UnityEditor.U2D.Sprites
             {
                 if (hasSelected)
                 {
+<<<<<<< HEAD
                     m_PivotUnitMode = (PivotUnitMode)evt.newValue;
+=======
+<<<<<<< HEAD
+                    m_PivotUnitMode = (PivotUnitMode)evt.newValue;
+=======
+                    pivotUnitMode = (PivotUnitMode)evt.newValue;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                     Vector2 pivot = selectedSpritePivotInCurUnitMode;
                     m_CustomPivotFieldX.SetValueWithoutNotify(pivot.x);
@@ -323,7 +335,15 @@ namespace UnityEditor.U2D.Sprites
                 if (hasSelected)
                 {
                     float newValue = (float)evt.newValue;
+<<<<<<< HEAD
                     float pivotX = m_PivotUnitMode == PivotUnitMode.Pixels
+=======
+<<<<<<< HEAD
+                    float pivotX = m_PivotUnitMode == PivotUnitMode.Pixels
+=======
+                    float pivotX = pivotUnitMode == PivotUnitMode.Pixels
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         ? ConvertFromRectToNormalizedSpace(new Vector2(newValue, 0.0f), selectedSpriteRect).x
                         : newValue;
 
@@ -339,7 +359,15 @@ namespace UnityEditor.U2D.Sprites
                 if (hasSelected)
                 {
                     float newValue = (float)evt.newValue;
+<<<<<<< HEAD
                     float pivotY = m_PivotUnitMode == PivotUnitMode.Pixels
+=======
+<<<<<<< HEAD
+                    float pivotY = m_PivotUnitMode == PivotUnitMode.Pixels
+=======
+                    float pivotY = pivotUnitMode == PivotUnitMode.Pixels
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         ? ConvertFromRectToNormalizedSpace(new Vector2(0.0f, newValue), selectedSpriteRect).y
                         : newValue;
 
@@ -393,7 +421,15 @@ namespace UnityEditor.U2D.Sprites
             m_BorderFieldR.SetValueWithoutNotify(Mathf.RoundToInt(spriteBorder.z));
             m_BorderFieldB.SetValueWithoutNotify(Mathf.RoundToInt(spriteBorder.y));
             m_PivotField.SetValueWithoutNotify(selectedSpriteAlignment);
+<<<<<<< HEAD
             m_PivotUnitModeField.SetValueWithoutNotify(m_PivotUnitMode);
+=======
+<<<<<<< HEAD
+            m_PivotUnitModeField.SetValueWithoutNotify(m_PivotUnitMode);
+=======
+            m_PivotUnitModeField.SetValueWithoutNotify(pivotUnitMode);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             Vector2 pivot = selectedSpritePivotInCurUnitMode;
             m_CustomPivotFieldX.SetValueWithoutNotify(pivot.x);
             m_CustomPivotFieldY.SetValueWithoutNotify(pivot.y);
@@ -501,7 +537,15 @@ namespace UnityEditor.U2D.Sprites
                 // Pivot snapping only happen when ctrl is press. Same as scene view snapping move
                 if (eventSystem.current.control)
                     SnapPivotToSnapPoints(pivotHandlePosition, out pivot, out alignment);
+<<<<<<< HEAD
                 else if (m_PivotUnitMode == PivotUnitMode.Pixels)
+=======
+<<<<<<< HEAD
+                else if (m_PivotUnitMode == PivotUnitMode.Pixels)
+=======
+                else if (pivotUnitMode == PivotUnitMode.Pixels)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     SnapPivotToPixels(pivotHandlePosition, out pivot, out alignment);
                 else
                 {
@@ -686,7 +730,12 @@ namespace UnityEditor.U2D.Sprites
                 Vector4 border = GetSpriteBorderAt(i);
                 if (m_GizmoMode != GizmoMode.BorderEditing && (m_RectsCache != null && m_RectsCache.spriteRects[i].spriteID != selectedGUID))
                 {
+<<<<<<< HEAD
                     if (Mathf.Approximately(border.sqrMagnitude, 0))
+=======
+                    // border does not contain negative values
+                    if (border.sqrMagnitude < Mathf.Epsilon * 8)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         continue;
                 }
 
@@ -711,6 +760,26 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+<<<<<<< HEAD
+=======
+        protected void DrawRectGizmos(IEnumerable<Rect> rects, Color color)
+        {
+            if (eventSystem.current.type != EventType.Repaint)
+                return;
+
+            SpriteEditorUtility.BeginLines(color);
+            foreach (var rect in rects)
+            {
+                SpriteEditorUtility.DrawLine(new Vector3(rect.xMin, rect.yMin), new Vector3(rect.xMin, rect.yMax));
+                SpriteEditorUtility.DrawLine(new Vector3(rect.xMax, rect.yMin), new Vector3(rect.xMax, rect.yMax));
+
+                SpriteEditorUtility.DrawLine(new Vector3(rect.xMin, rect.yMin), new Vector3(rect.xMax, rect.yMin));
+                SpriteEditorUtility.DrawLine(new Vector3(rect.xMin, rect.yMax), new Vector3(rect.xMax, rect.yMax));
+            }
+            SpriteEditorUtility.EndLines();
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         // implements ISpriteEditorModule
 
         public override void DoMainGUI()

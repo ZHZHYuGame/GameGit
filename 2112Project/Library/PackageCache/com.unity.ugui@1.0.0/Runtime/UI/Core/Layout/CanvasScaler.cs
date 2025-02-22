@@ -230,6 +230,10 @@ namespace UnityEngine.UI
         [System.NonSerialized]
         private float m_PrevReferencePixelsPerUnit = 100;
 
+<<<<<<< HEAD
+=======
+        [SerializeField] protected bool m_PresetInfoIsWorld = false;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         protected CanvasScaler() {}
 

@@ -82,6 +82,28 @@ public class GraphicRaycasterTests
     }
 
     [UnityTest]
+<<<<<<< HEAD
+=======
+    public IEnumerator GraphicRaycasterUsesGraphicPadding()
+    {
+        m_CanvasRectTrans.anchoredPosition3D = new Vector3(0, 0, 11);
+        m_TextComponent.raycastPadding = new Vector4(-50, -50, -50, -50);
+        m_Camera.farClipPlane = 12;
+        yield return null;
+
+        var results = new List<RaycastResult>();
+        var pointerEvent = new PointerEventData(m_EventSystem)
+        {
+            position = new Vector2((Screen.width / 2f) - 60, Screen.height / 2f)
+        };
+
+        m_EventSystem.RaycastAll(pointerEvent, results);
+
+        Assert.IsNotEmpty(results, "Expected at least 1 result from a raycast outside the graphics RectTransform whose padding would make the click hit.");
+    }
+
+    [UnityTest]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     public IEnumerator GraphicOnTheSamePlaneAsTheCameraCanBeTargetedForEvents()
     {
         m_Canvas.renderMode = RenderMode.ScreenSpaceCamera;
@@ -102,7 +124,34 @@ public class GraphicRaycasterTests
 
         Assert.IsNotEmpty(results, "Expected at least 1 result from a raycast ");
     }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+#if ENABLE_INPUT_SYSTEM && PACKAGE_INPUTSYSTEM
+    [UnityTest]
+    public IEnumerator GraphicRaycasterIgnoresEventsFromTheWrongDisplay()
+    {
+        m_CanvasRectTrans.anchoredPosition3D = new Vector3(0, 0, 11);
+        m_Camera.farClipPlane = 12;
+
+        yield return null;
+        var results = new List<RaycastResult>();
+        var pointerEvent = new PointerEventData(m_EventSystem)
+        {
+            position = new Vector2(Screen.width / 2f, Screen.height / 2f),
+            displayIndex = 1,
+        };
+
+        m_EventSystem.RaycastAll(pointerEvent, results);
+
+        Assert.IsEmpty(results, "Pointer event on display 1 was not ignored on display 0");
+    }
+#endif
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [TearDown]
     public void TearDown()
     {

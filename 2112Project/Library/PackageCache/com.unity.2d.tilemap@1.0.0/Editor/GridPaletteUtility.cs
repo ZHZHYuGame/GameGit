@@ -9,6 +9,11 @@ namespace UnityEditor.Tilemaps
     /// </summary>
     public static class GridPaletteUtility
     {
+<<<<<<< HEAD
+=======
+        internal static readonly Vector3 defaultSortAxis = new Vector3(0f, 0f, 1f);
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         internal static RectInt GetBounds(GameObject palette)
         {
             if (palette == null)
@@ -42,6 +47,33 @@ namespace UnityEditor.Tilemaps
         /// <returns>The created Palette Asset if successful.</returns>
         public static GameObject CreateNewPaletteAtCurrentFolder(string name, GridLayout.CellLayout layout, GridPalette.CellSizing cellSizing, Vector3 cellSize, GridLayout.CellSwizzle swizzle)
         {
+<<<<<<< HEAD
+=======
+            return CreateNewPaletteAtCurrentFolder(name, layout, cellSizing, cellSize, swizzle
+                , TransparencySortMode.Default, defaultSortAxis);
+        }
+
+        /// <summary>
+        /// Creates a Palette Asset at the current selected folder path. This will show a popup allowing you to choose
+        /// a different folder path for saving the Palette Asset if required.
+        /// </summary>
+        /// <param name="name">Name of the Palette Asset.</param>
+        /// <param name="layout">Grid Layout of the Palette Asset.</param>
+        /// <param name="cellSizing">Cell Sizing of the Palette Asset.</param>
+        /// <param name="cellSize">Cell Size of the Palette Asset.</param>
+        /// <param name="swizzle">Cell Swizzle of the Palette.</param>
+        /// <param name="sortMode">Transparency Sort Mode for the Palette</param>
+        /// <param name="sortAxis">Transparency Sort Axis for the Palette</param>
+        /// <returns>The created Palette Asset if successful.</returns>
+        public static GameObject CreateNewPaletteAtCurrentFolder(string name
+            , GridLayout.CellLayout layout
+            , GridPalette.CellSizing cellSizing
+            , Vector3 cellSize
+            , GridLayout.CellSwizzle swizzle
+            , TransparencySortMode sortMode
+            , Vector3 sortAxis)
+        {
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             string defaultPath = ProjectBrowser.s_LastInteractedProjectBrowser ? ProjectBrowser.s_LastInteractedProjectBrowser.GetActiveFolderPath() : "Assets";
             string folderPath = EditorUtility.SaveFolderPanel("Create palette into folder ", defaultPath, "");
             folderPath = FileUtil.GetProjectRelativePath(folderPath);
@@ -49,7 +81,10 @@ namespace UnityEditor.Tilemaps
             if (string.IsNullOrEmpty(folderPath))
                 return null;
 
+<<<<<<< HEAD
             return CreateNewPalette(folderPath, name, layout, cellSizing, cellSize, swizzle);
+=======
+            return CreateNewPalette(folderPath, name, layout, cellSizing, cellSize, swizzle, sortMode, sortAxis);
         }
 
         /// <summary>
@@ -62,7 +97,43 @@ namespace UnityEditor.Tilemaps
         /// <param name="cellSize">Cell Size of the Palette Asset.</param>
         /// <param name="swizzle">Cell Swizzle of the Palette.</param>
         /// <returns>The created Palette Asset if successful.</returns>
+        public static GameObject CreateNewPalette(string folderPath
+            , string name
+            , GridLayout.CellLayout layout
+            , GridPalette.CellSizing cellSizing
+            , Vector3 cellSize
+            , GridLayout.CellSwizzle swizzle)
+        {
+            return CreateNewPalette(folderPath, name, layout, cellSizing, cellSize, swizzle,
+                TransparencySortMode.Default, defaultSortAxis);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
+        }
+
+        /// <summary>
+        /// Creates a Palette Asset at the given folder path.
+        /// </summary>
+        /// <param name="folderPath">Folder Path of the Palette Asset.</param>
+        /// <param name="name">Name of the Palette Asset.</param>
+        /// <param name="layout">Grid Layout of the Palette Asset.</param>
+        /// <param name="cellSizing">Cell Sizing of the Palette Asset.</param>
+        /// <param name="cellSize">Cell Size of the Palette Asset.</param>
+        /// <param name="swizzle">Cell Swizzle of the Palette.</param>
+<<<<<<< HEAD
+        /// <returns>The created Palette Asset if successful.</returns>
         public static GameObject CreateNewPalette(string folderPath, string name, GridLayout.CellLayout layout, GridPalette.CellSizing cellSizing, Vector3 cellSize, GridLayout.CellSwizzle swizzle)
+=======
+        /// <param name="sortMode">Transparency Sort Mode for the Palette</param>
+        /// <param name="sortAxis">Transparency Sort Axis for the Palette</param>
+        /// <returns>The created Palette Asset if successful.</returns>
+        public static GameObject CreateNewPalette(string folderPath
+            , string name
+            , GridLayout.CellLayout layout
+            , GridPalette.CellSizing cellSizing
+            , Vector3 cellSize
+            , GridLayout.CellSwizzle swizzle
+            , TransparencySortMode sortMode
+            , Vector3 sortAxis)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             GameObject temporaryGO = new GameObject(name);
             Grid grid = temporaryGO.AddComponent<Grid>();
@@ -77,12 +148,20 @@ namespace UnityEditor.Tilemaps
             string path = AssetDatabase.GenerateUniqueAssetPath(folderPath + "/" + name + ".prefab");
 
             Object prefab = PrefabUtility.SaveAsPrefabAssetAndConnect(temporaryGO, path, InteractionMode.AutomatedAction);
+<<<<<<< HEAD
             GridPalette palette = CreateGridPalette(cellSizing);
+=======
+            GridPalette palette = CreateGridPalette(cellSizing, sortMode, sortAxis);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             AssetDatabase.AddObjectToAsset(palette, prefab);
             PrefabUtility.ApplyPrefabInstance(temporaryGO, InteractionMode.AutomatedAction);
             AssetDatabase.Refresh();
 
+<<<<<<< HEAD
             GameObject.DestroyImmediate(temporaryGO);
+=======
+            Object.DestroyImmediate(temporaryGO);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return AssetDatabase.LoadAssetAtPath<GameObject>(path);
         }
 
@@ -103,9 +182,20 @@ namespace UnityEditor.Tilemaps
                     break;
                 }
                 case GridLayout.CellLayout.Isometric:
+<<<<<<< HEAD
                 case GridLayout.CellLayout.IsometricZAsY:
                 {
                     renderer.sortOrder = TilemapRenderer.SortOrder.TopRight;
+=======
+                {
+                    renderer.sortOrder = TilemapRenderer.SortOrder.TopRight;
+                    break;
+                }
+                case GridLayout.CellLayout.IsometricZAsY:
+                {
+                    renderer.sortOrder = TilemapRenderer.SortOrder.TopRight;
+                    renderer.mode = TilemapRenderer.Mode.Individual;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     break;
                 }
             }
@@ -113,17 +203,43 @@ namespace UnityEditor.Tilemaps
             return newLayerGO;
         }
 
+<<<<<<< HEAD
         internal static GridPalette CreateGridPalette(GridPalette.CellSizing cellSizing)
         {
             var palette = GridPalette.CreateInstance<GridPalette>();
             palette.name = "Palette Settings";
             palette.cellSizing = cellSizing;
+=======
+        internal static GridPalette GetGridPaletteFromPaletteAsset(Object palette)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(palette);
+            GridPalette paletteAsset = AssetDatabase.LoadAssetAtPath<GridPalette>(assetPath);
+            return paletteAsset;
+        }
+
+        internal static GridPalette CreateGridPalette(GridPalette.CellSizing cellSizing)
+        {
+            return CreateGridPalette(cellSizing, TransparencySortMode.Default, defaultSortAxis);
+        }
+
+        internal static GridPalette CreateGridPalette(GridPalette.CellSizing cellSizing
+            , TransparencySortMode sortMode
+            , Vector3 sortAxis
+        )
+        {
+            var palette = ScriptableObject.CreateInstance<GridPalette>();
+            palette.name = "Palette Settings";
+            palette.cellSizing = cellSizing;
+            palette.transparencySortMode = sortMode;
+            palette.transparencySortAxis = sortAxis;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return palette;
         }
 
         internal static Vector3 CalculateAutoCellSize(Grid grid, Vector3 defaultValue)
         {
             Tilemap[] tilemaps = grid.GetComponentsInChildren<Tilemap>();
+<<<<<<< HEAD
             foreach (var tilemap in tilemaps)
             {
                 foreach (var position in tilemap.cellBounds.allPositionsWithin)
@@ -136,6 +252,66 @@ namespace UnityEditor.Tilemaps
                 }
             }
             return defaultValue;
+=======
+            Sprite[] sprites = null;
+            var maxSize = Vector2.negativeInfinity;
+            var minSize = Vector2.positiveInfinity;
+
+            // Get minimum and maximum sizes for Sprites
+            foreach (var tilemap in tilemaps)
+            {
+                var spriteCount = tilemap.GetUsedSpritesCount();
+                if (sprites == null || sprites.Length < spriteCount)
+                    sprites = new Sprite[spriteCount];
+                tilemap.GetUsedSpritesNonAlloc(sprites);
+                for (int i = 0; i < spriteCount; ++i)
+                {
+                    Sprite sprite = sprites[i];
+                    if (sprite != null)
+                    {
+                        var cellSize = new Vector3(sprite.rect.width, sprite.rect.height, 0f) / sprite.pixelsPerUnit;
+                        if (tilemap.cellSwizzle == GridLayout.CellSwizzle.YXZ)
+                        {
+                            var swap = cellSize.x;
+                            cellSize.x = cellSize.y;
+                            cellSize.y = swap;
+                        }
+                        minSize.x = Mathf.Min(cellSize.x, minSize.x);
+                        minSize.y = Mathf.Min(cellSize.y, minSize.y);
+                        maxSize.x = Mathf.Max(cellSize.x, maxSize.x);
+                        maxSize.y = Mathf.Max(cellSize.y, maxSize.y);
+                    }
+                }
+            }
+            // Validate that Sprites are in multiples of sizes
+            foreach (var tilemap in tilemaps)
+            {
+                var spriteCount = tilemap.GetUsedSpritesCount();
+                if (sprites == null || sprites.Length < spriteCount)
+                    sprites = new Sprite[spriteCount];
+                tilemap.GetUsedSpritesNonAlloc(sprites);
+                for (int i = 0; i < spriteCount; ++i)
+                {
+                    Sprite sprite = sprites[i];
+                    if (sprite != null)
+                    {
+                        var cellSize = new Vector3(sprite.rect.width, sprite.rect.height, 0f) / sprite.pixelsPerUnit;
+                        if (tilemap.cellSwizzle == GridLayout.CellSwizzle.YXZ)
+                        {
+                            var swap = cellSize.x;
+                            cellSize.x = cellSize.y;
+                            cellSize.y = swap;
+                        }
+                        // Return maximum size if sprites are not multiples of the smallest size
+                        if (cellSize.x % minSize.x > 0)
+                            return maxSize.x * maxSize.y <= 0f ? defaultValue : new Vector3(maxSize.x, maxSize.y, 0f);
+                        if (cellSize.y % minSize.y > 0)
+                            return maxSize.x * maxSize.y <= 0f ? defaultValue : new Vector3(maxSize.x, maxSize.y, 0f);
+                    }
+                }
+            }
+            return minSize.x * minSize.y <= 0f || minSize == Vector2.positiveInfinity ? defaultValue : new Vector3(minSize.x, minSize.y, 0f);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }

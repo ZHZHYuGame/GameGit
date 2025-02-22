@@ -29,6 +29,11 @@ namespace UnityEngine.UI.Tests
         }
 
         private SelectableTest selectable;
+<<<<<<< HEAD
+=======
+        private GameObject m_CanvasRoot;
+        private GameObject m_EventSystemGO;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         private CanvasGroup CreateAndParentGroupTo(string name, GameObject child)
         {
@@ -42,11 +47,20 @@ namespace UnityEngine.UI.Tests
         [SetUp]
         public void TestSetup()
         {
+<<<<<<< HEAD
             EventSystem.current = new GameObject("EventSystem", typeof(EventSystem)).GetComponent<EventSystem>();
             GameObject canvasRoot = new GameObject("Canvas", typeof(RectTransform), typeof(Canvas));
             GameObject SelectableGO = new GameObject("Selectable", typeof(RectTransform), typeof(CanvasRenderer));
 
             SelectableGO.transform.SetParent(canvasRoot.transform);
+=======
+            m_EventSystemGO = new GameObject("EventSystem", typeof(EventSystem));
+            EventSystem.current = m_EventSystemGO.GetComponent<EventSystem>();
+            m_CanvasRoot = new GameObject("Canvas", typeof(RectTransform), typeof(Canvas));
+            GameObject SelectableGO = new GameObject("Selectable", typeof(RectTransform), typeof(CanvasRenderer));
+
+            SelectableGO.transform.SetParent(m_CanvasRoot.transform);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable = SelectableGO.AddComponent<SelectableTest>();
             selectable.targetGraphic = selectable.gameObject.AddComponent<ConcreteGraphic>();
         }
@@ -54,7 +68,12 @@ namespace UnityEngine.UI.Tests
         [TearDown]
         public void TearDown()
         {
+<<<<<<< HEAD
             EventSystem.current = null;
+=======
+            GameObject.DestroyImmediate(m_CanvasRoot);
+            GameObject.DestroyImmediate(m_EventSystemGO);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         [Test] // regression test 1160054
@@ -129,6 +148,22 @@ namespace UnityEngine.UI.Tests
         }
 
         [Test]
+<<<<<<< HEAD
+=======
+        public void DisablingCanvasGroupShouldMakeSelectableAsInteractable()
+        {
+            var group = selectable.gameObject.AddComponent<CanvasGroup>();
+            Assert.IsTrue(selectable.IsInteractable());
+
+            group.enabled = false;
+            group.interactable = false;
+
+            selectable.InvokeOnCanvasGroupChanged();
+            Assert.IsTrue(selectable.IsInteractable());
+        }
+
+        [Test]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public void SettingParentCanvasGroupNotInteractableShouldMakeSelectableNotInteractable()
         {
             var canvasGroup = CreateAndParentGroupTo("CanvasGroup", selectable.gameObject);
@@ -187,10 +222,23 @@ namespace UnityEngine.UI.Tests
         public void PointerEnterThenSetNotInteractableThenExitThenSetInteractableShouldSetStateToDefault()
         {
             Assert.True(selectable.isStateNormal);
+<<<<<<< HEAD
             selectable.InvokeOnPointerEnter(null);
             Assert.True(selectable.isStateHighlighted);
             selectable.interactable = false;
             selectable.InvokeOnPointerExit(null);
+=======
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+            Assert.True(selectable.isStateHighlighted);
+            selectable.interactable = false;
+            selectable.InvokeOnPointerExit(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.interactable = true;
             Assert.False(selectable.isStateHighlighted);
             Assert.True(selectable.isStateNormal);
@@ -200,13 +248,33 @@ namespace UnityEngine.UI.Tests
         public void PointerEnterThenSetNotInteractableThenSetInteractableShouldStayHighlighted()
         {
             Assert.True(selectable.isStateNormal);
+<<<<<<< HEAD
             selectable.InvokeOnPointerEnter(null);
+=======
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             Assert.True(selectable.isStateHighlighted);
             selectable.interactable = false;
             selectable.interactable = true;
             Assert.True(selectable.isStateHighlighted);
         }
 
+<<<<<<< HEAD
+=======
+        [Test]
+        public void InstantiatingSelectableUnderNotInteractableCanvasGroupShouldAlsoNotBeInteractable()
+        {
+            var canvasGroup = CreateAndParentGroupTo("ParentGroup", selectable.gameObject);
+            canvasGroup.interactable = false;
+            Assert.False(canvasGroup.interactable);
+            var newSelectable = Object.Instantiate(selectable.gameObject, canvasGroup.transform).GetComponent<SelectableTest>();
+            Assert.False(newSelectable.IsInteractable());
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         #endregion
 
         #region Tweening
@@ -322,15 +390,44 @@ namespace UnityEngine.UI.Tests
         public void PointerEnterShouldHighlight()
         {
             Assert.True(selectable.isStateNormal);
+<<<<<<< HEAD
             selectable.InvokeOnPointerEnter(null);
+=======
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             Assert.True(selectable.isStateHighlighted);
+        }
+
+        [Test]
+<<<<<<< HEAD
+        public void PointerEnterAndRightClickShouldHighlightNotPress()
+        {
+            Assert.True(selectable.isStateNormal);
+            selectable.InvokeOnPointerEnter(null);
+=======
+        public void PointerEnterOnSelectedObjectShouldStaySelected()
+        {
+            selectable.InvokeOnSelect(null);
+            Assert.True(selectable.isStateSelected);
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+            Assert.True(selectable.isStateSelected);
         }
 
         [Test]
         public void PointerEnterAndRightClickShouldHighlightNotPress()
         {
             Assert.True(selectable.isStateNormal);
-            selectable.InvokeOnPointerEnter(null);
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current)
             {
                 button = PointerEventData.InputButton.Right
@@ -342,7 +439,14 @@ namespace UnityEngine.UI.Tests
         public void PointerEnterAndRightClickShouldPress()
         {
             Assert.True(selectable.isStateNormal);
+<<<<<<< HEAD
             selectable.InvokeOnPointerEnter(null);
+=======
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current));
             Assert.True(selectable.isStatePressed);
         }
@@ -351,9 +455,21 @@ namespace UnityEngine.UI.Tests
         public void PointerEnterLeftClickExitShouldPress()
         {
             Assert.True(selectable.isStateNormal);
+<<<<<<< HEAD
             selectable.InvokeOnPointerEnter(null);
             selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current));
             selectable.InvokeOnPointerExit(null);
+=======
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+            selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current));
+            selectable.InvokeOnPointerExit(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             Assert.True(selectable.isStatePressed);
         }
 
@@ -361,9 +477,21 @@ namespace UnityEngine.UI.Tests
         public void PointerEnterLeftClickExitReleaseShouldSelect()
         {
             Assert.True(selectable.isStateNormal);
+<<<<<<< HEAD
             selectable.InvokeOnPointerEnter(null);
             selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current));
             selectable.InvokeOnPointerExit(null);
+=======
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+            selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current));
+            selectable.InvokeOnPointerExit(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.InvokeOnPointerUp(new PointerEventData(EventSystem.current));
             Assert.True(selectable.isStateSelected);
         }
@@ -380,7 +508,14 @@ namespace UnityEngine.UI.Tests
         public void PointerLeftDownRightDownRightUpShouldNotChangeState()
         {
             Assert.True(selectable.isStateNormal);
+<<<<<<< HEAD
             selectable.InvokeOnPointerEnter(null);
+=======
+            selectable.InvokeOnPointerEnter(new PointerEventData(EventSystem.current)
+            {
+                pointerEnter = selectable.gameObject
+            });
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Left });
             selectable.InvokeOnPointerDown(new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Right });
             selectable.InvokeOnPointerUp(new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Right });
@@ -403,21 +538,33 @@ namespace UnityEngine.UI.Tests
         [Test] // regression test 787563
         public void SettingInteractableWithNoEventSystemShouldNotCrash()
         {
+<<<<<<< HEAD
             EventSystem.current = null;
+=======
+            EventSystem.current.enabled = false;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.interactable = false;
         }
 
         [Test] // regression test 787563
         public void OnPointerDownWithNoEventSystemShouldNotCrash()
         {
+<<<<<<< HEAD
             EventSystem.current = null;
+=======
+            EventSystem.current.enabled = false;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.OnPointerDown(new PointerEventData(EventSystem.current) {button = PointerEventData.InputButton.Left});
         }
 
         [Test] // regression test 787563
         public void SelectWithNoEventSystemShouldNotCrash()
         {
+<<<<<<< HEAD
             EventSystem.current = null;
+=======
+            EventSystem.current.enabled = false;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             selectable.Select();
         }
 

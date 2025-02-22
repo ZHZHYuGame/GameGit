@@ -103,6 +103,24 @@ namespace UnityEditor.U2D.Sprites
             return value;
         }
 
+<<<<<<< HEAD
+=======
+        public List<Vector2[]> ToListVectorCapped(Rect rect)
+        {
+            var value = ToListVector();
+            rect.center = Vector2.zero;
+            foreach (var path in value)
+            {
+                for (int i = 0; i < path.Length; ++i)
+                {
+                    var point = path[i];
+                    path[i] = SpriteOutlineModule.CapPointToRect(point, rect);;
+                }
+            }
+            return value;
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public SpriteOutline this[int index]
         {
             get { return IsValidIndex(index) ? m_SpriteOutlines[index] : null; }
@@ -177,6 +195,14 @@ namespace UnityEditor.U2D.Sprites
             public GUIContent generateOutlineLabel = EditorGUIUtility.TrTextContent("Generate", "Generate new outline based on mesh detail value.");
             public GUIContent outlineTolerance = EditorGUIUtility.TrTextContent("Outline Tolerance", "Sets how tight the outline should be from the sprite.");
             public GUIContent snapButtonLabel = EditorGUIUtility.TrTextContent("Snap", "Snap points to nearest pixel");
+<<<<<<< HEAD
+=======
+
+            public GUIContent copyButtonLabel = EditorGUIUtility.TrTextContent("Copy", "Copy outline from Sprite");
+            public GUIContent pasteButtonLabel = EditorGUIUtility.TrTextContent("Paste", "Paste outline to Sprite");
+            public GUIContent pasteAllButtonLabel = EditorGUIUtility.TrTextContent("Paste All", "Paste outline to all Sprites");
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             public GUIContent generatingOutlineDialogTitle = EditorGUIUtility.TrTextContent("Outline");
             public GUIContent generatingOutlineDialogContent = EditorGUIUtility.TrTextContent("Generating outline {0}/{1}");
             public Color spriteBorderColor = new Color(0.25f, 0.5f, 1f, 0.75f);
@@ -199,6 +225,10 @@ namespace UnityEditor.U2D.Sprites
         private ITexture2D m_OutlineTexture;
         private Styles m_Styles;
         protected SpriteOutlineModel m_Outline;
+<<<<<<< HEAD
+=======
+        private SpriteOutlineList m_CopyOutline = null;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected ITextureDataProvider m_TextureDataProvider;
 
         public SpriteOutlineModule(ISpriteEditor sem, IEventSystem es, IUndoSystem us, IAssetDatabase ad, IGUIUtility gu, IShapeEditorFactory sef, ITexture2D outlineTexture)
@@ -253,6 +283,14 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        internal SpriteOutlineList selectedOutline => m_Outline[m_Selected.spriteID];
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected virtual List<SpriteOutline> selectedShapeOutline
         {
             get
@@ -316,6 +354,18 @@ namespace UnityEditor.U2D.Sprites
             m_RequestRepaint = true;
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        internal void OnOutlineDetailChanged(float value)
+        {
+            if(m_Selected != null)
+                m_Outline[m_Selected.spriteID].tessellationDetail = value;
+        }
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected virtual void LoadOutline()
         {
             m_Outline = ScriptableObject.CreateInstance<SpriteOutlineModel>();
@@ -438,7 +488,11 @@ namespace UnityEditor.U2D.Sprites
                     EditorGUI.BeginChangeCheck();
                     float oldFieldWidth = EditorGUIUtility.fieldWidth;
                     float oldLabelWidth = EditorGUIUtility.labelWidth;
+<<<<<<< HEAD
                     EditorGUIUtility.fieldWidth = 30;
+=======
+                    EditorGUIUtility.fieldWidth = 35;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     EditorGUIUtility.labelWidth = 1;
                     tesselationValue = EditorGUI.Slider(drawArea, Mathf.Clamp01(tesselationValue), 0, 1);
                     if (EditorGUI.EndChangeCheck())
@@ -450,7 +504,11 @@ namespace UnityEditor.U2D.Sprites
                     EditorGUIUtility.labelWidth = oldLabelWidth;
                 }
 
+<<<<<<< HEAD
                 drawArea.x += drawArea.width;
+=======
+                drawArea.x += drawArea.width + 2;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 drawArea.width = EditorStyles.toolbarButton.CalcSize(style.generateOutlineLabel).x;
                 totalWidth -= drawArea.width;
                 if (totalWidth < 0)
@@ -464,6 +522,51 @@ namespace UnityEditor.U2D.Sprites
                     spriteEditorWindow.SetDataModified();
                     shapeEditorDirty = true;
                 }
+<<<<<<< HEAD
+=======
+
+                using (new EditorGUI.DisabledScope(m_Selected == null || !HasShapeOutline(m_Selected)))
+                {
+                    drawArea.x += drawArea.width + 2;
+                    drawArea.width = EditorStyles.toolbarButton.CalcSize(style.copyButtonLabel).x;
+                    totalWidth -= drawArea.width;
+                    if (totalWidth < 0)
+                        drawArea.width += totalWidth;
+
+                    if (drawArea.width > 0 && GUI.Button(drawArea, style.copyButtonLabel, EditorStyles.toolbarButton))
+                    {
+                        Copy();
+                    }
+                }
+
+                using (new EditorGUI.DisabledScope(m_Selected == null || m_CopyOutline == null))
+                {
+                    drawArea.x += drawArea.width;
+                    drawArea.width = EditorStyles.toolbarButton.CalcSize(style.pasteButtonLabel).x;
+                    totalWidth -= drawArea.width;
+                    if (totalWidth < 0)
+                        drawArea.width += totalWidth;
+
+                    if (drawArea.width > 0 && GUI.Button(drawArea, style.pasteButtonLabel, EditorStyles.toolbarButton))
+                    {
+                        Paste();
+                    }
+                }
+
+                using (new EditorGUI.DisabledScope(m_CopyOutline == null))
+                {
+                    drawArea.x += drawArea.width;
+                    drawArea.width = EditorStyles.toolbarButton.CalcSize(style.pasteAllButtonLabel).x;
+                    totalWidth -= drawArea.width;
+                    if (totalWidth < 0)
+                        drawArea.width += totalWidth;
+
+                    if (drawArea.width > 0 && GUI.Button(drawArea, style.pasteAllButtonLabel, EditorStyles.toolbarButton))
+                    {
+                        PasteAll();
+                    }
+                }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -802,7 +905,63 @@ namespace UnityEditor.U2D.Sprites
             return outline;
         }
 
+<<<<<<< HEAD
         private static Vector2 CapPointToRect(Vector2 so, Rect r)
+=======
+        public void Copy()
+        {
+            if (m_Selected == null || !HasShapeOutline(m_Selected))
+                return;
+
+            m_CopyOutline = new SpriteOutlineList(m_Selected.spriteID, m_Outline[m_Selected.spriteID].ToListVectorCapped(m_Selected.rect));
+        }
+
+        public void Paste()
+        {
+            if (m_Selected == null || m_CopyOutline == null)
+                return;
+
+            RecordUndo();
+<<<<<<< HEAD
+            m_Outline[m_Selected.spriteID] = new SpriteOutlineList(m_Selected.spriteID, m_CopyOutline.ToListVectorCapped(m_Selected.rect));
+=======
+            var oldOutline = m_Outline[m_Selected.spriteID];
+            m_Outline[m_Selected.spriteID] = new SpriteOutlineList(m_Selected.spriteID, m_CopyOutline.ToListVectorCapped(m_Selected.rect));
+            if (oldOutline != null)
+                m_Outline[m_Selected.spriteID].tessellationDetail = oldOutline.tessellationDetail;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+            spriteEditorWindow.SetDataModified();
+            shapeEditorDirty = true;
+        }
+
+        public void PasteAll()
+        {
+            if (m_CopyOutline == null)
+                return;
+
+            RecordUndo();
+            var rectCache = spriteEditorWindow.GetDataProvider<ISpriteEditorDataProvider>().GetSpriteRects();
+            if (rectCache != null)
+            {
+                foreach (var spriteRect in rectCache)
+                {
+                    var outlines = m_CopyOutline.ToListVectorCapped(spriteRect.rect);
+<<<<<<< HEAD
+                    m_Outline[spriteRect.spriteID] = new SpriteOutlineList(spriteRect.spriteID, outlines);
+=======
+                    var oldOutline = m_Outline[m_Selected.spriteID];
+                    m_Outline[spriteRect.spriteID] = new SpriteOutlineList(spriteRect.spriteID, outlines);
+                    if (oldOutline != null)
+                        m_Outline[m_Selected.spriteID].tessellationDetail = oldOutline.tessellationDetail;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+                }
+            }
+            spriteEditorWindow.SetDataModified();
+            shapeEditorDirty = true;
+        }
+
+        internal static Vector2 CapPointToRect(Vector2 so, Rect r)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             so.x = Mathf.Min(r.xMax, so.x);
             so.x = Mathf.Max(r.xMin, so.x);

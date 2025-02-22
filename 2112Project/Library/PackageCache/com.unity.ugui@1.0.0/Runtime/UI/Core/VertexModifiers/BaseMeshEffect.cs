@@ -20,6 +20,10 @@ namespace UnityEngine.UI
     /// </summary>
     /// <example>
     /// <code>
+<<<<<<< HEAD
+=======
+    /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     ///using UnityEngine;
     ///using UnityEngine.UI;
     ///
@@ -46,6 +50,10 @@ namespace UnityEngine.UI
     ///        ListPool<Vector2>.Release(uvs);
     ///    }
     ///}
+<<<<<<< HEAD
+=======
+    /// ]]>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     ///</code>
     ///</example>
 

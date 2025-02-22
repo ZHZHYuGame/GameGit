@@ -69,6 +69,16 @@ namespace UnityEngine.UI
             }
         }
 
+<<<<<<< HEAD
+=======
+
+        /// <summary>
+        /// Is this graphic the graphic on the same object as a Mask that is enabled.
+        /// </summary>
+        /// <remarks>
+        /// If toggled ensure to call MaskUtilities.NotifyStencilStateChanged(this); manually as it changes how stenciles are calculated for this image.
+        /// </remarks>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public bool isMaskingGraphic
         {
             get { return m_IsMaskingGraphic; }
@@ -98,8 +108,19 @@ namespace UnityEngine.UI
 
             if (m_ShouldRecalculateStencil)
             {
+<<<<<<< HEAD
                 var rootCanvas = MaskUtilities.FindRootSortOverrideCanvas(transform);
                 m_StencilValue = maskable ? MaskUtilities.GetStencilDepth(transform, rootCanvas) : 0;
+=======
+                if (maskable)
+                {
+                    var rootCanvas = MaskUtilities.FindRootSortOverrideCanvas(transform);
+                    m_StencilValue = MaskUtilities.GetStencilDepth(transform, rootCanvas);
+                }
+                else
+                    m_StencilValue = 0;
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 m_ShouldRecalculateStencil = false;
             }
 

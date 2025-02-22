@@ -35,6 +35,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when using UI elements.
@@ -56,7 +60,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public virtual float minWidth { get { return m_MinWidth; } set { if (SetPropertyUtility.SetStruct(ref m_MinWidth, value)) SetDirty(); } }
 
@@ -65,6 +74,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when using UI elements.
@@ -86,7 +99,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public virtual float minHeight { get { return m_MinHeight; } set { if (SetPropertyUtility.SetStruct(ref m_MinHeight, value)) SetDirty(); } }
 
@@ -95,6 +113,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when using UI elements.
@@ -116,7 +138,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public virtual float preferredWidth { get { return m_PreferredWidth; } set { if (SetPropertyUtility.SetStruct(ref m_PreferredWidth, value)) SetDirty(); } }
 
@@ -125,6 +152,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when using UI elements.
@@ -146,7 +177,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public virtual float preferredHeight { get { return m_PreferredHeight; } set { if (SetPropertyUtility.SetStruct(ref m_PreferredHeight, value)) SetDirty(); } }
 

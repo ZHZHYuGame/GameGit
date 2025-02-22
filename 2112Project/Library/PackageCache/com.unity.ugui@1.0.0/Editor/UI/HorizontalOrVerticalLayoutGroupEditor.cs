@@ -22,6 +22,10 @@ namespace UnityEditor.UI
         SerializedProperty m_ChildScaleHeight;
         SerializedProperty m_ChildForceExpandWidth;
         SerializedProperty m_ChildForceExpandHeight;
+<<<<<<< HEAD
+=======
+        SerializedProperty m_ReverseArrangement;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         protected virtual void OnEnable()
         {
@@ -34,6 +38,10 @@ namespace UnityEditor.UI
             m_ChildScaleHeight = serializedObject.FindProperty("m_ChildScaleHeight");
             m_ChildForceExpandWidth = serializedObject.FindProperty("m_ChildForceExpandWidth");
             m_ChildForceExpandHeight = serializedObject.FindProperty("m_ChildForceExpandHeight");
+<<<<<<< HEAD
+=======
+            m_ReverseArrangement = serializedObject.FindProperty("m_ReverseArrangement");
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public override void OnInspectorGUI()
@@ -42,6 +50,10 @@ namespace UnityEditor.UI
             EditorGUILayout.PropertyField(m_Padding, true);
             EditorGUILayout.PropertyField(m_Spacing, true);
             EditorGUILayout.PropertyField(m_ChildAlignment, true);
+<<<<<<< HEAD
+=======
+            EditorGUILayout.PropertyField(m_ReverseArrangement, true);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             Rect rect = EditorGUILayout.GetControlRect();
             rect = EditorGUI.PrefixLabel(rect, -1, EditorGUIUtility.TrTextContent("Control Child Size"));
@@ -76,7 +88,11 @@ namespace UnityEditor.UI
         void ToggleLeft(Rect position, SerializedProperty property, GUIContent label)
         {
             bool toggle = property.boolValue;
+<<<<<<< HEAD
             EditorGUI.showMixedValue = property.hasMultipleDifferentValues;
+=======
+            EditorGUI.BeginProperty(position, label, property);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             EditorGUI.BeginChangeCheck();
             int oldIndent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
@@ -86,7 +102,11 @@ namespace UnityEditor.UI
             {
                 property.boolValue = property.hasMultipleDifferentValues ? true : !property.boolValue;
             }
+<<<<<<< HEAD
             EditorGUI.showMixedValue = false;
+=======
+            EditorGUI.EndProperty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }

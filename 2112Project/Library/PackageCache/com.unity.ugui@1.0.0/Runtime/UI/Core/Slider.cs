@@ -4,7 +4,11 @@ using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
+<<<<<<< HEAD
     [AddComponentMenu("UI/Slider", 33)]
+=======
+    [AddComponentMenu("UI/Slider", 34)]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [ExecuteAlways]
     [RequireComponent(typeof(RectTransform))]
     /// <summary>
@@ -57,6 +61,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;  // Required when Using UI elements.
@@ -74,7 +82,12 @@ namespace UnityEngine.UI
         ///         mainSlider.fillRect = newFillRect;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public RectTransform fillRect { get { return m_FillRect; } set { if (SetPropertyUtility.SetClass(ref m_FillRect, value)) {UpdateCachedReferences(); UpdateVisuals(); } } }
 
@@ -86,6 +99,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -104,7 +121,12 @@ namespace UnityEngine.UI
         ///         mainSlider.handleRect.gameObject.SetActive(true);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public RectTransform handleRect { get { return m_HandleRect; } set { if (SetPropertyUtility.SetClass(ref m_HandleRect, value)) { UpdateCachedReferences(); UpdateVisuals(); } } }
 
@@ -118,6 +140,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -135,7 +161,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public Direction direction { get { return m_Direction; } set { if (SetPropertyUtility.SetStruct(ref m_Direction, value)) UpdateVisuals(); } }
 
@@ -147,6 +178,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -161,7 +196,12 @@ namespace UnityEngine.UI
         ///         mainSlider.minValue = 10;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public float minValue { get { return m_MinValue; } set { if (SetPropertyUtility.SetStruct(ref m_MinValue, value)) { Set(m_Value); UpdateVisuals(); } } }
 
@@ -173,6 +213,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -187,7 +231,12 @@ namespace UnityEngine.UI
         ///         mainSlider.maxValue = 20;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public float maxValue { get { return m_MaxValue; } set { if (SetPropertyUtility.SetStruct(ref m_MaxValue, value)) { Set(m_Value); UpdateVisuals(); } } }
 
@@ -199,6 +248,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -213,7 +266,12 @@ namespace UnityEngine.UI
         ///         mainSlider.wholeNumbers = true;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public bool wholeNumbers { get { return m_WholeNumbers; } set { if (SetPropertyUtility.SetStruct(ref m_WholeNumbers, value)) { Set(m_Value); UpdateVisuals(); } } }
 
@@ -225,6 +283,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -240,15 +302,24 @@ namespace UnityEngine.UI
         ///         Debug.Log(mainSlider.value);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public virtual float value
         {
             get
             {
+<<<<<<< HEAD
                 if (wholeNumbers)
                     return Mathf.Round(m_Value);
                 return m_Value;
+=======
+                return wholeNumbers ? Mathf.Round(m_Value) : m_Value;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
             set
             {
@@ -270,6 +341,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -285,7 +360,12 @@ namespace UnityEngine.UI
         ///         Debug.Log(mainSlider.normalizedValue);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public float normalizedValue
         {
@@ -311,6 +391,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -331,7 +415,12 @@ namespace UnityEngine.UI
         ///         Debug.Log(mainSlider.value);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public SliderEvent onValueChanged { get { return m_OnValueChanged; } set { m_OnValueChanged = value; } }
 
@@ -346,7 +435,14 @@ namespace UnityEngine.UI
         // The offset from handle position to mouse down position
         private Vector2 m_Offset = Vector2.zero;
 
+<<<<<<< HEAD
         private DrivenRectTransformTracker m_Tracker;
+=======
+        // field is never assigned warning
+        #pragma warning disable 649
+        private DrivenRectTransformTracker m_Tracker;
+        #pragma warning restore 649
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         // This "delayed" mechanism is required for case 1037681.
         private bool m_DelayedUpdateVisuals = false;
@@ -454,6 +550,12 @@ namespace UnityEngine.UI
                 UISystemProfilerApi.AddMarker("Slider.value", this);
                 onValueChanged.Invoke(m_Value);
             }
+<<<<<<< HEAD
+=======
+            // UUM-34170 Apparently, some properties on slider such as IsInteractable and Normalcolor Animation is broken.
+            // We need to call base here to render the animation on Scene
+            base.OnDidApplyAnimationProperties();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         void UpdateCachedReferences()
@@ -724,6 +826,10 @@ namespace UnityEngine.UI
         /// <param name="includeRectLayouts">Should the layout be flipped together with the slider direction</param>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -737,7 +843,12 @@ namespace UnityEngine.UI
         ///         mainSlider.SetDirection(Slider.Direction.LeftToRight, false);
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public void SetDirection(Direction direction, bool includeRectLayouts)
         {

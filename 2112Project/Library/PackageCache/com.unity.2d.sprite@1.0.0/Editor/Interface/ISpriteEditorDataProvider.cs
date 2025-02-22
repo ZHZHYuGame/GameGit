@@ -7,7 +7,47 @@ using UnityObject = UnityEngine.Object;
 namespace UnityEditor.U2D.Sprites
 {
     /// <summary>An interface that allows Sprite Editor Window to edit Sprite data for user custom importer.</summary>
+<<<<<<< HEAD
     /// <remarks>Implement this interface for [[ScriptedImporter]] to leverage on Sprite Editor Window to edit Sprite data.</remarks>
+=======
+<<<<<<< HEAD
+    /// <remarks>Implement this interface for [[ScriptedImporter]] to leverage on Sprite Editor Window to edit Sprite data.</remarks>
+=======
+    /// <remarks> Use this interface to edit Sprite data.
+    /// <code>
+    /// using UnityEditor;
+    /// using UnityEditor.U2D.Sprites;
+    /// using UnityEngine;
+    ///
+    /// public class PivotUpdater : AssetPostprocessor
+    /// {
+    ///     private void OnPreprocessTexture()
+    ///     {
+    ///         var factory = new SpriteDataProviderFactories();
+    ///         factory.Init();
+    ///         var dataProvider = factory.GetSpriteEditorDataProviderFromObject(assetImporter);
+    ///         dataProvider.InitSpriteEditorDataProvider();
+    ///
+    ///         SetPivot(dataProvider, new Vector2(0.5f, 0.5f));
+    ///
+    ///         dataProvider.Apply();
+    ///     }
+    ///
+    ///     static void SetPivot(ISpriteEditorDataProvider dataProvider, Vector2 pivot)
+    ///     {
+    ///         var spriteRects = dataProvider.GetSpriteRects();
+    ///         foreach (var rect in spriteRects)
+    ///         {
+    ///             rect.pivot = pivot;
+    ///             rect.alignment = SpriteAlignment.Custom;
+    ///         }
+    ///         dataProvider.SetSpriteRects(spriteRects);
+    ///     }
+    /// }
+    /// </code>
+    /// </remarks>
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     public interface ISpriteEditorDataProvider
     {
         /// <summary>SpriteImportMode to indicate how Sprite data will be imported.</summary>
@@ -54,6 +94,25 @@ namespace UnityEditor.U2D.Sprites
         void SetBones(GUID guid, List<SpriteBone> bones);
     }
 
+<<<<<<< HEAD
+=======
+    /// <summary>
+    /// Data provider that provides data for ID to be used given a SpriteRect's name.
+    /// </summary>
+    /// <remarks>
+    /// The name and ID pair is used to allow mapping back a previous created SpriteRect.
+    /// </remarks>
+    public interface ISpriteNameFileIdDataProvider
+    {
+        /// <summary>Returns an IEnumerable of SpriteNameFileIdPair representing the name and file id pairs the provider has.</summary>
+        /// <returns>Name and file id pairs.</returns>
+        IEnumerable<SpriteNameFileIdPair> GetNameFileIdPairs();
+        /// <summary>Sets the data provider's current NameFileIdPair.</summary>
+        /// <param name="nameFileIdPairs">Updated IEnumerable of SpriteNameFileIdPair.</param>
+        void SetNameFileIdPairs(IEnumerable<SpriteNameFileIdPair> nameFileIdPairs);
+    }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// <summary>Data provider that provides the outline data for SpriteRect.</summary>
     /// <remarks>The outline data is used to tessellate a Sprite's mesh.</remarks>
     public interface ISpriteOutlineDataProvider

@@ -8,6 +8,23 @@ namespace UnityEngine.EventSystems
     }
 
     /// <summary>
+<<<<<<< HEAD
+=======
+    /// Interface to implement if you wish to receive OnPointerMove callbacks.
+    /// </summary>
+    /// <remarks>
+    /// Criteria for this event is implementation dependent. For example see StandAloneInputModule.
+    /// </remarks>
+    public interface IPointerMoveHandler : IEventSystemHandler
+    {
+        /// <summary>
+        /// Use this callback to detect pointer move events
+        /// </summary>
+        void OnPointerMove(PointerEventData eventData);
+    }
+
+    /// <summary>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// Interface to implement if you wish to receive OnPointerEnter callbacks.
     /// </summary>
     /// <remarks>
@@ -75,6 +92,10 @@ namespace UnityEngine.EventSystems
     /// </remarks>
     /// <example>
     /// <code>
+<<<<<<< HEAD
+=======
+    /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     ///
@@ -87,7 +108,12 @@ namespace UnityEngine.EventSystems
     ///         Debug.Log(name + " Game Object Clicked!");
     ///     }
     /// }
+<<<<<<< HEAD
     /// </code>
+=======
+    /// ]]>
+    ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// </example>
     public interface IPointerClickHandler : IEventSystemHandler
     {
@@ -134,6 +160,10 @@ namespace UnityEngine.EventSystems
     /// </remarks>
     /// <example>
     /// <code>
+<<<<<<< HEAD
+=======
+    /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     /// using UnityEngine.UI;
@@ -215,7 +245,12 @@ namespace UnityEngine.EventSystems
     ///         return comp;
     ///     }
     /// }
+<<<<<<< HEAD
     /// </code>
+=======
+    /// ]]>
+    ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// </example>
     public interface IDragHandler : IEventSystemHandler
     {
@@ -245,6 +280,10 @@ namespace UnityEngine.EventSystems
     /// </summary>
     /// <example>
     /// <code>
+<<<<<<< HEAD
+=======
+    /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     ///
@@ -258,7 +297,12 @@ namespace UnityEngine.EventSystems
     ///         }
     ///     }
     /// }
+<<<<<<< HEAD
     /// </code>
+=======
+    /// ]]>
+    ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// </example>
     /// <remarks>
     /// Criteria for this event is implementation dependent. For example see StandAloneInputModule.
@@ -298,6 +342,10 @@ namespace UnityEngine.EventSystems
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using UnityEngine.EventSystems;
         ///
@@ -308,7 +356,12 @@ namespace UnityEngine.EventSystems
         ///         Debug.Log("OnUpdateSelected called.");
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         void OnUpdateSelected(BaseEventData eventData);
     }

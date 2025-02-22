@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+<<<<<<< HEAD
 using UnityEngine.EventSystems;
+=======
+using UnityEngine.Pool;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEngine.UI
 {

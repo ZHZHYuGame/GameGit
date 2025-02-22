@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 using UnityEngine;
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
+=======
+using NUnit.Framework;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.TestTools;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEngine.UI;
 
 
@@ -28,6 +35,16 @@ public class CanvasElementsMaintainValidPositionsWhenCameraOrthoSizeIsZero
         canvasComponent.renderMode = RenderMode.ScreenSpaceCamera;
     }
 
+<<<<<<< HEAD
+=======
+    [TearDown]
+    public void TearDown()
+    {
+        GameObject.DestroyImmediate(canvas);
+        GameObject.DestroyImmediate(camera);
+    }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [UnityTest]
     public IEnumerator TestCanvasElementsMaintainValidPositionsWhenCameraOrthoSizeIsZero()
     {

@@ -5,7 +5,11 @@ using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
+<<<<<<< HEAD
     [AddComponentMenu("UI/Toggle Group", 32)]
+=======
+    [AddComponentMenu("UI/Toggle Group", 31)]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [DisallowMultipleComponent]
     /// <summary>
     /// A component that represents a group of UI.Toggles.
@@ -41,6 +45,15 @@ namespace UnityEngine.UI
             base.Start();
         }
 
+<<<<<<< HEAD
+=======
+        protected override void OnEnable()
+        {
+            EnsureValidState();
+            base.OnEnable();
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private void ValidateToggleIsInGroup(Toggle toggle)
         {
             if (toggle == null || !m_Toggles.Contains(toggle))
@@ -99,6 +112,25 @@ namespace UnityEngine.UI
                 m_Toggles[0].isOn = true;
                 NotifyToggleOn(m_Toggles[0]);
             }
+<<<<<<< HEAD
+=======
+
+            IEnumerable<Toggle> activeToggles = ActiveToggles();
+
+            if (activeToggles.Count() > 1)
+            {
+                Toggle firstActive = GetFirstActiveToggle();
+
+                foreach (Toggle toggle in activeToggles)
+                {
+                    if (toggle == firstActive)
+                    {
+                        continue;
+                    }
+                    toggle.isOn = false;
+                }
+            }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -123,6 +155,22 @@ namespace UnityEngine.UI
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Returns the toggle that is the first in the list of active toggles.
+        /// </summary>
+        /// <returns>The first active toggle from m_Toggles</returns>
+        /// <remarks>
+        /// Get the active toggle for this group. As the group
+        /// </remarks>
+        public Toggle GetFirstActiveToggle()
+        {
+            IEnumerable<Toggle> activeToggles = ActiveToggles();
+            return activeToggles.Count() > 0 ? activeToggles.First() : null;
+        }
+
+        /// <summary>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// Switch all toggles off.
         /// </summary>
         /// <remarks>

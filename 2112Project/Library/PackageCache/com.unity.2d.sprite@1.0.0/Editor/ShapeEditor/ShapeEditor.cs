@@ -926,7 +926,11 @@ namespace UnityEditor.U2D.Sprites
 
         public void RectCap(int controlID, Vector3 position, Quaternion rotation, float size, EventType eventType)
         {
+<<<<<<< HEAD
             if (eventType == EventType.Layout)
+=======
+            if (eventType == EventType.Layout || eventType == EventType.MouseMove)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 HandleUtility.AddControl(controlID, HandleUtility.DistanceToCircle(position, size * 0.5f));
             }
@@ -959,7 +963,11 @@ namespace UnityEditor.U2D.Sprites
 
         public void CircleCap(int controlID, Vector3 position, Quaternion rotation, float size, EventType eventType)
         {
+<<<<<<< HEAD
             if (eventType == EventType.Layout)
+=======
+            if (eventType == EventType.Layout || eventType == EventType.MouseMove)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 HandleUtility.AddControl(controlID, HandleUtility.DistanceToCircle(position, size * 0.5f));
             }
@@ -992,7 +1000,11 @@ namespace UnityEditor.U2D.Sprites
 
         public void DiamondCap(int controlID, Vector3 position, Quaternion rotation, float size, EventType eventType)
         {
+<<<<<<< HEAD
             if (eventType == EventType.Layout)
+=======
+            if (eventType == EventType.Layout || eventType == EventType.MouseMove)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 HandleUtility.AddControl(controlID, HandleUtility.DistanceToCircle(position, size * 0.5f));
             }

@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
+=======
+using UnityEngine.Pool;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEngine.UI
 {
@@ -17,9 +21,13 @@ namespace UnityEngine.UI
         /// <remarks>All components on the GameObject that implement the ILayoutElement are queried. The one with the highest priority which has a value for this setting is used. If multiple componets have this setting and have the same priority, the maximum value out of those is used.</remarks>
         public static float GetMinSize(RectTransform rect, int axis)
         {
+<<<<<<< HEAD
             if (axis == 0)
                 return GetMinWidth(rect);
             return GetMinHeight(rect);
+=======
+            return axis == 0 ? GetMinWidth(rect) : GetMinHeight(rect);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -32,9 +40,13 @@ namespace UnityEngine.UI
         /// </remarks>
         public static float GetPreferredSize(RectTransform rect, int axis)
         {
+<<<<<<< HEAD
             if (axis == 0)
                 return GetPreferredWidth(rect);
             return GetPreferredHeight(rect);
+=======
+            return axis == 0 ? GetPreferredWidth(rect) : GetPreferredHeight(rect);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -47,9 +59,13 @@ namespace UnityEngine.UI
         /// <param name="axis">The axis to query. This can be 0 or 1.</param>
         public static float GetFlexibleSize(RectTransform rect, int axis)
         {
+<<<<<<< HEAD
             if (axis == 0)
                 return GetFlexibleWidth(rect);
             return GetFlexibleHeight(rect);
+=======
+            return axis == 0 ? GetFlexibleWidth(rect) : GetFlexibleHeight(rect);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -155,7 +171,12 @@ namespace UnityEngine.UI
             var components = ListPool<Component>.Get();
             rect.GetComponents(typeof(ILayoutElement), components);
 
+<<<<<<< HEAD
             for (int i = 0; i < components.Count; i++)
+=======
+            var componentsCount = components.Count;
+            for (int i = 0; i < componentsCount; i++)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 var layoutComp = components[i] as ILayoutElement;
                 if (layoutComp is Behaviour && !((Behaviour)layoutComp).isActiveAndEnabled)

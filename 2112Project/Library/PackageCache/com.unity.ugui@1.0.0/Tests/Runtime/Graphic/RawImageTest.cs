@@ -28,7 +28,11 @@ namespace Graphics
             canvas.renderMode = RenderMode.WorldSpace;
             canvasGO.transform.SetParent(rootGO.transform);
 
+<<<<<<< HEAD
             var imageGO = new GameObject("Image", typeof(RawImageTestHook), typeof(RectTransform));
+=======
+            var imageGO = new GameObject("Image", typeof(RectTransform), typeof(RawImageTestHook));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             var imageTransform = imageGO.GetComponent<RectTransform>();
             imageTransform.SetParent(canvas.transform);
 

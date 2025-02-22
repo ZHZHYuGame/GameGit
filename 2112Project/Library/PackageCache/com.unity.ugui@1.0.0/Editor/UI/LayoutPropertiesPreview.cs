@@ -22,16 +22,25 @@ namespace UnityEditor.Events
 
             public Styles()
             {
+<<<<<<< HEAD
                 Color fontColor = new Color(0.7f, 0.7f, 0.7f);
                 labelStyle.padding.right += 4;
                 labelStyle.normal.textColor = fontColor;
                 headerStyle.padding.right += 4;
                 headerStyle.normal.textColor = fontColor;
+=======
+                labelStyle.padding.right += 4;
+                headerStyle.padding.right += 4;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
         private GUIContent m_Title;
+<<<<<<< HEAD
         private Styles m_Styles = new Styles();
+=======
+        private Styles m_Styles;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         public override void Initialize(UnityEngine.Object[] targets)
         {
@@ -52,7 +61,14 @@ namespace UnityEditor.Events
             GameObject go = target as GameObject;
             if (!go)
                 return false;
+<<<<<<< HEAD
             return go.GetComponent(typeof(ILayoutElement)) != null;
+=======
+
+            // Prevent allocations in the editor by using TryGetComponent
+            ILayoutElement layoutElement;
+            return go.TryGetComponent(out layoutElement);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public override void OnPreviewGUI(Rect r, GUIStyle background)

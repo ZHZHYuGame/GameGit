@@ -106,6 +106,7 @@ namespace UnityEditor.U2D.Sprites
 
         public static void DrawBox(Rect position)
         {
+<<<<<<< HEAD
             Vector3[] points = new Vector3[5];
             int i = 0;
             points[i++] = new Vector3(position.xMin, position.yMin, 0f);
@@ -117,11 +118,25 @@ namespace UnityEditor.U2D.Sprites
             DrawLine(points[1], points[2]);
             DrawLine(points[2], points[3]);
             DrawLine(points[3], points[0]);
+=======
+            var points0 = new Vector3(position.xMin, position.yMin, 0f);
+            var points1 = new Vector3(position.xMax, position.yMin, 0f);
+            var points2 = new Vector3(position.xMax, position.yMax, 0f);
+            var points3 = new Vector3(position.xMin, position.yMax, 0f);
+
+            DrawLine(points0, points1);
+            DrawLine(points1, points2);
+            DrawLine(points2, points3);
+            DrawLine(points3, points0);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         public static void DrawLine(Vector3 p1, Vector3 p2)
         {
+<<<<<<< HEAD
             Assert.IsTrue(UnityEvent.current.type == EventType.Repaint);
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             GL.Vertex(p1);
             GL.Vertex(p2);
         }

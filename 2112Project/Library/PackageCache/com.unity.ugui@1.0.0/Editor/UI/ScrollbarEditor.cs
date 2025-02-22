@@ -65,6 +65,11 @@ namespace UnityEditor.UI
                 EditorGUILayout.PropertyField(m_Direction);
                 if (EditorGUI.EndChangeCheck())
                 {
+<<<<<<< HEAD
+=======
+                    Undo.RecordObjects(serializedObject.targetObjects, "Change Scrollbar Direction");
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     Scrollbar.Direction direction = (Scrollbar.Direction)m_Direction.enumValueIndex;
                     foreach (var obj in serializedObject.targetObjects)
                     {
@@ -83,9 +88,15 @@ namespace UnityEditor.UI
                     Scrollbar scrollbar = obj as Scrollbar;
                     Scrollbar.Direction dir = scrollbar.direction;
                     if (dir == Scrollbar.Direction.LeftToRight || dir == Scrollbar.Direction.RightToLeft)
+<<<<<<< HEAD
                         warning = (scrollbar.navigation.mode != Navigation.Mode.Automatic && (scrollbar.FindSelectableOnLeft() != null || scrollbar.FindSelectableOnRight() != null));
                     else
                         warning = (scrollbar.navigation.mode != Navigation.Mode.Automatic && (scrollbar.FindSelectableOnDown() != null || scrollbar.FindSelectableOnUp() != null));
+=======
+                        warning = (scrollbar.navigation.mode != Navigation.Mode.Automatic && scrollbar.navigation.mode != Navigation.Mode.Horizontal && (scrollbar.FindSelectableOnLeft() != null || scrollbar.FindSelectableOnRight() != null));
+                    else
+                        warning = (scrollbar.navigation.mode != Navigation.Mode.Automatic && scrollbar.navigation.mode != Navigation.Mode.Vertical && (scrollbar.FindSelectableOnDown() != null || scrollbar.FindSelectableOnUp() != null));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
 
                 if (warning)

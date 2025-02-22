@@ -9,6 +9,10 @@ namespace UnityEngine.EventSystems
     /// </remarks>
     /// <example>
     /// <code>
+<<<<<<< HEAD
+=======
+    /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// //This is a full example of how a GameObject changes direction using MoveDirection states
     /// //Assign this script to a visible GameObject (with a Rigidbody attached) to see it in action
     ///
@@ -125,7 +129,12 @@ namespace UnityEngine.EventSystems
     ///         }
     ///     }
     /// }
+<<<<<<< HEAD
     /// </code>
+=======
+    /// ]]>
+    ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// </example>
     public enum MoveDirection
     {
@@ -137,6 +146,10 @@ namespace UnityEngine.EventSystems
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Assign this script to a visible GameObject (with a Rigidbody attached) to see this in action
         ///
         /// using UnityEngine;
@@ -210,7 +223,12 @@ namespace UnityEngine.EventSystems
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         Left,
 
@@ -222,6 +240,10 @@ namespace UnityEngine.EventSystems
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Attach this script to a GameObject with a Rigidbody component. Press the "Move Up" button in Game view to see it in action.
         ///
         /// using UnityEngine;
@@ -295,7 +317,12 @@ namespace UnityEngine.EventSystems
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         Up,
 
@@ -307,6 +334,10 @@ namespace UnityEngine.EventSystems
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Attach this script to a GameObject with a Rigidbody component. Press the "Move Right" button in Game view to see it in action.
         ///
         /// using UnityEngine;
@@ -380,7 +411,12 @@ namespace UnityEngine.EventSystems
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         Right,
 
@@ -392,6 +428,10 @@ namespace UnityEngine.EventSystems
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Attach this script to a GameObject with a Rigidbody component. Press the "Move Down" button in Game view to see it in action.
         ///
         /// using UnityEngine;
@@ -465,7 +505,12 @@ namespace UnityEngine.EventSystems
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         Down,
 
@@ -477,6 +522,10 @@ namespace UnityEngine.EventSystems
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// //Attach this script to a GameObject with a Rigidbody attached. This script starts off on the ModeDirection.None state but changes depending on buttons you press.
         ///
         /// using UnityEngine;
@@ -550,7 +599,12 @@ namespace UnityEngine.EventSystems
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         None
     }

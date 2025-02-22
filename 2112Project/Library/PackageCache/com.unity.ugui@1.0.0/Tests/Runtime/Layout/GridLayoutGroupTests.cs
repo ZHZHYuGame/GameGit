@@ -164,10 +164,23 @@ class GridLayoutGroupTests : IPrebuildSetup
         m_LayoutGroup = m_PrefabRoot.GetComponentInChildren<GridLayoutGroup>();
     }
 
+<<<<<<< HEAD
     [OneTimeTearDown]
     public void TearDown()
     {
         GameObject.DestroyImmediate(m_PrefabRoot);
+=======
+    [TearDown]
+    public void TearDown()
+    {
+        GameObject.DestroyImmediate(m_PrefabRoot);
+        m_LayoutGroup = null;
+    }
+
+    [OneTimeTearDown]
+    public void OneTimeTearDown()
+    {
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 #if UNITY_EDITOR
         AssetDatabase.DeleteAsset(kPrefabPath);
 #endif
@@ -180,12 +193,27 @@ class GridLayoutGroupTests : IPrebuildSetup
         Assert.AreEqual(GridLayoutGroup.Constraint.Flexible, m_LayoutGroup.constraint);
         LayoutRebuilder.ForceRebuildLayoutImmediate(m_LayoutGroup.GetComponent<RectTransform>());
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Assert.AreEqual(90, m_LayoutGroup.minWidth);
         Assert.AreEqual(100, m_LayoutGroup.minHeight);
         Assert.AreEqual(290, m_LayoutGroup.preferredWidth);
         Assert.AreEqual(100, m_LayoutGroup.preferredHeight);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight);
+<<<<<<< HEAD
+=======
+=======
+        Assert.AreEqual(90, m_LayoutGroup.minWidth, "Expected layout group min width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.minHeight, "Expected layout group min height to match but it did not");
+        Assert.AreEqual(290, m_LayoutGroup.preferredWidth, "Expected layout group preferred width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.preferredHeight, "Expected layout group preferred height to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth, "Expected layout group flexiblle width to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight, "Expected layout group flexiblle height to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         Vector2[] expectedPositions =
         {
@@ -206,8 +234,18 @@ class GridLayoutGroupTests : IPrebuildSetup
             var element = m_LayoutGroup.transform.Find("Element" + (i + 1));
             var rectTransform = element.GetComponent<RectTransform>();
 
+<<<<<<< HEAD
             Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
             Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+<<<<<<< HEAD
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition, $"Expected Element { i + 1 } position to match but it did not");
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta, $"Expected Element { i + 1 } size to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 
@@ -216,6 +254,10 @@ class GridLayoutGroupTests : IPrebuildSetup
     {
         m_LayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         m_LayoutGroup.constraintCount = 2;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Assert.AreEqual(GridLayoutGroup.Constraint.FixedColumnCount, m_LayoutGroup.constraint);
         Assert.AreEqual(2, m_LayoutGroup.constraintCount);
         LayoutRebuilder.ForceRebuildLayoutImmediate(m_LayoutGroup.GetComponent<RectTransform>());
@@ -226,6 +268,21 @@ class GridLayoutGroupTests : IPrebuildSetup
         Assert.AreEqual(200, m_LayoutGroup.preferredHeight);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight);
+<<<<<<< HEAD
+=======
+=======
+        Assert.AreEqual(GridLayoutGroup.Constraint.FixedColumnCount, m_LayoutGroup.constraint, "Expected layout group constraint mode to match but it did not");
+        Assert.AreEqual(2, m_LayoutGroup.constraintCount, "Expected layout group constraint count mode to match but it did not");
+        LayoutRebuilder.ForceRebuildLayoutImmediate(m_LayoutGroup.GetComponent<RectTransform>());
+
+        Assert.AreEqual(190, m_LayoutGroup.minWidth, "Expected layout group min width to match but it did not");
+        Assert.AreEqual(200, m_LayoutGroup.minHeight, "Expected layout group min height to match but it did not");
+        Assert.AreEqual(190, m_LayoutGroup.preferredWidth, "Expected layout group preferred width to match but it did not");
+        Assert.AreEqual(200, m_LayoutGroup.preferredHeight, "Expected layout group preferred height to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth, "Expected layout group flexiblle width to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight, "Expected layout group flexiblle height to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         Vector2[] expectedPositions =
         {
@@ -246,8 +303,18 @@ class GridLayoutGroupTests : IPrebuildSetup
             var element = m_LayoutGroup.transform.Find("Element" + (i + 1));
             var rectTransform = element.GetComponent<RectTransform>();
 
+<<<<<<< HEAD
             Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
             Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+<<<<<<< HEAD
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition, $"Expected Element { i + 1 } position to match but it did not");
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta, $"Expected Element { i + 1 } size to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 
@@ -256,6 +323,10 @@ class GridLayoutGroupTests : IPrebuildSetup
     {
         m_LayoutGroup.constraint = GridLayoutGroup.Constraint.FixedRowCount;
         m_LayoutGroup.constraintCount = 2;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Assert.AreEqual(GridLayoutGroup.Constraint.FixedRowCount, m_LayoutGroup.constraint);
         Assert.AreEqual(2, m_LayoutGroup.constraintCount);
         LayoutRebuilder.ForceRebuildLayoutImmediate(m_LayoutGroup.GetComponent<RectTransform>());
@@ -266,6 +337,21 @@ class GridLayoutGroupTests : IPrebuildSetup
         Assert.AreEqual(100, m_LayoutGroup.preferredHeight);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight);
+<<<<<<< HEAD
+=======
+=======
+        Assert.AreEqual(GridLayoutGroup.Constraint.FixedRowCount, m_LayoutGroup.constraint, "Expected layout group constraint mode to match but it did not");
+        Assert.AreEqual(2, m_LayoutGroup.constraintCount, "Expected layout group constraint count mode to match but it did not");
+        LayoutRebuilder.ForceRebuildLayoutImmediate(m_LayoutGroup.GetComponent<RectTransform>());
+
+        Assert.AreEqual(390, m_LayoutGroup.minWidth, "Expected layout group min width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.minHeight, "Expected layout group min height to match but it did not");
+        Assert.AreEqual(390, m_LayoutGroup.preferredWidth, "Expected layout group preferred width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.preferredHeight, "Expected layout group preferred height to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth, "Expected layout group flexiblle width to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight, "Expected layout group flexiblle height to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         Vector2[] expectedPositions =
         {
@@ -286,8 +372,18 @@ class GridLayoutGroupTests : IPrebuildSetup
             var element = m_LayoutGroup.transform.Find("Element" + (i + 1));
             var rectTransform = element.GetComponent<RectTransform>();
 
+<<<<<<< HEAD
             Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
             Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+<<<<<<< HEAD
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition, $"Expected Element { i + 1 } position to match but it did not");
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta, $"Expected Element { i + 1 } size to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 
@@ -297,6 +393,10 @@ class GridLayoutGroupTests : IPrebuildSetup
         m_LayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         m_LayoutGroup.constraintCount = 2;
         m_LayoutGroup.startAxis = GridLayoutGroup.Axis.Vertical;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Assert.AreEqual(GridLayoutGroup.Constraint.FixedColumnCount, m_LayoutGroup.constraint);
         Assert.AreEqual(2, m_LayoutGroup.constraintCount);
         LayoutRebuilder.ForceRebuildLayoutImmediate(m_LayoutGroup.GetComponent<RectTransform>());
@@ -307,6 +407,21 @@ class GridLayoutGroupTests : IPrebuildSetup
         Assert.AreEqual(200, m_LayoutGroup.preferredHeight);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight);
+<<<<<<< HEAD
+=======
+=======
+        Assert.AreEqual(GridLayoutGroup.Constraint.FixedColumnCount, m_LayoutGroup.constraint, "Expected layout group constraint mode to match but it did not");
+        Assert.AreEqual(2, m_LayoutGroup.constraintCount, "Expected layout group constraint count mode to match but it did not");
+        LayoutRebuilder.ForceRebuildLayoutImmediate(m_LayoutGroup.GetComponent<RectTransform>());
+
+        Assert.AreEqual(190, m_LayoutGroup.minWidth, "Expected layout group min width to match but it did not");
+        Assert.AreEqual(200, m_LayoutGroup.minHeight, "Expected layout group min height to match but it did not");
+        Assert.AreEqual(190, m_LayoutGroup.preferredWidth, "Expected layout group preferred width to match but it did not");
+        Assert.AreEqual(200, m_LayoutGroup.preferredHeight, "Expected layout group preferred height to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth, "Expected layout group flexiblle width to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight, "Expected layout group flexiblle height to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         Vector2[] expectedPositions =
         {
@@ -327,8 +442,18 @@ class GridLayoutGroupTests : IPrebuildSetup
             var element = m_LayoutGroup.transform.Find("Element" + (i + 1));
             var rectTransform = element.GetComponent<RectTransform>();
 
+<<<<<<< HEAD
             Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
             Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+<<<<<<< HEAD
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition, $"Expected Element { i + 1 } position to match but it did not");
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta, $"Expected Element { i + 1 } size to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 
@@ -339,19 +464,44 @@ class GridLayoutGroupTests : IPrebuildSetup
         m_LayoutGroup.constraintCount = 2;
         m_LayoutGroup.startAxis = GridLayoutGroup.Axis.Vertical;
         m_LayoutGroup.startCorner = GridLayoutGroup.Corner.LowerRight;
+<<<<<<< HEAD
         Assert.AreEqual(GridLayoutGroup.Constraint.FixedRowCount, m_LayoutGroup.constraint);
         Assert.AreEqual(2, m_LayoutGroup.constraintCount);
+=======
+<<<<<<< HEAD
+        Assert.AreEqual(GridLayoutGroup.Constraint.FixedRowCount, m_LayoutGroup.constraint);
+        Assert.AreEqual(2, m_LayoutGroup.constraintCount);
+=======
+        Assert.AreEqual(GridLayoutGroup.Constraint.FixedRowCount, m_LayoutGroup.constraint, "Expected layout group constraint mode to match but it did not");
+        Assert.AreEqual(2, m_LayoutGroup.constraintCount, "Expected layout group constraint count mode to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         m_LayoutGroup.CalculateLayoutInputHorizontal();
         m_LayoutGroup.SetLayoutHorizontal();
         m_LayoutGroup.CalculateLayoutInputVertical();
         m_LayoutGroup.SetLayoutVertical();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         Assert.AreEqual(390, m_LayoutGroup.minWidth);
         Assert.AreEqual(100, m_LayoutGroup.minHeight);
         Assert.AreEqual(390, m_LayoutGroup.preferredWidth);
         Assert.AreEqual(100, m_LayoutGroup.preferredHeight);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth);
         Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight);
+<<<<<<< HEAD
+=======
+=======
+        Assert.AreEqual(390, m_LayoutGroup.minWidth, "Expected layout group min width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.minHeight, "Expected layout group min height to match but it did not");
+        Assert.AreEqual(390, m_LayoutGroup.preferredWidth, "Expected layout group preferred width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.preferredHeight, "Expected layout group preferred height to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth, "Expected layout group flexiblle width to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight, "Expected layout group flexiblle height to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         Vector2[] expectedPositions =
         {
@@ -372,8 +522,108 @@ class GridLayoutGroupTests : IPrebuildSetup
             var element = m_LayoutGroup.transform.Find("Element" + (i + 1));
             var rectTransform = element.GetComponent<RectTransform>();
 
+<<<<<<< HEAD
             Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
             Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+<<<<<<< HEAD
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition);
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta);
+=======
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition, $"Expected Element { i + 1 } position to match but it did not");
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta, $"Expected Element { i + 1 } size to match but it did not");
+        }
+    }
+
+    [Test]
+    public void TestHorizontallyContrainedCalculateLayoutHorizontal_WithChildrenToMove()
+    {
+        m_LayoutGroup.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+        m_LayoutGroup.constraintCount = 5;
+        m_LayoutGroup.startAxis = GridLayoutGroup.Axis.Horizontal;
+        m_LayoutGroup.startCorner = GridLayoutGroup.Corner.UpperLeft;
+        Assert.AreEqual(GridLayoutGroup.Constraint.FixedRowCount, m_LayoutGroup.constraint, "Expected layout group constraint mode to match but it did not");
+        Assert.AreEqual(5, m_LayoutGroup.constraintCount, "Expected layout group constraint count mode to match but it did not");
+        m_LayoutGroup.CalculateLayoutInputHorizontal();
+        m_LayoutGroup.SetLayoutHorizontal();
+        m_LayoutGroup.CalculateLayoutInputVertical();
+        m_LayoutGroup.SetLayoutVertical();
+
+        Assert.AreEqual(190, m_LayoutGroup.minWidth, "Expected layout group min width to match but it did not");
+        Assert.AreEqual(250, m_LayoutGroup.minHeight, "Expected layout group min height to match but it did not");
+        Assert.AreEqual(190, m_LayoutGroup.preferredWidth, "Expected layout group preferred width to match but it did not");
+        Assert.AreEqual(250, m_LayoutGroup.preferredHeight, "Expected layout group preferred height to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth, "Expected layout group flexiblle width to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight, "Expected layout group flexiblle height to match but it did not");
+
+        Vector2[] expectedPositions =
+        {
+            new Vector2(0, -50),
+            new Vector2(100, -50),
+            new Vector2(0, -100),
+            new Vector2(100, -100),
+            new Vector2(0, -150),
+            new Vector2(100, -150),
+            new Vector2(0, -200),
+            new Vector2(0, -250)
+        };
+
+        Vector2 expectedSize = new Vector2(90, 50);
+
+        for (int i = 0; i < expectedPositions.Length; ++i)
+        {
+            var element = m_LayoutGroup.transform.Find("Element" + (i + 1));
+            var rectTransform = element.GetComponent<RectTransform>();
+
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition, $"Expected Element { i + 1 } position to match but it did not");
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta, $"Expected Element { i + 1 } size to match but it did not");
+        }
+    }
+
+    [Test]
+    public void TestVerticallyContrainedCalculateLayoutVertical_WithChildrenToMove()
+    {
+        m_LayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+        m_LayoutGroup.constraintCount = 5;
+        m_LayoutGroup.startAxis = GridLayoutGroup.Axis.Vertical;
+        m_LayoutGroup.startCorner = GridLayoutGroup.Corner.UpperLeft;
+        Assert.AreEqual(GridLayoutGroup.Constraint.FixedColumnCount, m_LayoutGroup.constraint, "Expected layout group constraint mode to match but it did not");
+        Assert.AreEqual(5, m_LayoutGroup.constraintCount, "Expected layout group constraint count mode to match but it did not");
+        m_LayoutGroup.CalculateLayoutInputHorizontal();
+        m_LayoutGroup.SetLayoutHorizontal();
+        m_LayoutGroup.CalculateLayoutInputVertical();
+        m_LayoutGroup.SetLayoutVertical();
+
+        Assert.AreEqual(490, m_LayoutGroup.minWidth, "Expected layout group min width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.minHeight, "Expected layout group min height to match but it did not");
+        Assert.AreEqual(490, m_LayoutGroup.preferredWidth, "Expected layout group preferred width to match but it did not");
+        Assert.AreEqual(100, m_LayoutGroup.preferredHeight, "Expected layout group preferred height to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleWidth, "Expected layout group flexiblle width to match but it did not");
+        Assert.AreEqual(-1, m_LayoutGroup.flexibleHeight, "Expected layout group flexiblle height to match but it did not");
+
+        Vector2[] expectedPositions =
+        {
+            new Vector2(0, -50),
+            new Vector2(0, -100),
+            new Vector2(100, -50),
+            new Vector2(100, -100),
+            new Vector2(200, -50),
+            new Vector2(200, -100),
+            new Vector2(300, -50),
+            new Vector2(400, -50)
+        };
+
+        Vector2 expectedSize = new Vector2(90, 50);
+
+        for (int i = 0; i < expectedPositions.Length; ++i)
+        {
+            var element = m_LayoutGroup.transform.Find("Element" + (i + 1));
+            var rectTransform = element.GetComponent<RectTransform>();
+
+            Assert.AreEqual(expectedPositions[i], rectTransform.anchoredPosition, $"Expected Element { i + 1 } position to match but it did not");
+            Assert.AreEqual(expectedSize, rectTransform.sizeDelta, $"Expected Element { i + 1 } size to match but it did not");
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }

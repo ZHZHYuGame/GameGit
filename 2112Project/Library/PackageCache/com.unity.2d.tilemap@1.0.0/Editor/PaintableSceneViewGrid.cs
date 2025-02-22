@@ -1,9 +1,20 @@
 using System;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using System.Reflection;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
+<<<<<<< HEAD
+=======
+=======
+using UnityEngine;
+using UnityEngine.Tilemaps;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEditor.Tilemaps
 {
@@ -62,13 +73,22 @@ namespace UnityEditor.Tilemaps
         {
             HandleMouseEnterLeave(sceneView);
 
+<<<<<<< HEAD
+=======
+            CallOnSceneGUI();
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             // Case 1093801: Handle only the currently active scene view
             if (sceneView != activeSceneView)
                 return;
 
             // Case 1077400: SceneView camera transform changes may update the mouse grid position even though the mouse position has not changed
             var currentSceneViewTransformHash = sceneView.camera.transform.localToWorldMatrix.GetHashCode();
+<<<<<<< HEAD
             UpdateMouseGridPosition(currentSceneViewTransformHash == sceneViewTransformHash);
+=======
+            UpdateMouseGridPosition(currentSceneViewTransformHash != sceneViewTransformHash);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             sceneViewTransformHash = currentSceneViewTransformHash;
 
             var dot = 1.0f;
@@ -84,7 +104,10 @@ namespace UnityEditor.Tilemaps
                 base.OnGUI();
                 if (InGridEditMode())
                 {
+<<<<<<< HEAD
                     CallOnSceneGUI();
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     if ((grid != null) && (GridPaintingState.activeGrid == this || GridSelection.active))
                     {
                         CallOnPaintSceneGUI();
@@ -97,7 +120,15 @@ namespace UnityEditor.Tilemaps
 
         private void HandleMouseEnterLeave(SceneView sceneView)
         {
+<<<<<<< HEAD
             if (inEditMode)
+=======
+<<<<<<< HEAD
+            if (inEditMode)
+=======
+            if (GridPaintingState.isEditing)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 if (Event.current.type == EventType.MouseEnterWindow)
                 {
@@ -105,7 +136,15 @@ namespace UnityEditor.Tilemaps
                 }
                 else if (Event.current.type == EventType.MouseLeaveWindow)
                 {
+<<<<<<< HEAD
                     OnMouseLeave(sceneView);
+=======
+<<<<<<< HEAD
+                    OnMouseLeave(sceneView);
+=======
+                    OnMouseLeave();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
                 // Case 1043365: When docked, the docking area is considered part of the window and MouseEnter/LeaveWindow events are not considered when entering the docking area
                 else if (sceneView.docked)
@@ -123,7 +162,15 @@ namespace UnityEditor.Tilemaps
                     {
                         if (GridPaintingState.activeGrid == this)
                         {
+<<<<<<< HEAD
                             OnMouseLeave(sceneView);
+=======
+<<<<<<< HEAD
+                            OnMouseLeave(sceneView);
+=======
+                            OnMouseLeave();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                         }
                     }
                 }
@@ -136,10 +183,22 @@ namespace UnityEditor.Tilemaps
                 GridPaintingState.activeBrushEditor.OnMouseEnter();
             GridPaintingState.activeGrid = this;
             activeSceneView = sceneView;
+<<<<<<< HEAD
             ResetPreviousMousePositionToCurrentPosition();
         }
 
         private void OnMouseLeave(SceneView sceneView)
+=======
+            UpdateMouseGridPosition(true);
+            ResetPreviousMousePositionToCurrentPosition();
+        }
+
+<<<<<<< HEAD
+        private void OnMouseLeave(SceneView sceneView)
+=======
+        private void OnMouseLeave()
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             if (GridPaintingState.activeBrushEditor != null)
                 GridPaintingState.activeBrushEditor.OnMouseLeave();
@@ -162,7 +221,15 @@ namespace UnityEditor.Tilemaps
         {
             if (GridPaintingState.activeBrushEditor != null)
             {
+<<<<<<< HEAD
                 GridPaintingState.activeBrushEditor.RegisterUndo(brushTarget, EditTypeToBrushTool(EditorTools.EditorTools.activeToolType));
+=======
+<<<<<<< HEAD
+                GridPaintingState.activeBrushEditor.RegisterUndo(brushTarget, EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType));
+=======
+                GridPaintingState.activeBrushEditor.RegisterUndo(brushTarget, EditTypeToBrushTool(EditorTools.ToolManager.activeToolType));
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -229,6 +296,27 @@ namespace UnityEditor.Tilemaps
                 gridBrush.MoveEnd(grid, brushTarget, position);
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        protected override bool CustomTool(bool isHotControl, TilemapEditorTool tool, Vector3Int position)
+=======
+        protected override bool CustomTool(bool isToolHotControl, TilemapEditorTool tool, Vector3Int position)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+        {
+            var executed = false;
+            if (grid != null)
+            {
+<<<<<<< HEAD
+                executed = tool.HandleTool(isHotControl, grid, brushTarget, position);
+=======
+                executed = tool.HandleTool(isToolHotControl, grid, brushTarget, position);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+            }
+            return executed;
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected override void OnEditStart()
         {
             if (GridPaintingState.activeBrushEditor != null && grid != null)
@@ -246,6 +334,11 @@ namespace UnityEditor.Tilemaps
             GridSelection.Clear();
         }
 
+<<<<<<< HEAD
+=======
+        public override bool isActive => grid != null;
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public override void Repaint()
         {
             SceneView.RepaintAll();
@@ -313,9 +406,21 @@ namespace UnityEditor.Tilemaps
             return gridLayout.transform.forward * -1f;
         }
 
+<<<<<<< HEAD
         private Plane GetGridPlane(Grid grid)
         {
             return new Plane(GetGridForward(grid), grid.transform.position);
+=======
+<<<<<<< HEAD
+        private Plane GetGridPlane(Grid grid)
+        {
+            return new Plane(GetGridForward(grid), grid.transform.position);
+=======
+        private Plane GetGridPlane(Grid planeForGrid)
+        {
+            return new Plane(GetGridForward(planeForGrid), planeForGrid.transform.position);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private GridLayout GetGridView()
@@ -340,27 +445,71 @@ namespace UnityEditor.Tilemaps
             else if (hasSelection)
                 rect = new RectInt(GridSelection.position.xMin, GridSelection.position.yMin, GridSelection.position.size.x, GridSelection.position.size.y);
 
+<<<<<<< HEAD
             var layoutGrid = tilemap != null ? tilemap : grid as GridLayout;
+=======
+            var layoutGrid = tilemap != null ? tilemap.layoutGrid : grid as GridLayout;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             BoundsInt brushBounds = new BoundsInt(new Vector3Int(rect.x, rect.y, zPosition), new Vector3Int(rect.width, rect.height, 1));
             if (GridPaintingState.activeBrushEditor != null)
             {
                 GridPaintingState.activeBrushEditor.OnPaintSceneGUI(layoutGrid, brushTarget, brushBounds
+<<<<<<< HEAD
                     , EditTypeToBrushTool(EditorTools.EditorTools.activeToolType), m_MarqueeStart.HasValue || executing);
+=======
+<<<<<<< HEAD
+                    , EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
+=======
+                    , EditTypeToBrushTool(EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
             else // Fallback when user hasn't defined custom editor
             {
                 GridBrushEditorBase.OnPaintSceneGUIInternal(layoutGrid, brushTarget, brushBounds
+<<<<<<< HEAD
                     , EditTypeToBrushTool(EditorTools.EditorTools.activeToolType), m_MarqueeStart.HasValue || executing);
+=======
+<<<<<<< HEAD
+                    , EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
+=======
+                    , EditTypeToBrushTool(EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
         void CallOnSceneGUI()
         {
+<<<<<<< HEAD
             if (GridPaintingState.activeBrushEditor != null)
             {
                 MethodInfo methodInfo = GridPaintingState.activeBrushEditor.GetType().GetMethod("OnSceneGUI");
                 if (methodInfo != null)
                     methodInfo.Invoke(GridPaintingState.activeBrushEditor, null);
+=======
+            var gridLayout = tilemap != null ? tilemap : grid as GridLayout;
+            bool hasSelection = GridSelection.active  && GridSelection.target == brushTarget;
+            if (GridPaintingState.activeBrushEditor != null)
+            {
+                GridPaintingState.activeBrushEditor.OnSceneGUI(gridLayout, brushTarget);
+                if (hasSelection)
+                {
+                    GridPaintingState.activeBrushEditor.OnSelectionSceneGUI(gridLayout, brushTarget);
+                }
+            }
+
+            if (hasSelection)
+            {
+                RectInt rect = new RectInt(GridSelection.position.xMin, GridSelection.position.yMin, GridSelection.position.size.x, GridSelection.position.size.y);
+                BoundsInt brushBounds = new BoundsInt(new Vector3Int(rect.x, rect.y, zPosition), new Vector3Int(rect.width, rect.height, 1));
+                GridBrushEditorBase.OnSceneGUIInternal(gridLayout, brushTarget, brushBounds
+<<<<<<< HEAD
+                    , EditTypeToBrushTool(UnityEditor.EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
+=======
+                    , EditTypeToBrushTool(EditorTools.ToolManager.activeToolType), m_MarqueeStart.HasValue || executing);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
     }

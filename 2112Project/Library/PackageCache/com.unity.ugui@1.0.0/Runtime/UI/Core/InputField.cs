@@ -13,7 +13,11 @@ namespace UnityEngine.UI
     /// Turn a simple label into a interactable input field.
     /// </summary>
 
+<<<<<<< HEAD
     [AddComponentMenu("UI/Input Field", 31)]
+=======
+    [AddComponentMenu("UI/Legacy/Input Field", 103)]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     public class InputField
         : Selectable,
         IUpdateSelectedHandler,
@@ -187,6 +191,15 @@ namespace UnityEngine.UI
 
         [Serializable]
         /// <summary>
+<<<<<<< HEAD
+=======
+        ///   Unity Event with a inputfield as a param.
+        /// </summary>
+        public class EndEditEvent : UnityEvent<string> {}
+
+        [Serializable]
+        /// <summary>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// The callback sent anytime the Inputfield is updated.
         /// </summary>
         public class OnChangeEvent : UnityEvent<string> {}
@@ -244,8 +257,17 @@ namespace UnityEngine.UI
         [FormerlySerializedAs("onSubmit")]
         [FormerlySerializedAs("m_OnSubmit")]
         [FormerlySerializedAs("m_EndEdit")]
+<<<<<<< HEAD
         [SerializeField]
         private SubmitEvent m_OnEndEdit = new SubmitEvent();
+=======
+        [FormerlySerializedAs("m_OnEndEdit")]
+        [SerializeField]
+        private SubmitEvent m_OnSubmit = new SubmitEvent();
+
+        [SerializeField]
+        private EndEditEvent m_OnDidEndEdit = new EndEditEvent();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         [FormerlySerializedAs("onValueChange")]
         [FormerlySerializedAs("m_OnValueChange")]
@@ -267,6 +289,10 @@ namespace UnityEngine.UI
         private Color m_SelectionColor = new Color(168f / 255f, 206f / 255f, 255f / 255f, 192f / 255f);
 
         [SerializeField]
+<<<<<<< HEAD
+=======
+        [Multiline]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         [FormerlySerializedAs("mValue")]
         protected string m_Text = string.Empty;
 
@@ -309,6 +335,10 @@ namespace UnityEngine.UI
         private bool m_HasDoneFocusTransition = false;
         private WaitForSecondsRealtime m_WaitForSecondsRealtime;
         private bool m_TouchKeyboardAllowsInPlaceEditing = false;
+<<<<<<< HEAD
+=======
+        private bool m_IsCompositionActive = false;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         private BaseInput input
         {
@@ -360,6 +390,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -374,7 +408,12 @@ namespace UnityEngine.UI
         ///         mainInputField.shouldHideMobileInput = true;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public bool shouldHideMobileInput
         {
@@ -412,6 +451,10 @@ namespace UnityEngine.UI
             }
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>
         /// Input field's current text value. This is not necessarily the same as what is visible on screen.
         /// </summary>
@@ -420,6 +463,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -433,7 +480,12 @@ namespace UnityEngine.UI
         ///         mainInputField.text = "Enter Text Here...";
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public string text
         {
@@ -513,6 +565,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -530,7 +586,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public bool isFocused
         {
@@ -610,6 +671,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -624,7 +689,12 @@ namespace UnityEngine.UI
         ///         mainInputField.selectionColor = Color.red;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public Color selectionColor { get { return m_SelectionColor; } set { if (SetPropertyUtility.SetColor(ref m_SelectionColor, value)) MarkGeometryAsDirty(); } }
 
@@ -633,6 +703,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -661,9 +735,55 @@ namespace UnityEngine.UI
         ///         mainInputField.onEndEdit.AddListener(delegate {LockInput(mainInputField); });
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
         /// </example>
         public SubmitEvent onEndEdit { get { return m_OnEndEdit; } set { SetPropertyUtility.SetClass(ref m_OnEndEdit, value); } }
+=======
+        /// ]]>
+        ///</code>
+        /// </example>
+        public EndEditEvent onEndEdit { get { return m_OnDidEndEdit; } set { SetPropertyUtility.SetClass(ref m_OnDidEndEdit, value); } }
+
+        /// <summary>
+        /// The Unity Event to call when editing has ended
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// <![CDATA[
+        /// using UnityEngine;
+        /// using System.Collections;
+        /// using UnityEngine.UI; // Required when Using UI elements.
+        ///
+        /// public class Example : MonoBehaviour
+        /// {
+        ///     public InputField mainInputField;
+        ///
+        ///     // Checks if there is anything entered into the input field.
+        ///     void LockInput(InputField input)
+        ///     {
+        ///         if (input.text.Length > 0)
+        ///         {
+        ///             Debug.Log("Text has been entered");
+        ///         }
+        ///         else if (input.text.Length == 0)
+        ///         {
+        ///             Debug.Log("Main Input Empty");
+        ///         }
+        ///     }
+        ///
+        ///     public void Start()
+        ///     {
+        ///         //Adds a listener that invokes the "LockInput" method when the player finishes editing the main input field.
+        ///         //Passes the main input field into the method when "LockInput" is invoked
+        ///         mainInputField.onSubmit.AddListener(delegate {LockInput(mainInputField); });
+        ///     }
+        /// }
+        /// ]]>
+        ///</code>
+        /// </example>
+        public SubmitEvent onSubmit { get { return m_OnSubmit; } set { SetPropertyUtility.SetClass(ref m_OnSubmit, value); } }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         [Obsolete("onValueChange has been renamed to onValueChanged")]
         public OnChangeEvent onValueChange { get { return onValueChanged; } set { onValueChanged = value; } }
@@ -673,6 +793,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -693,7 +817,12 @@ namespace UnityEngine.UI
         ///         Debug.Log("Value Changed");
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public OnChangeEvent onValueChanged { get { return m_OnValueChanged; } set { SetPropertyUtility.SetClass(ref m_OnValueChanged, value); } }
 
@@ -702,6 +831,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -727,7 +860,12 @@ namespace UnityEngine.UI
         ///         return charToValidate;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public OnValidateInput onValidateInput { get { return m_OnValidateInput; } set { SetPropertyUtility.SetClass(ref m_OnValidateInput, value); } }
 
@@ -736,6 +874,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -751,7 +893,12 @@ namespace UnityEngine.UI
         ///         mainInputField.characterLimit = playerName.Length;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public int characterLimit
         {
@@ -775,6 +922,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -790,7 +941,12 @@ namespace UnityEngine.UI
         ///         mainInputField.characterLimit = playerName.Length;
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public ContentType contentType { get { return m_ContentType; } set { if (SetPropertyUtility.SetStruct(ref m_ContentType, value)) EnforceContentType(); } }
 
@@ -799,6 +955,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -827,7 +987,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public LineType lineType
         {
@@ -883,6 +1048,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -903,7 +1072,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public bool multiLine { get { return m_LineType == LineType.MultiLineNewline || lineType == LineType.MultiLineSubmit; } }
 
@@ -915,6 +1089,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -929,7 +1107,12 @@ namespace UnityEngine.UI
         ///         mainInputField.asteriskChar = "$!£%&*"[0];
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public char asteriskChar { get { return m_AsteriskChar; } set { if (SetPropertyUtility.SetStruct(ref m_AsteriskChar, value)) UpdateLabel(); } }
 
@@ -1091,7 +1274,11 @@ namespace UnityEngine.UI
                 m_TextComponent.UnregisterDirtyVerticesCallback(UpdateLabel);
                 m_TextComponent.UnregisterDirtyMaterialCallback(UpdateCaretMaterial);
             }
+<<<<<<< HEAD
             CanvasUpdateRegistry.UnRegisterCanvasElementForRebuild(this);
+=======
+            CanvasUpdateRegistry.DisableCanvasElementForRebuild(this);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             // Clear needs to be called otherwise sync never happens as the object is disabled.
             if (m_CachedInputRenderer != null)
@@ -1104,6 +1291,15 @@ namespace UnityEngine.UI
             base.OnDisable();
         }
 
+<<<<<<< HEAD
+=======
+        protected override void OnDestroy()
+        {
+            CanvasUpdateRegistry.UnRegisterCanvasElementForRebuild(this);
+            base.OnDestroy();
+        }
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         IEnumerator CaretBlink()
         {
             // Always ensure caret is initially visible since it can otherwise be confusing for a moment.
@@ -1174,6 +1370,10 @@ namespace UnityEngine.UI
         /// <example>
         /// //Create an Input Field by going to __Create__>__UI__>__Input Field__. Attach this script to the Input Field GameObject
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using UnityEngine.UI;
         ///
@@ -1196,7 +1396,12 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         protected void OnFocus()
         {
@@ -1280,6 +1485,14 @@ namespace UnityEngine.UI
                         return TouchScreenKeyboard.isSupported;
 
                     return !TouchScreenKeyboard.isInPlaceEditingAllowed;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                case RuntimePlatform.WebGLPlayer:
+                    return !TouchScreenKeyboard.isInPlaceEditingAllowed;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 default:
                     return TouchScreenKeyboard.isSupported;
             }
@@ -1297,6 +1510,32 @@ namespace UnityEngine.UI
             return !s_IsQuestDevice && m_TouchKeyboardAllowsInPlaceEditing != TouchScreenKeyboard.isInPlaceEditingAllowed;
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        RangeInt GetInternalSelection()
+        {
+            var selectionStart = Mathf.Min(caretSelectPositionInternal, caretPositionInternal);
+            var selectionLength = Mathf.Abs(caretSelectPositionInternal - caretPositionInternal);
+            return new RangeInt(selectionStart, selectionLength);
+        }
+
+        void UpdateKeyboardCaret()
+        {
+            // On iOS/tvOS we only update SoftKeyboard selection when we know that it might have changed by touch/pointer interactions with InputField
+            // Setting the TouchScreenKeyboard selection here instead of LateUpdate so that we wouldn't override
+            // TouchScreenKeyboard selection when it's changed with cmd+a/ctrl+a/arrow/etc. in the TouchScreenKeyboard
+            // This is only applicable for iOS/tvOS as we have instance of TouchScreenKeyboard even when external keyboard is connected
+            if (m_HideMobileInput && m_Keyboard != null && m_Keyboard.canSetSelection &&
+                (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.tvOS))
+            {
+                m_Keyboard.selection = GetInternalSelection();
+            }
+        }
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         void UpdateCaretFromKeyboard()
         {
             var selectionRange = m_Keyboard.selection;
@@ -1375,6 +1614,11 @@ namespace UnityEngine.UI
 
                     if (m_Keyboard.status == TouchScreenKeyboard.Status.Canceled)
                         m_WasCanceled = true;
+<<<<<<< HEAD
+=======
+                    else if (m_Keyboard.status == TouchScreenKeyboard.Status.Done)
+                        SendOnSubmit();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
 
                 OnDeselect(null);
@@ -1407,8 +1651,18 @@ namespace UnityEngine.UI
 
                         if (lineType == LineType.MultiLineSubmit && c == '\n')
                         {
+<<<<<<< HEAD
                             m_Keyboard.text = m_Text;
 
+=======
+<<<<<<< HEAD
+                            m_Keyboard.text = m_Text;
+=======
+                            UpdateLabel();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+
+                            SendOnSubmit();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                             OnDeselect(null);
                             return;
                         }
@@ -1437,6 +1691,10 @@ namespace UnityEngine.UI
                     SendOnValueChangedAndUpdateLabel();
                 }
             }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             else if (m_HideMobileInput && m_Keyboard.canSetSelection)
             {
                 var selectionStart = Mathf.Min(caretSelectPositionInternal, caretPositionInternal);
@@ -1444,15 +1702,40 @@ namespace UnityEngine.UI
                 m_Keyboard.selection = new RangeInt(selectionStart, selectionLength);
             }
             else if (m_Keyboard.canGetSelection && !m_HideMobileInput)
+<<<<<<< HEAD
+=======
+=======
+            // On iOS/tvOS we always have TouchScreenKeyboard instance even when using external keyboard
+            // so we keep track of the caret position there
+            else if (m_HideMobileInput && m_Keyboard != null && m_Keyboard.canSetSelection &&
+                     Application.platform != RuntimePlatform.IPhonePlayer && Application.platform != RuntimePlatform.tvOS)
+            {
+                m_Keyboard.selection = GetInternalSelection();
+            }
+            else if (m_Keyboard != null && m_Keyboard.canGetSelection)
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 UpdateCaretFromKeyboard();
             }
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (m_Keyboard.status != TouchScreenKeyboard.Status.Visible)
             {
                 if (m_Keyboard.status == TouchScreenKeyboard.Status.Canceled)
                     m_WasCanceled = true;
+<<<<<<< HEAD
+=======
+                else if (m_Keyboard.status == TouchScreenKeyboard.Status.Done)
+                    SendOnSubmit();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 OnDeselect(null);
             }
@@ -1598,6 +1881,13 @@ namespace UnityEngine.UI
             if (m_DragPositionOutOfBounds && m_DragCoroutine == null)
                 m_DragCoroutine = StartCoroutine(MouseDragOutsideRect(eventData));
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            UpdateKeyboardCaret();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             eventData.Use();
         }
 
@@ -1684,6 +1974,13 @@ namespace UnityEngine.UI
             }
 
             UpdateLabel();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            UpdateKeyboardCaret();
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             eventData.Use();
         }
 
@@ -1706,6 +2003,10 @@ namespace UnityEngine.UI
             bool shift = (currentEventModifiers & EventModifiers.Shift) != 0;
             bool alt = (currentEventModifiers & EventModifiers.Alt) != 0;
             bool ctrlOnly = ctrl && !alt && !shift;
+<<<<<<< HEAD
+=======
+            bool shiftOnly = shift && !ctrl && !alt;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             switch (evt.keyCode)
             {
@@ -1787,6 +2088,29 @@ namespace UnityEngine.UI
                     }
                     break;
                 }
+<<<<<<< HEAD
+=======
+                case KeyCode.Insert:
+                {
+                    // Copy via Insert key
+                    if (ctrlOnly)
+                    {
+                        if (inputType != InputType.Password)
+                            clipboard = GetSelectedString();
+                        else
+                            clipboard = "";
+                        return EditState.Continue;
+                    }
+                    // Paste via insert key.
+                    else if (shiftOnly)
+                    {
+                        Append(clipboard);
+                        UpdateLabel();
+                        return EditState.Continue;
+                    }
+                    break;
+                }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 case KeyCode.LeftArrow:
                 {
@@ -1856,6 +2180,12 @@ namespace UnityEngine.UI
 
         private bool IsValidChar(char c)
         {
+<<<<<<< HEAD
+=======
+            if (c == 0)
+                return false;
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             // Delete key on mac
             if ((int)c == 127)
                 return false;
@@ -1895,12 +2225,36 @@ namespace UnityEngine.UI
                 if (m_ProcessingEvent.rawType == EventType.KeyDown)
                 {
                     consumedEvent = true;
+<<<<<<< HEAD
                     var shouldContinue = KeyPressed(m_ProcessingEvent);
                     if (shouldContinue == EditState.Finish)
                     {
                         DeactivateInputField();
                         break;
                     }
+=======
+
+                    // Special handling on OSX which produces more events which need to be suppressed.
+                    if (m_IsCompositionActive && compositionString.Length == 0)
+                    {
+                        // Suppress other events related to navigation or termination of composition sequence.
+                        if (m_ProcessingEvent.character == 0 && m_ProcessingEvent.modifiers == EventModifiers.None)
+                        {
+                            continue;
+                        }
+                    }
+
+                    var shouldContinue = KeyPressed(m_ProcessingEvent);
+                    if (shouldContinue == EditState.Finish)
+                    {
+                        if (!m_WasCanceled)
+                            SendOnSubmit();
+
+                        DeactivateInputField();
+                        continue;
+                    }
+                    UpdateLabel();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
 
                 switch (m_ProcessingEvent.type)
@@ -2181,7 +2535,11 @@ namespace UnityEngine.UI
             }
             else
             {
+<<<<<<< HEAD
                 if (caretPositionInternal > 0)
+=======
+                if (caretPositionInternal > 0 && caretPositionInternal - 1 < text.Length)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 {
                     m_Text = text.Remove(caretPositionInternal - 1, 1);
                     caretSelectPositionInternal = caretPositionInternal = caretPositionInternal - 1;
@@ -2236,13 +2594,31 @@ namespace UnityEngine.UI
         }
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Convenience function to make functionality to send the ::ref::EndEditEvent easier.
+        /// </summary>
+        protected void SendOnEndEdit()
+        {
+            UISystemProfilerApi.AddMarker("InputField.onEndEdit", this);
+            if (onEndEdit != null)
+                onEndEdit.Invoke(m_Text);
+        }
+
+        /// <summary>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// Convenience function to make functionality to send the ::ref::SubmitEvent easier.
         /// </summary>
         protected void SendOnSubmit()
         {
             UISystemProfilerApi.AddMarker("InputField.onSubmit", this);
+<<<<<<< HEAD
             if (onEndEdit != null)
                 onEndEdit.Invoke(m_Text);
+=======
+            if (onSubmit != null)
+                onSubmit.Invoke(m_Text);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -2289,10 +2665,32 @@ namespace UnityEngine.UI
 
             // If we have an input validator, validate the input first
             int insertionPoint = Math.Min(selectionFocusPosition, selectionAnchorPosition);
+<<<<<<< HEAD
             if (onValidateInput != null)
                 input = onValidateInput(text, insertionPoint, input);
             else if (characterValidation != CharacterValidation.None)
                 input = Validate(text, insertionPoint, input);
+=======
+
+            //Get the text based on selection for validation instead of whole text(case 1253193).
+            var validateText = text;
+            if (selectionFocusPosition != selectionAnchorPosition)
+            {
+                if (caretPositionInternal < caretSelectPositionInternal)
+                {
+                    validateText = text.Substring(0, caretPositionInternal) + text.Substring(caretSelectPositionInternal, text.Length - caretSelectPositionInternal);
+                }
+                else
+                {
+                    validateText = text.Substring(0, caretSelectPositionInternal) + text.Substring(caretPositionInternal, text.Length - caretPositionInternal);
+                }
+            }
+
+            if (onValidateInput != null)
+                input = onValidateInput(validateText, insertionPoint, input);
+            else if (characterValidation != CharacterValidation.None)
+                input = Validate(validateText, insertionPoint, input);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             // If the input is invalid, skip it
             if (input == 0)
@@ -2325,10 +2723,24 @@ namespace UnityEngine.UI
                 m_PreventFontCallback = true;
 
                 string fullText;
+<<<<<<< HEAD
                 if (EventSystem.current != null && gameObject == EventSystem.current.currentSelectedGameObject && compositionString.Length > 0)
                     fullText = text.Substring(0, m_CaretPosition) + compositionString + text.Substring(m_CaretPosition);
                 else
                     fullText = text;
+=======
+
+                if (EventSystem.current != null && gameObject == EventSystem.current.currentSelectedGameObject && compositionString.Length > 0)
+                {
+                    m_IsCompositionActive = true;
+                    fullText = text.Substring(0, m_CaretPosition) + compositionString + text.Substring(m_CaretPosition);
+                }
+                else
+                {
+                    m_IsCompositionActive = false;
+                    fullText = text;
+                }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 string processed;
                 if (inputType == InputType.Password)
@@ -2351,6 +2763,17 @@ namespace UnityEngine.UI
                     m_DrawEnd = m_Text.Length;
                 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                // To fix case 1320719; we need to rebuild the layout before we check the number of characters that can fit within the extents.
+                // Otherwise, the extents provided may not be good.
+                textComponent.SetLayoutDirty();
+
+
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 if (!isEmpty)
                 {
                     // Determine what will actually fit into the given line
@@ -2848,14 +3271,24 @@ namespace UnityEngine.UI
 
                 if (char.IsLetter(ch))
                 {
+<<<<<<< HEAD
                     // Character following a space should be in uppercase.
                     if (char.IsLower(ch) && ((pos == 0) || (text[pos - 1] == ' ')))
+=======
+                    // Character following a space or a hyphen should be in uppercase.
+                    if (char.IsLower(ch) && ((pos == 0) || (text[pos - 1] == ' ') || (text[pos - 1] == '-')))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     {
                         return char.ToUpper(ch);
                     }
 
+<<<<<<< HEAD
                     // Character not following a space or an apostrophe should be in lowercase.
                     if (char.IsUpper(ch) && (pos > 0) && (text[pos - 1] != ' ') && (text[pos - 1] != '\''))
+=======
+                    // Character not following a space or an apostrophe or a hyphen should be in lowercase.
+                    if (char.IsUpper(ch) && (pos > 0) && (text[pos - 1] != ' ') && (text[pos - 1] != '\'') && (text[pos - 1] != '-'))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     {
                         return char.ToLower(ch);
                     }
@@ -2868,6 +3301,7 @@ namespace UnityEngine.UI
                     // Don't allow more than one apostrophe
                     if (!text.Contains("'"))
                         // Don't allow consecutive spaces and apostrophes.
+<<<<<<< HEAD
                         if (!(((pos > 0) && ((text[pos - 1] == ' ') || (text[pos - 1] == '\''))) ||
                               ((pos < text.Length) && ((text[pos] == ' ') || (text[pos] == '\'')))))
                             return ch;
@@ -2880,6 +3314,20 @@ namespace UnityEngine.UI
                         // Don't allow consecutive spaces and apostrophes.
                         if (!(((pos > 0) && ((text[pos - 1] == ' ') || (text[pos - 1] == '\''))) ||
                               ((pos < text.Length) && ((text[pos] == ' ') || (text[pos] == '\'')))))
+=======
+                        if (!(((pos > 0) && ((text[pos - 1] == ' ') || (text[pos - 1] == '\'') || (text[pos - 1] == '-'))) ||
+                              ((pos < text.Length) && ((text[pos] == ' ') || (text[pos] == '\'') || (text[pos] == '-')))))
+                            return ch;
+                }
+
+                if (ch == ' ' || ch == '-')
+                {
+                    if (pos != 0) // Don't allow leading spaces and hyphens
+                    {
+                        // Don't allow consecutive spaces, apostrophes and hyphens.
+                        if (!(((pos > 0) && ((text[pos - 1] == ' ') || (text[pos - 1] == '\'') || (text[pos - 1] == '-'))) ||
+                              ((pos < text.Length) && ((text[pos] == ' ') || (text[pos] == '\'') || (text[pos - 1] == '-')))))
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                             return ch;
                     }
                 }
@@ -2917,6 +3365,10 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -2931,7 +3383,12 @@ namespace UnityEngine.UI
         ///         mainInputField.ActivateInputField();
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public void ActivateInputField()
         {
@@ -3024,6 +3481,10 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
+        /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -3038,7 +3499,12 @@ namespace UnityEngine.UI
         ///         mainInputField.DeactivateInputField();
         ///     }
         /// }
+<<<<<<< HEAD
         /// </code>
+=======
+        /// ]]>
+        ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public void DeactivateInputField()
         {
@@ -3057,7 +3523,11 @@ namespace UnityEngine.UI
                 if (m_WasCanceled)
                     text = m_OriginalText;
 
+<<<<<<< HEAD
                 SendOnSubmit();
+=======
+                SendOnEndEdit();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 if (m_Keyboard != null)
                 {
@@ -3230,7 +3700,15 @@ namespace UnityEngine.UI
         /// <summary>
         /// See ILayoutElement.minWidth.
         /// </summary>
+<<<<<<< HEAD
         public virtual float minWidth { get { return 0; } }
+=======
+<<<<<<< HEAD
+        public virtual float minWidth { get { return 0; } }
+=======
+        public virtual float minWidth { get { return 5; } }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         /// <summary>
         /// Get the displayed with of all input characters.

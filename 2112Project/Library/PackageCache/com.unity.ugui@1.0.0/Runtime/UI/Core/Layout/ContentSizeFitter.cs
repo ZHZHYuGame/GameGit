@@ -57,7 +57,14 @@ namespace UnityEngine.UI
             }
         }
 
+<<<<<<< HEAD
         private DrivenRectTransformTracker m_Tracker;
+=======
+        // field is never assigned warning
+        #pragma warning disable 649
+        private DrivenRectTransformTracker m_Tracker;
+        #pragma warning restore 649
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         protected ContentSizeFitter()
         {}

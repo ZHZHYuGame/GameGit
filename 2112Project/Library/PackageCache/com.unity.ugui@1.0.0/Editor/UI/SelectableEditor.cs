@@ -334,10 +334,20 @@ namespace UnityEditor.UI
 
             Transform transform = sel.transform;
             bool active = Selection.transforms.Any(e => e == transform);
+<<<<<<< HEAD
             Handles.color = new Color(1.0f, 0.9f, 0.1f, active ? 1.0f : 0.4f);
             DrawNavigationArrow(-Vector2.right, sel, sel.FindSelectableOnLeft());
             DrawNavigationArrow(Vector2.right, sel, sel.FindSelectableOnRight());
             DrawNavigationArrow(Vector2.up, sel, sel.FindSelectableOnUp());
+=======
+
+            Handles.color = new Color(1.0f, 0.6f, 0.2f, active ? 1.0f : 0.4f);
+            DrawNavigationArrow(-Vector2.right, sel, sel.FindSelectableOnLeft());
+            DrawNavigationArrow(Vector2.up, sel, sel.FindSelectableOnUp());
+
+            Handles.color = new Color(1.0f, 0.9f, 0.1f, active ? 1.0f : 0.4f);
+            DrawNavigationArrow(Vector2.right, sel, sel.FindSelectableOnRight());
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             DrawNavigationArrow(-Vector2.up, sel, sel.FindSelectableOnDown());
         }
 

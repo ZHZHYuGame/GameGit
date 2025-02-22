@@ -28,12 +28,22 @@ namespace UnityEditor.UI
         SerializedProperty m_HideMobileInput;
         SerializedProperty m_Placeholder;
         SerializedProperty m_OnValueChanged;
+<<<<<<< HEAD
         SerializedProperty m_OnEndEdit;
+=======
+        SerializedProperty m_OnSubmit;
+        SerializedProperty m_OnDidEndEdit;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         SerializedProperty m_ReadOnly;
         SerializedProperty m_ShouldActivateOnSelect;
 
         AnimBool m_CustomColor;
 
+<<<<<<< HEAD
+=======
+        GUIContent m_EndEditContent = new GUIContent("On End Edit");
+
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -53,7 +63,12 @@ namespace UnityEditor.UI
             m_HideMobileInput = serializedObject.FindProperty("m_HideMobileInput");
             m_Placeholder = serializedObject.FindProperty("m_Placeholder");
             m_OnValueChanged = serializedObject.FindProperty("m_OnValueChanged");
+<<<<<<< HEAD
             m_OnEndEdit = serializedObject.FindProperty("m_OnEndEdit");
+=======
+            m_OnSubmit = serializedObject.FindProperty("m_OnSubmit");
+            m_OnDidEndEdit = serializedObject.FindProperty("m_OnDidEndEdit");
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             m_ReadOnly = serializedObject.FindProperty("m_ReadOnly");
             m_ShouldActivateOnSelect = serializedObject.FindProperty("m_ShouldActivateOnSelect");
 
@@ -137,7 +152,12 @@ namespace UnityEditor.UI
                 EditorGUILayout.Space();
 
                 EditorGUILayout.PropertyField(m_OnValueChanged);
+<<<<<<< HEAD
                 EditorGUILayout.PropertyField(m_OnEndEdit);
+=======
+                EditorGUILayout.PropertyField(m_OnSubmit);
+                EditorGUILayout.PropertyField(m_OnDidEndEdit, m_EndEditContent);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
 
             serializedObject.ApplyModifiedProperties();
