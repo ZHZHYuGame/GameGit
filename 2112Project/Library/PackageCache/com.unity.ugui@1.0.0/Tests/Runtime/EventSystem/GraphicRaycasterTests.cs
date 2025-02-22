@@ -82,6 +82,8 @@ public class GraphicRaycasterTests
     }
 
     [UnityTest]
+<<<<<<< HEAD
+=======
     public IEnumerator GraphicRaycasterUsesGraphicPadding()
     {
         m_CanvasRectTrans.anchoredPosition3D = new Vector3(0, 0, 11);
@@ -101,6 +103,7 @@ public class GraphicRaycasterTests
     }
 
     [UnityTest]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     public IEnumerator GraphicOnTheSamePlaneAsTheCameraCanBeTargetedForEvents()
     {
         m_Canvas.renderMode = RenderMode.ScreenSpaceCamera;
@@ -121,6 +124,9 @@ public class GraphicRaycasterTests
 
         Assert.IsNotEmpty(results, "Expected at least 1 result from a raycast ");
     }
+<<<<<<< HEAD
+
+=======
 <<<<<<< HEAD
 
 =======
@@ -145,6 +151,7 @@ public class GraphicRaycasterTests
     }
 #endif
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     [TearDown]
     public void TearDown()
     {

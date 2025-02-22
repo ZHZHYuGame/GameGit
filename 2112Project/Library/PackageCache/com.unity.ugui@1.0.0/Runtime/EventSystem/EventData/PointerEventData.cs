@@ -80,11 +80,14 @@ namespace UnityEngine.EventSystems
         public GameObject pointerDrag { get; set; }
 
         /// <summary>
+<<<<<<< HEAD
+=======
         /// The object that should receive the 'OnPointerClick' event.
         /// </summary>
         public GameObject pointerClick { get; set; }
 
         /// <summary>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// RaycastResult associated with the current event.
         /// </summary>
         public RaycastResult pointerCurrentRaycast { get; set; }
@@ -104,12 +107,15 @@ namespace UnityEngine.EventSystems
         /// <summary>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         /// The index of the display that this pointer event comes from.
         /// </summary>
         public int displayIndex { get; set; }
 
         /// <summary>
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// Id of the pointer (touch id).
         /// </summary>
         public int pointerId { get; set; }
@@ -152,7 +158,10 @@ namespace UnityEngine.EventSystems
         /// </summary>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -168,8 +177,12 @@ namespace UnityEngine.EventSystems
         ///         Debug.Log(i);
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+=======
         /// ]]>
         ///</code>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// </example>
         public int clickCount { get; set; }
 
@@ -196,6 +209,8 @@ namespace UnityEngine.EventSystems
         /// </summary>
         public InputButton button { get; set; }
 
+<<<<<<< HEAD
+=======
 
         /// <summary>
         /// The amount of pressure currently applied by a touch.
@@ -269,14 +284,18 @@ namespace UnityEngine.EventSystems
         public bool reentered { get; set; }
         /// <seealso cref="UnityEngine.UIElements.IPointerEvent" />
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public PointerEventData(EventSystem eventSystem) : base(eventSystem)
         {
             eligibleForClick = false;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             displayIndex = 0;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             pointerId = -1;
             position = Vector2.zero; // Current position of the mouse or touch event
             delta = Vector2.zero; // Delta since last update
@@ -288,6 +307,8 @@ namespace UnityEngine.EventSystems
             useDragThreshold = true;
             dragging = false;
             button = InputButton.Left;
+<<<<<<< HEAD
+=======
 
             pressure = 0f;
             tangentialPressure = 0f;
@@ -301,6 +322,7 @@ namespace UnityEngine.EventSystems
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             radius = Vector2.zero;
             radiusVariance = Vector2.zero;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -368,6 +390,8 @@ namespace UnityEngine.EventSystems
             sb.AppendLine(pointerPressRaycast.ToString());
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
             sb.AppendLine("<b>Display Index:</b>");
             sb.AppendLine(displayIndex.ToString());
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
@@ -383,6 +407,7 @@ namespace UnityEngine.EventSystems
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             sb.AppendLine("<b>radius</b>: " + radius);
             sb.AppendLine("<b>radiusVariance</b>: " + radiusVariance);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return sb.ToString();
         }
     }

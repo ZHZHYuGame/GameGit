@@ -3,6 +3,11 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 =======
+<<<<<<< HEAD
+using UnityEditorInternal;
+using UnityEngine;
+using UnityEngine.UI;
+=======
 using System;
 using UnityEditorInternal;
 using UnityEngine;
@@ -11,6 +16,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEditor.UI
 {
@@ -20,6 +26,8 @@ namespace UnityEditor.UI
     /// </summary>
     class DropdownOptionListDrawer : PropertyDrawer
     {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
         const string kOptionsPath = "m_Options";
@@ -33,15 +41,21 @@ namespace UnityEditor.UI
         const float itemOffset = 4;
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private ReorderableList m_ReorderableList;
 
         private void Init(SerializedProperty property)
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (m_ReorderableList != null)
                 return;
 
             SerializedProperty array = property.FindPropertyRelative("m_Options");
+<<<<<<< HEAD
+=======
 =======
             if (m_ReorderableList != null && m_ReorderableList.serializedProperty.serializedObject.m_NativeObjectPtr != IntPtr.Zero)
             {
@@ -50,6 +64,7 @@ namespace UnityEditor.UI
 
             SerializedProperty array = property.FindPropertyRelative(kOptionsPath);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             m_ReorderableList = new ReorderableList(property.serializedObject, array);
             m_ReorderableList.drawElementCallback = DrawOptionData;
@@ -69,8 +84,12 @@ namespace UnityEditor.UI
 <<<<<<< HEAD
             GUI.Label(rect, "Options");
 =======
+<<<<<<< HEAD
+            GUI.Label(rect, "Options");
+=======
             GUI.Label(rect, kHeader);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void DrawOptionData(Rect rect, int index, bool isActive, bool isFocused)
@@ -80,9 +99,14 @@ namespace UnityEditor.UI
             SerializedProperty itemText = itemData.FindPropertyRelative("m_Text");
             SerializedProperty itemImage = itemData.FindPropertyRelative("m_Image");
 =======
+<<<<<<< HEAD
+            SerializedProperty itemText = itemData.FindPropertyRelative("m_Text");
+            SerializedProperty itemImage = itemData.FindPropertyRelative("m_Image");
+=======
             SerializedProperty itemText = itemData.FindPropertyRelative(kTextPath);
             SerializedProperty itemImage = itemData.FindPropertyRelative(kImagePath);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             RectOffset offset = new RectOffset(0, 0, -1, -3);
             rect = offset.Add(rect);
@@ -99,6 +123,8 @@ namespace UnityEditor.UI
 
             return m_ReorderableList.GetHeight();
         }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -145,5 +171,6 @@ namespace UnityEditor.UI
             return listView;
         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

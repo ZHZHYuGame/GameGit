@@ -11,7 +11,10 @@ namespace UnityEngine.UI
         private static GraphicRegistry s_Instance;
 
         private readonly Dictionary<Canvas, IndexedSet<Graphic>> m_Graphics = new Dictionary<Canvas, IndexedSet<Graphic>>();
+<<<<<<< HEAD
+=======
         private readonly Dictionary<Canvas, IndexedSet<Graphic>> m_RaycastableGraphics = new Dictionary<Canvas, IndexedSet<Graphic>>();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         protected GraphicRegistry()
         {
@@ -46,7 +49,11 @@ namespace UnityEngine.UI
         /// <param name="graphic">The Graphic being associated with the Canvas.</param>
         public static void RegisterGraphicForCanvas(Canvas c, Graphic graphic)
         {
+<<<<<<< HEAD
+            if (c == null)
+=======
             if (c == null || graphic == null)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return;
 
             IndexedSet<Graphic> graphics;
@@ -55,9 +62,12 @@ namespace UnityEngine.UI
             if (graphics != null)
             {
                 graphics.AddUnique(graphic);
+<<<<<<< HEAD
+=======
 
                 RegisterRaycastGraphicForCanvas(c, graphic);
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return;
             }
 
@@ -65,6 +75,8 @@ namespace UnityEngine.UI
             graphics = new IndexedSet<Graphic>();
             graphics.Add(graphic);
             instance.m_Graphics.Add(c, graphics);
+<<<<<<< HEAD
+=======
 
             RegisterRaycastGraphicForCanvas(c, graphic);
         }
@@ -93,6 +105,7 @@ namespace UnityEngine.UI
             graphics = new IndexedSet<Graphic>();
             graphics.Add(graphic);
             instance.m_RaycastableGraphics.Add(c, graphics);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         /// <summary>
@@ -102,7 +115,11 @@ namespace UnityEngine.UI
         /// <param name="graphic">The Graphic to dissociate from the Canvas.</param>
         public static void UnregisterGraphicForCanvas(Canvas c, Graphic graphic)
         {
+<<<<<<< HEAD
+            if (c == null)
+=======
             if (c == null || graphic == null)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return;
 
             IndexedSet<Graphic> graphics;
@@ -110,6 +127,10 @@ namespace UnityEngine.UI
             {
                 graphics.Remove(graphic);
 
+<<<<<<< HEAD
+                if (graphics.Count == 0)
+                    instance.m_Graphics.Remove(c);
+=======
                 if (graphics.Capacity == 0)
                     instance.m_Graphics.Remove(c);
 
@@ -176,6 +197,7 @@ namespace UnityEngine.UI
 
                 if (graphics.Capacity == 0)
                     instance.m_RaycastableGraphics.Remove(c);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -194,6 +216,8 @@ namespace UnityEngine.UI
 
             return s_EmptyList;
         }
+<<<<<<< HEAD
+=======
 
         /// <summary>
         /// Retrieves the list of Graphics that are raycastable and associated with a Canvas.
@@ -208,5 +232,6 @@ namespace UnityEngine.UI
 
             return s_EmptyList;
         }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

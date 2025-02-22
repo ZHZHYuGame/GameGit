@@ -33,7 +33,11 @@ public class RaycastSortingTests : IPrebuildSetup
         backCanvas.planeDistance = 100;
         backCanvas.worldCamera = camera;
 
+<<<<<<< HEAD
+        var backCanvasBackground = new GameObject("BackCanvasBackground", typeof(Image), typeof(RectTransform));
+=======
         var backCanvasBackground = new GameObject("BackCanvasBackground", typeof(RectTransform), typeof(Image));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         var backCanvasBackgroundTransform = backCanvasBackground.GetComponent<RectTransform>();
         backCanvasBackgroundTransform.SetParent(backCanvasGO.transform);
         backCanvasBackgroundTransform.anchorMin = Vector2.zero;
@@ -42,7 +46,11 @@ public class RaycastSortingTests : IPrebuildSetup
         backCanvasBackgroundTransform.anchoredPosition3D = Vector3.zero;
         backCanvasBackgroundTransform.localScale = Vector3.one;
 
+<<<<<<< HEAD
+        var backCanvasDeeper = new GameObject("BackCanvasDeeperHierarchy", typeof(Image), typeof(RectTransform));
+=======
         var backCanvasDeeper = new GameObject("BackCanvasDeeperHierarchy", typeof(RectTransform), typeof(Image));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         var backCanvasDeeperTransform = backCanvasDeeper.GetComponent<RectTransform>();
         backCanvasDeeperTransform.SetParent(backCanvasBackgroundTransform);
         backCanvasDeeperTransform.anchorMin = new Vector2(0.5f, 0);
@@ -59,7 +67,11 @@ public class RaycastSortingTests : IPrebuildSetup
         frontCanvas.planeDistance = 50;
         frontCanvas.worldCamera = camera;
 
+<<<<<<< HEAD
+        var frontCanvasTopLevel = new GameObject("FrontCanvasTopLevel", typeof(Text), typeof(RectTransform));
+=======
         var frontCanvasTopLevel = new GameObject("FrontCanvasTopLevel", typeof(RectTransform), typeof(Text));
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         var frontCanvasTopLevelTransform = frontCanvasTopLevel.GetComponent<RectTransform>();
         frontCanvasTopLevelTransform.SetParent(frontCanvasGO.transform);
         frontCanvasTopLevelTransform.anchorMin = Vector2.zero;

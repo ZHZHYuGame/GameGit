@@ -10,6 +10,9 @@ namespace UnityEditor.U2D.Sprites
 <<<<<<< HEAD
     /// <remarks>Implement this interface for [[ScriptedImporter]] to leverage on Sprite Editor Window to edit Sprite data.</remarks>
 =======
+<<<<<<< HEAD
+    /// <remarks>Implement this interface for [[ScriptedImporter]] to leverage on Sprite Editor Window to edit Sprite data.</remarks>
+=======
     /// <remarks> Use this interface to edit Sprite data.
     /// <code>
     /// using UnityEditor;
@@ -44,6 +47,7 @@ namespace UnityEditor.U2D.Sprites
     /// </code>
     /// </remarks>
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     public interface ISpriteEditorDataProvider
     {
         /// <summary>SpriteImportMode to indicate how Sprite data will be imported.</summary>
@@ -90,6 +94,8 @@ namespace UnityEditor.U2D.Sprites
         void SetBones(GUID guid, List<SpriteBone> bones);
     }
 
+<<<<<<< HEAD
+=======
     /// <summary>
     /// Data provider that provides data for ID to be used given a SpriteRect's name.
     /// </summary>
@@ -106,6 +112,7 @@ namespace UnityEditor.U2D.Sprites
         void SetNameFileIdPairs(IEnumerable<SpriteNameFileIdPair> nameFileIdPairs);
     }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// <summary>Data provider that provides the outline data for SpriteRect.</summary>
     /// <remarks>The outline data is used to tessellate a Sprite's mesh.</remarks>
     public interface ISpriteOutlineDataProvider

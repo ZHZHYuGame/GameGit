@@ -213,12 +213,20 @@ namespace UnityEngine.UI
             // However, in this case we set both the horizontal and vertical position when invoked for the vertical axis.
             // Since we only set the horizontal position and not the size, it shouldn't affect children's layout,
             // and thus shouldn't break the rule that all horizontal layout must be calculated before all vertical layout.
+<<<<<<< HEAD
+
+            if (axis == 0)
+            {
+                // Only set the sizes when invoked for horizontal axis, not the positions.
+                for (int i = 0; i < rectChildren.Count; i++)
+=======
             var rectChildrenCount = rectChildren.Count;
             if (axis == 0)
             {
                 // Only set the sizes when invoked for horizontal axis, not the positions.
 
                 for (int i = 0; i < rectChildrenCount; i++)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 {
                     RectTransform rect = rectChildren[i];
 
@@ -243,15 +251,25 @@ namespace UnityEngine.UI
             {
                 cellCountX = m_ConstraintCount;
 
+<<<<<<< HEAD
+                if (rectChildren.Count > cellCountX)
+                    cellCountY = rectChildren.Count / cellCountX + (rectChildren.Count % cellCountX > 0 ? 1 : 0);
+=======
                 if (rectChildrenCount > cellCountX)
                     cellCountY = rectChildrenCount / cellCountX + (rectChildrenCount % cellCountX > 0 ? 1 : 0);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
             else if (m_Constraint == Constraint.FixedRowCount)
             {
                 cellCountY = m_ConstraintCount;
 
+<<<<<<< HEAD
+                if (rectChildren.Count > cellCountY)
+                    cellCountX = rectChildren.Count / cellCountY + (rectChildren.Count % cellCountY > 0 ? 1 : 0);
+=======
                 if (rectChildrenCount > cellCountY)
                     cellCountX = rectChildrenCount / cellCountY + (rectChildrenCount % cellCountY > 0 ? 1 : 0);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
             else
             {
@@ -273,6 +291,10 @@ namespace UnityEngine.UI
             if (startAxis == Axis.Horizontal)
             {
                 cellsPerMainAxis = cellCountX;
+<<<<<<< HEAD
+                actualCellCountX = Mathf.Clamp(cellCountX, 1, rectChildren.Count);
+                actualCellCountY = Mathf.Clamp(cellCountY, 1, Mathf.CeilToInt(rectChildren.Count / (float)cellsPerMainAxis));
+=======
                 actualCellCountX = Mathf.Clamp(cellCountX, 1, rectChildrenCount);
 <<<<<<< HEAD
                 actualCellCountY = Mathf.Clamp(cellCountY, 1, Mathf.CeilToInt(rectChildrenCount / (float)cellsPerMainAxis));
@@ -283,10 +305,15 @@ namespace UnityEngine.UI
                 else
                     actualCellCountY = Mathf.Clamp(cellCountY, 1, Mathf.CeilToInt(rectChildrenCount / (float)cellsPerMainAxis));
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
             else
             {
                 cellsPerMainAxis = cellCountY;
+<<<<<<< HEAD
+                actualCellCountY = Mathf.Clamp(cellCountY, 1, rectChildren.Count);
+                actualCellCountX = Mathf.Clamp(cellCountX, 1, Mathf.CeilToInt(rectChildren.Count / (float)cellsPerMainAxis));
+=======
                 actualCellCountY = Mathf.Clamp(cellCountY, 1, rectChildrenCount);
 <<<<<<< HEAD
                 actualCellCountX = Mathf.Clamp(cellCountX, 1, Mathf.CeilToInt(rectChildrenCount / (float)cellsPerMainAxis));
@@ -297,6 +324,7 @@ namespace UnityEngine.UI
                 else
                     actualCellCountX = Mathf.Clamp(cellCountX, 1, Mathf.CeilToInt(rectChildrenCount / (float)cellsPerMainAxis));
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
 
             Vector2 requiredSpace = new Vector2(
@@ -308,6 +336,9 @@ namespace UnityEngine.UI
                 GetStartOffset(1, requiredSpace.y)
             );
 
+<<<<<<< HEAD
+            for (int i = 0; i < rectChildren.Count; i++)
+=======
 <<<<<<< HEAD
 =======
             // Fixes case 1345471 - Makes sure the constraint column / row amount is always respected
@@ -322,12 +353,16 @@ namespace UnityEngine.UI
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             for (int i = 0; i < rectChildrenCount; i++)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 int positionX;
                 int positionY;
                 if (startAxis == Axis.Horizontal)
                 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     positionX = i % cellsPerMainAxis;
                     positionY = i / cellsPerMainAxis;
                 }
@@ -335,6 +370,8 @@ namespace UnityEngine.UI
                 {
                     positionX = i / cellsPerMainAxis;
                     positionY = i % cellsPerMainAxis;
+<<<<<<< HEAD
+=======
 =======
                     if (m_Constraint == Constraint.FixedRowCount && rectChildrenCount - i <= childrenToMove)
                     {
@@ -360,6 +397,7 @@ namespace UnityEngine.UI
                         positionY = i % cellsPerMainAxis;
                     }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
 
                 if (cornerX == 1)

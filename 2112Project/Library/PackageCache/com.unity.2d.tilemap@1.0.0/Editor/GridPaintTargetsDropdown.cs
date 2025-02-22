@@ -1,5 +1,8 @@
 using System;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEditor.Tilemaps
 {
@@ -10,6 +13,8 @@ namespace UnityEditor.Tilemaps
         {
             minTextWidth = minWidth;
         }
+<<<<<<< HEAD
+=======
 =======
 using UnityEditor.Experimental;
 using UnityEngine;
@@ -90,6 +95,7 @@ namespace UnityEditor.Tilemaps
         public int selectedIndex { get; set; }
         protected float minTextWidth { get { return m_MinTextWidth; } set { m_MinTextWidth = value; ClearCachedWidth(); } }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         internal class MenuItemProvider : IFlexibleMenuItemProvider
         {
@@ -143,6 +149,8 @@ namespace UnityEditor.Tilemaps
                 return new int[0];
             }
         }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -346,5 +354,6 @@ namespace UnityEditor.Tilemaps
             HandleUtility.Repaint(); // repaints current guiview (needs rename)
         }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 }

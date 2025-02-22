@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 using UnityEditor.EditorTools;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.Tilemaps;
@@ -21,6 +24,8 @@ namespace UnityEditor.Tilemaps
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         /// <summary>Returns a tooltip describing the usage of the brush and other helpful information.</summary>
         public virtual string tooltip
         {
@@ -34,6 +39,7 @@ namespace UnityEditor.Tilemaps
         }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>Checks if the Brush allows the changing of Z Position.</summary>
         /// <returns>Whether the Brush can change Z Position.</returns>
         public virtual bool canChangeZPosition
@@ -48,7 +54,11 @@ namespace UnityEditor.Tilemaps
         /// <param name="position">Current selected location of the brush.</param>
         /// <param name="tool">Current GridBrushBase::ref::Tool selected.</param>
         /// <param name="executing">Whether is brush is being used.</param>
+<<<<<<< HEAD
+        /// <remarks>Implement this for any special behaviours when the GridBrush is used on the Scene view.</remarks>
+=======
         /// <remarks>Implement this for any special behaviours when the GridBrush is used on the Scene View.</remarks>
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public virtual void OnPaintSceneGUI(GridLayout gridLayout, GameObject brushTarget, BoundsInt position, GridBrushBase.Tool tool, bool executing)
         {
             OnPaintSceneGUIInternal(gridLayout, brushTarget, position, tool, executing);
@@ -65,6 +75,8 @@ namespace UnityEditor.Tilemaps
         /// <remarks>Override this to show custom Inspector GUI for the current selection.</remarks>
         public virtual void OnSelectionInspectorGUI() {}
 
+<<<<<<< HEAD
+=======
         /// <summary>Callback for painting custom gizmos when there is an active GridSelection made in a GridLayout.</summary>
         /// <param name="gridLayout">Grid that the brush is being used on.</param>
         /// <param name="brushTarget">Target of the GridBrushBase::ref::Tool operation. By default the currently selected GameObject.</param>
@@ -79,6 +91,7 @@ namespace UnityEditor.Tilemaps
         /// <remarks>Override this to show custom gizmos for the brush target.</remarks>
         public virtual void OnSceneGUI(GridLayout gridLayout, GameObject brushTarget) {}
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>Callback when the mouse cursor leaves a paintable region.</summary>
         /// <remarks>Implement this for any custom behaviour when the mouse cursor leaves a paintable region.</remarks>
         public virtual void OnMouseLeave() {}
@@ -128,6 +141,8 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+<<<<<<< HEAD
+=======
         internal static void OnSceneGUIInternal(GridLayout gridLayout, GameObject brushTarget, BoundsInt position, GridBrushBase.Tool tool, bool executing)
         {
             if (Event.current.type != EventType.Repaint)
@@ -150,6 +165,7 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         internal static void OnPaintSceneGUIInternal(GridLayout gridLayout, GameObject brushTarget, BoundsInt position, GridBrushBase.Tool tool, bool executing)
         {
             if (Event.current.type != EventType.Repaint)
@@ -165,10 +181,15 @@ namespace UnityEditor.Tilemaps
             if (tool == GridBrushBase.Tool.Select ||
                 tool == GridBrushBase.Tool.Move)
 =======
+<<<<<<< HEAD
+            if (tool == GridBrushBase.Tool.Select ||
+                tool == GridBrushBase.Tool.Move)
+=======
             if (tool == GridBrushBase.Tool.Select
                 || tool == GridBrushBase.Tool.Move
                 || GridSelectionTool.IsActive())
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 if (executing)
                     color = Styles.executingColor;
@@ -176,6 +197,8 @@ namespace UnityEditor.Tilemaps
                     color = Styles.activeColor;
             }
 
+<<<<<<< HEAD
+=======
             if (brushTarget != null)
             {
                 var targetLayout = brushTarget.GetComponent<GridLayout>();
@@ -183,6 +206,7 @@ namespace UnityEditor.Tilemaps
                     gridLayout = targetLayout;
             }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (position.zMin != 0)
             {
                 var zeroBounds = position;
