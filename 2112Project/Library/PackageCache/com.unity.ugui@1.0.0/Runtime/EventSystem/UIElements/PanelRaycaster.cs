@@ -2,12 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine.EventSystems;
+<<<<<<< HEAD
+
+namespace UnityEngine.UIElements
+{
+=======
 using UnityEngine.UI;
 
 namespace UnityEngine.UIElements
 {
     // This code is disabled unless the UI Toolkit package or the com.unity.modules.uielements module are present.
     // The UIElements module is always present in the Editor but it can be stripped from a project build if unused.
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 #if PACKAGE_UITOOLKIT
     /// <summary>
     /// A derived BaseRaycaster to raycast against UI Toolkit panel instances at runtime.
@@ -59,14 +65,48 @@ namespace UnityEngine.UIElements
 
         private GameObject selectableGameObject => m_Panel?.selectableGameObject;
 
+<<<<<<< HEAD
+        public override int sortOrderPriority => (int)(m_Panel?.sortingPriority ?? 0f);
+        public override int renderOrderPriority => ConvertFloatBitsToInt(m_Panel?.sortingPriority ?? 0f);
+=======
         public override int sortOrderPriority => Mathf.FloorToInt(m_Panel?.sortingPriority ?? 0f);
         public override int renderOrderPriority => int.MaxValue - (UIElementsRuntimeUtility.s_ResolvedSortingIndexMax - (m_Panel?.resolvedSortingIndex ?? 0));
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
         public override void Raycast(PointerEventData eventData, List<RaycastResult> resultAppendList)
         {
             if (m_Panel == null)
                 return;
 
+<<<<<<< HEAD
+            var eventPosition = Display.RelativeMouseAt(eventData.position);
+            var displayIndex = m_Panel.targetDisplay;
+
+            var originalEventPosition = eventPosition;
+            if (eventPosition != Vector3.zero)
+            {
+                // We support multiple display and display identification based on event position.
+
+                int eventDisplayIndex = (int)eventPosition.z;
+
+                // Discard events that are not part of this display so the user does not interact with multiple displays at once.
+                if (eventDisplayIndex != displayIndex)
+                    return;
+            }
+            else
+            {
+                // The multiple display system is not supported on all platforms, when it is not supported the returned position
+                // will be all zeros so when the returned index is 0 we will default to the event data to be safe.
+                eventPosition = eventData.position;
+#if UNITY_EDITOR
+                if (Display.activeEditorGameViewTarget != displayIndex)
+                    return;
+                eventPosition.z = Display.activeEditorGameViewTarget;
+#endif
+
+                // We don't really know in which display the event occurred. We will process the event assuming it occurred in our display.
+            }
+=======
             var displayIndex = m_Panel.targetDisplay;
 
             Vector3 eventPosition = MultipleDisplayUtilities.GetRelativeMousePositionForRaycast(eventData);
@@ -74,6 +114,7 @@ namespace UnityEngine.UIElements
             // Discard events that are not part of this display so the user does not interact with multiple displays at once.
             if ((int) eventPosition.z != displayIndex)
                 return;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
             var position = eventPosition;
             var delta = eventData.delta;
@@ -96,7 +137,13 @@ namespace UnityEngine.UIElements
             if (capturingElement is VisualElement ve && ve.panel != m_Panel)
                 return;
 
+<<<<<<< HEAD
+            var capturingPanel = PointerDeviceState.GetPressedButtons(pointerId) != 0 ?
+                                 PointerDeviceState.GetPlayerPanelWithSoftPointerCapture(pointerId) :
+                                 null;
+=======
             var capturingPanel = PointerDeviceState.GetPlayerPanelWithSoftPointerCapture(pointerId);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             if (capturingPanel != null && capturingPanel != m_Panel)
                 return;
 
@@ -120,6 +167,25 @@ namespace UnityEngine.UIElements
         }
 
         public override Camera eventCamera => null;
+<<<<<<< HEAD
+
+
+        [StructLayout(LayoutKind.Explicit, Size = sizeof(int))]
+        private struct FloatIntBits
+        {
+            [FieldOffset(0)]
+            public float f;
+            [FieldOffset(0)]
+            public int i;
+        }
+
+        private static int ConvertFloatBitsToInt(float f)
+        {
+            FloatIntBits bits = new FloatIntBits {f = f};
+            return bits.i;
+        }
+=======
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     }
 #endif
 }

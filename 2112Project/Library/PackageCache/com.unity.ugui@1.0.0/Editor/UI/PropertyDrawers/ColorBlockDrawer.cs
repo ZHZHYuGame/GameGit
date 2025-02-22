@@ -1,7 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+<<<<<<< HEAD
+=======
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
 namespace UnityEditor.UI
 {
@@ -11,6 +14,8 @@ namespace UnityEditor.UI
     /// </summary>
     public class ColorBlockDrawer : PropertyDrawer
     {
+<<<<<<< HEAD
+=======
         const string kNormalColor = "m_NormalColor";
         const string kHighlightedColor = "m_HighlightedColor";
         const string kPressedColor = "m_PressedColor";
@@ -19,11 +24,21 @@ namespace UnityEditor.UI
         const string kColorMultiplier = "m_ColorMultiplier";
         const string kFadeDuration = "m_FadeDuration";
 
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
         public override void OnGUI(Rect rect, SerializedProperty prop, GUIContent label)
         {
             Rect drawRect = rect;
             drawRect.height = EditorGUIUtility.singleLineHeight;
 
+<<<<<<< HEAD
+            SerializedProperty normalColor = prop.FindPropertyRelative("m_NormalColor");
+            SerializedProperty highlighted = prop.FindPropertyRelative("m_HighlightedColor");
+            SerializedProperty pressedColor = prop.FindPropertyRelative("m_PressedColor");
+            SerializedProperty selectedColor = prop.FindPropertyRelative("m_SelectedColor");
+            SerializedProperty disabledColor = prop.FindPropertyRelative("m_DisabledColor");
+            SerializedProperty colorMultiplier = prop.FindPropertyRelative("m_ColorMultiplier");
+            SerializedProperty fadeDuration = prop.FindPropertyRelative("m_FadeDuration");
+=======
             SerializedProperty normalColor = prop.FindPropertyRelative(kNormalColor);
             SerializedProperty highlighted = prop.FindPropertyRelative(kHighlightedColor);
             SerializedProperty pressedColor = prop.FindPropertyRelative(kPressedColor);
@@ -31,6 +46,7 @@ namespace UnityEditor.UI
             SerializedProperty disabledColor = prop.FindPropertyRelative(kDisabledColor);
             SerializedProperty colorMultiplier = prop.FindPropertyRelative(kColorMultiplier);
             SerializedProperty fadeDuration = prop.FindPropertyRelative(kFadeDuration);
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
             EditorGUI.PropertyField(drawRect, normalColor);
             drawRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
@@ -51,6 +67,8 @@ namespace UnityEditor.UI
         {
             return 7 * EditorGUIUtility.singleLineHeight + 6 * EditorGUIUtility.standardVerticalSpacing;
         }
+<<<<<<< HEAD
+=======
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
@@ -75,5 +93,6 @@ namespace UnityEditor.UI
 
             return container;
         }
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
     }
 }

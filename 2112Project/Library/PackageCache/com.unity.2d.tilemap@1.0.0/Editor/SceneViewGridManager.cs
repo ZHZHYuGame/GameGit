@@ -91,7 +91,11 @@ namespace UnityEditor.Tilemaps
         private void UpdateCache()
         {
             GridLayout gridProxy;
+<<<<<<< HEAD
+            if (PaintableGrid.InGridEditMode())
+=======
             if (PaintableGrid.InGridEditMode() || GridSelectionTool.IsActive())
+>>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
                 gridProxy = GridPaintingState.scenePaintTarget != null ? GridPaintingState.scenePaintTarget.GetComponentInParent<GridLayout>() : null;
             else
                 gridProxy = Selection.activeGameObject != null ? Selection.activeGameObject.GetComponentInParent<GridLayout>() : null;
