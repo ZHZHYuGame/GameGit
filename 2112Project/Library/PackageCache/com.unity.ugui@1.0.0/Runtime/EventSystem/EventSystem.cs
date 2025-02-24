@@ -2,14 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+<<<<<<< HEAD
+using UnityEngine.Serialization;
+=======
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEngine.EventSystems
 {
     [AddComponentMenu("Event/Event System")]
+<<<<<<< HEAD
+=======
     [DisallowMultipleComponent]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// <summary>
     /// Handles input, raycasting, and sending events.
     /// </summary>
@@ -35,15 +42,22 @@ namespace UnityEngine.EventSystems
             {
                 int index = m_EventSystems.IndexOf(value);
 
+<<<<<<< HEAD
+                if (index >= 0)
+=======
                 if (index > 0)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 {
                     m_EventSystems.RemoveAt(index);
                     m_EventSystems.Insert(0, value);
                 }
+<<<<<<< HEAD
+=======
                 else if (index < 0)
                 {
                     Debug.LogError("Failed setting EventSystem.current to unknown EventSystem " + value);
                 }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -130,8 +144,12 @@ namespace UnityEngine.EventSystems
         public void UpdateModules()
         {
             GetComponents(m_SystemInputModules);
+<<<<<<< HEAD
+            for (int i = m_SystemInputModules.Count - 1; i >= 0; i--)
+=======
             var systemInputModulesCount = m_SystemInputModules.Count;
             for (int i = systemInputModulesCount - 1; i >= 0; i--)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 if (m_SystemInputModules[i] && m_SystemInputModules[i].IsActive())
                     continue;
@@ -222,7 +240,10 @@ namespace UnityEngine.EventSystems
                     return rhs.module.renderOrderPriority.CompareTo(lhs.module.renderOrderPriority);
             }
 
+<<<<<<< HEAD
+=======
             // Renderer sorting
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (lhs.sortingLayer != rhs.sortingLayer)
             {
                 // Uses the layer value to properly compare the relative order of the layers.
@@ -241,6 +262,8 @@ namespace UnityEngine.EventSystems
             if (lhs.distance != rhs.distance)
                 return lhs.distance.CompareTo(rhs.distance);
 
+<<<<<<< HEAD
+=======
             #if PACKAGE_PHYSICS2D
 			// Sorting group
             if (lhs.sortingGroupID != SortingGroup.invalidSortingGroupID && rhs.sortingGroupID != SortingGroup.invalidSortingGroupID)
@@ -252,6 +275,7 @@ namespace UnityEngine.EventSystems
             }
             #endif
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return lhs.index.CompareTo(rhs.index);
         }
 
@@ -266,8 +290,12 @@ namespace UnityEngine.EventSystems
         {
             raycastResults.Clear();
             var modules = RaycasterManager.GetRaycasters();
+<<<<<<< HEAD
+            for (int i = 0; i < modules.Count; ++i)
+=======
             var modulesCount = modules.Count;
             for (int i = 0; i < modulesCount; ++i)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 var module = modules[i];
                 if (module == null || !module.IsActive())
@@ -296,7 +324,10 @@ namespace UnityEngine.EventSystems
         /// </remarks>
         /// <example>
         /// <code>
+<<<<<<< HEAD
+=======
         /// <![CDATA[
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.EventSystems;
@@ -316,6 +347,18 @@ namespace UnityEngine.EventSystems
         ///         }
         ///     }
         /// }
+<<<<<<< HEAD
+        /// </code>
+        /// </example>
+        public bool IsPointerOverGameObject(int pointerId)
+        {
+            if (m_CurrentInputModule == null)
+                return false;
+
+            return m_CurrentInputModule.IsPointerOverGameObject(pointerId);
+        }
+
+=======
         /// ]]>
         ///</code>
         /// </example>
@@ -470,10 +513,13 @@ namespace UnityEngine.EventSystems
         }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected override void OnEnable()
         {
             base.OnEnable();
             m_EventSystems.Add(this);
+<<<<<<< HEAD
+=======
 
 #if PACKAGE_UITOOLKIT
 <<<<<<< HEAD
@@ -488,10 +534,13 @@ namespace UnityEngine.EventSystems
                 UIElementsRuntimeUtility.RegisterEventSystem(this);
             }
 #endif
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected override void OnDisable()
         {
+<<<<<<< HEAD
+=======
 #if PACKAGE_UITOOLKIT
 <<<<<<< HEAD
 =======
@@ -500,6 +549,7 @@ namespace UnityEngine.EventSystems
             UIElementsRuntimeUtility.UnregisterEventSystem(this);
 #endif
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             if (m_CurrentInputModule != null)
             {
                 m_CurrentInputModule.DeactivateModule();
@@ -513,8 +563,12 @@ namespace UnityEngine.EventSystems
 
         private void TickModules()
         {
+<<<<<<< HEAD
+            for (var i = 0; i < m_SystemInputModules.Count; i++)
+=======
             var systemInputModulesCount = m_SystemInputModules.Count;
             for (var i = 0; i < systemInputModulesCount; i++)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 if (m_SystemInputModules[i] != null)
                     m_SystemInputModules[i].UpdateModule();
@@ -524,8 +578,11 @@ namespace UnityEngine.EventSystems
         protected virtual void OnApplicationFocus(bool hasFocus)
         {
             m_HasFocus = hasFocus;
+<<<<<<< HEAD
+=======
             if (!m_HasFocus)
                 TickModules();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         protected virtual void Update()
@@ -535,8 +592,12 @@ namespace UnityEngine.EventSystems
             TickModules();
 
             bool changedModule = false;
+<<<<<<< HEAD
+            for (var i = 0; i < m_SystemInputModules.Count; i++)
+=======
             var systemInputModulesCount = m_SystemInputModules.Count;
             for (var i = 0; i < systemInputModulesCount; i++)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 var module = m_SystemInputModules[i];
                 if (module.IsModuleSupported() && module.ShouldActivateModule())
@@ -553,7 +614,11 @@ namespace UnityEngine.EventSystems
             // no event module set... set the first valid one...
             if (m_CurrentInputModule == null)
             {
+<<<<<<< HEAD
+                for (var i = 0; i < m_SystemInputModules.Count; i++)
+=======
                 for (var i = 0; i < systemInputModulesCount; i++)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 {
                     var module = m_SystemInputModules[i];
                     if (module.IsModuleSupported())
@@ -567,6 +632,8 @@ namespace UnityEngine.EventSystems
 
             if (!changedModule && m_CurrentInputModule != null)
                 m_CurrentInputModule.Process();
+<<<<<<< HEAD
+=======
 
 #if UNITY_EDITOR
             if (Application.isPlaying)
@@ -582,6 +649,7 @@ namespace UnityEngine.EventSystems
                     Debug.LogWarning("There are " + eventSystemCount + " event systems in the scene. Please ensure there is always exactly one event system in the scene");
             }
 #endif
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void ChangeEventModule(BaseInputModule module)

@@ -15,6 +15,11 @@ namespace LayoutTests
         GameObject m_PrefabRoot;
         const string kPrefabPath = "Assets/Resources/VerticalLayoutGroupPrefab.prefab";
 
+<<<<<<< HEAD
+        private VerticalLayoutGroup m_LayoutGroup;
+
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         public void Setup()
         {
 #if UNITY_EDITOR
@@ -84,11 +89,22 @@ namespace LayoutTests
         public void TestSetup()
         {
             m_PrefabRoot = Object.Instantiate(Resources.Load("VerticalLayoutGroupPrefab")) as GameObject;
+<<<<<<< HEAD
+            m_LayoutGroup = m_PrefabRoot.GetComponentInChildren<VerticalLayoutGroup>();
+        }
+
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            EventSystem.current = null;
+            m_LayoutGroup = null;
+=======
         }
 
         [TearDown]
         public void TearDown()
         {
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             Object.DestroyImmediate(m_PrefabRoot);
         }
 
@@ -103,6 +119,16 @@ namespace LayoutTests
         [Test]
         public void TestCalculateLayoutInputHorizontal()
         {
+<<<<<<< HEAD
+            m_LayoutGroup.CalculateLayoutInputHorizontal();
+            m_LayoutGroup.SetLayoutHorizontal();
+            m_LayoutGroup.CalculateLayoutInputVertical();
+            m_LayoutGroup.SetLayoutVertical();
+
+            Assert.AreEqual(31, m_LayoutGroup.minWidth);
+            Assert.AreEqual(206, m_LayoutGroup.preferredWidth);
+            Assert.AreEqual(1, m_LayoutGroup.flexibleWidth);
+=======
             var layoutGroup = m_PrefabRoot.GetComponentInChildren<VerticalLayoutGroup>();
             layoutGroup.CalculateLayoutInputHorizontal();
             layoutGroup.SetLayoutHorizontal();
@@ -112,11 +138,22 @@ namespace LayoutTests
             Assert.AreEqual(31, layoutGroup.minWidth);
             Assert.AreEqual(206, layoutGroup.preferredWidth);
             Assert.AreEqual(1, layoutGroup.flexibleWidth);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         [Test]
         public void TestCalculateLayoutInputVertical()
         {
+<<<<<<< HEAD
+            m_LayoutGroup.CalculateLayoutInputHorizontal();
+            m_LayoutGroup.SetLayoutHorizontal();
+            m_LayoutGroup.CalculateLayoutInputVertical();
+            m_LayoutGroup.SetLayoutVertical();
+
+            Assert.AreEqual(40, m_LayoutGroup.minHeight);
+            Assert.AreEqual(145, m_LayoutGroup.preferredHeight);
+            Assert.AreEqual(1, m_LayoutGroup.flexibleHeight);
+=======
             var layoutGroup = m_PrefabRoot.GetComponentInChildren<VerticalLayoutGroup>();
             layoutGroup.CalculateLayoutInputHorizontal();
             layoutGroup.SetLayoutHorizontal();
@@ -172,6 +209,7 @@ namespace LayoutTests
             //Assert.AreEqual(-78.6f, element1Trans.anchoredPosition.y, 0.1f);
             Assert.AreEqual(-58.6f, element2Trans.anchoredPosition.y, 0.1f);
             Assert.AreEqual(-29.1f, element3Trans.anchoredPosition.y, 0.1f);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }

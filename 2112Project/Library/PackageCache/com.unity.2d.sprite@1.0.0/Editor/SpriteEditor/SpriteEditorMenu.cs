@@ -1,10 +1,13 @@
 using UnityEngine;
 using System;
+<<<<<<< HEAD
+=======
 using System.Collections.Generic;
 <<<<<<< HEAD
 =======
 using UnityEngine.Experimental.Rendering;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEvent = UnityEngine.Event;
 
 namespace UnityEditor.U2D.Sprites
@@ -12,6 +15,9 @@ namespace UnityEditor.U2D.Sprites
     [Serializable]
     internal class SpriteEditorMenuSetting : ScriptableObject
     {
+<<<<<<< HEAD
+        public enum SlicingType { Automatic = 0, GridByCellSize = 1, GridByCellCount = 2 }
+=======
         public enum SlicingType
         {
             Automatic = 0,
@@ -19,6 +25,7 @@ namespace UnityEditor.U2D.Sprites
             GridByCellCount = 2,
             IsometricGrid = 3
         }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         [SerializeField]
         public Vector2 gridCellCount = new Vector2(1, 1);
@@ -38,8 +45,11 @@ namespace UnityEditor.U2D.Sprites
         public SlicingType slicingType;
         [SerializeField]
         public bool keepEmptyRects;
+<<<<<<< HEAD
+=======
         [SerializeField]
         public bool isAlternate;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 
     internal class SpriteEditorMenu : EditorWindow
@@ -49,7 +59,10 @@ namespace UnityEditor.U2D.Sprites
         private static SpriteEditorMenuSetting s_Setting;
         private ITextureDataProvider m_TextureDataProvider;
         private SpriteFrameModule m_SpriteFrameModule;
+<<<<<<< HEAD
+=======
         private List<Rect> m_PotentialRects;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         private class Styles
         {
@@ -84,6 +97,11 @@ namespace UnityEditor.U2D.Sprites
                 EditorGUIUtility.TrTextContent("Smart", "Try to match existing sprite rects to sliced rects from the slicing operation"),
                 EditorGUIUtility.TrTextContent("Safe", "Keep existing sprite rects intact")
 =======
+<<<<<<< HEAD
+                EditorGUIUtility.TrTextContent("Delete Existing", "Delete all existing sprite assets before the slicing operation"),
+                EditorGUIUtility.TrTextContent("Smart", "Try to match existing sprite rects to sliced rects from the slicing operation"),
+                EditorGUIUtility.TrTextContent("Safe", "Keep existing sprite rects intact")
+=======
                 EditorGUIUtility.TrTextContent("Delete Existing"),
                 EditorGUIUtility.TrTextContent("Smart"),
                 EditorGUIUtility.TrTextContent("Safe")
@@ -94,6 +112,7 @@ namespace UnityEditor.U2D.Sprites
                 L10n.Tr("Smart attempts to create new Sprites while retaining or adjusting existing ones. This slicing method does not remove any existing Sprites."),
                 L10n.Tr("Safe adds new Sprites without changing anything already in place. This slicing method does not remove any existing Sprites.")
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             };
 
             public readonly GUIContent methodLabel = EditorGUIUtility.TrTextContent("Method");
@@ -108,6 +127,11 @@ namespace UnityEditor.U2D.Sprites
             public readonly GUIContent yLabel = EditorGUIUtility.TextContent("Y");
             public readonly GUIContent offsetLabel = EditorGUIUtility.TrTextContent("Offset");
             public readonly GUIContent paddingLabel = EditorGUIUtility.TrTextContent("Padding");
+<<<<<<< HEAD
+            public readonly GUIContent automaticSlicingHintLabel = EditorGUIUtility.TrTextContent("To obtain more accurate slicing results, manual slicing is recommended!");
+            public readonly GUIContent customPivotLabel = EditorGUIUtility.TrTextContent("Custom Pivot");
+            public readonly GUIContent keepEmptyRectsLabel = EditorGUIUtility.TrTextContent("Keep Empty Rects");
+=======
 <<<<<<< HEAD
             public readonly GUIContent automaticSlicingHintLabel = EditorGUIUtility.TrTextContent("To obtain more accurate slicing results, manual slicing is recommended!");
 =======
@@ -159,6 +183,7 @@ namespace UnityEditor.U2D.Sprites
             }
 
             return m_PotentialRects;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void Init(Rect buttonRect, SpriteFrameModule sf, ITextureDataProvider dataProvider)
@@ -172,16 +197,23 @@ namespace UnityEditor.U2D.Sprites
 
             buttonRect = GUIUtility.GUIToScreenRect(buttonRect);
 <<<<<<< HEAD
+            float windowHeight = 195;
+=======
+<<<<<<< HEAD
             const float windowHeight = 255;
 =======
             const float windowHeight = 235f;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             var windowSize = new Vector2(300, windowHeight);
             ShowAsDropDown(buttonRect, windowSize);
 
             Undo.undoRedoPerformed += UndoRedoPerformed;
+<<<<<<< HEAD
+=======
 
             RectSettingsDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private void UndoRedoPerformed()
@@ -199,6 +231,8 @@ namespace UnityEditor.U2D.Sprites
             AssemblyReloadEvents.beforeAssemblyReload -= Close;
             Undo.undoRedoPerformed -= UndoRedoPerformed;
             s_LastClosedTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+<<<<<<< HEAD
+=======
             m_SpriteFrameModule.potentialRects = null;
             m_SpriteFrameModule.spriteEditor.RequestRepaint();
         }
@@ -207,6 +241,7 @@ namespace UnityEditor.U2D.Sprites
         {
             m_SpriteFrameModule.potentialRects = GetPotentialRects();
             m_SpriteFrameModule.spriteEditor.RequestRepaint();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         internal static bool ShowAtPosition(Rect buttonRect, SpriteFrameModule sf, ITextureDataProvider textureProvider)
@@ -246,9 +281,12 @@ namespace UnityEditor.U2D.Sprites
             {
                 Undo.RegisterCompleteObjectUndo(s_Setting, "Change slicing type");
                 s_Setting.slicingType = slicingType;
+<<<<<<< HEAD
+=======
 
                 UpdateToDefaultAutoSliceMethod();
                 RectSettingsDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
             switch (slicingType)
             {
@@ -259,6 +297,13 @@ namespace UnityEditor.U2D.Sprites
                 case SpriteEditorMenuSetting.SlicingType.Automatic:
                     OnAutomaticGUI();
                     break;
+<<<<<<< HEAD
+            }
+            DoPivotGUI();
+            GUILayout.Space(2f);
+            EditorGUI.BeginChangeCheck();
+            int slicingMethod = s_Setting.autoSlicingMethod;
+=======
                 case SpriteEditorMenuSetting.SlicingType.IsometricGrid:
                     OnIsometricGridGUI();
                     break;
@@ -272,12 +317,15 @@ namespace UnityEditor.U2D.Sprites
 =======
             var slicingMethod = s_Setting.autoSlicingMethod;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             slicingMethod = EditorGUILayout.Popup(s_Styles.methodLabel, slicingMethod, s_Styles.slicingMethodOptions);
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RegisterCompleteObjectUndo(s_Setting, "Change Slicing Method");
                 s_Setting.autoSlicingMethod = slicingMethod;
             }
+<<<<<<< HEAD
+=======
 
 <<<<<<< HEAD
             if (s_Setting.autoSlicingMethod == (int)SpriteFrameModule.AutoSlicingMethod.DeleteAll)
@@ -286,10 +334,17 @@ namespace UnityEditor.U2D.Sprites
             EditorGUILayout.HelpBox(s_Styles.slicingMethodInfoText[slicingMethod], MessageType.Info);
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             GUILayout.FlexibleSpace();
             GUILayout.BeginHorizontal();
             GUILayout.Space(EditorGUIUtility.labelWidth + 4);
             if (GUILayout.Button(s_Styles.sliceButtonLabel))
+<<<<<<< HEAD
+                DoSlicing();
+            GUILayout.EndHorizontal();
+        }
+
+=======
 <<<<<<< HEAD
                 DoSlicing();
 
@@ -321,6 +376,7 @@ namespace UnityEditor.U2D.Sprites
             s_Setting.autoSlicingMethod = (int)SpriteFrameModule.AutoSlicingMethod.DeleteAll;
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private void DoSlicing()
         {
             switch (s_Setting.slicingType)
@@ -332,9 +388,12 @@ namespace UnityEditor.U2D.Sprites
                 case SpriteEditorMenuSetting.SlicingType.Automatic:
                     DoAutomaticSlicing();
                     break;
+<<<<<<< HEAD
+=======
                 case SpriteEditorMenuSetting.SlicingType.IsometricGrid:
                     DoIsometricGridSlicing();
                     break;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -386,7 +445,10 @@ namespace UnityEditor.U2D.Sprites
 
                     s_Setting.gridCellCount.x = Mathf.Clamp(x, 1, maxWidth);
                     s_Setting.gridCellCount.y = Mathf.Clamp(y, 1, maxHeight);
+<<<<<<< HEAD
+=======
                     RectSettingsDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
             else
@@ -402,7 +464,10 @@ namespace UnityEditor.U2D.Sprites
 
                     s_Setting.gridSpriteSize.x = Mathf.Clamp(x, 1, maxWidth);
                     s_Setting.gridSpriteSize.y = Mathf.Clamp(y, 1, maxHeight);
+<<<<<<< HEAD
+=======
                     RectSettingsDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
 
@@ -418,7 +483,10 @@ namespace UnityEditor.U2D.Sprites
 
                     s_Setting.gridSpriteOffset.x = Mathf.Clamp(x, 0, maxWidth - s_Setting.gridSpriteSize.x);
                     s_Setting.gridSpriteOffset.y = Mathf.Clamp(y, 0, maxHeight - s_Setting.gridSpriteSize.y);
+<<<<<<< HEAD
+=======
                     RectSettingsDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
 
@@ -434,7 +502,10 @@ namespace UnityEditor.U2D.Sprites
 
                     s_Setting.gridSpritePadding.x = Mathf.Clamp(x, 0, maxWidth);
                     s_Setting.gridSpritePadding.y = Mathf.Clamp(y, 0, maxHeight);
+<<<<<<< HEAD
+=======
                     RectSettingsDirty();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
 
@@ -455,15 +526,22 @@ namespace UnityEditor.U2D.Sprites
             var texture = m_TextureDataProvider.GetReadableTexture2D();
             if (texture != null && UnityEditor.TextureUtil.IsCompressedTextureFormat(texture.format))
 =======
+<<<<<<< HEAD
+            var texture = m_TextureDataProvider.GetReadableTexture2D();
+            if (texture != null && UnityEditor.TextureUtil.IsCompressedTextureFormat(texture.format))
+=======
             var texture = m_TextureDataProvider.texture;
             if (texture != null && GraphicsFormatUtility.IsCompressedFormat(texture.format))
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 EditorGUILayout.LabelField(s_Styles.automaticSlicingHintLabel, s_Styles.notice);
                 spacing -= 31f;
             }
         }
 
+<<<<<<< HEAD
+=======
         private void OnIsometricGridGUI()
         {
             int width, height;
@@ -523,6 +601,7 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private void DoPivotGUI()
         {
             EditorGUI.BeginChangeCheck();
@@ -558,11 +637,18 @@ namespace UnityEditor.U2D.Sprites
         private void DoGridSlicing()
         {
             if (s_Setting.slicingType == SpriteEditorMenuSetting.SlicingType.GridByCellCount)
+<<<<<<< HEAD
+                DetemineGridCellSizeWithCellCount();
+=======
                 SetGridCellSizeWithCellCount();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             m_SpriteFrameModule.DoGridSlicing(s_Setting.gridSpriteSize, s_Setting.gridSpriteOffset, s_Setting.gridSpritePadding, s_Setting.spriteAlignment, s_Setting.pivot, (SpriteFrameModule.AutoSlicingMethod)s_Setting.autoSlicingMethod, s_Setting.keepEmptyRects);
         }
 
+<<<<<<< HEAD
+        private void DetemineGridCellSizeWithCellCount()
+=======
         private void DoIsometricGridSlicing()
         {
             m_SpriteFrameModule.DoIsometricGridSlicing(s_Setting.gridSpriteSize, s_Setting.gridSpriteOffset, s_Setting.spriteAlignment, s_Setting.pivot, (SpriteFrameModule.AutoSlicingMethod)s_Setting.autoSlicingMethod, s_Setting.keepEmptyRects, s_Setting.isAlternate);
@@ -575,6 +661,7 @@ namespace UnityEditor.U2D.Sprites
         }
 
         private void DetermineGridCellSizeWithCellCount(out Vector2 cellSize)
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             int width, height;
             m_TextureDataProvider.GetTextureActualWidthAndHeight(out width, out height);
@@ -582,11 +669,19 @@ namespace UnityEditor.U2D.Sprites
             int maxWidth = texture != null ? width : 4096;
             int maxHeight = texture != null ? height : 4096;
 
+<<<<<<< HEAD
+            s_Setting.gridSpriteSize.x = (maxWidth - s_Setting.gridSpriteOffset.x - (s_Setting.gridSpritePadding.x * s_Setting.gridCellCount.x)) / s_Setting.gridCellCount.x;
+            s_Setting.gridSpriteSize.y = (maxHeight - s_Setting.gridSpriteOffset.y - (s_Setting.gridSpritePadding.y * s_Setting.gridCellCount.y)) / s_Setting.gridCellCount.y;
+
+            s_Setting.gridSpriteSize.x = Mathf.Clamp(s_Setting.gridSpriteSize.x, 1, maxWidth);
+            s_Setting.gridSpriteSize.y = Mathf.Clamp(s_Setting.gridSpriteSize.y, 1, maxHeight);
+=======
             cellSize.x = (maxWidth - s_Setting.gridSpriteOffset.x - (s_Setting.gridSpritePadding.x * s_Setting.gridCellCount.x)) / s_Setting.gridCellCount.x;
             cellSize.y = (maxHeight - s_Setting.gridSpriteOffset.y - (s_Setting.gridSpritePadding.y * s_Setting.gridCellCount.y)) / s_Setting.gridCellCount.y;
 
             cellSize.x = Mathf.Clamp(cellSize.x, 1, maxWidth);
             cellSize.y = Mathf.Clamp(cellSize.y, 1, maxHeight);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
     }
 }

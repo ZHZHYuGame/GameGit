@@ -16,12 +16,15 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("UnityEngine.UI.Tests")]
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if UNITY_INCLUDE_TESTS
 [assembly: InternalsVisibleTo("Unity.UIElements.EditorTests")]
 [assembly: InternalsVisibleTo("Unity.UIElements.RuntimeTests")]
 [assembly: InternalsVisibleTo("Unity.UIElements.PlayModeTests")]
 #endif
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

@@ -7,6 +7,9 @@ namespace UnityEditor.Tilemaps
     internal class GridPalettes : ScriptableSingleton<GridPalettes>
     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private static bool s_RefreshCache;
 
         [SerializeField] private List<GameObject> m_PalettesCache;
@@ -21,6 +24,8 @@ namespace UnityEditor.Tilemaps
                     s_RefreshCache = false;
                 }
 
+<<<<<<< HEAD
+=======
 =======
         private List<GameObject> m_PalettesCache;
 
@@ -36,15 +41,21 @@ namespace UnityEditor.Tilemaps
                     instance.RefreshPalettesCache();
                 }
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 return instance.m_PalettesCache;
             }
         }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private void RefreshPalettesCache()
         {
             if (instance.m_PalettesCache == null)
                 instance.m_PalettesCache = new List<GameObject>();
+<<<<<<< HEAD
+=======
 =======
         private void OnEnable()
         {
@@ -62,6 +73,7 @@ namespace UnityEditor.Tilemaps
                 m_PalettesCache = new List<GameObject>();
             m_PalettesCache.Clear();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
             string[] guids = AssetDatabase.FindAssets("t:GridPalette");
             foreach (string guid in guids)
@@ -84,12 +96,18 @@ namespace UnityEditor.Tilemaps
 
         public class AssetProcessor : AssetPostprocessor
 =======
+<<<<<<< HEAD
+        }
+
+        public class AssetProcessor : AssetPostprocessor
+=======
 
             palettesChanged?.Invoke();
         }
 
         private class AssetProcessor : AssetPostprocessor
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         {
             public override int GetPostprocessOrder()
             {

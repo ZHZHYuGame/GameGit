@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+using System.Collections.Generic;
+
+namespace UnityEngine.UI
+{
+    [AddComponentMenu("UI/Effects/Outline", 15)]
+=======
 using UnityEngine.Pool;
 
 namespace UnityEngine.UI
 {
     [AddComponentMenu("UI/Effects/Outline", 81)]
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     /// <summary>
     /// Adds an outline to a graphic using IVertexModifier.
     /// </summary>

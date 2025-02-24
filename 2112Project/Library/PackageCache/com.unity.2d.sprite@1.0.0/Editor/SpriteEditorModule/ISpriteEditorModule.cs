@@ -82,6 +82,8 @@ namespace UnityEditor.U2D.Sprites
         /// <param name = "height" > The height dimension to render the preview texture.</param>
         /// <remarks>When the method is called, the editing space's dimensions are set to the width and height values, affecting operations such as Zoom and Pan in the ISpriteEditor view. The preview texture is rendered as the background of the editing space.</remarks>
         void SetPreviewTexture(Texture2D texture, int width, int height);
+<<<<<<< HEAD
+=======
         /// <summary> Resets the zoom and scroll of the Sprite Editor Windows.</summary>
         void ResetZoomAndScroll();
         /// <summary>Current zoom level of the ISpriteEditor view. </summary>
@@ -92,6 +94,7 @@ namespace UnityEditor.U2D.Sprites
         bool showAlpha { get; set; }
         /// <summary>The current Mip Level of the Texture displayed in ISpriteEditor view</summary>
         float mipLevel { get; set; }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
     }
 
     /// <summary>Use this attribute on a class that inherits from SpriteEditorModuleBase to indicate what data provider it needs.</summary>

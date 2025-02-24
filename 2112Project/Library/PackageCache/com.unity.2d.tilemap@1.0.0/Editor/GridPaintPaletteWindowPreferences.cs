@@ -7,6 +7,14 @@ namespace UnityEditor.Tilemaps
 {
     internal class GridPaintPaletteWindowPreferences
     {
+<<<<<<< HEAD
+        // Used by SettingsProvider to pick up Search Keywords in preferences filter
+        public static readonly GUIContent targetEditModeDialogLabel = GridPaintPaletteWindow.TilePaletteProperties.targetEditModeDialogLabel;
+        public static readonly GUIContent targetSortingModeLabel = GridPaintActiveTargetsPreferences.targetSortingModeLabel;
+        public static readonly GUIContent keepEditModeActiveTargetLabel = GridPaintActiveTargetsPreferences.targetRestoreEditModeSelectionLabel;
+
+=======
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         [SettingsProvider]
         internal static SettingsProvider CreateSettingsProvider()
         {
@@ -16,9 +24,12 @@ namespace UnityEditor.Tilemaps
                 {
                     GridPaintPaletteWindow.PreferencesGUI();
                     GridPaintActiveTargetsPreferences.PreferencesGUI();
+<<<<<<< HEAD
+=======
                     SceneViewOpenTilePaletteHelper.PreferencesGUI();
                     TilemapPrefabStageHelper.PreferencesGUI();
                     TilemapEditorToolPreferences.PreferencesGUI();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             };
             return settingsProvider;
@@ -28,11 +39,20 @@ namespace UnityEditor.Tilemaps
     internal class GridPaintActiveTargetsPreferences
     {
         public static readonly string targetSortingModeEditorPref = "TilePalette.ActiveTargetsSortingMode";
+<<<<<<< HEAD
+        public static readonly string targetSortingModeLookup = "Tile Palette Active Targets Sorting Mode";
+        public static readonly string targetRestoreEditModeSelectionEditorPref = "TilePalette.RestoreEditModeSelection";
+        public static readonly string targetRestoreEditModeSelectionLookup =
+            "Tile Palette Restore Edit Mode Active Target";
+        public static readonly string createTileFromPaletteEditorPref = "TilePalette.CreateTileFromPalette";
+        public static readonly string createTileFromPaletteLookup = "Tile Palette Create Tile Method";
+=======
         public static readonly string targetSortingModeLookup = "Active Targets Sorting Mode";
         public static readonly string targetRestoreEditModeSelectionEditorPref = "TilePalette.RestoreEditModeSelection";
         public static readonly string targetRestoreEditModeSelectionLookup = "Restore Edit Mode Active Target";
         public static readonly string createTileFromPaletteEditorPref = "TilePalette.CreateTileFromPalette";
         public static readonly string createTileFromPaletteLookup = "Create Tile Method";
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         public static readonly string defaultSortingMode = L10n.Tr("None");
 

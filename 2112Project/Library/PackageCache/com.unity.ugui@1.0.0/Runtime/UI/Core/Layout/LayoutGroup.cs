@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+<<<<<<< HEAD
+using UnityEngine.Serialization;
+=======
 using UnityEngine.Pool;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEngine.UI
 {

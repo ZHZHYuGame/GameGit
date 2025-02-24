@@ -49,12 +49,16 @@ namespace UnityEngine.EventSystems
 <<<<<<< HEAD
                 return m_EventCamera ?? Camera.main;
 =======
+<<<<<<< HEAD
+                return m_EventCamera ?? Camera.main;
+=======
 
                 if (m_EventCamera == null)
                     return Camera.main;
 
                 return m_EventCamera ;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 

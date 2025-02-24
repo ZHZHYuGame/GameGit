@@ -15,7 +15,10 @@ class CreateSceneUtility
         GameObject.DestroyImmediate(Camera.main.GetComponent<AudioListener>());
         delegateToExecute();
         UnityEditor.SceneManagement.EditorSceneManager.SaveScene(newScene, scenePath);
+<<<<<<< HEAD
+=======
         UnityEditor.SceneManagement.EditorSceneManager.UnloadSceneAsync(newScene);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
         list.Add(new UnityEditor.EditorBuildSettingsScene(scenePath, true));
         UnityEditor.EditorBuildSettings.scenes = list.ToArray();

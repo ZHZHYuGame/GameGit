@@ -1,14 +1,21 @@
+<<<<<<< HEAD
+using System.Linq;
+=======
 using System;
 using System.Linq;
 <<<<<<< HEAD
 =======
 using UnityEditor.EditorTools;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEditor.SceneManagement;
 using UnityEngine.Scripting.APIUpdating;
+<<<<<<< HEAD
+=======
 using Object = UnityEngine.Object;
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
 namespace UnityEditor.Tilemaps
 {
@@ -25,6 +32,8 @@ namespace UnityEditor.Tilemaps
             public static readonly GUIContent colliderTypeLabel = EditorGUIUtility.TrTextContent("Collider Type", "Collider shape used for tile");
             public static readonly GUIContent lockColorLabel = EditorGUIUtility.TrTextContent("Lock Color", "Prevents tilemap from changing color of tile");
             public static readonly GUIContent lockTransformLabel = EditorGUIUtility.TrTextContent("Lock Transform", "Prevents tilemap from changing transform of tile");
+<<<<<<< HEAD
+=======
             public static readonly GUIContent gridSelectionPropertiesLabel = EditorGUIUtility.TrTextContent("Grid Selection Properties");
             public static readonly GUIContent modifyTilemapLabel = EditorGUIUtility.TrTextContent("Modify Tilemap");
             public static readonly GUIContent modifyLabel = EditorGUIUtility.TrTextContent("Modify");
@@ -114,6 +123,7 @@ namespace UnityEditor.Tilemaps
             /// </summary>
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
             DeleteColumnBefore,
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         }
 
         private class GridBrushProperties
@@ -139,6 +149,9 @@ namespace UnityEditor.Tilemaps
         private TileFlags[] m_SelectionFlagsArray;
         private Sprite[] m_SelectionSprites;
         private Tile.ColliderType[] m_SelectionColliderTypes;
+<<<<<<< HEAD
+
+=======
         private int selectionCellCount => Math.Abs(GridSelection.position.size.x * GridSelection.position.size.y * GridSelection.position.size.z);
 
 <<<<<<< HEAD
@@ -152,11 +165,14 @@ namespace UnityEditor.Tilemaps
         private ModifyCells m_ModifyCells = ModifyCells.InsertRow;
 
 <<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected virtual void OnEnable()
         {
             Undo.undoRedoPerformed += ClearLastPreview;
         }
 
+<<<<<<< HEAD
+=======
 =======
         private Texture2D m_Icon;
 
@@ -185,6 +201,7 @@ namespace UnityEditor.Tilemaps
         /// Deinitialises the GridBrushEditor.
         /// </summary>
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         protected virtual void OnDisable()
         {
             Undo.undoRedoPerformed -= ClearLastPreview;
@@ -210,8 +227,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
             if (Event.current.type == EventType.Layout)
 =======
+<<<<<<< HEAD
+            if (Event.current.type == EventType.Layout)
+=======
             if (Event.current.type == EventType.Layout || Event.current.type == EventType.Repaint)
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             {
                 int newPreviewRefreshHash = GetHash(gridLayout, brushTarget, position, tool, brush);
                 refreshPreviews = newPreviewRefreshHash != m_LastPreviewRefreshHash;
@@ -250,8 +271,12 @@ namespace UnityEditor.Tilemaps
             {
                 if (refreshPreviews)
                 {
+<<<<<<< HEAD
+                    ClearPreview();
+=======
                     if (CheckFloodFillPreview(gridLayout, brushTarget, position.min))
                         ClearPreview();
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                     FloodFillPreview(gridLayout, brushTarget, position.min);
                 }
             }
@@ -259,6 +284,8 @@ namespace UnityEditor.Tilemaps
             base.OnPaintSceneGUI(gridLayout, brushTarget, gizmoRect, tool, executing);
         }
 
+<<<<<<< HEAD
+=======
         private void UpdateSelection(Tilemap tilemap)
         {
             var selection = GridSelection.position;
@@ -286,12 +313,42 @@ namespace UnityEditor.Tilemaps
             }
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>Callback for drawing the Inspector GUI when there is an active GridSelection made in a Tilemap.</summary>
         public override void OnSelectionInspectorGUI()
         {
             BoundsInt selection = GridSelection.position;
             Tilemap tilemap = GridSelection.target.GetComponent<Tilemap>();
 
+<<<<<<< HEAD
+            int cellCount = selection.size.x * selection.size.y * selection.size.z;
+            if (tilemap != null && cellCount > 0)
+            {
+                base.OnSelectionInspectorGUI();
+                GUILayout.Space(10f);
+
+                if (m_SelectionTiles == null || m_SelectionTiles.Length != cellCount)
+                {
+                    m_SelectionTiles = new TileBase[cellCount];
+                    m_SelectionColors = new Color[cellCount];
+                    m_SelectionMatrices = new Matrix4x4[cellCount];
+                    m_SelectionFlagsArray = new TileFlags[cellCount];
+                    m_SelectionSprites = new Sprite[cellCount];
+                    m_SelectionColliderTypes = new Tile.ColliderType[cellCount];
+                }
+
+                int index = 0;
+                foreach (var p in selection.allPositionsWithin)
+                {
+                    m_SelectionTiles[index] = tilemap.GetTile(p);
+                    m_SelectionColors[index] = tilemap.GetColor(p);
+                    m_SelectionMatrices[index] = tilemap.GetTransformMatrix(p);
+                    m_SelectionFlagsArray[index] = tilemap.GetTileFlags(p);
+                    m_SelectionSprites[index] = tilemap.GetSprite(p);
+                    m_SelectionColliderTypes[index] = tilemap.GetColliderType(p);
+                    index++;
+                }
+=======
             int cellCount = selectionCellCount;
             if (tilemap != null && cellCount > 0)
             {
@@ -311,6 +368,7 @@ namespace UnityEditor.Tilemaps
                 EditorGUILayout.LabelField(Styles.gridSelectionPropertiesLabel, EditorStyles.boldLabel);
 
                 UpdateSelection(tilemap);
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
 
                 EditorGUI.BeginChangeCheck();
                 EditorGUI.showMixedValue = m_SelectionTiles.Any(tile => tile != m_SelectionTiles.First());
@@ -372,6 +430,11 @@ namespace UnityEditor.Tilemaps
                 }
 
                 EditorGUI.showMixedValue = false;
+<<<<<<< HEAD
+            }
+        }
+
+=======
 
                 if (GUILayout.Button(Styles.deleteSelectionLabel))
                 {
@@ -545,6 +608,7 @@ namespace UnityEditor.Tilemaps
             brush.BoxErase(tilemap.layoutGrid, tilemap.gameObject, selection);
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary> Callback when the mouse cursor leaves and editing area. </summary>
         /// <remarks> Cleans up brush previews. </remarks>
         public override void OnMouseLeave()
@@ -560,6 +624,8 @@ namespace UnityEditor.Tilemaps
             ClearPreview();
         }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
         /// <summary> Describes the usage of the GridBrush. </summary>
@@ -582,6 +648,7 @@ namespace UnityEditor.Tilemaps
         }
 
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary> Whether the GridBrush can change Z Position. </summary>
         public override bool canChangeZPosition
         {
@@ -597,11 +664,15 @@ namespace UnityEditor.Tilemaps
         {
             if (brushTarget != null)
             {
+<<<<<<< HEAD
+                Undo.RegisterCompleteObjectUndo(new Object[] { brushTarget, brushTarget.GetComponent<Tilemap>() }, tool.ToString());
+=======
                 var tilemap = brushTarget.GetComponent<Tilemap>();
                 if (tilemap != null)
                 {
                     RegisterUndoForTilemap(tilemap, tool.ToString());
                 }
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -616,6 +687,10 @@ namespace UnityEditor.Tilemaps
                 return currentStageHandle.FindComponentsOfType<Tilemap>().Where(x => x.gameObject.scene.isLoaded
                     && x.gameObject.activeInHierarchy).Select(x => x.gameObject).ToArray();
 =======
+<<<<<<< HEAD
+                return currentStageHandle.FindComponentsOfType<Tilemap>().Where(x => x.gameObject.scene.isLoaded
+                    && x.gameObject.activeInHierarchy).Select(x => x.gameObject).ToArray();
+=======
                 return currentStageHandle.FindComponentsOfType<Tilemap>().Where(x =>
                 {
                     GameObject gameObject;
@@ -624,6 +699,7 @@ namespace UnityEditor.Tilemaps
                            && !gameObject.hideFlags.HasFlag(HideFlags.NotEditable);
                 }).Select(x => x.gameObject).ToArray();
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             }
         }
 
@@ -687,6 +763,8 @@ namespace UnityEditor.Tilemaps
             m_LastTool = GridBrushBase.Tool.Box;
         }
 
+<<<<<<< HEAD
+=======
         private bool CheckFloodFillPreview(GridLayout gridLayout, GameObject brushTarget, Vector3Int position)
         {
             if (m_LastGrid == gridLayout
@@ -705,6 +783,7 @@ namespace UnityEditor.Tilemaps
             return true;
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         /// <summary>Does a preview of what happens when a GridBrush.FloodFill is done with the same parameters.</summary>
         /// <param name="gridLayout">Grid to paint data to.</param>
         /// <param name="brushTarget">Target of the flood fill operation. By default the currently selected GameObject.</param>
@@ -728,10 +807,15 @@ namespace UnityEditor.Tilemaps
                     bounds.min = map.origin;
                     bounds.max = map.origin + map.size;
 =======
+<<<<<<< HEAD
+                    bounds.min = map.origin;
+                    bounds.max = map.origin + map.size;
+=======
                     var origin = map.origin;
                     bounds.min = origin;
                     bounds.max = origin + map.size;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 }
             }
 
@@ -748,8 +832,12 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
                 guiHandler = searchContext =>
 =======
+<<<<<<< HEAD
+                guiHandler = searchContext =>
+=======
                 guiHandler = _ =>
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 {
                     PreferencesGUI();
                 }
@@ -815,11 +903,14 @@ namespace UnityEditor.Tilemaps
             m_LastTool = null;
         }
 
+<<<<<<< HEAD
+=======
         private void RegisterUndoForTilemap(Tilemap tilemap, string undoMessage)
         {
             Undo.RegisterCompleteObjectUndo(new Object[] { tilemap, tilemap.gameObject }, undoMessage);
         }
 
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
         private static void SetTilemapPreviewCell(Tilemap map, Vector3Int location, TileBase tile, Matrix4x4 transformMatrix, Color color)
         {
             if (map == null)
@@ -841,16 +932,22 @@ namespace UnityEditor.Tilemaps
         private static int GetHash(GridLayout gridLayout, GameObject brushTarget, BoundsInt position, GridBrushBase.Tool tool, GridBrush brush)
         {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             int hash = 0;
             unchecked
             {
                 hash = hash * 33 + (gridLayout != null ? gridLayout.GetHashCode() : 0);
+<<<<<<< HEAD
+=======
 =======
             int hash;
             unchecked
             {
                 hash = gridLayout != null ? gridLayout.GetHashCode() : 0;
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
                 hash = hash * 33 + (brushTarget != null ? brushTarget.GetHashCode() : 0);
                 hash = hash * 33 + position.GetHashCode();
                 hash = hash * 33 + tool.GetHashCode();
@@ -859,7 +956,11 @@ namespace UnityEditor.Tilemaps
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 5efc6cefed85800961bebdf3974ec322da11a611
+>>>>>>> 9ad7118b7bb183b686754ae747ab8afd5cd5ca9b
             return hash;
         }
     }
